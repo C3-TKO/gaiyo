@@ -1,7 +1,7 @@
 class Slide {
-  constructor(description, url, duration) {
+  constructor(description, url, timeout) {
     this.description = description;
     this.url = url;
-    this.duration = duration;
+    this.timeout = timeout;
   }
 }

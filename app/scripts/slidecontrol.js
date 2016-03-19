@@ -2,28 +2,13 @@ class SlideController {
   constructor(slideCollection, container) {
     this.slideCollection = slideCollection;
     this.container = container;
-    this.currentSlideIndex = 0;
+
+    this.timeout;
   }
 
   play() {
-    this.container.setAttribute('src', this.getNextSlide().url);
+    this.container.setAttribute('src', this.slideCollection.next().url);
+    //this.timeout = setTimeout(this.play(), this.getCurrentSlide.timeout);
   }
 
-  getCurrentSlide() {
-    return this.slideCollection.slides[this.currentSlideIndex]
-  }
-
-  getNextSlide() {
-    return
-      ++this.currentSlideIndex >= this.slideCollection.length
-      ? this.slideCollection.slides[0]
-      : this.slideCollection.slides[this.currentSlideIndex]
-  }
-
-  getPreviousSlide() {
-    return
-      --this.currentSlideIndex < 0
-      ? this.slideCollection.slides[this.slideCollection.length]
-      : this.slideCollection.slides[this.currentSlideIndex]
-  }
 }
