@@ -2,13 +2,25 @@ class SlideController {
   constructor(slideCollection, container) {
     this.slideCollection = slideCollection;
     this.container = container;
-
     this.timeout;
   }
 
+  init() {
+    this.play()
+  }
+
   play() {
-    this.container.setAttribute('src', this.slideCollection.next().url);
-    //this.timeout = setTimeout(this.play(), this.getCurrentSlide.timeout);
+    let context = this;
+    let slide = this.slideCollection.getNext()
+    this.container.setAttribute('src', slide.url);
+    this.timeout = setTimeout(
+      function() {
+        context.play();
+      }, slide.timeout);
+  }
+
+  stop() {
+    clearTimeout(this.timeout);
   }
 
 }

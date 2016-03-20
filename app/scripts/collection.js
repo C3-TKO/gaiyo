@@ -1,36 +1,30 @@
 class Collection {
   constructor(slides) {
     this.slides = slides;
-    this.current = 0;
+    this.pointer = 0;
   }
 
   addSlide(slide) {
     this.slides.push(slide);
   }
 
-  current() {
-    return this.slides[this.current]
+  getCurrent() {
+    return this.slides[this.pointer];
   }
 
-  next() {
-
-    if(this.current >= this.slides.length) {
-
+  getNext() {
+    if (++this.pointer >= this.slides.length) {
+      this.pointer = 0;
     }
-    else {
-    return this.slides[this.current];
+
+    return this.getCurrent();
   }
 
-    return
-      ++this.current >= this.slides.length
-      ? this.slides[0]
-      : this.slides[this.current]
-  }
+  getPrevious() {
+    if (--this.pointer < 0) {
+      this.pointer = this.slides.length;
+    }
 
-  previous() {
-    return
-      --this.current < 0
-      ? this.slides[this.slides.length]
-      : this.slides[this.current]
+    return this.getCurrent();
   }
 }
