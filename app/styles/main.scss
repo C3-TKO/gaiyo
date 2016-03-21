@@ -22,5 +22,9 @@ body,
 #slide-container,
 #slide-controls {
   position: absolute;
-  border: none;  
+  border: none;
+}
+
+#play {
+  display: none;
 }
