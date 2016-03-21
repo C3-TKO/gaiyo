@@ -16,7 +16,8 @@ class SlideController {
     this.timeout = setTimeout(
       function() {
         context.play();
-      }, slide.timeout);
+      },
+    slide.timeout);
   }
 
   stop() {
