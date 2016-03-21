@@ -9,9 +9,13 @@ class SlideController {
     this.play()
   }
 
-  play() {
+  play(slide) {
+    this.stop();
     let context = this;
-    let slide = this.slideCollection.getNext()
+    console.log(typeof slide);
+    if (typeof slide == 'undefined') {
+      slide = this.slideCollection.getNext()
+    }
     this.container.setAttribute('src', slide.url);
     this.timeout = setTimeout(
       function() {
@@ -22,6 +26,16 @@ class SlideController {
 
   stop() {
     clearTimeout(this.timeout);
+  }
+
+  rewind() {
+    this.stop();
+    this.play(this.slideCollection.getPrevious());
+  }
+
+  forward() {
+    this.stop();
+    this.play(this.slideCollection.getNext());
   }
 
 }

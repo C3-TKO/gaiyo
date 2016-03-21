@@ -22,7 +22,7 @@ class Collection {
 
   getPrevious() {
     if (--this.pointer < 0) {
-      this.pointer = this.slides.length;
+      this.pointer = this.slides.length - 1;
     }
 
     return this.getCurrent();
