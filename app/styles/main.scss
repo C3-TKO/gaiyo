@@ -11,7 +11,16 @@ $icon-font-path: '../fonts/';
   padding: 0.2em 0;
 }
 
-html, body, iframe {
+html,
+body,
+#slide-container,
+#slide-controls {
   height: 100%;
   width: 100%;
+}
+
+#slide-container,
+#slide-controls {
+  position: absolute;
+  border: none;  
 }
