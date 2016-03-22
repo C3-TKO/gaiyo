@@ -14,7 +14,6 @@ class SlideController {
   play(slide) {
     this.stop();
     let context = this;
-    console.log(typeof slide);
     if (typeof slide === 'undefined') {
       slide = this.slideCollection.getNext();
     }
