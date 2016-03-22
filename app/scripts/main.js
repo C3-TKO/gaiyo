@@ -1,5 +1,9 @@
 'use strict';
 
+import Collection from 'collection';
+import Slide from 'slide';
+import SlideController from 'slidecontrol';
+
 var collection = new Collection([]);
 collection.addSlide(new Slide('Familienblog', 'http://www.opel.de', 5000));
 collection.addSlide(new Slide('Badminton App', 'http://smash.cologne', 5000));
