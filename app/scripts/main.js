@@ -4,7 +4,7 @@ collection.addSlide(new Slide('Badminton App', 'http://smash.cologne', 5000));
 collection.addSlide(new Slide('Apple Webseite', 'http://apple.de', 5000));
 
 var slideController = new SlideController(collection, document.getElementById('slide-container'))
-slideController.play();
+slideController.init();
 
 // Binding click events
 document.getElementById('play').addEventListener('click', function() {slideController.play(); document.getElementById('play').style.display = 'none'; document.getElementById('stop').style.display = 'inline'}, false);

@@ -6,7 +6,7 @@ class SlideController {
   }
 
   init() {
-    this.play()
+    this.play(this.slideCollection.getCurrent());
   }
 
   play(slide) {
