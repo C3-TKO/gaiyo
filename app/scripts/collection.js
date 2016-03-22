@@ -1,6 +1,6 @@
 'use strict';
 
-class Collection {
+export default class Collection {
   constructor(slides) {
     this.slides = slides;
     this.pointer = 0;

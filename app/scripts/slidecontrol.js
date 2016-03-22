@@ -1,6 +1,6 @@
 'use strict';
 
-class SlideController {
+export default class SlideController {
   constructor(slideCollection, container) {
     this.slideCollection = slideCollection;
     this.container = container;
