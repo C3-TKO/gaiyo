@@ -1,3 +1,5 @@
+'use strict';
+
 class SlideController {
   constructor(slideCollection, container) {
     this.slideCollection = slideCollection;

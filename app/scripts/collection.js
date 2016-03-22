@@ -1,3 +1,5 @@
+'use strict';
+
 class Collection {
   constructor(slides) {
     this.slides = slides;
