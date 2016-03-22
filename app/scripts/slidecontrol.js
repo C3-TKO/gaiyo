@@ -15,7 +15,7 @@ class SlideController {
     this.stop();
     let context = this;
     console.log(typeof slide);
-    if (typeof slide == 'undefined') {
+    if (typeof slide === 'undefined') {
       slide = this.slideCollection.getNext();
     }
     this.container.setAttribute('src', slide.url);
