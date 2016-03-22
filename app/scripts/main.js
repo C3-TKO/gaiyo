@@ -9,7 +9,22 @@ var slideController = new SlideController(collection, document.getElementById('s
 slideController.init();
 
 // Binding click events
-document.getElementById('play').addEventListener('click', function() {slideController.play(); document.getElementById('play').style.display = 'none'; document.getElementById('stop').style.display = 'inline'}, false);
-document.getElementById('stop').addEventListener('click', function() {slideController.stop(); document.getElementById('stop').style.display = 'none'; document.getElementById('play').style.display = 'inline'}, false);
-document.getElementById('rewind').addEventListener('click', function() {slideController.rewind()}, false);
-document.getElementById('forward').addEventListener('click', function() {slideController.forward()}, false);
+document.getElementById('play').addEventListener('click', function() {
+  slideController.play();
+  document.getElementById('play').style.display = 'none';
+  document.getElementById('stop').style.display = 'inline';
+}, false);
+
+document.getElementById('stop').addEventListener('click', function() {
+  slideController.stop();
+  document.getElementById('stop').style.display = 'none';
+  document.getElementById('play').style.display = 'inline';
+}, false);
+
+document.getElementById('rewind').addEventListener('click', function() {
+  slideController.rewind();
+}, false);
+
+document.getElementById('forward').addEventListener('click', function() {
+  slideController.forward();
+}, false);
