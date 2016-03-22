@@ -16,7 +16,7 @@ class SlideController {
     let context = this;
     console.log(typeof slide);
     if (typeof slide == 'undefined') {
-      slide = this.slideCollection.getNext()
+      slide = this.slideCollection.getNext();
     }
     this.container.setAttribute('src', slide.url);
     this.timeout = setTimeout(
