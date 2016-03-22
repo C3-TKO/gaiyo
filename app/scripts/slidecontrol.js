@@ -4,7 +4,7 @@ class SlideController {
   constructor(slideCollection, container) {
     this.slideCollection = slideCollection;
     this.container = container;
-    this.timeout;
+    this.timeout = undefined;
   }
 
   init() {
