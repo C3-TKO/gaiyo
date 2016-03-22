@@ -5,7 +5,7 @@ collection.addSlide(new Slide('Familienblog', 'http://www.opel.de', 5000));
 collection.addSlide(new Slide('Badminton App', 'http://smash.cologne', 5000));
 collection.addSlide(new Slide('Apple Webseite', 'http://apple.de', 5000));
 
-var slideController = new SlideController(collection, document.getElementById('slide-container'))
+var slideController = new SlideController(collection, document.getElementById('slide-container'));
 slideController.init();
 
 // Binding click events
