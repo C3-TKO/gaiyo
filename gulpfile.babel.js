@@ -52,7 +52,7 @@ const testLintOptions = {
 gulp.task('lint', lint('app/scripts/**/*.js'));
 gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
 
-gulp.task('html', ['styles', 'scripts', 'templates', 'webpack'], () => {
+gulp.task('html', ['styles', 'templates', 'webpack', 'scripts'], () => {
   return gulp.src('app/*.html')
     .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
     .pipe($.if('*.js', $.uglify()))
@@ -91,7 +91,7 @@ gulp.task('extras', () => {
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
-gulp.task('serve', ['styles', 'scripts', 'templates', 'webpack', 'fonts'], () => {
+gulp.task('serve', ['styles', 'templates', 'webpack', 'scripts', 'fonts'], () => {
   browserSync({
     notify: false,
     port: 9000,
