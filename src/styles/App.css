@@ -1,15 +1,9 @@
 /* Base Application Styles */
 html,
-body,
-#slide-container {
+body {
   margin: 0;
   height: 100%;
   width: 100%;
-}
-
-#slide-container {
-  position: absolute;
-  border: none;
 }
 
 #play {
