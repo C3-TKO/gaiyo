@@ -38,7 +38,7 @@ class ControlsComponent extends React.Component {
 ControlsComponent.displayName = 'ControlsComponent';
 
 ControlsComponent.propTypes = {
-  isPlaying : React.PropTypes.bool
+  isPlaying : React.PropTypes.bool.isRequired
 };
 
 ControlsComponent.defaultProps = {
