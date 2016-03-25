@@ -23,9 +23,7 @@ class App extends Component {
  * HINT: if you adjust the initial type of your reducer, you will also have to
  *       adjust it here.
  */
-App.propTypes = {
-  actions: PropTypes.object.isRequired
-};
+App.propTypes = { actions: PropTypes.object.isRequired };
 function mapStateToProps(state) {
   /* Populated by react-webpack-redux:reducer */
   const props = {};
@@ -33,7 +31,12 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
   /* Populated by react-webpack-redux:action */
-  const actions = {};
+  const actions = {
+    play: require('../actions/play.js'),
+    stop: require('../actions/stop.js'),
+    next: require('../actions/next.js'),
+    previous: require('../actions/previous.js')
+  };
   const actionMap = { actions: bindActionCreators(actions, dispatch) };
   return actionMap;
 }
