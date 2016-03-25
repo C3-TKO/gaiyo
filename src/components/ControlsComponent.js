@@ -26,10 +26,10 @@ class ControlsComponent extends React.Component {
   render() {
     return (
       <div className="controls-component">
-          <button id="rewind">Rewind</button>
+          <button id="previous">Previous</button>
           {this.renderStopButton()}
           {this.renderPlayButton()}
-          <button id="forward">Forward</button>
+          <button id="next">Next</button>
       </div>
     );
   }
@@ -38,7 +38,11 @@ class ControlsComponent extends React.Component {
 ControlsComponent.displayName = 'ControlsComponent';
 
 ControlsComponent.propTypes = {
-  isPlaying : React.PropTypes.bool.isRequired
+  isPlaying :  React.PropTypes.bool.isRequired,
+  onPrevious : React.PropTypes.func,
+  onStop :     React.PropTypes.func,
+  onPlay :     React.PropTypes.func,
+  onNext :     React.PropTypes.func
 };
 
 ControlsComponent.defaultProps = {
