@@ -7,15 +7,14 @@ require('styles//Iframe.scss');
 class IframeComponent extends React.Component {
   render() {
     return (
-      <iframe className="iframe-component"></iframe>
+      <iframe className="iframe-component" src={this.props.url}></iframe>
     );
   }
 }
 
 IframeComponent.displayName = 'IframeComponent';
 
-// Uncomment properties you need
-// IframeComponent.propTypes = {};
-// IframeComponent.defaultProps = {};
+IframeComponent.propTypes = { url: React.PropTypes.string };
+IframeComponent.defaultProps = { url : 'http://smash.cologne' };
 
 export default IframeComponent;
