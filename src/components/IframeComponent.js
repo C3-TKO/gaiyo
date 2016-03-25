@@ -14,7 +14,12 @@ class IframeComponent extends React.Component {
 
 IframeComponent.displayName = 'IframeComponent';
 
-IframeComponent.propTypes = { url: React.PropTypes.string };
-IframeComponent.defaultProps = { url : 'http://smash.cologne' };
+IframeComponent.propTypes = {
+  url: React.PropTypes.string
+};
+
+IframeComponent.defaultProps = {
+  url : 'http://smash.cologne'
+};
 
 export default IframeComponent;
