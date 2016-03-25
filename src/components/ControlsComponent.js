@@ -19,8 +19,12 @@ class ControlsComponent extends React.Component {
 
 ControlsComponent.displayName = 'ControlsComponent';
 
-// Uncomment properties you need
-// ControlsComponent.propTypes = {};
-// ControlsComponent.defaultProps = {};
+ControlsComponent.propTypes = {
+  isPlaying : React.PropTypes.bool
+};
+
+ControlsComponent.defaultProps = {
+  isPlaying : true
+};
 
 export default ControlsComponent;
