@@ -14,8 +14,8 @@ import Main from '../components/Main';
 /* Populated by react-webpack-redux:reducer */
 class App extends Component {
   render() {
-    const {actions} = this.props;
-    return <Main actions={actions}/>;
+    const {actions, slides} = this.props;
+    return <Main actions={actions} slides={slides}/>;
   }
 }
 /* Populated by react-webpack-redux:reducer
@@ -23,10 +23,13 @@ class App extends Component {
  * HINT: if you adjust the initial type of your reducer, you will also have to
  *       adjust it here.
  */
-App.propTypes = { actions: PropTypes.object.isRequired };
+App.propTypes = {
+  actions: PropTypes.object.isRequired,
+  slides: PropTypes.object.isRequired
+};
 function mapStateToProps(state) {
   /* Populated by react-webpack-redux:reducer */
-  const props = {};
+  const props = { slides: state.slides };
   return props;
 }
 function mapDispatchToProps(dispatch) {
