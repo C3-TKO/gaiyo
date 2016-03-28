@@ -4,11 +4,12 @@
  * src/container/App.js accordingly.
  */
 const initialState = {
+  'timeout' : undefined,
   'isPlaying' : true,
   'pointer': 0,
   'collection': [
+    {'url': 'http://smash.cologne', 'timeout': 5000},
     {'url': 'http://cevapsushi.de', 'timeout': 5000},
-    {'url': 'http://smash.cologne.de', 'timeout': 5000},
     {'url': 'http://www.opel.de', 'timeout': 5000}
   ]
 };
