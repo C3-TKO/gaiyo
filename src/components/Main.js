@@ -9,7 +9,7 @@ class AppComponent extends React.Component {
   render() {
     return (
       <div className="index">
-        <IframeComponent/>
+        <IframeComponent slide={this.props.slides.collection[this.props.slides.pointer]}/>
         <ControlsComponent/>
       </div>
     );
