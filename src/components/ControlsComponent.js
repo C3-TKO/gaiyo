@@ -11,13 +11,13 @@ class ControlsComponent extends React.Component {
       return <button id="stop">Stop</button>
     }
 
-    return <button id="stop" style={{display: 'none'}}>Stop</button>
+    return <button id="stop" style={{display: 'none'}} onClick={() => this.props.stop()}>Stop</button>
 
   }
 
   renderPlayButton() {
     if (this.props.slides.isPlaying) {
-      return <button id="play" style={{display: 'none'}}>Play</button>
+      return <button id="play" style={{display: 'none'}} onClick={() => this.props.play()}>Play</button>
     }
 
     return <button id="play">Play</button>
@@ -26,10 +26,10 @@ class ControlsComponent extends React.Component {
   render() {
     return (
       <div className="controls-component">
-          <button id="previous">Previous</button>
+          <button id="previous" onClick={() => this.props.previous()}>Previous</button>
           {this.renderStopButton()}
           {this.renderPlayButton()}
-          <button id="next">Next</button>
+          <button id="next" onClick={() => this.props.next()}>Next</button>
       </div>
     );
   }
@@ -38,11 +38,11 @@ class ControlsComponent extends React.Component {
 ControlsComponent.displayName = 'ControlsComponent';
 
 ControlsComponent.propTypes = {
-  slides:      React.PropTypes.object.isRequired,
-  onPrevious : React.PropTypes.func,
-  onStop :     React.PropTypes.func,
-  onPlay :     React.PropTypes.func,
-  onNext :     React.PropTypes.func
+  slides :   React.PropTypes.object.isRequired,
+  previous : React.PropTypes.func,
+  stop :     React.PropTypes.func,
+  play :     React.PropTypes.func,
+  next :     React.PropTypes.func
 };
 
 export default ControlsComponent;

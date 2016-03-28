@@ -7,11 +7,10 @@ import ControlsComponent from './ControlsComponent';
 
 class AppComponent extends React.Component {
   render() {
-    debugger;
     return (
       <div className="index">
         <IframeComponent slide={this.props.slides.collection[this.props.slides.pointer]}/>
-        <ControlsComponent slides={this.props.slides}/>
+        <ControlsComponent slides={this.props.slides} {...this.props.actions}/>
       </div>
     );
   }
