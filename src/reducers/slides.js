@@ -5,7 +5,7 @@
  */
 const initialState = {
   'isPlaying' : true,
-  'current': 0,
+  'pointer': 0,
   'collection': [
     {'url': 'http://cevapsushi.de', 'timeout': 5000},
     {'url': 'http://smash.cologne.de', 'timeout': 5000},
@@ -19,19 +19,23 @@ module.exports = function(state = initialState, action) {
 
   switch(action.type) {
     case 'NEXT': {
-      // Modify next state depending on the action and return it
+      if (++nextState.pointer >= nextState.collection.length) {
+        nextState.pointer = 0;
+      }
       return nextState;
     } break;
     case 'STOP': {
-      // Modify next state depending on the action and return it
+      nextState.isPlaying = false;
       return nextState;
     } break;
     case 'PLAY': {
-      // Modify next state depending on the action and return it
+      nextState.isPlaying = true;
       return nextState;
     } break;
     case 'PREVIOUS': {
-      // Modify next state depending on the action and return it
+      if (--nextState.pointer < 0) {
+        nextState.pointer = nextState.collection.length - 1;
+      }
       return nextState;
     } break;
     default: {
