@@ -7,7 +7,7 @@ require('styles//Controls.scss');
 class ControlsComponent extends React.Component {
 
   renderStopButton() {
-    if (this.props.isPlaying) {
+    if (this.props.slides.isPlaying) {
       return <button id="stop">Stop</button>
     }
 
@@ -16,7 +16,7 @@ class ControlsComponent extends React.Component {
   }
 
   renderPlayButton() {
-    if (this.props.isPlaying) {
+    if (this.props.slides.isPlaying) {
       return <button id="play" style={{display: 'none'}}>Play</button>
     }
 
@@ -38,15 +38,11 @@ class ControlsComponent extends React.Component {
 ControlsComponent.displayName = 'ControlsComponent';
 
 ControlsComponent.propTypes = {
-  isPlaying :  React.PropTypes.bool.isRequired,
+  slides:      React.PropTypes.object.isRequired,
   onPrevious : React.PropTypes.func,
   onStop :     React.PropTypes.func,
   onPlay :     React.PropTypes.func,
   onNext :     React.PropTypes.func
-};
-
-ControlsComponent.defaultProps = {
-  isPlaying : true
 };
 
 export default ControlsComponent;
