@@ -8,7 +8,7 @@ class ControlsComponent extends React.Component {
 
   renderStopButton() {
     if (this.props.slides.isPlaying) {
-      return <button id="stop">Stop</button>
+      return <button id="stop" onClick={() => this.props.stop()}>Stop</button>
     }
 
     return <button id="stop" style={{display: 'none'}} onClick={() => this.props.stop()}>Stop</button>
@@ -20,7 +20,7 @@ class ControlsComponent extends React.Component {
       return <button id="play" style={{display: 'none'}} onClick={() => this.props.play()}>Play</button>
     }
 
-    return <button id="play">Play</button>
+    return <button id="play" onClick={() => this.props.play()}>Play</button>
   }
 
   render() {
