@@ -5,7 +5,7 @@
  */
 const initialState = {
   'timeout' : undefined,
-  'isPlaying' : true,
+  'isPlaying' : false,
   'pointer': 0,
   'collection': [
     {'url': 'http://smash.cologne', 'timeout': 5000},
@@ -24,19 +24,16 @@ module.exports = function(state = initialState, action) {
       if (++nextState.pointer >= nextState.collection.length) {
         nextState.pointer = 0;
       }
-      handleTimeout(nextState);
       return nextState;
     } break;
     case 'STOP': {
       clearTimeout(nextState.timeout);
       nextState.isPlaying = false;
-      handleTimeout(nextState);
       return nextState;
     } break;
     case 'PLAY': {
       clearTimeout(nextState.timeout);
       nextState.isPlaying = true;
-      handleTimeout(nextState);
       return nextState;
     } break;
     case 'PREVIOUS': {
@@ -44,22 +41,11 @@ module.exports = function(state = initialState, action) {
       if (--nextState.pointer < 0) {
         nextState.pointer = nextState.collection.length - 1;
       }
-      handleTimeout(nextState);
       return nextState;
     } break;
     default: {
       /* Return original state if no actions were consumed. */
       return state;
     }
-  }
-}
-
-function handleTimeout(state) {
-  clearTimeout(state.timeout);
-  if (state.isPlaying) {
-    console.log('should dispatch play after timeout');
-  }
-  else {
-    console.log('should do nothing');
   }
 }

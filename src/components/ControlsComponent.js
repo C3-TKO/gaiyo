@@ -6,6 +6,18 @@ require('styles//Controls.scss');
 
 class ControlsComponent extends React.Component {
 
+  componentDidMount() {
+    this.props.play();
+  }
+
+  /*
+  componentWillReceiveProps(nextProps) {
+    console.log(this.props);
+    console.log(nextProps);
+    console.log('will receive props!');
+  }
+  */
+
   renderStopButton() {
     if (this.props.slides.isPlaying) {
       return <button id="stop" onClick={() => this.props.stop()}>Stop</button>
