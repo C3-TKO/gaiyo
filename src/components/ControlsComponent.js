@@ -7,16 +7,12 @@ require('styles//Controls.scss');
 class ControlsComponent extends React.Component {
 
   componentDidMount() {
-    this.props.play();
+    this.props.play(setTimeout(() => this.props.next(), this.props.slides.collection[this.props.slides.pointer].timeout));
   }
 
-  /*
   componentWillReceiveProps(nextProps) {
-    console.log(this.props);
-    console.log(nextProps);
-    console.log('will receive props!');
+    console.log(this.props, nextProps);
   }
-  */
 
   renderStopButton() {
     if (this.props.slides.isPlaying) {

@@ -1,3 +1,3 @@
-module.exports = function() {
-  return { type: 'PLAY' };
+module.exports = function(timeout) {
+  return { type: 'PLAY',  timeout: timeout };
 };
