@@ -17,19 +17,14 @@ class StopWatchComponent extends React.Component {
     };
   }
 
-  componentDidMount() {
-    this.state.timer = setTimeout(() => this.progress(this.state.steps * 2), this.props.watchTimeout);
-    this.state.steps = this.getPercentageSteps(this.props.slides.collection[this.props.slides.pointer].timeout);
-  }
-
   componentWillUnmount() {
     this.reset();
   }
 
   componentWillReceiveProps(nextProps) {
+    /* console.log('wrp', nextProps.isPlaying, this.props.slides.pointer, nextProps.slides.pointer); */
     if(!nextProps.slides.isPlaying) {
       this.reset();
-      return;
     }
 
     if(nextProps.slides.isPlaying) {
