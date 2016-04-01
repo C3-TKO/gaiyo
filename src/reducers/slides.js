@@ -8,9 +8,9 @@ const initialState = {
   'isPlaying' : false,
   'pointer': 0,
   'collection': [
-    {'url': 'http://smash.cologne', 'timeout': 5000},
-    {'url': 'http://cevapsushi.de', 'timeout': 5000},
-    {'url': 'http://www.opel.de', 'timeout': 5000}
+    {'url': 'screen_1.html', 'timeout': 5000},
+    {'url': 'screen_2.html', 'timeout': 5000},
+    {'url': 'screen_3.html', 'timeout': 5000}
   ]
 };
 
