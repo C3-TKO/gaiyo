@@ -35,8 +35,7 @@ class StopWatchComponent extends React.Component {
   }
 
   getPercentageSteps(totalDurationOfSlide) {
-    const result = Math.round(1 / totalDurationOfSlide / this.props.watchTimeout * 100);
-    return result;
+    return Math.round(100 / ( totalDurationOfSlide / this.props.watchTimeout) );
   }
 
   progress(completed) {
