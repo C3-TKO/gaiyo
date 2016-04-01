@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import CircularProgress from 'material-ui/lib/circular-progress';
+import LinearProgress from 'material-ui/lib/linear-progress';
 
 require('styles//StopWatch.scss');
 
@@ -37,7 +37,7 @@ class StopWatchComponent extends React.Component {
   render() {
     return (
       <div className="stopwatch-component">
-        <CircularProgress mode="determinate" value={this.state.completed}/>
+        <LinearProgress mode="determinate" value={this.state.completed} />
       </div>
     );
   }
