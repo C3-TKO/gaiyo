@@ -1,9 +1,12 @@
 .controls-component {
-  margin: auto;
-  height: 100%;
+  margin: 0;
+  height: 75px;
   width: 100%;
   position: absolute;
   border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center
 }
 
 .controls-button-container {
