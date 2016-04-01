@@ -11,13 +11,14 @@ class StopWatchComponent extends React.Component {
     super(props);
 
     this.state = {
-      completed: 0,
-      steps: 0
+      completed : 0,
+      steps     : 0,
+      timer     : undefined
     };
   }
 
   componentDidMount() {
-    this.timer = setTimeout(() => this.progress(this.state.steps * 2), this.props.watchTimeout);
+    this.state.timer = setTimeout(() => this.progress(this.state.steps * 2), this.props.watchTimeout);
     this.state.steps = this.getPercentageSteps(this.props.slides.collection[this.props.slides.pointer].timeout);
   }
 
@@ -28,9 +29,10 @@ class StopWatchComponent extends React.Component {
   componentWillReceiveProps(nextProps) {
     if(nextProps.slides.isPlaying && this.props.slides.pointer != nextProps.slides.pointer) {
       this.reset();
-      this.setState({steps: this.getPercentageSteps(nextProps.slides.collection[nextProps.slides.pointer].timeout)});
-
-      this.timer = setTimeout(() => this.progress(this.state.steps * 2), this.props.watchTimeout);
+      this.setState({
+        steps : this.getPercentageSteps(nextProps.slides.collection[nextProps.slides.pointer].timeout),
+        timer : setTimeout(() => this.progress(this.state.steps * 2), this.props.watchTimeout)
+      });
     }
   }
 
@@ -43,12 +45,12 @@ class StopWatchComponent extends React.Component {
       this.setState({completed: 100});
     } else {
       this.setState({completed});
-      this.timer = setTimeout(() => this.progress(completed + this.state.steps), this.props.watchTimeout);
+      this.setState({timer : setTimeout(() => this.progress(completed + this.state.steps), this.props.watchTimeout)});
     }
   }
 
   reset() {
-    clearTimeout(this.timer);
+    clearTimeout(this.state.timer);
     this.setState({completed: 0});
   }
 
