@@ -59,10 +59,10 @@ ControlsComponent.displayName = 'ControlsComponent';
 
 ControlsComponent.propTypes = {
   slides :   React.PropTypes.object.isRequired,
-  previous : React.PropTypes.func,
-  stop :     React.PropTypes.func,
-  play :     React.PropTypes.func,
-  next :     React.PropTypes.func
+  previous : React.PropTypes.func.isRequired,
+  stop :     React.PropTypes.func.isRequired,
+  play :     React.PropTypes.func.isRequired,
+  next :     React.PropTypes.func.isRequired
 };
 
 export default ControlsComponent;
