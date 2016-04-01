@@ -12,7 +12,7 @@ class AppComponent extends React.Component {
       <div className="index">
         <IframeComponent slide={this.props.slides.collection[this.props.slides.pointer]}/>
         <ControlsComponent slides={this.props.slides} {...this.props.actions}/>
-        <StopWatchComponent/>
+        <StopWatchComponent slides={this.props.slides}/>
       </div>
     );
   }

@@ -7,7 +7,6 @@ require('styles//StopWatch.scss');
 
 class StopWatchComponent extends React.Component {
 
-
   constructor(props) {
     super(props);
 
@@ -17,20 +16,28 @@ class StopWatchComponent extends React.Component {
   }
 
   componentDidMount() {
-    this.timer = setTimeout(() => this.progress(5), 1000);
+    this.timer = setTimeout(() => this.progress(10), this.props.watchTimeout);
   }
 
   componentWillUnmount() {
+    console.log('GOVNO');
     clearTimeout(this.timer);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.slides.isPlaying && this.props.slides.pointer != nextProps.slides.pointer) {
+      clearTimeout(this.timer);
+      this.timer = setTimeout(() => this.progress(10), this.props.watchTimeout);
+    }
   }
 
   progress(completed) {
     if (completed > 100) {
       this.setState({completed: 100});
+      this.for
     } else {
       this.setState({completed});
-      const diff = Math.random() * 10;
-      this.timer = setTimeout(() => this.progress(completed + diff), 1000);
+      this.timer = setTimeout(() => this.progress(completed + 5), this.props.watchTimeout);
     }
   }
 
@@ -44,5 +51,14 @@ class StopWatchComponent extends React.Component {
 }
 
 StopWatchComponent.displayName = 'StopWatchComponent';
+
+StopWatchComponent.propTypes = {
+  slides : React.PropTypes.object.isRequired,
+  watchTimeout : React.PropTypes.number.isRequired
+};
+
+StopWatchComponent.defaultProps = {
+  watchTimeout: 250
+};
 
 export default StopWatchComponent;
