@@ -1,7 +1,12 @@
 .controls-component {
-  margin: 0;
+  margin: auto;
   height: 100%;
   width: 100%;
   position: absolute;
   border: none;
+}
+
+.controls-button-container {
+  margin: 5px;
+  float: left;
 }

@@ -27,21 +27,30 @@ class ControlsComponent extends React.Component {
     return (
       <div className="controls-component">
 
+        <div className="controls-button-container">
           <FloatingActionButton mini={true} onMouseDown={() => this.props.previous()} >
             <AvSkipPrevious />
           </FloatingActionButton>
+        </div>
 
+        <div className="controls-button-container">
           <FloatingActionButton mini={true} onMouseDown={() => this.props.stop()}>
             <AvPause />
           </FloatingActionButton>
+        </div>
 
+        <div className="controls-button-container">
           <FloatingActionButton mini={true} onMouseDown={() => this.props.play(setTimeout(() => this.props.next(), this.props.slides.collection[this.props.slides.pointer].timeout))}>
             <AvPlayArrow />
           </FloatingActionButton>
+        </div>
 
+        <div className="controls-button-container">
           <FloatingActionButton mini={true} onMouseDown={() => this.props.next()}>
             <AvSkipNext />
           </FloatingActionButton>
+        </div>
+
       </div>
     );
   }
