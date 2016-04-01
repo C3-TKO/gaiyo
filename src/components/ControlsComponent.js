@@ -32,13 +32,13 @@ class ControlsComponent extends React.Component {
           </FloatingActionButton>
         </div>
 
-        <div className="controls-button-container">
+        <div className="controls-button-container" style={!this.props.slides.isPlaying ? {display: 'none'} : {display: 'block'}}>
           <FloatingActionButton mini={true} onMouseDown={() => this.props.stop()}>
             <AvPause />
           </FloatingActionButton>
         </div>
 
-        <div className="controls-button-container">
+        <div className="controls-button-container" style={this.props.slides.isPlaying ? {display: 'none'} : {display: 'block'}}>
           <FloatingActionButton mini={true} onMouseDown={() => this.props.play(setTimeout(() => this.props.next(), this.props.slides.collection[this.props.slides.pointer].timeout))}>
             <AvPlayArrow />
           </FloatingActionButton>
