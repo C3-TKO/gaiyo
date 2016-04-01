@@ -16,7 +16,6 @@ class ControlsComponent extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(this.props.slides, nextProps.slides);
     if(nextProps.slides.isPlaying && this.props.slides.pointer != nextProps.slides.pointer) {
       clearTimeout(this.props.slides.timeout);
       this.props.play(setTimeout(() => this.props.next(), nextProps.slides.collection[nextProps.slides.pointer].timeout));
