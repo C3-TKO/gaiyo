@@ -1,6 +1,11 @@
 'use strict';
 
 import React from 'react';
+import FloatingActionButton from 'material-ui/lib/floating-action-button';
+import AvSkipPrevious from 'material-ui/lib/svg-icons/av/skip-previous';
+import AvPause from 'material-ui/lib/svg-icons/av/pause';
+import AvPlayArrow from 'material-ui/lib/svg-icons/av/play-arrow';
+import AvSkipNext from 'material-ui/lib/svg-icons/av/skip-next';
 
 require('styles//Controls.scss');
 
@@ -43,6 +48,22 @@ class ControlsComponent extends React.Component {
           {this.renderStopButton()}
           {this.renderPlayButton()}
           <button id="next" onClick={() => this.props.next()}>Next</button>
+
+          <FloatingActionButton mini={true}>
+            <AvSkipPrevious />
+          </FloatingActionButton>
+
+          <FloatingActionButton mini={true}>
+            <AvPause />
+          </FloatingActionButton>
+
+          <FloatingActionButton mini={true}>
+            <AvPlayArrow />
+          </FloatingActionButton>
+
+          <FloatingActionButton mini={true}>
+            <AvSkipNext />
+          </FloatingActionButton>
       </div>
     );
   }
