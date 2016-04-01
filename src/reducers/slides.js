@@ -32,6 +32,7 @@ module.exports = function(state = initialState, action) {
     }
     case 'PLAY': {
       clearTimeout(nextState.timeout);
+      nextState.timeout = action.timeout;
       nextState.isPlaying = true;
       return nextState;
     }
