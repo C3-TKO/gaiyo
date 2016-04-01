@@ -12,32 +12,39 @@ class StopWatchComponent extends React.Component {
 
     this.state = {
       completed: 0,
+      steps: 0
     };
   }
 
   componentDidMount() {
-    this.timer = setTimeout(() => this.progress(10), this.props.watchTimeout);
+    this.timer = setTimeout(() => this.progress(this.state.steps * 2), this.props.watchTimeout);
+    this.state.steps = this.getPercentageSteps(this.props.slides.collection[this.props.slides.pointer].timeout);
   }
 
   componentWillUnmount() {
-    console.log('GOVNO');
     clearTimeout(this.timer);
   }
 
   componentWillReceiveProps(nextProps) {
     if(nextProps.slides.isPlaying && this.props.slides.pointer != nextProps.slides.pointer) {
       clearTimeout(this.timer);
-      this.timer = setTimeout(() => this.progress(10), this.props.watchTimeout);
+      this.setState({steps: this.getPercentageSteps(nextProps.slides.collection[nextProps.slides.pointer].timeout)});
+
+      this.timer = setTimeout(() => this.progress(this.state.steps * 2), this.props.watchTimeout);
     }
+  }
+
+  getPercentageSteps(totalDurationOfSlide) {
+    const result = Math.round(1 / totalDurationOfSlide / this.props.watchTimeout * 100);
+    return result;
   }
 
   progress(completed) {
     if (completed > 100) {
       this.setState({completed: 100});
-      this.for
     } else {
       this.setState({completed});
-      this.timer = setTimeout(() => this.progress(completed + 5), this.props.watchTimeout);
+      this.timer = setTimeout(() => this.progress(completed + this.state.steps), this.props.watchTimeout);
     }
   }
 
