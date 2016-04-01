@@ -27,8 +27,16 @@ class StopWatchComponent extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.slides.isPlaying && this.props.slides.pointer != nextProps.slides.pointer) {
+    console.log(nextProps.slides.isPlaying, this.state.timer);
+    if(!nextProps.slides.isPlaying) {
       this.reset();
+      return;
+    }
+
+    if(nextProps.slides.isPlaying) {
+      if (this.props.slides.pointer != nextProps.slides.pointer) {
+        this.reset();
+      }
       this.setState({
         steps : this.getPercentageSteps(nextProps.slides.collection[nextProps.slides.pointer].timeout),
         timer : setTimeout(() => this.progress(this.state.steps * 2), this.props.watchTimeout)
@@ -66,7 +74,7 @@ class StopWatchComponent extends React.Component {
 StopWatchComponent.displayName = 'StopWatchComponent';
 
 StopWatchComponent.propTypes = {
-  slides : React.PropTypes.object.isRequired,
+  slides       : React.PropTypes.object.isRequired,
   watchTimeout : React.PropTypes.number.isRequired
 };
 
