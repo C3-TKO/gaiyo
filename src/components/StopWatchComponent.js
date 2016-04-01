@@ -27,7 +27,6 @@ class StopWatchComponent extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.slides.isPlaying, this.state.timer);
     if(!nextProps.slides.isPlaying) {
       this.reset();
       return;
