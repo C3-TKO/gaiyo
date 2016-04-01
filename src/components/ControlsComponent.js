@@ -33,7 +33,7 @@ class ControlsComponent extends React.Component {
       return <button id="play" style={{display: 'none'}} onClick={() => this.props.play()}>Play</button>
     }
 
-    return <button id="play" onClick={() => this.props.play()}>Play</button>
+    return <button id="play" onClick={() => this.props.play(setTimeout(() => this.props.next(), this.props.slides.collection[this.props.slides.pointer].timeout))}>Play</button>
   }
 
   render() {

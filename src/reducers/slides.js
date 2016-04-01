@@ -20,7 +20,6 @@ module.exports = function(state = initialState, action) {
 
   switch(action.type) {
     case 'NEXT': {
-      clearTimeout(nextState.timeout);
       if (++nextState.pointer >= nextState.collection.length) {
         nextState.pointer = 0;
       }
@@ -37,7 +36,6 @@ module.exports = function(state = initialState, action) {
       return nextState;
     }
     case 'PREVIOUS': {
-      clearTimeout(nextState.timeout);
       if (--nextState.pointer < 0) {
         nextState.pointer = nextState.collection.length - 1;
       }
