@@ -23,45 +23,23 @@ class ControlsComponent extends React.Component {
     }
   }
 
-
-  renderStopButton() {
-    if (this.props.slides.isPlaying) {
-      return <button id="stop" onClick={() => this.props.stop()}>Stop</button>
-    }
-
-    return <button id="stop" style={{display: 'none'}} onClick={() => this.props.stop()}>Stop</button>
-
-  }
-
-  renderPlayButton() {
-    if (this.props.slides.isPlaying) {
-      return <button id="play" style={{display: 'none'}} onClick={() => this.props.play()}>Play</button>
-    }
-
-    return <button id="play" onClick={() => this.props.play(setTimeout(() => this.props.next(), this.props.slides.collection[this.props.slides.pointer].timeout))}>Play</button>
-  }
-
   render() {
     return (
       <div className="controls-component">
-          <button id="previous" onClick={() => this.props.previous()}>Previous</button>
-          {this.renderStopButton()}
-          {this.renderPlayButton()}
-          <button id="next" onClick={() => this.props.next()}>Next</button>
 
-          <FloatingActionButton mini={true}>
+          <FloatingActionButton mini={true} onMouseDown={() => this.props.previous()} >
             <AvSkipPrevious />
           </FloatingActionButton>
 
-          <FloatingActionButton mini={true}>
+          <FloatingActionButton mini={true} onMouseDown={() => this.props.stop()}>
             <AvPause />
           </FloatingActionButton>
 
-          <FloatingActionButton mini={true}>
+          <FloatingActionButton mini={true} onMouseDown={() => this.props.play(setTimeout(() => this.props.next(), this.props.slides.collection[this.props.slides.pointer].timeout))}>
             <AvPlayArrow />
           </FloatingActionButton>
 
-          <FloatingActionButton mini={true}>
+          <FloatingActionButton mini={true} onMouseDown={() => this.props.next()}>
             <AvSkipNext />
           </FloatingActionButton>
       </div>
