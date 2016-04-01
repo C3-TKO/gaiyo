@@ -22,7 +22,6 @@ class StopWatchComponent extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    /* console.log('wrp', nextProps.isPlaying, this.props.slides.pointer, nextProps.slides.pointer); */
     if(!nextProps.slides.isPlaying) {
       this.reset();
     }
@@ -45,9 +44,17 @@ class StopWatchComponent extends React.Component {
   progress(completed) {
     if (completed > 100) {
       this.setState({completed: 100});
+      this.reset();
     } else {
       this.setState({completed});
-      this.setState({timer : setTimeout(() => this.progress(completed + this.state.steps), this.props.watchTimeout)});
+      clearTimeout(this.state.timer);
+      if(completed + this.state.steps > 100) {
+        this.setState({timer : setTimeout(() => this.reset(), this.props.watchTimeout)});
+      }
+      else {
+        this.setState({timer : setTimeout(() => this.progress(completed + this.state.steps), this.props.watchTimeout)});
+      }
+
     }
   }
 
