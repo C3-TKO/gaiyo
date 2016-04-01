@@ -23,7 +23,7 @@ class StopWatchComponent extends React.Component {
   }
 
   componentWillUnmount() {
-    clearTimeout(this.timer);
+    this.reset();
   }
 
   componentWillReceiveProps(nextProps) {
