@@ -6,7 +6,6 @@ import AvSkipPrevious from 'material-ui/lib/svg-icons/av/skip-previous';
 import AvPause from 'material-ui/lib/svg-icons/av/pause';
 import AvPlayArrow from 'material-ui/lib/svg-icons/av/play-arrow';
 import AvSkipNext from 'material-ui/lib/svg-icons/av/skip-next';
-import ActionSettings from 'material-ui/lib/svg-icons/action/settings';
 
 require('styles//Controls.scss');
 
@@ -47,12 +46,6 @@ class ControlsComponent extends React.Component {
         <div className="controls-button-container">
           <FloatingActionButton mini={true} onMouseDown={() => this.props.next()}>
             <AvSkipNext />
-          </FloatingActionButton>
-        </div>
-
-        <div className="controls-button-container">
-          <FloatingActionButton mini={true} onMouseDown={() => this.props.next()}>
-            <ActionSettings />
           </FloatingActionButton>
         </div>
 

@@ -5,6 +5,7 @@ import React from 'react';
 import IframeComponent from './IframeComponent';
 import ControlsComponent from './ControlsComponent';
 import StopWatchComponent from './StopWatchComponent';
+import SettingsComponent from './SettingsComponent';
 
 class AppComponent extends React.Component {
   render() {
@@ -13,6 +14,7 @@ class AppComponent extends React.Component {
         <IframeComponent slide={this.props.slides.collection[this.props.slides.pointer]}/>
         <ControlsComponent slides={this.props.slides} {...this.props.actions}/>
         <StopWatchComponent slides={this.props.slides}/>
+        <SettingsComponent/>
       </div>
     );
   }
