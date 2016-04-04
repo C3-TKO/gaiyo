@@ -8,9 +8,9 @@ const initialState = {
   'isPlaying' : false,
   'pointer': 0,
   'collection': [
-    {'url': 'screen_1.html', 'timeout': 5000},
-    {'url': 'screen_2.html', 'timeout': 5000},
-    {'url': 'screen_3.html', 'timeout': 5000}
+    {'id': 1, 'url': 'screen_1.html', 'timeout': 5000},
+    {'id': 2, 'url': 'screen_2.html', 'timeout': 5000},
+    {'id': 3, 'url': 'screen_3.html', 'timeout': 5000}
   ]
 };
 
