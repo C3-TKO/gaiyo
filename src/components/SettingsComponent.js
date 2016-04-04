@@ -19,8 +19,20 @@ class SettingsComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: true
+      open: false
     };
+  }
+
+  handleOpen = () => {
+    this.setState({
+      open: true
+    })
+  }
+
+  handleClose = () => {
+    this.setState({
+      open: false
+    })
   }
 
   renderTableRows() {
@@ -43,13 +55,13 @@ class SettingsComponent extends React.Component {
       <FlatButton
         label="Cancel"
         secondary={true}
-        onTouchTap={this.handleClose}
+        onMouseDown={this.handleClose}
       />,
       <FlatButton
         label="Submit"
         primary={true}
         keyboardFocused={true}
-        onTouchTap={this.handleClose}
+        onMouseDown={this.handleClose}
       />
     ];
 
