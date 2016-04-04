@@ -27,7 +27,7 @@ class SettingsComponent extends React.Component {
     var tableRows = this.props.slides.collection.map(function(slide) {
       return (
         <TableRow key={'slide-lists-' + slide.id}>
-          <TableRowColumn>{slide.id}</TableRowColumn>
+          <TableRowColumn>{slide.sortOrder}</TableRowColumn>
           <TableRowColumn>{slide.url}</TableRowColumn>
           <TableRowColumn>{slide.timeout}</TableRowColumn>
         </TableRow>
@@ -69,7 +69,7 @@ class SettingsComponent extends React.Component {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHeaderColumn>ID (Sort order)</TableHeaderColumn>
+                <TableHeaderColumn>Sort order</TableHeaderColumn>
                 <TableHeaderColumn>URL</TableHeaderColumn>
                 <TableHeaderColumn>Duration (ms)</TableHeaderColumn>
               </TableRow>
