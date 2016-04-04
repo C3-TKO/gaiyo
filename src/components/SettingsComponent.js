@@ -27,7 +27,7 @@ class SettingsComponent extends React.Component {
     var tableRows = this.props.slides.collection.map(function(slide) {
       return (
         <TableRow key={'slide-lists-' + slide.id}>
-          <TableRowColumn>1</TableRowColumn>
+          <TableRowColumn>{slide.id}</TableRowColumn>
           <TableRowColumn>{slide.url}</TableRowColumn>
           <TableRowColumn>{slide.timeout}</TableRowColumn>
         </TableRow>
