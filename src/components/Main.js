@@ -14,7 +14,7 @@ class AppComponent extends React.Component {
         <IframeComponent slide={this.props.slides.collection[this.props.slides.pointer]}/>
         <ControlsComponent slides={this.props.slides} {...this.props.actions}/>
         <StopWatchComponent slides={this.props.slides}/>
-        <SettingsComponent/>
+        <SettingsComponent slides={this.props.slides}/>
       </div>
     );
   }
