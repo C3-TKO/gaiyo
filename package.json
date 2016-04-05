@@ -71,6 +71,7 @@
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
     "react-redux": "^4.4.1",
+    "react-tap-event-plugin": "^0.2.2",
     "redux": "^3.3.1"
   }
 }

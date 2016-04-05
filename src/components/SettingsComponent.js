@@ -55,19 +55,19 @@ class SettingsComponent extends React.Component {
       <FlatButton
         label="Cancel"
         secondary={true}
-        onMouseDown={this.handleClose}
+        onTouchTap={this.handleClose}
       />,
       <FlatButton
         label="Submit"
         primary={true}
         keyboardFocused={true}
-        onMouseDown={this.handleClose}
+        onTouchTap={this.handleClose}
       />
     ];
 
     return (
       <div className="settings-component">
-        <FloatingActionButton mini={true} onMouseDown={this.handleOpen}>
+        <FloatingActionButton mini={true} onTouchTap={this.handleOpen}>
           <ActionSettings />
         </FloatingActionButton>
 
