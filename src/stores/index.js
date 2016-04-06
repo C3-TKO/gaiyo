@@ -1,6 +1,7 @@
 const redux = require('redux');
 const reducers = require('../reducers');
 
+import PouchMiddleware from 'pouch-redux-middleware'
 import PouchDB from 'pouchdb';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -15,7 +16,17 @@ module.exports = function(initialState) {
 
   const db = new PouchDB('slides');
 
-  const store = redux.createStore(reducers, initialState);
+  const pouchMiddleware = PouchMiddleware({
+    path: '/slides',
+    db,
+    actions: {
+      remove: doc => store.dispatch({type: 'DELETE_SLIDE', id: doc._id}),
+      insert: doc => store.dispatch({type: 'INSERT_SLIDE', todo: doc}),
+      update: doc => store.dispatch({type: 'UPDATE_SLIDE', todo: doc})
+    }
+  })
+
+  const store = redux.createStore(reducers, initialState, redux.applyMiddleware(pouchMiddleware));
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
