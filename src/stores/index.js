@@ -17,7 +17,7 @@ module.exports = function(initialState) {
   const db = new PouchDB('slides');
 
   const pouchMiddleware = PouchMiddleware({
-    path: '/slides',
+    path: '/slides/collection',
     db,
     actions: {
       remove: doc => store.dispatch({type: 'DELETE_SLIDE', id: doc._id}),
