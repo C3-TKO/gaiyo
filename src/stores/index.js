@@ -1,4 +1,4 @@
-const redux = require('redux');
+const { createStore, applyMiddleware, compose} = require('redux');
 const reducers = require('../reducers');
 
 import PouchMiddleware from 'pouch-redux-middleware'
@@ -26,8 +26,13 @@ module.exports = function(initialState) {
     }
   })
 
-  const store = (window.devToolsExtension ? window.devToolsExtension()(redux.createStore) : redux.createStore)(reducers, initialState, redux.applyMiddleware(pouchMiddleware));
+  const finalCreateStore = compose(
+    applyMiddleware(pouchMiddleware),
+    window.devToolsExtension ? window.devToolsExtension() : f => f
+  )(createStore);
 
+  const store = finalCreateStore(reducers, initialState);
+  
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
     module.hot.accept('../reducers', () => {
