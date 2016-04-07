@@ -21,8 +21,8 @@ module.exports = function(initialState) {
     db,
     actions: {
       remove: doc => store.dispatch({type: 'DELETE_SLIDE', id: doc._id}),
-      insert: doc => store.dispatch({type: 'INSERT_SLIDE', todo: doc}),
-      update: doc => store.dispatch({type: 'UPDATE_SLIDE', todo: doc})
+      insert: doc => store.dispatch({type: 'INSERT_SLIDE', slide: doc}),
+      update: doc => store.dispatch({type: 'UPDATE_SLIDE', slide: doc})
     }
   })
 
