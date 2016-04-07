@@ -26,7 +26,7 @@ module.exports = function(initialState) {
     }
   })
 
-  const store = redux.createStore(reducers, initialState, redux.applyMiddleware(pouchMiddleware));
+  const store = (window.devToolsExtension ? window.devToolsExtension()(redux.createStore) : redux.createStore)(reducers, initialState, redux.applyMiddleware(pouchMiddleware));
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
