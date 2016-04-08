@@ -7,11 +7,12 @@ const initialState = {
   'timeout' : undefined,
   'isPlaying' : false,
   'pointer': 0,
-  'collection': [
-    {'_id': '1', 'sortOrder': 1, 'url': 'screen_1.html', 'timeout': 5000},
-    {'_id': '2', 'sortOrder': 2, 'url': 'screen_2.html', 'timeout': 5000},
-    {'_id': '3', 'sortOrder': 3, 'url': 'screen_3.html', 'timeout': 5000}
-  ]
+  /*'collection': [
+    {'_id': '1', '_rev' : '', 'sortOrder': 1, 'url': 'screen_1.html', 'timeout': 5000},
+    {'_id': '2', '_rev' : '', 'sortOrder': 2, 'url': 'screen_2.html', 'timeout': 5000},
+    {'_id': '3', '_rev' : '', 'sortOrder': 3, 'url': 'screen_3.html', 'timeout': 5000}
+  ],*/
+  'collection': []
 };
 
 module.exports = function(state = initialState, action) {

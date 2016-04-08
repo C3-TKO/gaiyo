@@ -8,10 +8,11 @@ import StopWatchComponent from './StopWatchComponent';
 import SettingsComponent from './SettingsComponent';
 
 class AppComponent extends React.Component {
+
   render() {
     return (
       <div className="index">
-        <IframeComponent slide={this.props.slides.collection[this.props.slides.pointer]}/>
+        <IframeComponent url={this.props.slides.collection[this.props.slides.pointer].url}/>
         <ControlsComponent slides={this.props.slides} {...this.props.actions}/>
         <StopWatchComponent slides={this.props.slides}/>
         <SettingsComponent slides={this.props.slides}/>

@@ -7,7 +7,7 @@ require('styles//Iframe.scss');
 class IframeComponent extends React.Component {
   render() {
     return (
-      <iframe className="iframe-component" src={this.props.slide.url}></iframe>
+      <iframe className="iframe-component" src={this.props.url}></iframe>
     );
   }
 }
@@ -15,7 +15,7 @@ class IframeComponent extends React.Component {
 IframeComponent.displayName = 'IframeComponent';
 
 IframeComponent.propTypes = {
-  slide: React.PropTypes.object
+  url: React.PropTypes.string.isRequired
 };
 
 export default IframeComponent;
