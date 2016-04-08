@@ -9,12 +9,23 @@ import SettingsComponent from './SettingsComponent';
 
 class AppComponent extends React.Component {
 
+
+  renderWithFilledCollection() {
+    if (this.props.slides.collection.length > 0) {
+      return (
+        <div>
+          <IframeComponent url={this.props.slides.collection[this.props.slides.pointer].url}/>
+          <ControlsComponent slides={this.props.slides} {...this.props.actions}/>
+          <StopWatchComponent slides={this.props.slides}/>
+        </div>
+      )
+    }
+  }
+
   render() {
     return (
       <div className="index">
-        <IframeComponent url={this.props.slides.collection[this.props.slides.pointer].url}/>
-        <ControlsComponent slides={this.props.slides} {...this.props.actions}/>
-        <StopWatchComponent slides={this.props.slides}/>
+        {this.renderWithFilledCollection()}
         <SettingsComponent slides={this.props.slides}/>
       </div>
     );
