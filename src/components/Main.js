@@ -10,7 +10,7 @@ import SettingsComponent from './SettingsComponent';
 class AppComponent extends React.Component {
 
   handleSave(slide) {
-    this.props.addSlide(slide);
+    this.props.actions.addSlide(slide);
   }
 
   renderWithFilledCollection() {
