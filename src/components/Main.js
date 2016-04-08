@@ -14,7 +14,7 @@ class AppComponent extends React.Component {
   }
 
   renderWithFilledCollection() {
-    if (this.props.slides.collection.length > 0) {
+    if (Object.keys(this.props.slides).length > 0) {
       return (
         <div>
           <IframeComponent url={this.props.slides.collection[this.props.slides.pointer].url}/>

@@ -19,11 +19,10 @@ class SettingsComponent extends React.Component {
 
   constructor(props) {
     super(props);
-    const open = this.props.slides.collection.length === 0 ? true : false;
-    this.state = {
-      open: open
-    };
 
+    this.state = {
+      open: Object.keys(this.props.slides).length === 0
+    };
   }
 
   handleOpen = () => {
@@ -38,22 +37,23 @@ class SettingsComponent extends React.Component {
     })
   }
 
-  renderTableRows() {
-    var tableRows = this.props.slides.collection.map(function(slide) {
-      return (
-        <TableRow key={'slide-lists-' + slide._id}>
-          <TableRowColumn>{slide.sortOrder}</TableRowColumn>
-          <TableRowColumn>{slide.url}</TableRowColumn>
-          <TableRowColumn>{slide.timeout}</TableRowColumn>
-        </TableRow>
-      );
-    });
+  renderTableRow(slide) {
+    return (
+      <TableRow key={'slide-lists-' + slide._id}>
+        <TableRowColumn>{slide.sortOrder}</TableRowColumn>
+        <TableRowColumn>{slide.url}</TableRowColumn>
+        <TableRowColumn>{slide.timeout}</TableRowColumn>
+      </TableRow>
+    );
+  }
 
-    return tableRows;
+  renderTableRows() {
+    for (let slide in this.props.slides) {
+      this.renderTableRow(slide);
+    }
   }
 
   render() {
-
     const actions = [
       <FlatButton
         label="Cancel"
