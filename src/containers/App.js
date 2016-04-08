@@ -14,8 +14,8 @@ import Main from '../components/Main';
 /* Populated by react-webpack-redux:reducer */
 class App extends Component {
   render() {
-    const {actions, slides} = this.props;
-    return <Main actions={actions} slides={slides}/>;
+    const {actions, slides, control} = this.props;
+    return <Main actions={actions} slides={slides} control={control}/>;
   }
 }
 /* Populated by react-webpack-redux:reducer
@@ -25,11 +25,15 @@ class App extends Component {
  */
 App.propTypes = {
   actions: PropTypes.object.isRequired,
-  slides: PropTypes.object.isRequired
+  slides: PropTypes.object.isRequired,
+  control: PropTypes.object.isRequired
 };
 function mapStateToProps(state) {
   /* Populated by react-webpack-redux:reducer */
-  const props = { slides: state.slides };
+  const props = {
+    slides: state.slides,
+    control: state.control
+  };
   return props;
 }
 function mapDispatchToProps(dispatch) {

@@ -4,9 +4,6 @@
  * src/container/App.js accordingly.
  */
 const initialState = {
-  'timeout' : undefined,
-  'isPlaying' : false,
-  'pointer': 0,
   /*'collection': [
     {'_id': '1', '_rev' : '', 'sortOrder': 1, 'url': 'screen_1.html', 'timeout': 5000},
     {'_id': '2', '_rev' : '', 'sortOrder': 2, 'url': 'screen_2.html', 'timeout': 5000},
