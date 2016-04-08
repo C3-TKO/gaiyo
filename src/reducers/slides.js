@@ -18,43 +18,26 @@ module.exports = function(state = initialState, action) {
 
   switch(action.type) {
     case 'ADD_SLIDE' :
-      console.log(action);
-      /*
-      return [
+      const result = [
         {
           _id: id(),
-          completed: false,
-          text: action.text
+          url: action.slide.url,
+          duration: action.slide.duration
         },
-        ...state
+        ...nextState
       ]
-      */
 
-    case 'NEXT':
-      if (++nextState.pointer >= nextState.collection.length) {
-        nextState.pointer = 0;
-      }
-      return nextState;
+      console.log(result);
+      console.log(nextState);
 
-    case 'STOP':
-      clearTimeout(nextState.timeout);
-      nextState.isPlaying = false;
-      return nextState;
-
-    case 'PLAY':
-      clearTimeout(nextState.timeout);
-      nextState.timeout = action.timeout;
-      nextState.isPlaying = true;
-      return nextState;
-
-    case 'PREVIOUS':
-      if (--nextState.pointer < 0) {
-        nextState.pointer = nextState.collection.length - 1;
-      }
-      return nextState;
+      return result;
 
     default:
       /* Return original state if no actions were consumed. */
       return state;
   }
+}
+
+function id() {
+  return Math.random().toString(36).substring(7);
 }
