@@ -7,24 +7,28 @@ const initialState = [];
 
 module.exports = function(state = initialState, action) {
   /* Keep the reducer clean - do not mutate the original state. */
-  let nextState = Object.assign({}, state);
-
   switch(action.type) {
-    case 'ADD_SLIDE' :
-      const result = [
+    case 'ADD_SLIDE':
+      return [
         {
           _id: id(),
           url: action.slide.url,
           duration: action.slide.duration
         },
-        ...nextState
+        ...state
       ]
-
-      console.log(result);
-      console.log(nextState);
-
-      return result;
-
+    case 'UPDATE_SLIDE':
+      console.log(state);
+      return state.map(slide =>
+        slide._id === action.slide._id ?
+          action.slide :
+          slide
+      )
+    case 'INSERT_SLIDE':
+      return [
+        action.slide,
+        ...state
+      ]
     default:
       /* Return original state if no actions were consumed. */
       return state;

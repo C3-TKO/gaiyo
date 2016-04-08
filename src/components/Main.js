@@ -18,7 +18,7 @@ class AppComponent extends React.Component {
       return (
         <div>
           <IframeComponent url={this.props.slides[this.props.control.pointer].url}/>
-          <ControlsComponent slides={this.props.slides} {...this.props.actions}/>
+          <ControlsComponent slides={this.props.slides} control={this.props.control} {...this.props.actions}/>
           <StopWatchComponent slides={this.props.slides}/>
         </div>
       )

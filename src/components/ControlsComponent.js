@@ -12,12 +12,12 @@ require('styles//Controls.scss');
 class ControlsComponent extends React.Component {
 
   componentDidMount() {
-    this.props.play(setTimeout(() => this.props.next(), this.props.slides.collection[this.props.slides.pointer].timeout));
+    this.props.play(setTimeout(() => this.props.next(), this.props.slides[this.props.control.pointer].duration));
   }
 
   componentWillReceiveProps(nextProps) {
     if(nextProps.slides.isPlaying && this.props.slides.pointer != nextProps.slides.pointer) {
-      this.props.play(setTimeout(() => this.props.next(), nextProps.slides.collection[nextProps.slides.pointer].timeout));
+      this.props.play(setTimeout(() => this.props.next(), nextProps.slides[nextProps.control.pointer].duration));
     }
   }
 
@@ -31,14 +31,14 @@ class ControlsComponent extends React.Component {
           </FloatingActionButton>
         </div>
 
-        <div className="controls-button-container" style={!this.props.slides.isPlaying ? {display: 'none'} : {display: 'block'}}>
+        <div className="controls-button-container" style={!this.props.control.isPlaying ? {display: 'none'} : {display: 'block'}}>
           <FloatingActionButton mini={true} onMouseDown={() => this.props.stop()}>
             <AvPause />
           </FloatingActionButton>
         </div>
 
-        <div className="controls-button-container" style={this.props.slides.isPlaying ? {display: 'none'} : {display: 'block'}}>
-          <FloatingActionButton mini={true} onMouseDown={() => this.props.play(setTimeout(() => this.props.next(), this.props.slides.collection[this.props.slides.pointer].timeout))}>
+        <div className="controls-button-container" style={this.props.control.isPlaying ? {display: 'none'} : {display: 'block'}}>
+          <FloatingActionButton mini={true} onMouseDown={() => this.props.play(setTimeout(() => this.props.next(), this.props.slides[this.props.control.pointer].duration))}>
             <AvPlayArrow />
           </FloatingActionButton>
         </div>
@@ -57,11 +57,12 @@ class ControlsComponent extends React.Component {
 ControlsComponent.displayName = 'ControlsComponent';
 
 ControlsComponent.propTypes = {
-  slides :   React.PropTypes.object.isRequired,
-  previous : React.PropTypes.func.isRequired,
-  stop :     React.PropTypes.func.isRequired,
-  play :     React.PropTypes.func.isRequired,
-  next :     React.PropTypes.func.isRequired
+  slides:   React.PropTypes.array.isRequired,
+  control:  React.PropTypes.object.isRequired,
+  previous: React.PropTypes.func.isRequired,
+  stop:     React.PropTypes.func.isRequired,
+  play:     React.PropTypes.func.isRequired,
+  next:     React.PropTypes.func.isRequired
 };
 
 export default ControlsComponent;

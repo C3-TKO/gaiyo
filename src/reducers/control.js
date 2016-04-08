@@ -15,7 +15,7 @@ module.exports = function(state = initialState, action) {
 
   switch(action.type) {
     case 'NEXT':
-      if (++nextState.pointer >= nextState.collection.length) {
+      if (++nextState.pointer >= nextState.length) {
         nextState.pointer = 0;
       }
       return nextState;
@@ -33,7 +33,7 @@ module.exports = function(state = initialState, action) {
 
     case 'PREVIOUS':
       if (--nextState.pointer < 0) {
-        nextState.pointer = nextState.collection.length - 1;
+        nextState.pointer = nextState.length - 1;
       }
       return nextState;
 
