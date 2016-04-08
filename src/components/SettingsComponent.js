@@ -11,6 +11,7 @@ import TableRow from 'material-ui/lib/table/table-row';
 import TableHeader from 'material-ui/lib/table/table-header';
 import TableRowColumn from 'material-ui/lib/table/table-row-column';
 import TableBody from 'material-ui/lib/table/table-body';
+import AddSlideForm from './AddSlideFormComponent';
 
 require('styles//Settings.scss');
 
@@ -90,6 +91,7 @@ class SettingsComponent extends React.Component {
               {this.renderTableRows()}
             </TableBody>
           </Table>
+          <AddSlideForm />
         </Dialog>
       </div>
     );
