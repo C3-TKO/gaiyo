@@ -93,7 +93,7 @@ class SettingsComponent extends React.Component {
               {this.renderTableRows()}
             </TableBody>
           </Table>
-          <AddSlideForm />
+          <AddSlideForm onSave={this.props.onSave}/>
         </Dialog>
       </div>
     );
@@ -103,7 +103,8 @@ class SettingsComponent extends React.Component {
 SettingsComponent.displayName = 'SettingsComponent';
 
 SettingsComponent.propTypes = {
-  slides : React.PropTypes.object.isRequired
+  slides: React.PropTypes.object.isRequired,
+  onSave: React.PropTypes.func.isRequired
 };
 
 export default SettingsComponent;

@@ -13,7 +13,7 @@ class AddSlideFormComponent extends React.Component {
       'url' : this.refs.addSlideUrl.getValue(),
       'duration' : this.refs.addSlideDuration.getValue()
     };
-
+    this.props.onSave(slide);
   }
 
   render() {
@@ -42,9 +42,8 @@ class AddSlideFormComponent extends React.Component {
 }
 
 AddSlideFormComponent.displayName = 'AddSlideFormComponent';
-
-// Uncomment properties you need
-// AddSlideFormComponent.propTypes = {};
-// AddSlideFormComponent.defaultProps = {};
+AddSlideFormComponent.propTypes = {
+  onSave: React.PropTypes.func.isRequired
+};
 
 export default AddSlideFormComponent;

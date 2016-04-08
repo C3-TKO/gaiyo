@@ -9,6 +9,9 @@ import SettingsComponent from './SettingsComponent';
 
 class AppComponent extends React.Component {
 
+  handleSave(slide) {
+    this.props.addSlide(slide);
+  }
 
   renderWithFilledCollection() {
     if (this.props.slides.collection.length > 0) {
@@ -26,7 +29,7 @@ class AppComponent extends React.Component {
     return (
       <div className="index">
         {this.renderWithFilledCollection()}
-        <SettingsComponent slides={this.props.slides}/>
+        <SettingsComponent slides={this.props.slides} onSave={this.handleSave.bind(this)}/>
       </div>
     );
   }
