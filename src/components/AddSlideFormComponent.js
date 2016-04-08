@@ -7,18 +7,26 @@ import FlatButton from 'material-ui/lib/flat-button';
 require('styles//AddSlideForm.scss');
 
 class AddSlideFormComponent extends React.Component {
+
   handleAdd = () => {
-    alert('govno!');
+    const slide = {
+      'url' : this.refs.addSlideUrl.getValue(),
+      'duration' : this.refs.addSlideDuration.getValue()
+    };
+
   }
 
   render() {
     return (
       <div className="addslideform-component">
         <TextField
+          ref="addSlideUrl"
           floatingLabelText="Url"
+          defaultValue="http://smash.cologne"
         />
         &nbsp;
         <TextField
+          ref="addSlideDuration"
           floatingLabelText="Duration (ms)"
           defaultValue="5000"
         />
