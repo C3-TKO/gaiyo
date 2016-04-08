@@ -19,9 +19,11 @@ class SettingsComponent extends React.Component {
 
   constructor(props) {
     super(props);
+    const open = this.props.slides.collection.length === 0 ? true : false;
     this.state = {
-      open: false
+      open: open
     };
+
   }
 
   handleOpen = () => {
