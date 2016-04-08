@@ -19,9 +19,8 @@ class SettingsComponent extends React.Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
-      open: Object.keys(this.props.slides).length === 0
+      open: this.props.slides.length === 0
     };
   }
 
@@ -37,20 +36,18 @@ class SettingsComponent extends React.Component {
     })
   }
 
-  renderTableRow(slide) {
-    return (
-      <TableRow key={'slide-lists-' + slide._id}>
-        <TableRowColumn>{slide.sortOrder}</TableRowColumn>
-        <TableRowColumn>{slide.url}</TableRowColumn>
-        <TableRowColumn>{slide.timeout}</TableRowColumn>
-      </TableRow>
-    );
-  }
-
   renderTableRows() {
-    for (let slide in this.props.slides) {
-      this.renderTableRow(slide);
-    }
+    var tableRows = this.props.slides.map(function(slide) {
+      return (
+        <TableRow key={'slide-lists-' + slide._id}>
+          <TableRowColumn>{slide.sortOrder}</TableRowColumn>
+          <TableRowColumn>{slide.url}</TableRowColumn>
+          <TableRowColumn>{slide.timeout}</TableRowColumn>
+        </TableRow>
+      );
+    });
+
+    return tableRows;
   }
 
   render() {
@@ -103,7 +100,7 @@ class SettingsComponent extends React.Component {
 SettingsComponent.displayName = 'SettingsComponent';
 
 SettingsComponent.propTypes = {
-  slides: React.PropTypes.object.isRequired,
+  slides: React.PropTypes.array.isRequired,
   onSave: React.PropTypes.func.isRequired
 };
 

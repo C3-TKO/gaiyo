@@ -14,10 +14,10 @@ class AppComponent extends React.Component {
   }
 
   renderWithFilledCollection() {
-    if (Object.keys(this.props.slides).length > 0) {
+    if (this.props.slides.length > 0) {
       return (
         <div>
-          <IframeComponent url={this.props.slides.collection[this.props.slides.pointer].url}/>
+          <IframeComponent url={this.props.slides[this.props.control.pointer].url}/>
           <ControlsComponent slides={this.props.slides} {...this.props.actions}/>
           <StopWatchComponent slides={this.props.slides}/>
         </div>

@@ -25,7 +25,7 @@ class App extends Component {
  */
 App.propTypes = {
   actions: PropTypes.object.isRequired,
-  slides: PropTypes.object.isRequired,
+  slides: PropTypes.array.isRequired,
   control: PropTypes.object.isRequired
 };
 function mapStateToProps(state) {
