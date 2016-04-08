@@ -20,32 +20,44 @@ module.exports = function(state = initialState, action) {
   let nextState = Object.assign({}, state);
 
   switch(action.type) {
-    case 'NEXT': {
+    case 'ADD_SLIDE' :
+      console.log(action);
+      /*
+      return [
+        {
+          _id: id(),
+          completed: false,
+          text: action.text
+        },
+        ...state
+      ]
+      */
+
+    case 'NEXT':
       if (++nextState.pointer >= nextState.collection.length) {
         nextState.pointer = 0;
       }
       return nextState;
-    }
-    case 'STOP': {
+
+    case 'STOP':
       clearTimeout(nextState.timeout);
       nextState.isPlaying = false;
       return nextState;
-    }
-    case 'PLAY': {
+
+    case 'PLAY':
       clearTimeout(nextState.timeout);
       nextState.timeout = action.timeout;
       nextState.isPlaying = true;
       return nextState;
-    }
-    case 'PREVIOUS': {
+
+    case 'PREVIOUS':
       if (--nextState.pointer < 0) {
         nextState.pointer = nextState.collection.length - 1;
       }
       return nextState;
-    }
-    default: {
+
+    default:
       /* Return original state if no actions were consumed. */
       return state;
-    }
   }
 }
