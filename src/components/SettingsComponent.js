@@ -42,7 +42,7 @@ class SettingsComponent extends React.Component {
         <TableRow key={'slide-lists-' + slide._id}>
           <TableRowColumn>{slide.sortOrder}</TableRowColumn>
           <TableRowColumn>{slide.url}</TableRowColumn>
-          <TableRowColumn>{slide.timeout}</TableRowColumn>
+          <TableRowColumn>{slide.duration}</TableRowColumn>
         </TableRow>
       );
     });
