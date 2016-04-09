@@ -18,7 +18,6 @@ module.exports = function(state = initialState, action) {
         ...state
       ]
     case 'UPDATE_SLIDE':
-      console.log(state);
       return state.map(slide =>
         slide._id === action.slide._id ?
           action.slide :
@@ -29,6 +28,10 @@ module.exports = function(state = initialState, action) {
         action.slide,
         ...state
       ]
+    case 'DELETE_TODO':
+      return state.filter(slide =>
+        slide._id !== action.id
+      )
     default:
       /* Return original state if no actions were consumed. */
       return state;

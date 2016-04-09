@@ -43,7 +43,8 @@ function mapDispatchToProps(dispatch) {
     stop: require('../actions/stop.js'),
     next: require('../actions/next.js'),
     previous: require('../actions/previous.js'),
-    addSlide: require('../actions/addSlide.js')
+    addSlide: require('../actions/addSlide.js'),
+    deleteSlide: require('../actions/deleteSlide.js')
   };
   const actionMap = { actions: bindActionCreators(actions, dispatch) };
   return actionMap;

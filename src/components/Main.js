@@ -13,6 +13,10 @@ class AppComponent extends React.Component {
     this.props.actions.addSlide(slide);
   }
 
+  handleDelete(id) {
+    this.props.action.deleteSlide(id)
+  }
+
   renderWithFilledCollection() {
     if (this.props.slides.length > 0) {
       return (
@@ -29,7 +33,7 @@ class AppComponent extends React.Component {
     return (
       <div className="index">
         {this.renderWithFilledCollection()}
-        <SettingsComponent slides={this.props.slides} onSave={this.handleSave.bind(this)}/>
+        <SettingsComponent slides={this.props.slides} onSave={this.handleSave.bind(this)} onDelete={this.handleDelete.bind(this)}/>
       </div>
     );
   }
