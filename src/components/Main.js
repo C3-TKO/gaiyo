@@ -14,7 +14,7 @@ class AppComponent extends React.Component {
   }
 
   handleDelete(id) {
-    this.props.action.deleteSlide(id)
+    this.props.actions.deleteSlide(id)
   }
 
   renderWithFilledCollection() {
