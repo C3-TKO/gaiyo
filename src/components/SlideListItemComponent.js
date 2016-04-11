@@ -9,7 +9,7 @@ require('styles//SlideListItem.scss');
 
 class SlideListItemComponent extends React.Component {
 
-  test = () => {
+  removeSlideFromList = () => {
     console.log(this.props.slide._id);
   }
 
@@ -20,7 +20,7 @@ class SlideListItemComponent extends React.Component {
         <TableRowColumn>{this.props.slide.duration}</TableRowColumn>
         <TableRowColumn>
           <RaisedButton
-            onTouchTap={this.test}
+            onTouchTap={this.removeSlideFromList}
             primary={true}
           >
             DELETE
