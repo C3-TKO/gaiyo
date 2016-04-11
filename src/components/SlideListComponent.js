@@ -7,40 +7,17 @@ import TableRow from 'material-ui/lib/table/table-row';
 import TableHeader from 'material-ui/lib/table/table-header';
 import TableRowColumn from 'material-ui/lib/table/table-row-column';
 import TableBody from 'material-ui/lib/table/table-body';
-import FlatButton from 'material-ui/lib/flat-button';
+import RaisedButton from 'material-ui/lib/raised-button';
+import SlideListItem from './SlideListItemComponent';
 
 require('styles//SlideList.scss');
 
 class SlideListComponent extends React.Component {
 
-  handleDelete = (id) => {
-    console.log(id);
-  }
-
-  renderTableRows() {
-    var tableRows = this.props.slides.map((slide) => {
-      return (
-        <TableRow key={'slide-lists-' + slide._id}>
-          <TableRowColumn>{slide.url}</TableRowColumn>
-          <TableRowColumn>{slide.duration}</TableRowColumn>
-          <TableRowColumn>
-            <FlatButton
-              label="Delete"
-              primary={true}
-              onTouchTap={this.handleDelete(slide._id)}
-            />
-          </TableRowColumn>
-        </TableRow>
-      );
-    });
-
-    return tableRows;
-  }
-
   render() {
     return (
       <div className="slidelist-component">
-        <Table>
+        <Table selectable={true}>
           <TableHeader>
             <TableRow>
               <TableHeaderColumn>URL</TableHeaderColumn>
@@ -49,7 +26,9 @@ class SlideListComponent extends React.Component {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {this.renderTableRows()}
+            {this.props.slides.map(slide =>
+              <SlideListItem key={'slide-list-item-' + slide._id} slide={slide} onDelete={this.props.onDelete} />
+              )}
           </TableBody>
         </Table>
       </div>
@@ -58,9 +37,8 @@ class SlideListComponent extends React.Component {
 }
 
 SlideListComponent.displayName = 'SlideListComponent';
-
-
 SlideListComponent.propTypes = {
+  slides: React.PropTypes.array.isRequired,
   onDelete: React.PropTypes.func.isRequired
 };
 
