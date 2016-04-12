@@ -10,7 +10,7 @@ require('styles//SlideListItem.scss');
 class SlideListItemComponent extends React.Component {
 
   removeSlideFromList = () => {
-    console.log(this.props.slide._id);
+    this.props.onDelete(this.props.slide._id);
   }
 
   render() {

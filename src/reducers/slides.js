@@ -28,7 +28,7 @@ module.exports = function(state = initialState, action) {
         action.slide,
         ...state
       ]
-    case 'DELETE_TODO':
+    case 'DELETE_SLIDE':
       return state.filter(slide =>
         slide._id !== action.id
       )
