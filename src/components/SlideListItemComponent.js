@@ -3,7 +3,7 @@
 import React from 'react';
 import TableRow from 'material-ui/lib/table/table-row';
 import TableRowColumn from 'material-ui/lib/table/table-row-column';
-import RaisedButton from 'material-ui/lib/raised-button';
+import ActionDelete from 'material-ui/lib/svg-icons/action/delete';
 
 require('styles//SlideListItem.scss');
 
@@ -19,12 +19,9 @@ class SlideListItemComponent extends React.Component {
         <TableRowColumn>{this.props.slide.url}</TableRowColumn>
         <TableRowColumn>{this.props.slide.duration}</TableRowColumn>
         <TableRowColumn>
-          <RaisedButton
+          <ActionDelete
             onTouchTap={this.removeSlideFromList}
-            primary={true}
-          >
-            DELETE
-          </RaisedButton>
+          />
         </TableRowColumn>
       </TableRow>
     )
