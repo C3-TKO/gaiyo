@@ -25,7 +25,7 @@ class SlideListComponent extends React.Component {
           </TableHeader>
           <TableBody>
             {this.props.slides.map(slide =>
-              <SlideListItem key={'slide-list-item-' + slide._id} slide={slide} onDelete={this.props.onDelete} />
+              <SlideListItem key={'slide-list-item-' + slide._id} slide={slide} onDelete={this.props.onDelete} onUpdate={this.props.onUpdate}/>
               )}
           </TableBody>
         </Table>
@@ -37,7 +37,8 @@ class SlideListComponent extends React.Component {
 SlideListComponent.displayName = 'SlideListComponent';
 SlideListComponent.propTypes = {
   slides: React.PropTypes.array.isRequired,
-  onDelete: React.PropTypes.func.isRequired
+  onDelete: React.PropTypes.func.isRequired,
+  onUpdate: React.PropTypes.func.isRequired
 };
 
 export default SlideListComponent;

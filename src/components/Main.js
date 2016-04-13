@@ -13,6 +13,10 @@ class AppComponent extends React.Component {
     this.props.actions.addSlide(slide);
   }
 
+  handleEdit(id, slide) {
+    this.props.actions.editSlide(id, slide);
+  }
+
   handleDelete(id) {
     this.props.actions.deleteSlide(id)
   }
@@ -33,7 +37,7 @@ class AppComponent extends React.Component {
     return (
       <div className="index">
         {this.renderWithFilledCollection()}
-        <SettingsComponent slides={this.props.slides} onSave={this.handleSave.bind(this)} onDelete={this.handleDelete.bind(this)}/>
+        <SettingsComponent slides={this.props.slides} onSave={this.handleSave.bind(this)} onDelete={this.handleDelete.bind(this)} onUpdate={this.handleEdit.bind(this)}/>
       </div>
     );
   }

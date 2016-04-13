@@ -53,7 +53,7 @@ class SettingsComponent extends React.Component {
           open={this.state.open}
           onRequestClose={this.handleClose}
         >
-          <SlideList slides={this.props.slides} onDelete={this.props.onDelete}/>
+          <SlideList slides={this.props.slides} onDelete={this.props.onDelete} onUpdate={this.props.onUpdate}/>
           <AddSlideForm onSave={this.props.onSave}/>
         </Dialog>
       </div>
@@ -66,7 +66,8 @@ SettingsComponent.displayName = 'SettingsComponent';
 SettingsComponent.propTypes = {
   slides: React.PropTypes.array.isRequired,
   onSave: React.PropTypes.func.isRequired,
-  onDelete: React.PropTypes.func.isRequired
+  onDelete: React.PropTypes.func.isRequired,
+  onUpdate: React.PropTypes.func.isRequired
 };
 
 export default SettingsComponent;

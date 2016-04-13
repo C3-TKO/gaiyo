@@ -32,6 +32,16 @@ module.exports = function(state = initialState, action) {
       return state.filter(slide =>
         slide._id !== action.id
       )
+    case 'EDIT_SLIDE':
+      return state.map(slide =>
+        slide._id === action.id
+          ? Object.assign({}, slide, {
+              url: action.slide.url,
+              duration: action.slide.duration
+            })
+          : slide
+      )
+
     default:
       /* Return original state if no actions were consumed. */
       return state;

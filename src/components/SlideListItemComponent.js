@@ -24,6 +24,16 @@ class SlideListItemComponent extends React.Component {
 
   handleEditSlide = () => {
     if(this.state.editing) {
+
+      const slide = {
+        'url': this.refs.editSlideUrl.getValue(),
+        'duration': this.refs.editSlideDuration.getValue()
+      };
+
+      //console.log(slide);
+      //console.log(this.props.slide._id);
+
+      this.props.onUpdate(this.props.slide._id, slide);
       this.setState({
         editing: false
       })
@@ -41,14 +51,14 @@ class SlideListItemComponent extends React.Component {
         <TableRow>
           <TableRowColumn>
             <TextField
-              ref="addSlideUrl"
+              ref="editSlideUrl"
               floatingLabelText="Url"
               defaultValue={this.props.slide.url}
             />
             </TableRowColumn>
           <TableRowColumn>
             <TextField
-              ref="addSlideDuration"
+              ref="editSlideDuration"
               floatingLabelText="Duration (ms)"
               defaultValue={this.props.slide.duration}
             />
@@ -85,7 +95,8 @@ class SlideListItemComponent extends React.Component {
 SlideListItemComponent.displayName = 'SlideListItemComponent';
 SlideListItemComponent.propTypes = {
   slide: React.PropTypes.object.isRequired,
-  onDelete: React.PropTypes.func.isRequired
+  onDelete: React.PropTypes.func.isRequired,
+  onUpdate: React.PropTypes.func.isRequired
 };
 
 export default SlideListItemComponent;
