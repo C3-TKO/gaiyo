@@ -9,7 +9,6 @@
 import { combineReducers } from 'redux';
 /* Populated by react-webpack-redux:reducer */
 const reducers = {
-  slides: require('../reducers/slides.js'),
-  control: require('../reducers/control.js')
+  slides: require('../reducers/slides.js')
 };
 module.exports = combineReducers(reducers);

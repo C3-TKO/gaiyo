@@ -39,10 +39,6 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   /* Populated by react-webpack-redux:action */
   const actions = {
-    play: require('../actions/play.js'),
-    stop: require('../actions/stop.js'),
-    next: require('../actions/next.js'),
-    previous: require('../actions/previous.js'),
     addSlide: require('../actions/addSlide.js'),
     deleteSlide: require('../actions/deleteSlide.js'),
     editSlide: require('../actions/editSlide.js')
