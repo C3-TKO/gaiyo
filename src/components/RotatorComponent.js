@@ -59,7 +59,7 @@ class RotatorComponent extends React.Component {
   render() {
     return (
       <div className="rotator-component">
-        <IframeComponent url={this.props.slides[0].url}/>
+        <IframeComponent url={this.props.slides[this.state.pointer].url}/>
         <ControlsComponent
           slides={this.props.slides}
           isPlaying={this.state.isPlaying}
@@ -68,7 +68,8 @@ class RotatorComponent extends React.Component {
           next={this.next.bind(this)}
           previous={this.previous.bind(this)}
         />
-        <StopWatchComponent slides={this.props.slides}/>
+        <StopWatchComponent
+          slides={this.props.slides}/>
       </div>
     );
   }

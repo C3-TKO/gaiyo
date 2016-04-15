@@ -28,7 +28,7 @@ class ControlsComponent extends React.Component {
       <div className="controls-component">
 
         <div className="controls-button-container">
-          <FloatingActionButton mini={true} onMouseDown={() => this.props.previous} >
+          <FloatingActionButton mini={true} onMouseDown={() => this.props.previous()} >
             <AvSkipPrevious />
           </FloatingActionButton>
         </div>
