@@ -2,9 +2,7 @@ require('normalize.css');
 require('styles/App.css');
 
 import React from 'react';
-import IframeComponent from './IframeComponent';
-import ControlsComponent from './ControlsComponent';
-import StopWatchComponent from './StopWatchComponent';
+import RotatorComponent from './RotatorComponent';
 import SettingsComponent from './SettingsComponent';
 
 class AppComponent extends React.Component {
@@ -25,9 +23,7 @@ class AppComponent extends React.Component {
     if (this.props.slides.length > 0) {
       return (
         <div>
-          <IframeComponent url={this.props.slides[this.props.control.pointer].url}/>
-          <ControlsComponent slides={this.props.slides}/>
-          <StopWatchComponent slides={this.props.slides}/>
+          <RotatorComponent slides={this.props.slides}/>
         </div>
       )
     }

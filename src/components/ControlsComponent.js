@@ -11,17 +11,8 @@ require('styles//Controls.scss');
 
 class ControlsComponent extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      pointer: 0,
-      isPlaying: false,
-      timeout: undefined
-    };
-  }
-
   componentDidMount() {
-    this.play();
+    this.props.play();
   }
 
   /*
@@ -32,67 +23,30 @@ class ControlsComponent extends React.Component {
   }
   */
 
-  play = () => {
-    clearTimeout(this.state.timeout);
-    this.setState({
-      isPlaying: true,
-      timeout: undefined
-    })
-    //nextState.timeout = action.timeout;
-  }
-
-  stop = () => {
-    clearTimeout(this.state.timeout);
-    this.setState({
-      isPlaying: false,
-      timeout: undefined
-    })
-  }
-
-  next = () => {
-    let nextPointer = this.state.pointer
-    if(++nextPointer >= this.props.slides.length) {
-      this.setState({pointer: 0})
-    }
-    else {
-      this.setState({pointer: nextPointer})
-    }
-  }
-
-  previous = () => {
-    let nextPointer = this.state.pointer
-    if(--nextPointer < 0) {
-      this.setState({pointer: this.props.slides.length - 1})
-    }
-    else {
-      this.setState({pointer: nextPointer})
-    }
-  }
-
   render() {
     return (
       <div className="controls-component">
 
         <div className="controls-button-container">
-          <FloatingActionButton mini={true} onMouseDown={() => this.previous} >
+          <FloatingActionButton mini={true} onMouseDown={() => this.props.previous} >
             <AvSkipPrevious />
           </FloatingActionButton>
         </div>
 
-        <div className="controls-button-container" style={!this.state.isPlaying ? {display: 'none'} : {display: 'block'}}>
-          <FloatingActionButton mini={true} onMouseDown={() => this.stop()}>
+        <div className="controls-button-container" style={!this.props.isPlaying ? {display: 'none'} : {display: 'block'}}>
+          <FloatingActionButton mini={true} onMouseDown={() => this.props.stop()}>
             <AvPause />
           </FloatingActionButton>
         </div>
 
-        <div className="controls-button-container" style={this.state.isPlaying ? {display: 'none'} : {display: 'block'}}>
-          <FloatingActionButton mini={true} onMouseDown={() => this.play()}>
+        <div className="controls-button-container" style={this.props.isPlaying ? {display: 'none'} : {display: 'block'}}>
+          <FloatingActionButton mini={true} onMouseDown={() => this.props.play()}>
             <AvPlayArrow />
           </FloatingActionButton>
         </div>
 
         <div className="controls-button-container">
-          <FloatingActionButton mini={true} onMouseDown={() => this.next()}>
+          <FloatingActionButton mini={true} onMouseDown={() => this.props.next()}>
             <AvSkipNext />
           </FloatingActionButton>
         </div>
@@ -103,9 +57,13 @@ class ControlsComponent extends React.Component {
 }
 
 ControlsComponent.displayName = 'ControlsComponent';
-
 ControlsComponent.propTypes = {
-  slides:   React.PropTypes.array.isRequired
+  slides: React.PropTypes.array.isRequired,
+  isPlaying: React.PropTypes.bool.isRequired,
+  play: React.PropTypes.func.isRequired,
+  stop: React.PropTypes.func.isRequired,
+  next: React.PropTypes.func.isRequired,
+  previous: React.PropTypes.func.isRequired
 };
 
 export default ControlsComponent;
