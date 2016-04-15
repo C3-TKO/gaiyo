@@ -18,14 +18,14 @@ class RotatorComponent extends React.Component {
     };
   }
 
-
   play = () => {
     clearTimeout(this.state.timeout);
+    const timeout = setTimeout(() => this.next(), this.props.slides[this.state.pointer].duration);
+
     this.setState({
       isPlaying: true,
-      timeout: undefined
-    })
-    //nextState.timeout = action.timeout;
+      timeout: timeout
+    });
   }
 
   stop = () => {
@@ -44,6 +44,10 @@ class RotatorComponent extends React.Component {
     else {
       this.setState({pointer: nextPointer})
     }
+
+    if (this.state.isPlaying) {
+      this.play();
+    }
   }
 
   previous = () => {
@@ -53,6 +57,10 @@ class RotatorComponent extends React.Component {
     }
     else {
       this.setState({pointer: nextPointer})
+    }
+
+    if (this.state.isPlaying) {
+      this.play();
     }
   }
 

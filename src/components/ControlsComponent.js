@@ -15,14 +15,6 @@ class ControlsComponent extends React.Component {
     this.props.play();
   }
 
-  /*
-  componentWillReceiveProps(nextProps) {
-    if(nextProps.slides.isPlaying && this.props.slides.pointer != nextProps.slides.pointer) {
-      this.props.play(setTimeout(() => this.props.next(), nextProps.slides[nextProps.control.pointer].duration));
-    }
-  }
-  */
-
   render() {
     return (
       <div className="controls-component">
