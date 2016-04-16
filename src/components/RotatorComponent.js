@@ -77,7 +77,9 @@ class RotatorComponent extends React.Component {
           previous={this.previous.bind(this)}
         />
         <StopWatchComponent
-          slides={this.props.slides}/>
+          timeout={this.state.timeout}
+          duration={this.props.slides[this.state.pointer].duration}
+        />
       </div>
     );
   }
