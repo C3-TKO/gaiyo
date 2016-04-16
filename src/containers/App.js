@@ -25,20 +25,21 @@ class App extends Component {
  */
 App.propTypes = {
   actions: PropTypes.object.isRequired,
-  slides: PropTypes.object.isRequired
+  slides: PropTypes.array.isRequired
 };
 function mapStateToProps(state) {
   /* Populated by react-webpack-redux:reducer */
-  const props = { slides: state.slides };
+  const props = {
+    slides: state.slides
+  };
   return props;
 }
 function mapDispatchToProps(dispatch) {
   /* Populated by react-webpack-redux:action */
   const actions = {
-    play: require('../actions/play.js'),
-    stop: require('../actions/stop.js'),
-    next: require('../actions/next.js'),
-    previous: require('../actions/previous.js')
+    addSlide: require('../actions/addSlide.js'),
+    deleteSlide: require('../actions/deleteSlide.js'),
+    editSlide: require('../actions/editSlide.js')
   };
   const actionMap = { actions: bindActionCreators(actions, dispatch) };
   return actionMap;
