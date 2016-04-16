@@ -10,7 +10,9 @@ class StopWatchComponent extends React.Component {
     //console.log(nextProps, this.props)
     if(nextProps.timeout !== this.props.timeout) {
       this.reset();
-      setTimeout(() => this.setNewTimer(nextProps.duration), 50);
+      if(nextProps.isPlaying) {
+        setTimeout(() => this.setNewTimer(nextProps.duration), 50);
+      }
     }
   }
 
@@ -44,6 +46,7 @@ class StopWatchComponent extends React.Component {
 StopWatchComponent.displayName = 'StopWatchComponent';
 
 StopWatchComponent.propTypes = {
+  isPlaying: React.PropTypes.bool.isRequired,
   timeout: React.PropTypes.number,
   duration: React.PropTypes.any
 };
