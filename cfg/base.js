@@ -7,7 +7,8 @@ let defaultSettings = require('./defaults');
 // @example:
 // let npmBase = path.join(__dirname, '../node_modules');
 // let additionalPaths = [ path.join(npmBase, 'react-bootstrap') ];
-let additionalPaths = [];
+const npmBase = path.join(__dirname, '../node_modules');
+const additionalPaths = [ path.join(npmBase, 'pouch-redux-middleware')];
 
 module.exports = {
   additionalPaths: additionalPaths,
