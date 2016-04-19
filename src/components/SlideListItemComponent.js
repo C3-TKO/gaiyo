@@ -30,9 +30,6 @@ class SlideListItemComponent extends React.Component {
         'duration': this.refs.editSlideDuration.getValue()
       };
 
-      //console.log(slide);
-      //console.log(this.props.slide._id);
-
       this.props.onUpdate(this.props.slide._id, slide);
       this.setState({
         editing: false
