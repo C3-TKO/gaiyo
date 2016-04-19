@@ -47,7 +47,7 @@ class SettingsComponent extends React.Component {
         </FloatingActionButton>
 
         <Dialog
-          title="Screen rotation list"
+          title="Gaiyo settings"
           actions={actions}
           modal={false}
           open={this.state.open}
