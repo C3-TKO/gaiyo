@@ -1,12 +1,9 @@
 'use strict';
 
 import React from 'react';
-import Table from 'material-ui/lib/table/table';
-import TableHeaderColumn from 'material-ui/lib/table/table-header-column';
-import TableRow from 'material-ui/lib/table/table-row';
-import TableHeader from 'material-ui/lib/table/table-header';
-import TableBody from 'material-ui/lib/table/table-body';
 import SlideListItem from './SlideListItemComponent';
+import List from 'material-ui/lib/lists/list';
+import ListItem from 'material-ui/lib/lists/list-item';
 
 require('styles//SlideList.scss');
 
@@ -15,20 +12,18 @@ class SlideListComponent extends React.Component {
   render() {
     return (
       <div className="slidelist-component">
-        <Table selectable={true}>
-          <TableHeader>
-            <TableRow>
-              <TableHeaderColumn>URL</TableHeaderColumn>
-              <TableHeaderColumn>Duration (ms)</TableHeaderColumn>
-              <TableHeaderColumn>&nbsp;</TableHeaderColumn>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {this.props.slides.map(slide =>
-              <SlideListItem key={'slide-list-item-' + slide._id} slide={slide} onDelete={this.props.onDelete} onUpdate={this.props.onUpdate}/>
-              )}
-          </TableBody>
-        </Table>
+        <List>
+          {this.props.slides.map(slide =>
+            <ListItem
+              key={'slide-list-item-' + slide._id}
+              slide={slide}
+              onDelete={this.props.onDelete}
+              onUpdate={this.props.onUpdate}
+              primaryText={slide.url}
+              secondaryText={slide.duration}
+            />
+          )}
+        </List>
       </div>
     );
   }
