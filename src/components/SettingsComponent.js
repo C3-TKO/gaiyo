@@ -52,6 +52,7 @@ class SettingsComponent extends React.Component {
           modal={false}
           open={this.state.open}
           onRequestClose={this.handleClose}
+          autoScrollBodyContent={true}
         >
           <SlideList slides={this.props.slides} onDelete={this.props.onDelete} onUpdate={this.props.onUpdate}/>
           <AddSlideForm onSave={this.props.onSave}/>
