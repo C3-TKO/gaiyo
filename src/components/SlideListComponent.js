@@ -20,16 +20,18 @@ const iconButtonElement = (
   </IconButton>
 );
 
-const rightIconMenu = (
-  <IconMenu iconButtonElement={iconButtonElement}>
-    <MenuItem>Edit</MenuItem>
-    <MenuItem>Delete</MenuItem>
-  </IconMenu>
-);
-
 require('styles//SlideList.scss');
 
 class SlideListComponent extends React.Component {
+
+  renderRightIconMenu(id) {
+    return (
+      <IconMenu iconButtonElement={iconButtonElement}>
+        <MenuItem>Edit</MenuItem>
+        <MenuItem onTouchTap={() => {this.props.onDelete(id)}}>Delete</MenuItem>
+      </IconMenu>
+    )
+  }
 
   render() {
     return (
@@ -37,13 +39,14 @@ class SlideListComponent extends React.Component {
         <List>
           {this.props.slides.map(slide =>
             <ListItem
+              value={slide._id}
               key={'slide-list-item-' + slide._id}
               slide={slide}
               onDelete={this.props.onDelete}
               onUpdate={this.props.onUpdate}
               primaryText={slide.url}
               secondaryText={slide.duration}
-              rightIconButton={rightIconMenu}
+              rightIconButton={this.renderRightIconMenu(slide._id)}
             />
           )}
         </List>
