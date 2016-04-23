@@ -65,7 +65,12 @@ class SlideListComponent extends React.Component {
   render() {
     const actions = [
       <FlatButton
-        label="Close"
+        label="Cancel"
+        primary={false}
+        onTouchTap={this.handleClose}
+      />,
+      <FlatButton
+        label="Save"
         primary={true}
         onTouchTap={this.handleClose}
       />
@@ -85,6 +90,7 @@ class SlideListComponent extends React.Component {
               <ContentAdd />
             </FloatingActionButton>
           </div>
+
           {this.props.slides.map(slide =>
             <ListItem
               value={slide._id}

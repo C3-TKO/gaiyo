@@ -31,7 +31,10 @@ class ControlsComponent extends React.Component {
           </FloatingActionButton>
         </div>
 
-        <div className="controls-button-container" style={this.props.isPlaying ? {display: 'none'} : {display: 'block'}}>
+        <div
+          className="controls-button-container"
+          style={this.props.isPlaying ? {display: 'none'} : {display: 'block'}}
+        >
           <FloatingActionButton mini={true} onMouseDown={() => this.props.play()}>
             <AvPlayArrow />
           </FloatingActionButton>
