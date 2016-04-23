@@ -108,10 +108,8 @@ class SlideListComponent extends React.Component {
         <Dialog
           title="Slide Edit"
           actions={actions}
-          modal={false}
           open={this.state.open}
           onRequestClose={this.handleClose}
-          autoScrollBodyContent={true}
         >
           <EditSlideForm onSave={this.props.onSave}/>
         </Dialog>
