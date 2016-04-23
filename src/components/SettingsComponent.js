@@ -5,7 +5,6 @@ import FloatingActionButton from 'material-ui/lib/floating-action-button';
 import ActionSettings from 'material-ui/lib/svg-icons/action/settings';
 import FlatButton from 'material-ui/lib/flat-button';
 import Dialog from 'material-ui/lib/dialog';
-import AddSlideForm from './AddSlideFormComponent';
 import SlideList from './SlideListComponent';
 
 require('styles//Settings.scss');
@@ -42,7 +41,9 @@ class SettingsComponent extends React.Component {
 
     return (
       <div className="settings-component">
-        <FloatingActionButton mini={true} onTouchTap={this.handleOpen}>
+        <FloatingActionButton
+          mini={true}
+          onTouchTap={this.handleOpen}>
           <ActionSettings />
         </FloatingActionButton>
 
@@ -54,8 +55,11 @@ class SettingsComponent extends React.Component {
           onRequestClose={this.handleClose}
           autoScrollBodyContent={true}
         >
-          <SlideList slides={this.props.slides} onDelete={this.props.onDelete} onUpdate={this.props.onUpdate}/>
-          <AddSlideForm onSave={this.props.onSave}/>
+          <SlideList
+            slides={this.props.slides}
+            onDelete={this.props.onDelete}
+            onUpdate={this.props.onUpdate}
+            onSave={this.props.onSave}/>
         </Dialog>
       </div>
     );
