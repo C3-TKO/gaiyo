@@ -13,8 +13,8 @@ class EditSlideFormComponent extends React.Component {
       'duration': this.refs.duration.getValue()
     };
 
-    if (typeof(this.props.currentSlide) != 'undefined') {
-      this.props.onUpdate(this.props.currentSlide._id, slide);
+    if (typeof(this.props.slide) != 'undefined') {
+      this.props.onUpdate(this.props.slide._id, slide);
     }
     else {
       this.props.onSave(slide);
@@ -28,13 +28,13 @@ class EditSlideFormComponent extends React.Component {
           fullWidth={true}
           ref="url"
           floatingLabelText="Url"
-          defaultValue={typeof(this.props.currentSlide) != 'undefined' ? this.props.currentSlide.url : ''}
+          defaultValue={typeof(this.props.slide) != 'undefined' ? this.props.slide.url : ''}
         />
         <br />
         <TextField
           ref="duration"
           floatingLabelText="Duration (ms)"
-          defaultValue={typeof(this.props.currentSlide) != 'undefined' ? this.props.currentSlide.duration : ''}
+          defaultValue={typeof(this.props.slide) != 'undefined' ? this.props.slide.duration : ''}
         />
       </div>
     );
@@ -45,7 +45,7 @@ EditSlideFormComponent.displayName = 'EditSlideFormComponent';
 EditSlideFormComponent.propTypes = {
   onSave: React.PropTypes.func.isRequired,
   onUpdate: React.PropTypes.func.isRequired,
-  currentSlide: React.PropTypes.any
+  slide: React.PropTypes.any
 };
 
 EditSlideFormComponent.defaultProps = {

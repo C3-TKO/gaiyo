@@ -37,14 +37,14 @@ class SlideListComponent extends React.Component {
     super(props);
     this.state = {
       open: false,
-      currentSlide: undefined
+      slideBeingEdited: undefined
     };
   }
 
   handleEdit = (slide) => {
     this.setState({
       open: true,
-      currentSlide: slide
+      slideBeingEdited: slide
     })
   }
 
@@ -57,7 +57,7 @@ class SlideListComponent extends React.Component {
   handleClose = () => {
     this.setState({
       open: false,
-      currentSlide: undefined
+      slideBeingEdited: undefined
     })
   }
 
@@ -125,7 +125,7 @@ class SlideListComponent extends React.Component {
             ref="editSlideForm"
             onSave={this.props.onSave}
             onUpdate={this.props.onUpdate}
-            currentSlide={this.state.currentSlide}
+            slide={this.state.slideBeingEdited}
           />
         </Dialog>
       </div>
