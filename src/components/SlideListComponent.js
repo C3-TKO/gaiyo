@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-import SlideListItem from './SlideListItemComponent';
 import List from 'material-ui/lib/lists/list';
 import Subheader from 'material-ui/lib/Subheader'
 import ListItem from 'material-ui/lib/lists/list-item';
@@ -37,13 +36,22 @@ class SlideListComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false
+      open: false,
+      currentSlide: undefined
     };
+  }
+
+  handleEdit = (slide) => {
+    this.setState({
+      open: true,
+      currentSlide: slide
+    })
   }
 
   handleOpen = () => {
     this.setState({
-      open: true
+      open: true,
+      currentSlide: undefined
     })
   }
 
@@ -53,11 +61,11 @@ class SlideListComponent extends React.Component {
     })
   }
 
-  renderRightIconMenu(id) {
+  renderRightIconMenu(slide) {
     return (
       <IconMenu iconButtonElement={iconButtonElement}>
-        <MenuItem>Edit</MenuItem>
-        <MenuItem onTouchTap={() => {this.props.onDelete(id)}}>Delete</MenuItem>
+        <MenuItem onTouchTap={() => {this.handleEdit(slide)}}>Edit</MenuItem>
+        <MenuItem onTouchTap={() => {this.props.onDelete(slide._id)}}>Delete</MenuItem>
       </IconMenu>
     )
   }
@@ -95,12 +103,9 @@ class SlideListComponent extends React.Component {
             <ListItem
               value={slide._id}
               key={'slide-list-item-' + slide._id}
-              slide={slide}
-              onDelete={this.props.onDelete}
-              onUpdate={this.props.onUpdate}
               primaryText={slide.url}
               secondaryText={slide.duration}
-              rightIconButton={this.renderRightIconMenu(slide._id)}
+              rightIconButton={this.renderRightIconMenu(slide)}
             />
           )}
         </List>
@@ -111,7 +116,11 @@ class SlideListComponent extends React.Component {
           open={this.state.open}
           onRequestClose={this.handleClose}
         >
-          <EditSlideForm onSave={this.props.onSave}/>
+          <EditSlideForm
+            onSave={this.props.onSave}
+            onUpdate={this.props.onUpdate}
+            currentSlide={this.state.currentSlide}
+          />
         </Dialog>
       </div>
     );
@@ -122,7 +131,8 @@ SlideListComponent.displayName = 'SlideListComponent';
 SlideListComponent.propTypes = {
   slides: React.PropTypes.array.isRequired,
   onDelete: React.PropTypes.func.isRequired,
-  onUpdate: React.PropTypes.func.isRequired
+  onUpdate: React.PropTypes.func.isRequired,
+  onSave: React.PropTypes.func.isRequired
 };
 
 export default SlideListComponent;

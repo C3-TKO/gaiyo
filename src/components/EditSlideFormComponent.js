@@ -8,33 +8,39 @@ require('styles//EditSlideForm.scss');
 
 class EditSlideFormComponent extends React.Component {
 
-  handleAdd = () => {
+  handleSave = () => {
     const slide = {
       'url': this.refs.url.getValue(),
       'duration': this.refs.duration.getValue()
     };
-    this.props.onSave(slide);
+
+    if (typeof(this.props.currentSlide) != 'undefined') {
+      this.props.onUpdate(this.props.currentSlide._id, slide);
+    }
+    else {
+      this.props.onSave(slide);
+    }
   }
 
   render() {
     return (
       <div className="editslideform-component">
         <TextField
-          style={{width: '100%'}}
+          fullWidth={true}
           ref="url"
           floatingLabelText="Url"
-          defaultValue="http://smash.cologne"
+          defaultValue={typeof(this.props.currentSlide) != 'undefined' ? this.props.currentSlide.url : ''}
         />
         <br />
         <TextField
           ref="duration"
           floatingLabelText="Duration (ms)"
-          defaultValue="5000"
+          defaultValue={typeof(this.props.currentSlide) != 'undefined' ? this.props.currentSlide.duration : ''}
         />
         <FlatButton
-          label="Add"
+          label={typeof(this.props.currentSlide) == 'undefined' ? 'Add' : 'Update'}
           primary={true}
-          onTouchTap={this.handleAdd}
+          onTouchTap={this.handleSave}
         />
       </div>
     );
@@ -43,7 +49,13 @@ class EditSlideFormComponent extends React.Component {
 
 EditSlideFormComponent.displayName = 'EditSlideFormComponent';
 EditSlideFormComponent.propTypes = {
-  onSave: React.PropTypes.func.isRequired
+  onSave: React.PropTypes.func.isRequired,
+  onUpdate: React.PropTypes.func.isRequired,
+  currentSlide: React.PropTypes.any.isRequired
+};
+
+EditSlideFormComponent.defaultProps = {
+  currentSlide: undefined
 };
 
 export default EditSlideFormComponent;
