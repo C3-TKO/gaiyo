@@ -50,15 +50,20 @@ class SlideListComponent extends React.Component {
 
   handleOpen = () => {
     this.setState({
-      open: true,
-      currentSlide: undefined
+      open: true
     })
   }
 
   handleClose = () => {
     this.setState({
-      open: false
+      open: false,
+      currentSlide: undefined
     })
+  }
+
+  handleSave = () => {
+    this.refs.editSlideForm.handleSave();
+    this.handleClose();
   }
 
   renderRightIconMenu(slide) {
@@ -80,7 +85,7 @@ class SlideListComponent extends React.Component {
       <FlatButton
         label="Save"
         primary={true}
-        onTouchTap={this.handleClose}
+        onTouchTap={this.handleSave}
       />
     ];
 
@@ -117,6 +122,7 @@ class SlideListComponent extends React.Component {
           onRequestClose={this.handleClose}
         >
           <EditSlideForm
+            ref="editSlideForm"
             onSave={this.props.onSave}
             onUpdate={this.props.onUpdate}
             currentSlide={this.state.currentSlide}

@@ -2,7 +2,6 @@
 
 import React from 'react';
 import TextField from 'material-ui/lib/text-field';
-import FlatButton from 'material-ui/lib/flat-button';
 
 require('styles//EditSlideForm.scss');
 
@@ -37,11 +36,6 @@ class EditSlideFormComponent extends React.Component {
           floatingLabelText="Duration (ms)"
           defaultValue={typeof(this.props.currentSlide) != 'undefined' ? this.props.currentSlide.duration : ''}
         />
-        <FlatButton
-          label={typeof(this.props.currentSlide) == 'undefined' ? 'Add' : 'Update'}
-          primary={true}
-          onTouchTap={this.handleSave}
-        />
       </div>
     );
   }
@@ -51,7 +45,7 @@ EditSlideFormComponent.displayName = 'EditSlideFormComponent';
 EditSlideFormComponent.propTypes = {
   onSave: React.PropTypes.func.isRequired,
   onUpdate: React.PropTypes.func.isRequired,
-  currentSlide: React.PropTypes.any.isRequired
+  currentSlide: React.PropTypes.any
 };
 
 EditSlideFormComponent.defaultProps = {
