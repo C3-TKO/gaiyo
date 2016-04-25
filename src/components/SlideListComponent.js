@@ -91,18 +91,18 @@ class SlideListComponent extends React.Component {
 
     return (
       <div className="slidelist-component">
+        <div id="addSlideFAB">
+          <FloatingActionButton
+            mini={true}
+            onTouchTap={this.handleOpen}>
+            <ContentAdd />
+          </FloatingActionButton>
+        </div>
+
         <List>
           <Subheader>
             Screen rotation list
           </Subheader>
-
-          <div id="addSlideFAB">
-            <FloatingActionButton
-              mini={true}
-              onTouchTap={this.handleOpen}>
-              <ContentAdd />
-            </FloatingActionButton>
-          </div>
 
           {this.props.slides.map(slide =>
             <ListItem
