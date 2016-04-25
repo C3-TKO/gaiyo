@@ -13,7 +13,7 @@ class ScreenLauncherComponent extends React.Component {
       <div className="screenlauncher-component">
         <List>
           <Subheader>
-            Screen rotation list
+            {this.props.subHeader}
           </Subheader>
 
           {this.props.slides.map(slide =>
@@ -32,8 +32,8 @@ class ScreenLauncherComponent extends React.Component {
 
 ScreenLauncherComponent.displayName = 'ScreenLauncherComponent';
 
-// Uncomment properties you need
-// ScreenLauncherComponent.propTypes = {};
-// ScreenLauncherComponent.defaultProps = {};
+ScreenLauncherComponent.propTypes = {
+  subHeader: React.PropTypes.string.isRequired
+};
 
 export default ScreenLauncherComponent;

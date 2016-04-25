@@ -90,6 +90,7 @@ class ControlsComponent extends React.Component {
           autoScrollBodyContent={true}
         >
           <ScreenLauncher
+            subHeader="Click to select"
             slides={this.props.slides}
           />
         </Dialog>
