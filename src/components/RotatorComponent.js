@@ -37,6 +37,7 @@ class RotatorComponent extends React.Component {
   }
 
   next = () => {
+    this.stop();
     let nextPointer = this.state.pointer
     if(++nextPointer >= this.props.slides.length) {
       nextPointer =  0;
@@ -49,11 +50,25 @@ class RotatorComponent extends React.Component {
   }
 
   previous = () => {
+    this.stop();
     let nextPointer = this.state.pointer
     if(--nextPointer < 0) {
       nextPointer = this.props.slides.length - 1;
     }
     this.setState({pointer: nextPointer})
+
+    if (this.state.isPlaying) {
+      this.play();
+    }
+  }
+
+  goto = (pointer) => {
+    console.log(pointer)
+    return 0;
+
+    this.stop();
+
+    this.setState({pointer: pointer})
 
     if (this.state.isPlaying) {
       this.play();
@@ -71,6 +86,7 @@ class RotatorComponent extends React.Component {
           stop={this.stop.bind(this)}
           next={this.next.bind(this)}
           previous={this.previous.bind(this)}
+          goto={this.goto.bind(this)}
         />
         <StopWatchComponent
           isPlaying={this.state.isPlaying}

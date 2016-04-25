@@ -58,7 +58,7 @@ class ControlsComponent extends React.Component {
         </div>
 
         <div className="controls-button-container">
-          <FloatingActionButton mini={true} onTouchTap={() => this.handleOpen()} >
+          <FloatingActionButton mini={true} onTouchTap={this.handleOpen} >
             <ActionLaunch />
           </FloatingActionButton>
         </div>
@@ -90,6 +90,7 @@ class ControlsComponent extends React.Component {
           autoScrollBodyContent={true}
         >
           <ScreenLauncher
+            goto={this.props.goto}
             subHeader="Click to select"
             slides={this.props.slides}
           />
@@ -107,7 +108,8 @@ ControlsComponent.propTypes = {
   play: React.PropTypes.func.isRequired,
   stop: React.PropTypes.func.isRequired,
   next: React.PropTypes.func.isRequired,
-  previous: React.PropTypes.func.isRequired
+  previous: React.PropTypes.func.isRequired,
+  goto: React.PropTypes.func.isRequired
 };
 
 export default ControlsComponent;

@@ -8,6 +8,11 @@ import ListItem from 'material-ui/lib/lists/list-item';
 require('styles//ScreenLauncher.scss');
 
 class ScreenLauncherComponent extends React.Component {
+
+  handleGoto = () => {
+    this.props.goto('govno')
+  }
+
   render() {
     return (
       <div className="screenlauncher-component">
@@ -15,13 +20,13 @@ class ScreenLauncherComponent extends React.Component {
           <Subheader>
             {this.props.subHeader}
           </Subheader>
-
           {this.props.slides.map(slide =>
             <ListItem
               value={slide._id}
-              key={'slide-list-item-' + slide._id}
+              key={'screen-launcher-item-' + slide._id}
               primaryText={slide.url}
               secondaryText={slide.duration}
+              onTouchTap={this.handleGoto}
             />
           )}
         </List>
@@ -33,7 +38,8 @@ class ScreenLauncherComponent extends React.Component {
 ScreenLauncherComponent.displayName = 'ScreenLauncherComponent';
 
 ScreenLauncherComponent.propTypes = {
-  subHeader: React.PropTypes.string.isRequired
+  subHeader: React.PropTypes.string.isRequired,
+  goto: React.PropTypes.func.isRequired
 };
 
 export default ScreenLauncherComponent;
