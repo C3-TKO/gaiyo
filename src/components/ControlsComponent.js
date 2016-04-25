@@ -52,7 +52,7 @@ class ControlsComponent extends React.Component {
       <div className="controls-component">
 
         <div className="controls-button-container">
-          <FloatingActionButton mini={true} onMouseDown={() => this.props.previous()} >
+          <FloatingActionButton mini={true} onTouchTap={() => this.props.previous()} >
             <AvSkipPrevious />
           </FloatingActionButton>
         </div>
@@ -64,19 +64,19 @@ class ControlsComponent extends React.Component {
         </div>
 
         <div className="controls-button-container" style={this.props.isPlaying ? {display: 'block'} : {display: 'none'}}>
-          <FloatingActionButton mini={true} onMouseDown={() => this.props.stop()}>
+          <FloatingActionButton mini={true} onTouchTap={() => this.props.stop()}>
             <AvPause />
           </FloatingActionButton>
         </div>
 
         <div className="controls-button-container" style={this.props.isPlaying ? {display: 'none'} : {display: 'block'}}>
-          <FloatingActionButton mini={true} onMouseDown={() => this.props.play()}>
+          <FloatingActionButton mini={true} onTouchTap={() => this.props.play()}>
             <AvPlayArrow />
           </FloatingActionButton>
         </div>
 
         <div className="controls-button-container">
-          <FloatingActionButton mini={true} onMouseDown={() => this.props.next()}>
+          <FloatingActionButton mini={true} onTouchTap={() => this.props.next()}>
             <AvSkipNext />
           </FloatingActionButton>
         </div>
