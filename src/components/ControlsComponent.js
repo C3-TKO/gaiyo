@@ -91,6 +91,7 @@ class ControlsComponent extends React.Component {
         >
           <ScreenLauncher
             goto={this.props.goto}
+            handleClose={this.handleClose}
             subHeader="Click to select"
             slides={this.props.slides}
           />

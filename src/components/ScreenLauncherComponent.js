@@ -9,8 +9,9 @@ require('styles//ScreenLauncher.scss');
 
 class ScreenLauncherComponent extends React.Component {
 
-  handleGoto = () => {
-    this.props.goto('govno')
+  handleGoto = (id) => {
+    this.props.goto(id);
+    this.props.handleClose();
   }
 
   render() {
@@ -26,7 +27,7 @@ class ScreenLauncherComponent extends React.Component {
               key={'screen-launcher-item-' + slide._id}
               primaryText={slide.url}
               secondaryText={slide.duration}
-              onTouchTap={this.handleGoto}
+              onTouchTap={() => this.handleGoto(slide._id)}
             />
           )}
         </List>
@@ -39,7 +40,8 @@ ScreenLauncherComponent.displayName = 'ScreenLauncherComponent';
 
 ScreenLauncherComponent.propTypes = {
   subHeader: React.PropTypes.string.isRequired,
-  goto: React.PropTypes.func.isRequired
+  goto: React.PropTypes.func.isRequired,
+  handleClose: React.PropTypes.func.isRequired
 };
 
 export default ScreenLauncherComponent;
