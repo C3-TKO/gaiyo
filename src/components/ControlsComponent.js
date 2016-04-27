@@ -8,6 +8,8 @@ import AvPause from 'material-ui/lib/svg-icons/av/pause';
 import AvPlayArrow from 'material-ui/lib/svg-icons/av/play-arrow';
 import AvSkipNext from 'material-ui/lib/svg-icons/av/skip-next';
 
+import KeyBinding from 'react-keybinding-component';
+
 import FlatButton from 'material-ui/lib/flat-button';
 import Dialog from 'material-ui/lib/dialog';
 import ScreenLauncher from './ScreenLauncherComponent';
@@ -39,6 +41,19 @@ class ControlsComponent extends React.Component {
     })
   }
 
+  handleControlsByKeyboard = (e) => {
+    console.log(e.keyCode);
+    switch(e.keyCode) {
+      case 39: // Arrow right
+        this.props.next();
+        return 0;
+      case 37: // Arrow left
+        this.props.prev();
+        return 0;
+    }
+  }
+
+
   render() {
     const actions = [
       <FlatButton
@@ -51,8 +66,12 @@ class ControlsComponent extends React.Component {
     return (
       <div className="controls-component">
 
+        <KeyBinding
+          onKey={ (e) => { this.handleControlsByKeyboard(e) } }
+        />
+
         <div className="controls-button-container">
-          <FloatingActionButton mini={true} onTouchTap={() => this.props.previous()} >
+          <FloatingActionButton mini={true} onTouchTap={() => this.props.prev()} >
             <AvSkipPrevious />
           </FloatingActionButton>
         </div>
@@ -109,7 +128,7 @@ ControlsComponent.propTypes = {
   play: React.PropTypes.func.isRequired,
   stop: React.PropTypes.func.isRequired,
   next: React.PropTypes.func.isRequired,
-  previous: React.PropTypes.func.isRequired,
+  prev: React.PropTypes.func.isRequired,
   goto: React.PropTypes.func.isRequired
 };
 

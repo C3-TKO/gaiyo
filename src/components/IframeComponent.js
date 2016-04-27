@@ -7,7 +7,7 @@ require('styles//Iframe.scss');
 class IframeComponent extends React.Component {
   render() {
     return (
-      <iframe className="iframe-component" src={this.props.url}></iframe>
+      <iframe className="iframe-component" src={this.props.url} tabIndex="-1"></iframe>
     );
   }
 }
