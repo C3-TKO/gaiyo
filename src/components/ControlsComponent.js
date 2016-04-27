@@ -42,13 +42,15 @@ class ControlsComponent extends React.Component {
   }
 
   handleControlsByKeyboard = (e) => {
-    console.log(e.keyCode);
     switch(e.keyCode) {
       case 39: // Arrow right
         this.props.next();
         return 0;
       case 37: // Arrow left
         this.props.prev();
+        return 0;
+      case 40: // Arrow down
+        this.handleOpen();
         return 0;
     }
   }
@@ -66,9 +68,7 @@ class ControlsComponent extends React.Component {
     return (
       <div className="controls-component">
 
-        <KeyBinding
-          onKey={ (e) => { this.handleControlsByKeyboard(e) } }
-        />
+        <KeyBinding onKey={ (e) => { this.handleControlsByKeyboard(e) } } />
 
         <div className="controls-button-container">
           <FloatingActionButton mini={true} onTouchTap={() => this.props.prev()} >
