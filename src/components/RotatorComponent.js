@@ -2,6 +2,7 @@
 
 import React from 'react';
 import IframeComponent from './IframeComponent';
+import IframeLockerComponent from './IframeLockerComponent';
 import ControlsComponent from './ControlsComponent'
 import StopWatchComponent from './StopWatchComponent';
 
@@ -79,8 +80,13 @@ class RotatorComponent extends React.Component {
 
   render() {
     return (
-      <div className="rotator-component">
-        <IframeComponent url={this.props.slides[this.state.pointer].url}/>
+      <div
+        className="rotator-component"
+      >
+        <IframeComponent
+          url={this.props.slides[this.state.pointer].url}
+        />
+        <IframeLockerComponent/>
         <ControlsComponent
           slides={this.props.slides}
           isPlaying={this.state.isPlaying}
