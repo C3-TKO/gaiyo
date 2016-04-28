@@ -52,6 +52,15 @@ class ControlsComponent extends React.Component {
       case 40: // Arrow down
         this.handleOpen();
         return 0;
+      case 32: // Space
+        if(this.props.isPlaying) {
+          this.props.stop();
+        }
+        else {
+          this.props.play();
+        }
+
+        return 0;
     }
   }
 
