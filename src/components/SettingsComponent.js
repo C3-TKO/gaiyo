@@ -14,8 +14,20 @@ class SettingsComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: this.props.slides.length === 0
+      open: false,
+      timeout: undefined
     };
+  }
+
+  componentDidMount() {
+    if(this.props.slides.length === 0) {
+      const timeout = setTimeout(() => this.setState({open: true, timeout: undefined}), 750 );
+      this.setState({timeout: timeout})
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    clearTimeout(this.state.timeout);
   }
 
   handleOpen = () => {
