@@ -59,7 +59,6 @@ class ControlsComponent extends React.Component {
         else {
           this.props.play();
         }
-
         return 0;
     }
   }
