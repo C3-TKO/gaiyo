@@ -20,8 +20,14 @@ class SettingsComponent extends React.Component {
   }
 
   componentDidMount() {
+    const timeToWaitForDBRead = 750;
+
     if(this.props.slides.length === 0) {
-      const timeout = setTimeout(() => this.setState({open: true, timeout: undefined}), 750 );
+      const timeout = setTimeout(
+        () => this.setState({
+          open: true,
+          timeout: undefined
+        }), timeToWaitForDBRead );
       this.setState({timeout: timeout})
     }
   }
