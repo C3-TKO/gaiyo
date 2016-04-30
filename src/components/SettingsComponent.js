@@ -43,9 +43,14 @@ class SettingsComponent extends React.Component {
   }
 
   handleClose = () => {
-    this.setState({
-      open: false
-    })
+    if(this.props.slides.length !== 0) {
+      this.setState({
+        open: false
+      })
+    }
+    else {
+      alert('You will nee to add at least one screen to start this app!')
+    }
   }
 
   render() {
@@ -68,7 +73,7 @@ class SettingsComponent extends React.Component {
         <Dialog
           title="Gaiyo settings"
           actions={actions}
-          modal={false}
+          modal={this.props.slides.length === 0}
           open={this.state.open}
           onRequestClose={this.handleClose}
           autoScrollBodyContent={true}
