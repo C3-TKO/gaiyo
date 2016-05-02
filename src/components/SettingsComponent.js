@@ -61,6 +61,12 @@ class SettingsComponent extends React.Component {
     })
   }
 
+  closeSnackbar = () => {
+    this.setState({
+      snackbarOpen: false
+    })
+  }
+
   render() {
     const actions = [
       <FlatButton
@@ -97,6 +103,7 @@ class SettingsComponent extends React.Component {
           open={this.state.snackbarOpen}
           message="Please add at least one screen to the rotation list!"
           autoHideDuration={6000}
+          onRequestClose={this.closeSnackbar}
         />
       </div>
     );
