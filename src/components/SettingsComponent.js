@@ -85,7 +85,7 @@ class SettingsComponent extends React.Component {
         </FloatingActionButton>
 
         <Dialog
-          title="Gaiyo settings"
+          title="Settings"
           actions={actions}
           modal={this.props.slides.length === 0}
           open={this.state.dialogOpen}
