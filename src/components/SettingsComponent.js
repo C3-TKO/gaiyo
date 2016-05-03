@@ -6,6 +6,7 @@ import ActionSettings from 'material-ui/lib/svg-icons/action/settings';
 import FlatButton from 'material-ui/lib/flat-button';
 import Dialog from 'material-ui/lib/dialog';
 import SlideList from './SlideListComponent';
+import Snackbar from 'material-ui/lib/snackbar';
 
 require('styles//Settings.scss');
 
@@ -14,19 +15,55 @@ class SettingsComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: this.props.slides.length === 0
+      dialogOpen: false,
+      snackbarOpen: false,
+      timeout: undefined
     };
   }
 
-  handleOpen = () => {
+  componentDidMount() {
+    const timeToWaitForDBRead = 750;
+
+    if(this.props.slides.length === 0) {
+      const timeout = setTimeout(
+        () => this.setState({
+          dialogOpen: true,
+          timeout: undefined
+        }), timeToWaitForDBRead );
+      this.setState({timeout: timeout})
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    clearTimeout(this.state.timeout);
+  }
+
+  handleOpenDialog = () => {
     this.setState({
-      open: true
+      dialogOpen: true
     })
   }
 
-  handleClose = () => {
+  handleCloseDialog = () => {
+    if(this.props.slides.length !== 0) {
+      this.setState({
+        dialogOpen: false
+      })
+    }
+    else {
+      this.handleOpenSnackbar();
+    }
+  }
+
+  handleOpenSnackbar = () => {
     this.setState({
-      open: false
+      snackbarOpen: true
+    })
+  }
+
+  closeSnackbar = () => {
+    this.setState({
+      snackbarOpen: false
     })
   }
 
@@ -35,7 +72,7 @@ class SettingsComponent extends React.Component {
       <FlatButton
         label="Close"
         primary={true}
-        onTouchTap={this.handleClose}
+        onTouchTap={this.handleCloseDialog}
       />
     ];
 
@@ -43,16 +80,16 @@ class SettingsComponent extends React.Component {
       <div className="settings-component">
         <FloatingActionButton
           mini={true}
-          onTouchTap={this.handleOpen}>
+          onTouchTap={this.handleOpenDialog}>
           <ActionSettings />
         </FloatingActionButton>
 
         <Dialog
           title="Gaiyo settings"
           actions={actions}
-          modal={false}
-          open={this.state.open}
-          onRequestClose={this.handleClose}
+          modal={this.props.slides.length === 0}
+          open={this.state.dialogOpen}
+          onRequestClose={this.handleCloseDialog}
           autoScrollBodyContent={true}
         >
           <SlideList
@@ -61,6 +98,13 @@ class SettingsComponent extends React.Component {
             onUpdate={this.props.onUpdate}
             onSave={this.props.onSave}/>
         </Dialog>
+
+        <Snackbar
+          open={this.state.snackbarOpen}
+          message="Please add at least one screen to the rotation list!"
+          autoHideDuration={6000}
+          onRequestClose={this.closeSnackbar}
+        />
       </div>
     );
   }
