@@ -38,24 +38,24 @@ class SettingsComponent extends React.Component {
     clearTimeout(this.state.timeout);
   }
 
-  handleOpenDialog = () => {
+  openDialog = () => {
     this.setState({
       dialogOpen: true
     })
   }
 
-  handleCloseDialog = () => {
+  closeDialog = () => {
     if(this.props.slides.length !== 0) {
       this.setState({
         dialogOpen: false
       })
     }
     else {
-      this.handleOpenSnackbar();
+      this.openSnackbar();
     }
   }
 
-  handleOpenSnackbar = () => {
+  openSnackbar = () => {
     this.setState({
       snackbarOpen: true
     })
@@ -72,7 +72,7 @@ class SettingsComponent extends React.Component {
       <FlatButton
         label="Close"
         primary={true}
-        onTouchTap={this.handleCloseDialog}
+        onTouchTap={this.closeDialog}
       />
     ];
 
@@ -80,7 +80,7 @@ class SettingsComponent extends React.Component {
       <div className="settings-component">
         <FloatingActionButton
           mini={true}
-          onTouchTap={this.handleOpenDialog}>
+          onTouchTap={this.openDialog}>
           <ActionSettings />
         </FloatingActionButton>
 
@@ -89,7 +89,7 @@ class SettingsComponent extends React.Component {
           actions={actions}
           modal={this.props.slides.length === 0}
           open={this.state.dialogOpen}
-          onRequestClose={this.handleCloseDialog}
+          onRequestClose={this.closeDialog}
           autoScrollBodyContent={true}
         >
           <SlideList
