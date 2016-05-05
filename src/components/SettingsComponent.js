@@ -38,6 +38,18 @@ class SettingsComponent extends React.Component {
     clearTimeout(this.state.timeout);
   }
 
+  onSave = (slide) => {
+    this.props.actionAddSlide(slide);
+  }
+
+  onUpdate = (id, slide) => {
+    this.props.actionEditSlide(id, slide);
+  }
+
+  onDelete = (id) => {
+    this.props.actionDeleteSlide(id);
+  }
+
   openDialog = () => {
     this.setState({
       dialogOpen: true
@@ -94,9 +106,9 @@ class SettingsComponent extends React.Component {
         >
           <SlideList
             slides={this.props.slides}
-            onDelete={this.props.onDelete}
-            onUpdate={this.props.onUpdate}
-            onSave={this.props.onSave}/>
+            onDelete={this.onDelete}
+            onUpdate={this.onUpdate}
+            onSave={this.onSave}/>
         </Dialog>
 
         <Snackbar
@@ -114,9 +126,9 @@ SettingsComponent.displayName = 'SettingsComponent';
 
 SettingsComponent.propTypes = {
   slides: React.PropTypes.array.isRequired,
-  onSave: React.PropTypes.func.isRequired,
-  onDelete: React.PropTypes.func.isRequired,
-  onUpdate: React.PropTypes.func.isRequired
+  actionAddSlide: React.PropTypes.func.isRequired,
+  actionDeleteSlide: React.PropTypes.func.isRequired,
+  actionEditSlide: React.PropTypes.func.isRequired
 };
 
 export default SettingsComponent;
