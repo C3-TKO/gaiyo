@@ -5,7 +5,7 @@ import FloatingActionButton from 'material-ui/lib/floating-action-button';
 import ActionSettings from 'material-ui/lib/svg-icons/action/settings';
 import FlatButton from 'material-ui/lib/flat-button';
 import Dialog from 'material-ui/lib/dialog';
-import SlideList from './SlideListComponent';
+import SlideListEditor from './SlideListEditorComponent';
 import Snackbar from 'material-ui/lib/snackbar';
 
 require('styles//Settings.scss');
