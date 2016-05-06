@@ -38,11 +38,11 @@ class SettingsComponent extends React.Component {
     clearTimeout(this.state.timeout);
   }
 
-  onSave = (slide) => {
+  onAdd = (slide) => {
     this.props.actionAddSlide(slide);
   }
 
-  onUpdate = (id, slide) => {
+  onEdit = (id, slide) => {
     this.props.actionEditSlide(id, slide);
   }
 
@@ -107,8 +107,8 @@ class SettingsComponent extends React.Component {
           <SlideListEditor
             slides={this.props.slides}
             onDelete={this.onDelete}
-            onUpdate={this.onUpdate}
-            onSave={this.onSave}/>
+            onEdit={this.onEdit}
+            onAdd={this.onAdd}/>
         </Dialog>
 
         <Snackbar

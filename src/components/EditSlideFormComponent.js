@@ -14,10 +14,10 @@ class EditSlideFormComponent extends React.Component {
     };
 
     if (typeof(this.props.slide) != 'undefined') {
-      this.props.onUpdate(this.props.slide._id, slide);
+      this.props.onEdit(this.props.slide._id, slide);
     }
     else {
-      this.props.onSave(slide);
+      this.props.onAdd(slide);
     }
   }
 
@@ -43,8 +43,8 @@ class EditSlideFormComponent extends React.Component {
 
 EditSlideFormComponent.displayName = 'EditSlideFormComponent';
 EditSlideFormComponent.propTypes = {
-  onSave: React.PropTypes.func.isRequired,
-  onUpdate: React.PropTypes.func.isRequired,
+  onAdd: React.PropTypes.func.isRequired,
+  onEdit: React.PropTypes.func.isRequired,
   slide: React.PropTypes.any
 };
 
