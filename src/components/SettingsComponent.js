@@ -104,7 +104,7 @@ class SettingsComponent extends React.Component {
           onRequestClose={this.closeDialog}
           autoScrollBodyContent={true}
         >
-          <SlideList
+          <SlideListEditor
             slides={this.props.slides}
             onDelete={this.onDelete}
             onUpdate={this.onUpdate}
