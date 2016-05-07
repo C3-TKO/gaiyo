@@ -90,11 +90,13 @@ class SettingsComponent extends React.Component {
 
     return (
       <div className="settings-component">
-        <FloatingActionButton
-          mini={true}
-          onTouchTap={this.openDialog}>
-          <ActionSettings />
-        </FloatingActionButton>
+        <div className="settings-button-container">
+          <FloatingActionButton
+            mini={true}
+            onTouchTap={this.openDialog}>
+            <ActionSettings />
+          </FloatingActionButton>
+        </div>
 
         <Dialog
           title="Settings"

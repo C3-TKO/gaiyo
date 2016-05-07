@@ -29,7 +29,7 @@ const iconButtonElement = (
 
 
 
-require('styles//SlideList.scss');
+require('styles//SlideListEditor.scss');
 
 class SlideListEditorComponent extends React.Component {
 

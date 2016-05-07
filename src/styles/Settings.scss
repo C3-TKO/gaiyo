@@ -1,3 +1,15 @@
 .settings-component {
+    margin: 0;
+    margin-top: 5px;
+    width: 100%;
+    position: absolute;
+    border: none;
+    display: flex;
+    align-items: left;
+    justify-content: left
 }
 
+.settings-button-container {
+  margin: 5px;
+  float: left;
+}
