@@ -7,7 +7,7 @@
 // import TestUtils from 'react-addons-test-utils';
 import createComponent from 'helpers/shallowRenderHelper';
 
-import SlideListComponent from 'components//SlideListComponent.js';
+import SlideListEditorComponent from 'components//SlideListEditorComponent.js';
 
 describe('SlideListComponent', () => {
   let component;

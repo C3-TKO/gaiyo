@@ -29,9 +29,9 @@ const iconButtonElement = (
 
 
 
-require('styles//SlideList.scss');
+require('styles//SlideListEditor.scss');
 
-class SlideListComponent extends React.Component {
+class SlideListEditorComponent extends React.Component {
 
   constructor(props) {
     super(props);
@@ -123,8 +123,8 @@ class SlideListComponent extends React.Component {
         >
           <EditSlideForm
             ref="editSlideForm"
-            onSave={this.props.onSave}
-            onUpdate={this.props.onUpdate}
+            onAdd={this.props.onAdd}
+            onEdit={this.props.onEdit}
             slide={this.state.slideBeingEdited}
           />
         </Dialog>
@@ -133,12 +133,12 @@ class SlideListComponent extends React.Component {
   }
 }
 
-SlideListComponent.displayName = 'SlideListComponent';
-SlideListComponent.propTypes = {
+SlideListEditorComponent.displayName = 'SlideListEditorComponent';
+SlideListEditorComponent.propTypes = {
   slides: React.PropTypes.array.isRequired,
   onDelete: React.PropTypes.func.isRequired,
-  onUpdate: React.PropTypes.func.isRequired,
-  onSave: React.PropTypes.func.isRequired
+  onEdit: React.PropTypes.func.isRequired,
+  onAdd: React.PropTypes.func.isRequired
 };
 
-export default SlideListComponent;
+export default SlideListEditorComponent;

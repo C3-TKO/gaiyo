@@ -5,7 +5,7 @@ import FloatingActionButton from 'material-ui/lib/floating-action-button';
 import ActionSettings from 'material-ui/lib/svg-icons/action/settings';
 import FlatButton from 'material-ui/lib/flat-button';
 import Dialog from 'material-ui/lib/dialog';
-import SlideList from './SlideListComponent';
+import SlideListEditor from './SlideListEditorComponent';
 import Snackbar from 'material-ui/lib/snackbar';
 
 require('styles//Settings.scss');
@@ -36,6 +36,18 @@ class SettingsComponent extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     clearTimeout(this.state.timeout);
+  }
+
+  onAdd = (slide) => {
+    this.props.actionAddSlide(slide);
+  }
+
+  onEdit = (id, slide) => {
+    this.props.actionEditSlide(id, slide);
+  }
+
+  onDelete = (id) => {
+    this.props.actionDeleteSlide(id);
   }
 
   openDialog = () => {
@@ -78,11 +90,13 @@ class SettingsComponent extends React.Component {
 
     return (
       <div className="settings-component">
-        <FloatingActionButton
-          mini={true}
-          onTouchTap={this.openDialog}>
-          <ActionSettings />
-        </FloatingActionButton>
+        <div className="settings-button-container">
+          <FloatingActionButton
+            mini={true}
+            onTouchTap={this.openDialog}>
+            <ActionSettings />
+          </FloatingActionButton>
+        </div>
 
         <Dialog
           title="Settings"
@@ -92,11 +106,11 @@ class SettingsComponent extends React.Component {
           onRequestClose={this.closeDialog}
           autoScrollBodyContent={true}
         >
-          <SlideList
+          <SlideListEditor
             slides={this.props.slides}
-            onDelete={this.props.onDelete}
-            onUpdate={this.props.onUpdate}
-            onSave={this.props.onSave}/>
+            onDelete={this.onDelete}
+            onEdit={this.onEdit}
+            onAdd={this.onAdd}/>
         </Dialog>
 
         <Snackbar
@@ -114,9 +128,9 @@ SettingsComponent.displayName = 'SettingsComponent';
 
 SettingsComponent.propTypes = {
   slides: React.PropTypes.array.isRequired,
-  onSave: React.PropTypes.func.isRequired,
-  onDelete: React.PropTypes.func.isRequired,
-  onUpdate: React.PropTypes.func.isRequired
+  actionAddSlide: React.PropTypes.func.isRequired,
+  actionDeleteSlide: React.PropTypes.func.isRequired,
+  actionEditSlide: React.PropTypes.func.isRequired
 };
 
 export default SettingsComponent;
