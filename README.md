@@ -6,3 +6,4 @@ Junkan is a web application that periodically cycles through a user defined list
 ## Local development installation
 
 # License
+[MIT License](LICENSE.md)
