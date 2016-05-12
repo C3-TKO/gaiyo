@@ -70,7 +70,6 @@ class RotatorComponent extends React.Component {
   }
 
   getPointerForSlideId(id) {
-    let pointer = 0;
     for(let i in this.props.slides) {
       if(this.props.slides[i]._id == id) {
         return i;

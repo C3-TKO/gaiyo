@@ -34,7 +34,7 @@ class SettingsComponent extends React.Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps() {
     clearTimeout(this.state.timeout);
   }
 
