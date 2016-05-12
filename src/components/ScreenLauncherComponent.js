@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import Subheader from 'material-ui/SubHeader'
+import Subheader from 'material-ui/Subheader'
 import {List, ListItem} from 'material-ui/List';
 
 require('styles//ScreenLauncher.scss');
