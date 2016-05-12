@@ -4,6 +4,8 @@ require('styles/App.css');
 import React from 'react';
 import RotatorComponent from './RotatorComponent';
 import SettingsComponent from './SettingsComponent';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class AppComponent extends React.Component {
 
@@ -11,7 +13,9 @@ class AppComponent extends React.Component {
     if (this.props.slides.length > 0) {
       return (
         <div>
-          <RotatorComponent slides={this.props.slides}/>
+          <MuiThemeProvider muiTheme={getMuiTheme()}>
+            <RotatorComponent slides={this.props.slides}/>
+          </MuiThemeProvider>
         </div>
       )
     }
@@ -21,12 +25,14 @@ class AppComponent extends React.Component {
     return (
       <div className="index">
         {this.renderWithFilledCollection()}
-        <SettingsComponent
-          slides={this.props.slides}
-          actionAddSlide={this.props.actions.addSlide}
-          actionEditSlide={this.props.actions.editSlide}
-          actionDeleteSlide={this.props.actions.deleteSlide}
-        />
+        <MuiThemeProvider muiTheme={getMuiTheme()}>
+          <SettingsComponent
+            slides={this.props.slides}
+            actionAddSlide={this.props.actions.addSlide}
+            actionEditSlide={this.props.actions.editSlide}
+            actionDeleteSlide={this.props.actions.deleteSlide}
+          />
+        </MuiThemeProvider>
       </div>
     );
   }
