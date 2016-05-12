@@ -1,12 +1,12 @@
 'use strict';
 
 import React from 'react';
-import FloatingActionButton from 'material-ui/lib/floating-action-button';
-import ActionSettings from 'material-ui/lib/svg-icons/action/settings';
-import FlatButton from 'material-ui/lib/flat-button';
-import Dialog from 'material-ui/lib/dialog';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ActionSettings from 'material-ui/svg-icons/action/settings';
+import FlatButton from 'material-ui/FlatButton';
+import Dialog from 'material-ui/dialog';
 import SlideListEditor from './SlideListEditorComponent';
-import Snackbar from 'material-ui/lib/snackbar';
+import Snackbar from 'material-ui/snackbar';
 
 require('styles//Settings.scss');
 
@@ -34,7 +34,7 @@ class SettingsComponent extends React.Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps() {
     clearTimeout(this.state.timeout);
   }
 

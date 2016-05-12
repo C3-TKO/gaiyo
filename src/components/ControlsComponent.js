@@ -1,17 +1,17 @@
 'use strict';
 
 import React from 'react';
-import FloatingActionButton from 'material-ui/lib/floating-action-button';
-import AvSkipPrevious from 'material-ui/lib/svg-icons/av/skip-previous';
-import ActionLaunch from 'material-ui/lib/svg-icons/action/launch';
-import AvPause from 'material-ui/lib/svg-icons/av/pause';
-import AvPlayArrow from 'material-ui/lib/svg-icons/av/play-arrow';
-import AvSkipNext from 'material-ui/lib/svg-icons/av/skip-next';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import AvSkipPrevious from 'material-ui/svg-icons/av/skip-previous';
+import ActionLaunch from 'material-ui/svg-icons/action/launch';
+import AvPause from 'material-ui/svg-icons/av/pause';
+import AvPlayArrow from 'material-ui/svg-icons/av/play-arrow';
+import AvSkipNext from 'material-ui/svg-icons/av/skip-next';
 
 import KeyBinding from 'react-keybinding-component';
 
-import FlatButton from 'material-ui/lib/flat-button';
-import Dialog from 'material-ui/lib/dialog';
+import FlatButton from 'material-ui/FlatButton';
+import Dialog from 'material-ui/dialog';
 import ScreenLauncher from './ScreenLauncherComponent';
 
 require('styles//Controls.scss');

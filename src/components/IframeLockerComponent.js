@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import Snackbar from 'material-ui/lib/snackbar';
+import Snackbar from 'material-ui/snackbar';
 
 require('styles//IframeLocker.scss');
 
@@ -10,21 +10,21 @@ class IframeLockerComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false,
-    };
+      open: false
+    }
   }
 
   handleTouchTap = () => {
     this.setState({
-      open: true,
-    });
-  };
+      open: true
+    })
+  }
 
   handleRequestClose = () => {
     this.setState({
-      open: false,
-    });
-  };
+      open: false
+    })
+  }
 
   render() {
     return (
