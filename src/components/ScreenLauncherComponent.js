@@ -1,9 +1,8 @@
 'use strict';
 
 import React from 'react';
-import List from 'material-ui/lib/lists/list';
-import Subheader from 'material-ui/lib/Subheader'
-import ListItem from 'material-ui/lib/lists/list-item';
+import Subheader from 'material-ui/SubHeader'
+import {List, ListItem} from 'material-ui/List';
 
 require('styles//ScreenLauncher.scss');
 
