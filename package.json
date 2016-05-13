@@ -67,7 +67,7 @@
     "babel-plugin-transform-es2015-arrow-functions": "^6.5.2",
     "core-js": "^2.0.0",
     "material-ui": "^0.15.0",
-    "normalize.css": "^3.0.3",
+    "normalize.css": "^4.0.0",
     "pouch-redux-middleware": "^0.1.0",
     "pouchdb": "^5.3.1",
     "react": "^0.14.0",
