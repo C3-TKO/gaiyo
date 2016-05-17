@@ -1,6 +1,6 @@
 {
   "name": "Junkan",
   "tagline": "A web app that cycles through a list of websites each one after another in an infinite loop ",
-  "body": "This github page is primarily used to host the most stable and current version of the app. This app runs completely within your browser and uses the local storage of your browser. Just click on the following and you ready to go - no setup or install is needed.\r\n",
+  "body": "This github page is primarily used to host the most stable and current version of the app. This app runs completely within your browser and uses the local storage of your browser. Just click on the following link and you ready to go. There is no setup or installation is required.\r\n",
   "note": "Don't delete this file! It's used internally to help with page regeneration."
 }
