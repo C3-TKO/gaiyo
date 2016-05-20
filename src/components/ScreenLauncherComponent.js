@@ -22,6 +22,7 @@ class ScreenLauncherComponent extends React.Component {
           </Subheader>
           {this.props.slides.map(slide =>
             <ListItem
+              style={{"-webkit-appearance": "none"}}
               value={slide._id}
               key={'screen-launcher-item-' + slide._id}
               primaryText={slide.url}

@@ -105,6 +105,7 @@ class SlideListEditorComponent extends React.Component {
 
           {this.props.slides.map(slide =>
             <ListItem
+              style={{"-webkit-appearance": "none"}}
               value={slide._id}
               key={'slide-list-item-' + slide._id}
               primaryText={slide.url}
