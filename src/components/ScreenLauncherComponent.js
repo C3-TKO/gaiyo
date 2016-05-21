@@ -4,6 +4,8 @@ import React from 'react';
 import Subheader from 'material-ui/Subheader'
 import {List, ListItem} from 'material-ui/List';
 
+import KeyBinding from 'react-keybinding-component';
+
 require('styles//ScreenLauncher.scss');
 
 class ScreenLauncherComponent extends React.Component {
@@ -13,9 +15,38 @@ class ScreenLauncherComponent extends React.Component {
     this.props.handleClose();
   }
 
+  handleControlsByKeyboard = (e) => {
+    switch(e.keyCode) {
+      case 38: // Arrow up
+        this.handleUp();
+        return 0;
+      case 40: // Arrow down
+        this.handleDown();
+        return 0;
+      case 13: // Enter
+        this.handleSelect();
+        return 0;
+    }
+  }
+
+  handleUp = () => {
+    console.log('up');
+  }
+
+  handleDown = () => {
+    console.log('down');
+  }
+
+  handleSelect = () => {
+    console.log('select');
+  }
+
   render() {
     return (
       <div className="screenlauncher-component">
+
+        <KeyBinding onKey={ (e) => { this.handleControlsByKeyboard(e) } } />
+
         <List>
           <Subheader>
             {this.props.subHeader}
