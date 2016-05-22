@@ -38,6 +38,7 @@
     "eslint-loader": "^1.0.0",
     "eslint-plugin-react": "^5.0.0",
     "file-loader": "^0.8.4",
+    "formsy-react": "^0.18.0",
     "glob": "^7.0.0",
     "isparta-instrumenter-loader": "^1.0.0",
     "karma": "^0.13.9",
@@ -66,6 +67,7 @@
   "dependencies": {
     "babel-plugin-transform-es2015-arrow-functions": "^6.5.2",
     "core-js": "^2.0.0",
+    "formsy-material-ui": "^0.4.3",
     "material-ui": "^0.15.0",
     "normalize.css": "^4.0.0",
     "pouch-redux-middleware": "^0.2.0",
