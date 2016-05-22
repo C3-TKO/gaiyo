@@ -68,8 +68,16 @@ class SlideListEditorComponent extends React.Component {
   renderRightIconMenu(slide) {
     return (
       <IconMenu iconButtonElement={iconButtonElement}>
-        <MenuItem onTouchTap={() => {this.handleEdit(slide)}}>Edit</MenuItem>
-        <MenuItem onTouchTap={() => {this.props.onDelete(slide._id)}}>Delete</MenuItem>
+        <MenuItem
+          /* @TODO: Have a look at https://github.com/callemall/material-ui/issues/4008 */
+          style={{"-webkit-appearance": "none"}}
+          onTouchTap={() => {this.handleEdit(slide)}}>Edit
+        </MenuItem>
+        <MenuItem
+          /* @TODO: Have a look at https://github.com/callemall/material-ui/issues/4008 */
+          style={{"-webkit-appearance": "none"}}
+          onTouchTap={() => {this.props.onDelete(slide._id)}}>Delete
+        </MenuItem>
       </IconMenu>
     )
   }
