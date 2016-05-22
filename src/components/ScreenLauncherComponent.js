@@ -4,8 +4,6 @@ import React from 'react';
 import Subheader from 'material-ui/Subheader'
 import {List, ListItem} from 'material-ui/List';
 
-import KeyBinding from 'react-keybinding-component';
-
 require('styles//ScreenLauncher.scss');
 
 class ScreenLauncherComponent extends React.Component {
@@ -15,46 +13,20 @@ class ScreenLauncherComponent extends React.Component {
     this.props.handleClose();
   }
 
-  handleControlsByKeyboard = (e) => {
-    switch(e.keyCode) {
-      case 38: // Arrow up
-        this.handleUp();
-        return 0;
-      case 40: // Arrow down
-        this.handleDown();
-        return 0;
-      case 13: // Enter
-        this.handleSelect();
-        return 0;
-    }
-  }
-
-  handleUp = () => {
-    console.log('up');
-  }
-
-  handleDown = () => {
-    console.log('down');
-  }
-
-  handleSelect = () => {
-    console.log('select');
-  }
-
   render() {
     return (
       <div className="screenlauncher-component">
-
-        <KeyBinding onKey={ (e) => { this.handleControlsByKeyboard(e) } } />
 
         <List>
           <Subheader>
             {this.props.subHeader}
           </Subheader>
-          {this.props.slides.map(slide =>
+          {this.props.slides.map((slide, index) =>
             <ListItem
               /* @TODO: Have a look at https://github.com/callemall/material-ui/issues/4008 */
               style={{"-webkit-appearance": "none"}}
+              tabIndex={index + 1}
+              ref={'li' + index}
               value={slide._id}
               key={'screen-launcher-item-' + slide._id}
               primaryText={slide.url}
