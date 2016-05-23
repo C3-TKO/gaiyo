@@ -13,7 +13,11 @@ describe('IframeComponent', () => {
   let component;
 
   beforeEach(() => {
-    component = createComponent(IframeComponent);
+    component = createComponent(IframeComponent, Object.assign({},
+      {
+        url: 'http://www.example.com'
+      })
+    )
   });
 
   it('should have its component name as default className', () => {

@@ -13,7 +13,11 @@ describe('StopWatchComponent', () => {
   let component;
 
   beforeEach(() => {
-    component = createComponent(StopWatchComponent);
+    component = createComponent(StopWatchComponent, Object.assign({},
+      {
+        isPlaying: true
+      })
+    )
   });
 
   it('should have its component name as default className', () => {

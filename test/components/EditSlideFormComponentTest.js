@@ -13,7 +13,12 @@ describe('EditSlideFormComponent', () => {
   let component;
 
   beforeEach(() => {
-    component = createComponent(EditSlideFormComponent);
+    component = createComponent(EditSlideFormComponent, Object.assign({},
+      {
+        onEdit: () => {},
+        onAdd: () => {}
+      })
+    )
   });
 
   it('should have its component name as default className', () => {
