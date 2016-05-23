@@ -3,7 +3,7 @@
 import React from 'react';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import AvSkipPrevious from 'material-ui/svg-icons/av/skip-previous';
-import ActionLaunch from 'material-ui/svg-icons/action/launch';
+import ContentLowPriority from 'material-ui/svg-icons/content/low-priority';
 import AvPause from 'material-ui/svg-icons/av/pause';
 import AvPlayArrow from 'material-ui/svg-icons/av/play-arrow';
 import AvSkipNext from 'material-ui/svg-icons/av/skip-next';
@@ -79,25 +79,25 @@ class ControlsComponent extends React.Component {
         <KeyBinding onKey={ (e) => { this.handleControlsByKeyboard(e) } } />
 
         <div className="controls-button-container">
+          <FloatingActionButton mini={true} onTouchTap={this.handleOpen} >
+            <ContentLowPriority />
+          </FloatingActionButton>
+        </div>
+
+        <div className="controls-button-container">
           <FloatingActionButton mini={true} onTouchTap={() => this.props.prev()} >
             <AvSkipPrevious />
           </FloatingActionButton>
         </div>
 
-        <div className="controls-button-container">
-          <FloatingActionButton mini={true} onTouchTap={this.handleOpen} >
-            <ActionLaunch />
-          </FloatingActionButton>
-        </div>
-
         <div className="controls-button-container" style={this.props.isPlaying ? {display: 'block'} : {display: 'none'}}>
-          <FloatingActionButton mini={true} onTouchTap={() => this.props.stop()}>
+          <FloatingActionButton onTouchTap={() => this.props.stop()}>
             <AvPause />
           </FloatingActionButton>
         </div>
 
         <div className="controls-button-container" style={this.props.isPlaying ? {display: 'none'} : {display: 'block'}}>
-          <FloatingActionButton mini={true} onTouchTap={() => this.props.play()}>
+          <FloatingActionButton onTouchTap={() => this.props.play()}>
             <AvPlayArrow />
           </FloatingActionButton>
         </div>
