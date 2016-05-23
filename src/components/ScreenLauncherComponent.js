@@ -18,9 +18,7 @@ class ScreenLauncherComponent extends React.Component {
       <div className="screenlauncher-component">
 
         <List>
-          <Subheader>
-            {this.props.subHeader}
-          </Subheader>
+          <Subheader>Click to select</Subheader>
           {this.props.slides.map((slide, index) =>
             <ListItem
               /* @TODO: Have a look at https://github.com/callemall/material-ui/issues/4008 */
@@ -42,7 +40,6 @@ class ScreenLauncherComponent extends React.Component {
 ScreenLauncherComponent.displayName = 'ScreenLauncherComponent';
 
 ScreenLauncherComponent.propTypes = {
-  subHeader: React.PropTypes.string.isRequired,
   goto: React.PropTypes.func.isRequired,
   handleClose: React.PropTypes.func.isRequired
 };
