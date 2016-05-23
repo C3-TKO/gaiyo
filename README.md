@@ -6,8 +6,5 @@ Junkan is a web application that periodically cycles through a user defined list
 
 [Junkan github page](http://c3-tko.github.io/junkan)
 
-# Installation
-Just copy the content of the [dist](dist) directory into a drietory on your webserver
-
 # License
 [MIT License](LICENSE.md)
