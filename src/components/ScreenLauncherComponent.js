@@ -22,7 +22,7 @@ class ScreenLauncherComponent extends React.Component {
           {this.props.slides.map((slide, index) =>
             <ListItem
               /* @TODO: Have a look at https://github.com/callemall/material-ui/issues/4008 */
-              style={{"-webkit-appearance": "none"}}
+              style={{'-webkit-appearance': 'none'}}
               tabIndex={index + 1}
               value={slide._id}
               key={'screen-launcher-item-' + slide._id}

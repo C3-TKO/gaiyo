@@ -70,12 +70,12 @@ class SlideListEditorComponent extends React.Component {
       <IconMenu iconButtonElement={iconButtonElement}>
         <MenuItem
           /* @TODO: Have a look at https://github.com/callemall/material-ui/issues/4008 */
-          style={{"-webkit-appearance": "none"}}
+          style={{'-webkit-appearance': 'none'}}
           onTouchTap={() => {this.handleEdit(slide)}}>Edit
         </MenuItem>
         <MenuItem
           /* @TODO: Have a look at https://github.com/callemall/material-ui/issues/4008 */
-          style={{"-webkit-appearance": "none"}}
+          style={{'-webkit-appearance': 'none'}}
           onTouchTap={() => {this.props.onDelete(slide._id)}}>Delete
         </MenuItem>
       </IconMenu>
@@ -97,8 +97,8 @@ class SlideListEditorComponent extends React.Component {
     ];
 
     return (
-      <div className="slidelisteditor-component">
-        <div id="addSlideFAB">
+      <div className='slidelisteditor-component'>
+        <div id='addSlideFAB'>
           <FloatingActionButton
             mini={true}
             onTouchTap={this.handleOpen}>
@@ -114,7 +114,7 @@ class SlideListEditorComponent extends React.Component {
           {this.props.slides.map(slide =>
             <ListItem
               /* @TODO: Have a look at https://github.com/callemall/material-ui/issues/4008 */
-              style={{"-webkit-appearance": "none"}}
+              style={{'-webkit-appearance': 'none'}}
               value={slide._id}
               key={'slide-list-item-' + slide._id}
               primaryText={slide.url}
@@ -125,13 +125,13 @@ class SlideListEditorComponent extends React.Component {
         </List>
 
         <Dialog
-          title="Slide Edit"
+          title='Slide Edit'
           actions={actions}
           open={this.state.open}
           onRequestClose={this.handleClose}
         >
           <EditSlideForm
-            ref="editSlideForm"
+            ref='editSlideForm'
             onAdd={this.props.onAdd}
             onEdit={this.props.onEdit}
             slide={this.state.slideBeingEdited}
