@@ -11,7 +11,7 @@ import AvSkipNext from 'material-ui/svg-icons/av/skip-next';
 import KeyBinding from 'react-keybinding-component';
 
 import FlatButton from 'material-ui/FlatButton';
-import Dialog from 'material-ui/dialog';
+import Dialog from 'material-ui/Dialog';
 import ScreenLauncher from './ScreenLauncherComponent';
 
 require('styles//Controls.scss');
@@ -119,7 +119,6 @@ class ControlsComponent extends React.Component {
           <ScreenLauncher
             goto={this.props.goto}
             handleClose={this.handleClose}
-            subHeader="Click to select"
             slides={this.props.slides}
           />
         </Dialog>

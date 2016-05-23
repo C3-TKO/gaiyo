@@ -13,7 +13,18 @@ describe('ScreenLauncherComponent', () => {
   let component;
 
   beforeEach(() => {
-    component = createComponent(ScreenLauncherComponent);
+    component = createComponent(ScreenLauncherComponent, Object.assign({},
+      {
+        slides: [
+          {
+            url: 'http://www.example.com',
+            duration: 5000
+          }
+        ],
+        goto: () => {},
+        handleClose: () => {}
+      })
+    )
   });
 
   it('should have its component name as default className', () => {
