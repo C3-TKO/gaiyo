@@ -97,7 +97,7 @@ class SlideListEditorComponent extends React.Component {
     ];
 
     return (
-      <div className="slidelist-component">
+      <div className="slidelisteditor-component">
         <div id="addSlideFAB">
           <FloatingActionButton
             mini={true}
