@@ -40,6 +40,7 @@ class ScreenLauncherComponent extends React.Component {
 ScreenLauncherComponent.displayName = 'ScreenLauncherComponent';
 
 ScreenLauncherComponent.propTypes = {
+  slides: React.PropTypes.array.isRequired,
   goto: React.PropTypes.func.isRequired,
   handleClose: React.PropTypes.func.isRequired
 };
