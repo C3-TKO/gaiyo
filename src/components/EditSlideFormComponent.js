@@ -15,7 +15,7 @@ class EditSlideFormComponent extends React.Component {
       canSubmit: false
     };
   }
-  
+
   handleSave = () => {
     const slide = {
       'url': this.refs.url.getValue(),
@@ -60,27 +60,28 @@ class EditSlideFormComponent extends React.Component {
           onInvalidSubmit={this.notifyFormError}
         >
           <FormsyText
-            name="url"
-            validations="isUrl"
-            validationError='URL IS WRONG!'
+            name='url'
+            ref='url'
+            validations='isUrl'
+            validationError='Please enter a valid url'
             required
-            hintText="http://www.example.com"
-            floatingLabelText="URL"
+            hintText='http://www.example.com'
+            floatingLabelText='Url (required)'
+            fullWidth={true}
+            defaultValue={typeof(this.props.slide) != 'undefined' ? this.props.slide.url : ''}
+          />
+
+          <FormsyText
+            name='duration'
+            ref='duration'
+            validations='isNumeric'
+            validationError='Please enter a valid duration'
+            required
+            hintText='5000'
+            floatingLabelText='Duration in ms (required)'
+            defaultValue={typeof(this.props.slide) != 'undefined' ? this.props.slide.duration : ''}
           />
         </Formsy.Form>
-
-        <TextField
-          fullWidth={true}
-          ref="url"
-          floatingLabelText="Url"
-          defaultValue={typeof(this.props.slide) != 'undefined' ? this.props.slide.url : ''}
-        />
-        <br />
-        <TextField
-          ref="duration"
-          floatingLabelText="Duration (ms)"
-          defaultValue={typeof(this.props.slide) != 'undefined' ? this.props.slide.duration : ''}
-        />
       </div>
     );
   }
