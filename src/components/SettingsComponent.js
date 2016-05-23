@@ -6,7 +6,7 @@ import ActionSettings from 'material-ui/svg-icons/action/settings';
 import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
 import SlideListEditor from './SlideListEditorComponent';
-import Snackbar from 'material-ui/snackbar';
+import Snackbar from 'material-ui/Snackbar';
 
 require('styles//Settings.scss');
 
