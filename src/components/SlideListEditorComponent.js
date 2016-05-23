@@ -13,7 +13,7 @@ import FlatButton from 'material-ui/FlatButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 
-import Dialog from 'material-ui/dialog';
+import Dialog from 'material-ui/Dialog';
 import EditSlideForm from './EditSlideFormComponent';
 
 const iconButtonElement = (
