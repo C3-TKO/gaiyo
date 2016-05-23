@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/C3-TKO/junkan.svg?branch=master)](https://travis-ci.org/C3-TKO/junkan)
 [![Dependency Status](https://david-dm.org/C3-TKO/junkan.svg)](https://david-dm.org/C3-TKO/junkan)
 [![devDependency Status](https://david-dm.org/C3-TKO/junkan/dev-status.svg)](https://david-dm.org/C3-TKO/junkan#info=devDependencies)
 
