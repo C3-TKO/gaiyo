@@ -13,8 +13,18 @@ describe('RotatorComponent', () => {
   let component;
 
   beforeEach(() => {
-    component = createComponent(RotatorComponent);
+    component = createComponent(RotatorComponent, Object.assign({},
+      {
+        slides: [
+          {
+            url: 'http://www.example.com',
+            duration: 5000
+          }
+        ]
+      })
+    )
   });
+
 
   it('should have its component name as default className', () => {
     expect(component.props.className).to.equal('rotator-component');

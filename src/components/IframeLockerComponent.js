@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import Snackbar from 'material-ui/snackbar';
+import Snackbar from 'material-ui/Snackbar';
 
 require('styles//IframeLocker.scss');
 

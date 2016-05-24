@@ -13,7 +13,23 @@ describe('ControlsComponent', () => {
   let component;
 
   beforeEach(() => {
-    component = createComponent(ControlsComponent);
+    component = createComponent(ControlsComponent, Object.assign({},
+      {
+        slides: [
+          {
+            url: 'http://www.example.com',
+            duration: 5000
+          }
+        ],
+        isPlaying: true,
+
+        play: () => {},
+        stop: () => {},
+        next: () => {},
+        prev: () => {},
+        goto: () => {}
+      })
+    )
   });
 
   it('should have its component name as default className', () => {
