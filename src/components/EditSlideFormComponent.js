@@ -18,7 +18,7 @@ class EditSlideFormComponent extends React.Component {
   handleSave = () => {
     const slide = {
       'url': this.refs.url.getValue(),
-      'duration': this.refs.duration.getValue()
+      'duration': this.refs.duration.getValue() * 1000 // (transformin seconds to milliseconds)
     };
 
     if (typeof(this.props.slide) != 'undefined') {
@@ -78,9 +78,9 @@ class EditSlideFormComponent extends React.Component {
             validations='isNumeric'
             validationError='Please enter a valid duration'
             required
-            hintText='5000'
-            floatingLabelText='Duration in ms (required)'
-            defaultValue={typeof(this.props.slide) != 'undefined' ? this.props.slide.duration : ''}
+            hintText='5'
+            floatingLabelText='Duration in seconds (required)'
+            defaultValue={typeof(this.props.slide) != 'undefined' ? this.props.slide.duration / 1000 : ''}
           />
         </Formsy.Form>
       </div>

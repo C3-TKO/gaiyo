@@ -118,7 +118,7 @@ class SlideListEditorComponent extends React.Component {
               value={slide._id}
               key={'slide-list-item-' + slide._id}
               primaryText={slide.url}
-              secondaryText={slide.duration}
+              secondaryText={(slide.duration / 1000) + ' seconds'}
               rightIconButton={this.renderRightIconMenu(slide)}
             />
           )}

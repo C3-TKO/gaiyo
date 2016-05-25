@@ -27,7 +27,6 @@ class ScreenLauncherComponent extends React.Component {
               value={slide._id}
               key={'screen-launcher-item-' + slide._id}
               primaryText={slide.url}
-              secondaryText={slide.duration}
               onTouchTap={() => this.handleGoto(slide._id)}
             />
           )}
