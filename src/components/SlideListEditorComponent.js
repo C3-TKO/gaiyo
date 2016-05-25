@@ -36,7 +36,8 @@ class SlideListEditorComponent extends React.Component {
     super(props);
     this.state = {
       open: false,
-      slideBeingEdited: undefined
+      slideBeingEdited: undefined,
+      isEditButtonDisabled: true
     };
   }
 
@@ -65,6 +66,18 @@ class SlideListEditorComponent extends React.Component {
     this.handleClose();
   }
 
+  disableEditButton = () => {
+    this.setState({
+      isEditButtonDisabled: true
+    })
+  }
+
+  enableEditButton = () => {
+    this.setState({
+      isEditButtonDisabled: false
+    })
+  }
+
   renderRightIconMenu(slide) {
     return (
       <IconMenu iconButtonElement={iconButtonElement}>
@@ -85,14 +98,15 @@ class SlideListEditorComponent extends React.Component {
   render() {
     const actions = [
       <FlatButton
-        label="Cancel"
+        label='Cancel'
         primary={false}
         onTouchTap={this.handleClose}
       />,
       <FlatButton
-        label="Save"
+        label='Save'
         primary={true}
         onTouchTap={this.handleSave}
+        disabled={this.state.isEditButtonDisabled}
       />
     ];
 
@@ -118,7 +132,7 @@ class SlideListEditorComponent extends React.Component {
               value={slide._id}
               key={'slide-list-item-' + slide._id}
               primaryText={slide.url}
-              secondaryText={slide.duration}
+              secondaryText={(slide.duration / 1000) + ' seconds'}
               rightIconButton={this.renderRightIconMenu(slide)}
             />
           )}
@@ -135,6 +149,9 @@ class SlideListEditorComponent extends React.Component {
             onAdd={this.props.onAdd}
             onEdit={this.props.onEdit}
             slide={this.state.slideBeingEdited}
+            disableEditButton={this.disableEditButton}
+            enableEditButton={this.enableEditButton}
+            handleCloseDialog={this.handleClose}
           />
         </Dialog>
       </div>
