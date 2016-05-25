@@ -30,26 +30,12 @@ class EditSlideFormComponent extends React.Component {
   }
 
   enableButton = () => {
-    this.setState({
-      canSubmit: true
-    });
+    this.props.enableEditButton();
   }
 
   disableButton = () => {
-    this.setState({
-      canSubmit: false
-    });
+    this.props.disableEditButton();
   }
-
-  submitForm = (data) =>  {
-    alert(JSON.stringify(data, null, 4));
-  }
-
-  /*
-  notifyFormError(data) {
-    console.error('Form error:', data);
-  }
-  */
 
   render() {
     return (
@@ -57,8 +43,7 @@ class EditSlideFormComponent extends React.Component {
         <Formsy.Form
           onValid={this.enableButton}
           onInvalid={this.disableButton}
-          onValidSubmit={this.submitForm}
-          onInvalidSubmit={this.notifyFormError}
+          onValidSubmit={this.handleSave}
         >
           <FormsyText
             name='url'
@@ -92,7 +77,9 @@ EditSlideFormComponent.displayName = 'EditSlideFormComponent';
 EditSlideFormComponent.propTypes = {
   onAdd: React.PropTypes.func.isRequired,
   onEdit: React.PropTypes.func.isRequired,
-  slide: React.PropTypes.any
+  slide: React.PropTypes.any,
+  disableEditButton: React.PropTypes.func.isRequired,
+  enableEditButton: React.PropTypes.func.isRequired
 };
 
 EditSlideFormComponent.defaultProps = {
