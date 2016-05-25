@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-import TextField from 'material-ui/TextField';
 import Formsy from 'formsy-react';
 import {FormsyText} from 'formsy-material-ui/lib';
 
@@ -46,9 +45,11 @@ class EditSlideFormComponent extends React.Component {
     alert(JSON.stringify(data, null, 4));
   }
 
+  /*
   notifyFormError(data) {
     console.error('Form error:', data);
   }
+  */
 
   render() {
     return (
