@@ -151,6 +151,7 @@ class SlideListEditorComponent extends React.Component {
             slide={this.state.slideBeingEdited}
             disableEditButton={this.disableEditButton}
             enableEditButton={this.enableEditButton}
+            handleCloseDialog={this.handleClose}
           />
         </Dialog>
       </div>
