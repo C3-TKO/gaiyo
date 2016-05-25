@@ -7,9 +7,7 @@ import ContentLowPriority from 'material-ui/svg-icons/content/low-priority';
 import AvPause from 'material-ui/svg-icons/av/pause';
 import AvPlayArrow from 'material-ui/svg-icons/av/play-arrow';
 import AvSkipNext from 'material-ui/svg-icons/av/skip-next';
-
 import KeyBinding from 'react-keybinding-component';
-
 import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
 import ScreenLauncher from './ScreenLauncherComponent';
