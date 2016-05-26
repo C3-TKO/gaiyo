@@ -85,7 +85,10 @@ class RotatorComponent extends React.Component {
         <IframeComponent
           url={this.props.slides[this.state.pointer].url}
         />
-        <IframeLockerComponent/>
+        <IframeLockerComponent
+          next={this.next.bind(this)}
+          prev={this.prev.bind(this)}
+        />
         <ControlsComponent
           slides={this.props.slides}
           isPlaying={this.state.isPlaying}
