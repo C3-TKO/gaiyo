@@ -29,12 +29,11 @@ class IframeLockerComponent extends React.Component {
 
   render() {
     return (
-    <Swipeable
+    <Swipeable className="iframelocker-component"
       onSwipedRight={this.props.next}
       onSwipedLeft={this.props.prev}
       preventDefaultTouchmoveEvent={true}>
       <div
-        className="iframelocker-component"
         onTouchTap={this.handleTouchTap}
       >
         <Snackbar
@@ -45,7 +44,6 @@ class IframeLockerComponent extends React.Component {
         />
       </div>
     </Swipeable>
-
     );
   }
 }

@@ -13,7 +13,12 @@ describe('IframeLockerComponent', () => {
   let component;
 
   beforeEach(() => {
-    component = createComponent(IframeLockerComponent);
+    component = createComponent(IframeLockerComponent, Object.assign({},
+      {
+        next: () => {},
+        prev: () => {}
+      })
+    )
   });
 
   it('should have its component name as default className', () => {
