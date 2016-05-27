@@ -3,13 +3,18 @@
 /*eslint no-console: 0*/
 'use strict';
 
+import React from 'react';
+import { shallow } from 'enzyme';
+
 // Uncomment the following lines to use the react test utilities
 // import TestUtils from 'react-addons-test-utils';
 import createComponent from 'helpers/shallowRenderHelper';
 
 import IframeLockerComponent from 'components//IframeLockerComponent.js';
 
-describe('IframeLockerComponent', () => {
+describe.only('IframeLockerComponent', () => {
+  const wrapper = shallow(<IframeLockerComponent />);
+
   let component;
 
   beforeEach(() => {
