@@ -9,31 +9,27 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class AppComponent extends React.Component {
 
-  renderWithFilledCollection() {
+  renderIfSlidesAreDefined() {
     if (this.props.slides.length > 0) {
       return (
-        <div>
-          <MuiThemeProvider muiTheme={getMuiTheme()}>
-            <RotatorComponent slides={this.props.slides}/>
-          </MuiThemeProvider>
-        </div>
+        <RotatorComponent slides={this.props.slides} />
       )
     }
   }
 
   render() {
     return (
+      <MuiThemeProvider muiTheme={getMuiTheme()}>
       <div className="index">
-        {this.renderWithFilledCollection()}
-        <MuiThemeProvider muiTheme={getMuiTheme()}>
+          {this.renderIfSlidesAreDefined()}
           <SettingsComponent
             slides={this.props.slides}
             actionAddSlide={this.props.actions.addSlide}
             actionEditSlide={this.props.actions.editSlide}
             actionDeleteSlide={this.props.actions.deleteSlide}
           />
-        </MuiThemeProvider>
       </div>
+      </MuiThemeProvider>
     );
   }
 }
