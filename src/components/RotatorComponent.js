@@ -19,6 +19,14 @@ class RotatorComponent extends React.Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if(this.state.pointer >= (nextProps.slides.length - 1)) {
+      this.setState({
+        pointer: 0
+      });
+    }
+  }
+
   play = () => {
     clearTimeout(this.state.timeout);
     const timeout = setTimeout(() => this.next(), this.props.slides[this.state.pointer].duration);
