@@ -13,14 +13,16 @@ import IframeLockerComponent from 'components//IframeLockerComponent.js';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
-describe.only('IframeLockerComponent', () => {
+describe('IframeLockerComponent', () => {
   let component;
+  const next = sinon.spy();
+  const prev = sinon.spy();
 
   beforeEach(() => {
     component = shallow(
       <IframeLockerComponent
-        next={() => {}}
-        prev={() => {}}
+        next={next}
+        prev={prev}
       />
     );
   });
@@ -35,11 +37,11 @@ describe.only('IframeLockerComponent', () => {
     expect(component.state('open')).to.be.ture;
   });
 
-  it('should go to the previous screen after swipe left', () => {
-
+  it.skip('should go to the previous screen after swipe left', () => {
+    expect(prev).calledOnce;
   });
 
-  it('should go to the next screen after swipe right', () => {
-
+  it.skip('should go to the next screen after swipe right', () => {
+    expect(next).calledOnce;
   });
 });
