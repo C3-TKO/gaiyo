@@ -15,8 +15,15 @@ describe('EditSlideFormComponent', () => {
   beforeEach(() => {
     component = createComponent(EditSlideFormComponent, Object.assign({},
       {
+        slide: {
+          url: 'http://www.example.com',
+          duration: 5000
+        },
         onEdit: () => {},
-        onAdd: () => {}
+        onAdd: () => {},
+        disableEditButton: () => {},
+        enableEditButton: () => {},
+        handleCloseDialog: () => {}
       })
     )
   });
