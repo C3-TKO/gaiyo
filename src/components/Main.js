@@ -19,8 +19,8 @@ class AppComponent extends React.Component {
 
   render() {
     return (
-      <MuiThemeProvider muiTheme={getMuiTheme()}>
-      <div className="index">
+      <MuiThemeProvider muiTheme={getMuiTheme()} className="index">
+      <div>
           {this.renderIfSlidesAreDefined()}
           <SettingsComponent
             slides={this.props.slides}
