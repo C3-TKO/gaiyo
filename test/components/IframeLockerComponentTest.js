@@ -5,13 +5,7 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
-
-// Uncomment the following lines to use the react test utilities
-// import TestUtils from 'react-addons-test-utils';
 import IframeLockerComponent from 'components//IframeLockerComponent.js';
-
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
 
 describe('IframeLockerComponent', () => {
   let component;
