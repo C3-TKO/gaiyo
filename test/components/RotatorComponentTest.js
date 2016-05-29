@@ -32,6 +32,29 @@ describe('RotatorComponent', () => {
   });
 
   describe('Screen rotator controls', () => {
+    let component;
+
+    beforeEach(() => {
+      component = shallow(
+        <RotatorComponent
+          slides={[
+            {
+              url: 'http://www.example.com',
+              duration: 5000
+            },
+            {
+              url: 'http://smash.cologne',
+              duration: 5000
+            },
+            {
+              url: 'http://127.0.0.1',
+              duration: 5000
+            }
+        ]}
+        />
+      );
+    });
+
     it('should start the timeouted display of the current screen on play()', () => {
 
     });
@@ -53,8 +76,37 @@ describe('RotatorComponent', () => {
     });
 
     describe('Inifinite looping', () => {
-      it('should start over with the first screen in list after the last one has been displayed', () => {
 
+      let component;
+
+      beforeEach(() => {
+        component = shallow(
+          <RotatorComponent
+            ref='test'
+            slides={[
+            {
+              url: 'http://www.example.com',
+              duration: 5000
+            },
+            {
+              url: 'http://smash.cologne',
+              duration: 5000
+            },
+            {
+              url: 'http://127.0.0.1',
+              duration: 5000
+            }
+        ]}
+          />
+        ), component.instance().next();
+      });
+
+      it.only('should start over with the first screen in list after the last one has been displayed', () => {
+        component.setState({
+          pointer: 2
+        });
+        component.next();
+        console.log(component.state());
       });
 
       it('should load last screen of list if using prev() while displaying the very first screen', () => {
