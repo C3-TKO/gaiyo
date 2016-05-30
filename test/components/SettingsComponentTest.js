@@ -13,7 +13,19 @@ describe('SettingsComponent', () => {
   let component;
 
   beforeEach(() => {
-    component = createComponent(SettingsComponent);
+    component = createComponent(SettingsComponent, Object.assign({},
+      {
+        slides: [
+          {
+            url: 'http://www.example.com',
+            duration: 5000
+          }
+        ],
+        actionAddSlide: () => {},
+        actionDeleteSlide: () => {},
+        actionEditSlide: () => {}
+      })
+    )
   });
 
   it('should have its component name as default className', () => {

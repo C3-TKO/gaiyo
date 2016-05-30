@@ -13,7 +13,7 @@ import FlatButton from 'material-ui/FlatButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 
-import Dialog from 'material-ui/dialog';
+import Dialog from 'material-ui/Dialog';
 import EditSlideForm from './EditSlideFormComponent';
 
 const iconButtonElement = (
@@ -36,7 +36,8 @@ class SlideListEditorComponent extends React.Component {
     super(props);
     this.state = {
       open: false,
-      slideBeingEdited: undefined
+      slideBeingEdited: undefined,
+      isEditButtonDisabled: true
     };
   }
 
@@ -65,17 +66,29 @@ class SlideListEditorComponent extends React.Component {
     this.handleClose();
   }
 
+  disableEditButton = () => {
+    this.setState({
+      isEditButtonDisabled: true
+    })
+  }
+
+  enableEditButton = () => {
+    this.setState({
+      isEditButtonDisabled: false
+    })
+  }
+
   renderRightIconMenu(slide) {
     return (
       <IconMenu iconButtonElement={iconButtonElement}>
         <MenuItem
           /* @TODO: Have a look at https://github.com/callemall/material-ui/issues/4008 */
-          style={{"-webkit-appearance": "none"}}
+          style={{'-webkit-appearance': 'none'}}
           onTouchTap={() => {this.handleEdit(slide)}}>Edit
         </MenuItem>
         <MenuItem
           /* @TODO: Have a look at https://github.com/callemall/material-ui/issues/4008 */
-          style={{"-webkit-appearance": "none"}}
+          style={{'-webkit-appearance': 'none'}}
           onTouchTap={() => {this.props.onDelete(slide._id)}}>Delete
         </MenuItem>
       </IconMenu>
@@ -85,20 +98,21 @@ class SlideListEditorComponent extends React.Component {
   render() {
     const actions = [
       <FlatButton
-        label="Cancel"
+        label='Cancel'
         primary={false}
         onTouchTap={this.handleClose}
       />,
       <FlatButton
-        label="Save"
+        label='Save'
         primary={true}
         onTouchTap={this.handleSave}
+        disabled={this.state.isEditButtonDisabled}
       />
     ];
 
     return (
-      <div className="slidelist-component">
-        <div id="addSlideFAB">
+      <div className='slidelisteditor-component'>
+        <div id='addSlideFAB'>
           <FloatingActionButton
             mini={true}
             onTouchTap={this.handleOpen}>
@@ -114,27 +128,30 @@ class SlideListEditorComponent extends React.Component {
           {this.props.slides.map(slide =>
             <ListItem
               /* @TODO: Have a look at https://github.com/callemall/material-ui/issues/4008 */
-              style={{"-webkit-appearance": "none"}}
+              style={{'-webkit-appearance': 'none'}}
               value={slide._id}
               key={'slide-list-item-' + slide._id}
               primaryText={slide.url}
-              secondaryText={slide.duration}
+              secondaryText={(slide.duration / 1000) + ' seconds'}
               rightIconButton={this.renderRightIconMenu(slide)}
             />
           )}
         </List>
 
         <Dialog
-          title="Slide Edit"
+          title='Slide Edit'
           actions={actions}
           open={this.state.open}
           onRequestClose={this.handleClose}
         >
           <EditSlideForm
-            ref="editSlideForm"
+            ref='editSlideForm'
             onAdd={this.props.onAdd}
             onEdit={this.props.onEdit}
             slide={this.state.slideBeingEdited}
+            disableEditButton={this.disableEditButton}
+            enableEditButton={this.enableEditButton}
+            handleCloseDialog={this.handleClose}
           />
         </Dialog>
       </div>

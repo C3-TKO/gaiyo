@@ -18,18 +18,15 @@ class ScreenLauncherComponent extends React.Component {
       <div className="screenlauncher-component">
 
         <List>
-          <Subheader>
-            {this.props.subHeader}
-          </Subheader>
+          <Subheader>Click to select</Subheader>
           {this.props.slides.map((slide, index) =>
             <ListItem
               /* @TODO: Have a look at https://github.com/callemall/material-ui/issues/4008 */
-              style={{"-webkit-appearance": "none"}}
+              style={{'-webkit-appearance': 'none'}}
               tabIndex={index + 1}
               value={slide._id}
               key={'screen-launcher-item-' + slide._id}
               primaryText={slide.url}
-              secondaryText={slide.duration}
               onTouchTap={() => this.handleGoto(slide._id)}
             />
           )}
@@ -42,7 +39,7 @@ class ScreenLauncherComponent extends React.Component {
 ScreenLauncherComponent.displayName = 'ScreenLauncherComponent';
 
 ScreenLauncherComponent.propTypes = {
-  subHeader: React.PropTypes.string.isRequired,
+  slides: React.PropTypes.array.isRequired,
   goto: React.PropTypes.func.isRequired,
   handleClose: React.PropTypes.func.isRequired
 };

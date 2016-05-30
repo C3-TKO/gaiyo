@@ -9,7 +9,7 @@ module.exports = function(config) {
     ],
     port: 8080,
     captureTimeout: 60000,
-    frameworks: [ 'mocha', 'chai' ],
+    frameworks: [ 'mocha', 'chai', 'sinon', 'sinon-chai' ],
     client: {
       mocha: {}
     },
@@ -26,7 +26,8 @@ module.exports = function(config) {
       dir: 'coverage/',
       reporters: [
         { type: 'html' },
-        { type: 'text' }
+        { type: 'text' },
+        { type: 'lcov' }
       ]
     }
   });

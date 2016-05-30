@@ -14,7 +14,21 @@ describe('MainComponent', () => {
   let MainComponent;
 
   beforeEach(() => {
-    MainComponent = createComponent(Main);
+    MainComponent = createComponent(Main, Object.assign({},
+      {
+        slides: [
+          {
+            url: 'http://www.example.com',
+            duration: 5000
+          }
+        ],
+        actions: {
+          addSlide: () => {},
+          editSlide: () => {},
+          deleteSlide: () => {}
+        }
+      })
+    );
   });
 
   it('should have its component name as default className', () => {

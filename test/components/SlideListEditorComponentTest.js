@@ -9,14 +9,26 @@ import createComponent from 'helpers/shallowRenderHelper';
 
 import SlideListEditorComponent from 'components//SlideListEditorComponent.js';
 
-describe('SlideListComponent', () => {
+describe('SlideListEditorComponent', () => {
   let component;
 
   beforeEach(() => {
-    component = createComponent(SlideListComponent);
+    component = createComponent(SlideListEditorComponent, Object.assign({},
+      {
+        slides: [
+          {
+            url: 'http://www.example.com',
+            duration: 5000
+          }
+        ],
+        onDelete: () => {},
+        onEdit: () => {},
+        onAdd: () => {}
+      })
+    )
   });
 
   it('should have its component name as default className', () => {
-    expect(component.props.className).to.equal('slidelist-component');
+    expect(component.props.className).to.equal('slidelisteditor-component');
   });
 });

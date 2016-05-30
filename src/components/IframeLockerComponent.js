@@ -1,7 +1,8 @@
 'use strict';
 
 import React from 'react';
-import Snackbar from 'material-ui/snackbar';
+import Snackbar from 'material-ui/Snackbar';
+import Swipeable from 'react-swipeable';
 
 require('styles//IframeLocker.scss');
 
@@ -28,8 +29,11 @@ class IframeLockerComponent extends React.Component {
 
   render() {
     return (
+    <Swipeable className="iframelocker-component"
+      onSwipedRight={this.props.next}
+      onSwipedLeft={this.props.prev}
+      preventDefaultTouchmoveEvent={true}>
       <div
-        className="iframelocker-component"
         onTouchTap={this.handleTouchTap}
       >
         <Snackbar
@@ -39,11 +43,15 @@ class IframeLockerComponent extends React.Component {
           onRequestClose={this.handleRequestClose}
         />
       </div>
+    </Swipeable>
     );
   }
 }
 
 IframeLockerComponent.displayName = 'IframeLockerComponent';
-
+IframeLockerComponent.propTypes = {
+  next: React.PropTypes.func.isRequired,
+  prev: React.PropTypes.func.isRequired
+};
 
 export default IframeLockerComponent;

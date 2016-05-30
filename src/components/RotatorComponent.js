@@ -19,6 +19,14 @@ class RotatorComponent extends React.Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if(this.state.pointer >= (nextProps.slides.length - 1)) {
+      this.setState({
+        pointer: 0
+      });
+    }
+  }
+
   play = () => {
     clearTimeout(this.state.timeout);
     const timeout = setTimeout(() => this.next(), this.props.slides[this.state.pointer].duration);
@@ -85,15 +93,18 @@ class RotatorComponent extends React.Component {
         <IframeComponent
           url={this.props.slides[this.state.pointer].url}
         />
-        <IframeLockerComponent/>
+        <IframeLockerComponent
+          next={this.next}
+          prev={this.prev}
+        />
         <ControlsComponent
           slides={this.props.slides}
           isPlaying={this.state.isPlaying}
-          play={this.play.bind(this)}
-          stop={this.stop.bind(this)}
-          next={this.next.bind(this)}
-          prev={this.prev.bind(this)}
-          goto={this.goto.bind(this)}
+          play={this.play}
+          stop={this.stop}
+          next={this.next}
+          prev={this.prev}
+          goto={this.goto}
         />
         <StopWatchComponent
           isPlaying={this.state.isPlaying}

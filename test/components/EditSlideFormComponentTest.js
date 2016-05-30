@@ -13,7 +13,19 @@ describe('EditSlideFormComponent', () => {
   let component;
 
   beforeEach(() => {
-    component = createComponent(EditSlideFormComponent);
+    component = createComponent(EditSlideFormComponent, Object.assign({},
+      {
+        slide: {
+          url: 'http://www.example.com',
+          duration: 5000
+        },
+        onEdit: () => {},
+        onAdd: () => {},
+        disableEditButton: () => {},
+        enableEditButton: () => {},
+        handleCloseDialog: () => {}
+      })
+    )
   });
 
   it('should have its component name as default className', () => {
