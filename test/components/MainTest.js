@@ -16,7 +16,12 @@ describe('MainComponent', () => {
   beforeEach(() => {
     MainComponent = createComponent(Main, Object.assign({},
       {
-        slides: [],
+        slides: [
+          {
+            url: 'http://www.example.com',
+            duration: 5000
+          }
+        ],
         actions: {
           addSlide: () => {},
           editSlide: () => {},
