@@ -7,8 +7,17 @@ import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
 import SlideListEditor from './SlideListEditorComponent';
 import Snackbar from 'material-ui/Snackbar';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
+
 
 require('styles//Settings.scss');
+
+const messages = defineMessages({
+  settingsTitle: {
+    id: 'settingsTitle',
+    defaultMessage: 'Close-I18n-Default'
+  }
+});
 
 class SettingsComponent extends React.Component {
 
@@ -80,17 +89,19 @@ class SettingsComponent extends React.Component {
   }
 
   render() {
+    const {formatMessage} = this.props.intl;
+
     const actions = [
       <FlatButton
-        label="Close"
+        label='Close'
         primary={true}
         onTouchTap={this.closeDialog}
       />
     ];
 
     return (
-      <div className="settings-component">
-        <div className="settings-button-container">
+      <div className='settings-component'>
+        <div className='settings-button-container'>
           <FloatingActionButton
             mini={true}
             onTouchTap={this.openDialog}>
@@ -99,7 +110,7 @@ class SettingsComponent extends React.Component {
         </div>
 
         <Dialog
-          title="Settings"
+          title={formatMessage(messages.settingsTitle)}
           actions={actions}
           modal={this.props.slides.length === 0}
           open={this.state.dialogOpen}
@@ -115,7 +126,7 @@ class SettingsComponent extends React.Component {
 
         <Snackbar
           open={this.state.snackbarOpen}
-          message="Please add at least one screen to the rotation list!"
+          message='Please add at least one screen to the rotation list!'
           autoHideDuration={6000}
           onRequestClose={this.closeSnackbar}
         />
@@ -133,4 +144,4 @@ SettingsComponent.propTypes = {
   actionEditSlide: React.PropTypes.func.isRequired
 };
 
-export default SettingsComponent;
+export default injectIntl(SettingsComponent);

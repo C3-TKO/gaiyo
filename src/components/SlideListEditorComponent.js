@@ -103,7 +103,7 @@ class SlideListEditorComponent extends React.Component {
         onTouchTap={this.handleClose}
       />,
       <FlatButton
-        label='Save'
+        label='Update'
         primary={true}
         onTouchTap={this.handleSave}
         disabled={this.state.isEditButtonDisabled}
@@ -139,7 +139,7 @@ class SlideListEditorComponent extends React.Component {
         </List>
 
         <Dialog
-          title='Slide Edit'
+          title='Edit slide'
           actions={actions}
           open={this.state.open}
           onRequestClose={this.handleClose}
