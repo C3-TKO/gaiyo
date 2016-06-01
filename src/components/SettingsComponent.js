@@ -7,15 +7,23 @@ import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
 import SlideListEditor from './SlideListEditorComponent';
 import Snackbar from 'material-ui/Snackbar';
-import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 
 
 require('styles//Settings.scss');
 
 const messages = defineMessages({
-  settingsTitle: {
+  close: {
+    id: 'settingsClose',
+    defaultMessage: 'Close'
+  },
+  title: {
     id: 'settingsTitle',
     defaultMessage: 'Close-I18n-Default'
+  },
+  snackbar: {
+    id: 'settingsSnackbar',
+    defaultMessage: 'Please add at least one screen to the rotation list!'
   }
 });
 
@@ -93,7 +101,7 @@ class SettingsComponent extends React.Component {
 
     const actions = [
       <FlatButton
-        label='Close'
+        label={formatMessage(messages.close)}
         primary={true}
         onTouchTap={this.closeDialog}
       />
@@ -110,7 +118,7 @@ class SettingsComponent extends React.Component {
         </div>
 
         <Dialog
-          title={formatMessage(messages.settingsTitle)}
+          title={formatMessage(messages.title)}
           actions={actions}
           modal={this.props.slides.length === 0}
           open={this.state.dialogOpen}
@@ -126,7 +134,7 @@ class SettingsComponent extends React.Component {
 
         <Snackbar
           open={this.state.snackbarOpen}
-          message='Please add at least one screen to the rotation list!'
+          message={formatMessage(messages.snackbar)}
           autoHideDuration={6000}
           onRequestClose={this.closeSnackbar}
         />

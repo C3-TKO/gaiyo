@@ -11,9 +11,9 @@ render(
   <Provider store={store}>
     <IntlProvider locale='en' messages={
       {
-        'close': 'Close-I18n',
-        'settingsTitle': 'Settings-I18n',
-        'settingsSnackbar': 'Please add at least one screen to the rotation list!-I18n'
+        'settingsClose': 'Close',
+        'settingsTitle': 'Settings',
+        'settingsSnackbar': 'Please add at least one screen to the rotation list!'
       }
     }>
       <App />
