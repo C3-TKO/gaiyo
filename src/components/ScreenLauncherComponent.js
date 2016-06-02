@@ -3,8 +3,16 @@
 import React from 'react';
 import Subheader from 'material-ui/Subheader'
 import {List, ListItem} from 'material-ui/List';
+import { defineMessages, injectIntl } from 'react-intl';
 
 require('styles//ScreenLauncher.scss');
+
+const messages = defineMessages({
+  subheader: {
+    id: 'screenlauncherSubHeader',
+    defaultMessage: 'Click to select'
+  }
+});
 
 class ScreenLauncherComponent extends React.Component {
 
@@ -14,11 +22,13 @@ class ScreenLauncherComponent extends React.Component {
   }
 
   render() {
+    const {formatMessage} = this.props.intl;
+
     return (
       <div className="screenlauncher-component">
 
         <List>
-          <Subheader>Click to select</Subheader>
+          <Subheader>{formatMessage(messages.subheader)}</Subheader>
           {this.props.slides.map((slide, index) =>
             <ListItem
               /* @TODO: Have a look at https://github.com/callemall/material-ui/issues/4008 */
@@ -44,4 +54,4 @@ ScreenLauncherComponent.propTypes = {
   handleClose: React.PropTypes.func.isRequired
 };
 
-export default ScreenLauncherComponent;
+export default injectIntl(ScreenLauncherComponent);

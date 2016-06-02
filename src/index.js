@@ -13,7 +13,9 @@ render(
       {
         'settingsClose': 'Close',
         'settingsTitle': 'Settings',
-        'settingsSnackbar': 'Please add at least one screen to the rotation list!'
+        'settingsSnackbar': 'Please add at least one screen to the rotation list!',
+
+        'screenlauncherSubHeader': 'Click to select'
       }
     }>
       <App />
