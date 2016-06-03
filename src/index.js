@@ -15,7 +15,12 @@ render(
         'settingsTitle': 'Settings',
         'settingsSnackbar': 'Please add at least one screen to the rotation list!',
 
-        'screenlauncherSubHeader': 'Click to select'
+        'screenlauncherSubHeader': 'Click to select',
+
+        'editslideformLabelUrl': 'Url (required)',
+        'editslideformErrorUrl': 'Please enter a valid url',
+        'editslideformLabelDuration': 'Duration in seconds (required)',
+        'editslideformErrorDuration': 'Please enter a valid duration'
       }
     }>
       <App />
