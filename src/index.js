@@ -27,7 +27,9 @@ render(
 
         'editslideformTitle': 'Edit slide',
         'editslideformSubHeader': 'Screen rotation list',
-        //'editslideformSecondaryText': '(slide.duration / 1000) seconds',
+        'editslideformSecondaryText': `{duration, plural,
+          one {{duration} second}
+          other {{duration} seconds}}`,
         'editslideformButtonUpdate': 'Update',
         'editslideformButtonCancel': 'Cancel',
         'editslideformButtonDelete': 'Delete',

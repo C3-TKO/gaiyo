@@ -27,7 +27,12 @@ const messages = defineMessages({
     id: 'editslideformButtonUpdate',
     defaultMessage: 'Update'
   },
-  //'editslideformSecondaryText': '(slide.duration / 1000) seconds',
+  secondarytext: {
+    id: 'editslideformSecondaryText',
+    defaultMessage: `{duration, plural,
+      one {{duration} second}
+      other {{duration} seconds}}`
+  },
   buttoncancel: {
     id: 'editslideformButtonCancel',
     defaultMessage: 'Cancel'
@@ -168,7 +173,7 @@ class SlideListEditorComponent extends React.Component {
               value={slide._id}
               key={'slide-list-item-' + slide._id}
               primaryText={slide.url}
-              secondaryText={(slide.duration / 1000) + ' seconds'}
+              secondaryText={formatMessage(messages.secondarytext, {duration: (slide.duration / 1000)})}
               rightIconButton={this.renderRightIconMenu(slide)}
             />
           )}
