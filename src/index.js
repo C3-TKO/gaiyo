@@ -23,7 +23,16 @@ render(
         'editslideformErrorDuration': 'Please enter a valid duration',
 
         'screenlauncherTitle': 'Go to screen',
-        'screenlauncherClose': 'Close'
+        'screenlauncherClose': 'Close',
+
+        'editslideformTitle': 'Edit slide',
+        'editslideformSubHeader': 'Screen rotation list',
+        //'editslideformSecondaryText': '(slide.duration / 1000) seconds',
+        'editslideformButtonUpdate': 'Update',
+        'editslideformButtonCancel': 'Cancel',
+        'editslideformButtonDelete': 'Delete',
+        'editslideformButtonEdit': 'Edit',
+        'editslideformButtonMore': 'more'
       }
     }>
       <App />

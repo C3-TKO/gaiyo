@@ -3,30 +3,48 @@
 import React from 'react';
 import Subheader from 'material-ui/Subheader'
 import {List, ListItem} from 'material-ui/List';
-
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
-
 import FlatButton from 'material-ui/FlatButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
-
 import Dialog from 'material-ui/Dialog';
 import EditSlideForm from './EditSlideFormComponent';
+import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
 
-const iconButtonElement = (
-  <IconButton
-    touch={true}
-    tooltip="more"
-    tooltipPosition="bottom-left"
-  >
-    <MoreVertIcon/>
-  </IconButton>
-);
-
-
+const messages = defineMessages({
+  title: {
+    id: 'editslideformTitle',
+    defaultMessage: 'Edit slide'
+  },
+  subheader: {
+    id: 'editslideformSubHeader',
+    defaultMessage: 'Screen rotation list'
+  },
+  buttonupdate: {
+    id: 'editslideformButtonUpdate',
+    defaultMessage: 'Update'
+  },
+  //'editslideformSecondaryText': '(slide.duration / 1000) seconds',
+  buttoncancel: {
+    id: 'editslideformButtonCancel',
+    defaultMessage: 'Cancel'
+  },
+  buttondelete: {
+    id: 'editslideformButtonDelete',
+    defaultMessage: 'Delete'
+  },
+  buttonedit: {
+    id: 'editslideformButtonEdit',
+    defaultMessage: 'Edit'
+  },
+  buttonmore: {
+    id: 'editslideformButtonMore',
+    defaultMessage: 'more'
+  }
+});
 
 require('styles//SlideListEditor.scss');
 
@@ -79,31 +97,49 @@ class SlideListEditorComponent extends React.Component {
   }
 
   renderRightIconMenu(slide) {
+    const {formatMessage} = this.props.intl;
+
+    const iconButtonElement = (
+      <IconButton
+        touch={true}
+        tooltip={formatMessage(messages.buttonmore)}
+        tooltipPosition='bottom-left'
+      >
+        <MoreVertIcon/>
+      </IconButton>
+    );
+
     return (
       <IconMenu iconButtonElement={iconButtonElement}>
         <MenuItem
           /* @TODO: Have a look at https://github.com/callemall/material-ui/issues/4008 */
           style={{'-webkit-appearance': 'none'}}
-          onTouchTap={() => {this.handleEdit(slide)}}>Edit
+          onTouchTap={() => {this.handleEdit(slide)}}
+        >
+          Edit
         </MenuItem>
         <MenuItem
           /* @TODO: Have a look at https://github.com/callemall/material-ui/issues/4008 */
           style={{'-webkit-appearance': 'none'}}
-          onTouchTap={() => {this.props.onDelete(slide._id)}}>Delete
+          onTouchTap={() => {this.props.onDelete(slide._id)}}
+        >
+          Delete
         </MenuItem>
       </IconMenu>
     )
   }
 
   render() {
+    const {formatMessage} = this.props.intl;
+
     const actions = [
       <FlatButton
-        label='Cancel'
+        label={formatMessage(messages.buttoncancel)}
         primary={false}
         onTouchTap={this.handleClose}
       />,
       <FlatButton
-        label='Update'
+        label={formatMessage(messages.buttonupdate)}
         primary={true}
         onTouchTap={this.handleSave}
         disabled={this.state.isEditButtonDisabled}
@@ -122,7 +158,7 @@ class SlideListEditorComponent extends React.Component {
 
         <List>
           <Subheader>
-            Screen rotation list
+            <FormattedMessage {...messages.subheader} />
           </Subheader>
 
           {this.props.slides.map(slide =>
@@ -139,7 +175,7 @@ class SlideListEditorComponent extends React.Component {
         </List>
 
         <Dialog
-          title='Edit slide'
+          title={formatMessage(messages.title)}
           actions={actions}
           open={this.state.open}
           onRequestClose={this.handleClose}
@@ -167,4 +203,5 @@ SlideListEditorComponent.propTypes = {
   onAdd: React.PropTypes.func.isRequired
 };
 
-export default SlideListEditorComponent;
+export default injectIntl(SlideListEditorComponent);
+
