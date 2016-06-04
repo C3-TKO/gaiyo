@@ -19,7 +19,7 @@ const messages = defineMessages({
   },
   title: {
     id: 'settingsTitle',
-    defaultMessage: 'Close-I18n-Default'
+    defaultMessage: 'Settings'
   },
   snackbar: {
     id: 'settingsSnackbar',

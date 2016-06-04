@@ -20,7 +20,10 @@ render(
         'editslideformLabelUrl': 'Url (required)',
         'editslideformErrorUrl': 'Please enter a valid url',
         'editslideformLabelDuration': 'Duration in seconds (required)',
-        'editslideformErrorDuration': 'Please enter a valid duration'
+        'editslideformErrorDuration': 'Please enter a valid duration',
+
+        'screenlauncherTitle': 'Go to screen',
+        'screenlauncherClose': 'Close'
       }
     }>
       <App />
