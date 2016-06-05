@@ -32,17 +32,15 @@ class IframeLockerComponent extends React.Component {
     <Swipeable className="iframelocker-component"
       onSwipedRight={this.props.next}
       onSwipedLeft={this.props.prev}
-      preventDefaultTouchmoveEvent={true}>
-      <div
-        onTouchTap={this.handleTouchTap}
-      >
+      preventDefaultTouchmoveEvent={true}
+      onTouchTap={this.handleTouchTap}
+     >
         <Snackbar
           open={this.state.open}
           message="This app runs in read only mode! You cannot interact with the websites that are shown!"
           autoHideDuration={6000}
           onRequestClose={this.handleRequestClose}
         />
-      </div>
     </Swipeable>
     );
   }
