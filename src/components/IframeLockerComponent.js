@@ -3,8 +3,16 @@
 import React from 'react';
 import Snackbar from 'material-ui/Snackbar';
 import Swipeable from 'react-swipeable';
+import { defineMessages, injectIntl } from 'react-intl';
 
 require('styles//IframeLocker.scss');
+
+const messages = defineMessages({
+  snackbar: {
+    id: 'iframelockerSnackbarMessage',
+    defaultMessage: 'This app runs in read only mode! You cannot interact with the websites that are shown!'
+  }
+});
 
 class IframeLockerComponent extends React.Component {
 
