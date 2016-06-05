@@ -11,7 +11,7 @@ require('styles//EditSlideForm.scss');
 const messages = defineMessages({
   labelUrl: {
     id: 'editslideformLabelUrl',
-    defaultMessage: 'Url (required)',
+    defaultMessage: 'Url (required)'
   },
   errorUrl: {
     id: 'editslideformErrorUrl',
