@@ -11,8 +11,20 @@ import KeyBinding from 'react-keybinding-component';
 import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
 import ScreenLauncher from './ScreenLauncherComponent';
+import { defineMessages, injectIntl } from 'react-intl';
 
 require('styles//Controls.scss');
+
+const messages = defineMessages({
+  title: {
+    id: 'screenlauncherTitle',
+    defaultMessage: 'Go to screen'
+  },
+  closeButton: {
+    id: 'screenlauncherClose',
+    defaultMessage: 'Close'
+  }
+});
 
 class ControlsComponent extends React.Component {
 
@@ -63,9 +75,11 @@ class ControlsComponent extends React.Component {
 
 
   render() {
+    const {formatMessage} = this.props.intl;
+
     const actions = [
       <FlatButton
-        label="Close"
+        label={formatMessage(messages.closeButton)}
         primary={true}
         onTouchTap={this.handleClose}
       />
@@ -107,7 +121,7 @@ class ControlsComponent extends React.Component {
         </div>
 
         <Dialog
-          title="Go to screen"
+          title={formatMessage(messages.title)}
           actions={actions}
           modal={false}
           open={this.state.screenLauncherModalOpen}
@@ -137,4 +151,4 @@ ControlsComponent.propTypes = {
   goto: React.PropTypes.func.isRequired
 };
 
-export default ControlsComponent;
+export default injectIntl(ControlsComponent);

@@ -4,8 +4,28 @@ import React from 'react';
 import Formsy from 'formsy-react';
 import {FormsyText} from 'formsy-material-ui/lib';
 import KeyBinding from 'react-keybinding-component';
+import { defineMessages, injectIntl } from 'react-intl';
 
 require('styles//EditSlideForm.scss');
+
+const messages = defineMessages({
+  labelUrl: {
+    id: 'editslideformLabelUrl',
+    defaultMessage: 'Url (required)'
+  },
+  errorUrl: {
+    id: 'editslideformErrorUrl',
+    defaultMessage: 'Please enter a valid url'
+  },
+  labelDuration: {
+    id: 'editslideformLabelDuration',
+    defaultMessage: 'Duration in seconds (required)'
+  },
+  errorDuration: {
+    id: 'editslideformErrorDuration',
+    defaultMessage: 'Please enter a valid duration'
+  }
+});
 
 class EditSlideFormComponent extends React.Component {
 
@@ -57,8 +77,10 @@ class EditSlideFormComponent extends React.Component {
   }
 
   render() {
+    const {formatMessage} = this.props.intl;
+
     return (
-      <div className="editslideform-component">
+      <div className='editslideform-component'>
 
         <KeyBinding onKey={ (e) => { this.handleControlsByKeyboard(e) } } />
 
@@ -71,10 +93,10 @@ class EditSlideFormComponent extends React.Component {
             name='url'
             ref='url'
             validations='isUrl'
-            validationError='Please enter a valid url'
+            validationError={formatMessage(messages.errorUrl)}
             required
             hintText='http://www.example.com'
-            floatingLabelText='Url (required)'
+            floatingLabelText={formatMessage(messages.labelUrl)}
             fullWidth={true}
             defaultValue={typeof(this.props.slide) != 'undefined' ? this.props.slide.url : ''}
           />
@@ -83,10 +105,10 @@ class EditSlideFormComponent extends React.Component {
             name='duration'
             ref='duration'
             validations='isNumeric'
-            validationError='Please enter a valid duration'
+            validationError={formatMessage(messages.errorDuration)}
             required
             hintText='5'
-            floatingLabelText='Duration in seconds (required)'
+            floatingLabelText={formatMessage(messages.labelDuration)}
             defaultValue={typeof(this.props.slide) != 'undefined' ? this.props.slide.duration / 1000 : ''}
           />
         </Formsy.Form>
@@ -109,4 +131,4 @@ EditSlideFormComponent.defaultProps = {
   currentSlide: undefined
 };
 
-export default EditSlideFormComponent;
+export default injectIntl(EditSlideFormComponent);
