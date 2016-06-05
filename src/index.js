@@ -34,7 +34,9 @@ render(
         'editslideformButtonCancel': 'Cancel',
         'editslideformButtonDelete': 'Delete',
         'editslideformButtonEdit': 'Edit',
-        'editslideformButtonMore': 'more'
+        'editslideformButtonMore': 'more',
+
+        'iframelockerSnackbarMessage': 'This app runs in read only mode! You cannot interact with the websites that are shown!'
       }
     }>
       <App />

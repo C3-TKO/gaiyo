@@ -28,8 +28,10 @@ class IframeLockerComponent extends React.Component {
   }
 
   render() {
+    const {formatMessage} = this.props.intl;
+
     return (
-    <Swipeable className="iframelocker-component"
+    <Swipeable className='iframelocker-component'
       onSwipedRight={this.props.next}
       onSwipedLeft={this.props.prev}
       preventDefaultTouchmoveEvent={true}>
@@ -38,7 +40,7 @@ class IframeLockerComponent extends React.Component {
       >
         <Snackbar
           open={this.state.open}
-          message="This app runs in read only mode! You cannot interact with the websites that are shown!"
+          message={formatMessage(messages.snackbar)}
           autoHideDuration={6000}
           onRequestClose={this.handleRequestClose}
         />
@@ -54,4 +56,4 @@ IframeLockerComponent.propTypes = {
   prev: React.PropTypes.func.isRequired
 };
 
-export default IframeLockerComponent;
+export default injectIntl(IframeLockerComponent);
