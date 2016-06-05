@@ -80,7 +80,7 @@ class EditSlideFormComponent extends React.Component {
     const {formatMessage} = this.props.intl;
 
     return (
-      <div className="editslideform-component">
+      <div className='editslideform-component'>
 
         <KeyBinding onKey={ (e) => { this.handleControlsByKeyboard(e) } } />
 
