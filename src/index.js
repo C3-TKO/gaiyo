@@ -4,13 +4,13 @@ import { Provider } from 'react-redux';
 import configureStore from './stores';
 import {IntlProvider} from 'react-intl';
 import App from './containers/App';
-import i18n from './intl/test';
+import messages from './intl/en';
 
 const store = configureStore();
 
 render(
   <Provider store={store}>
-    <IntlProvider locale='en' messages={i18n.messages}>
+    <IntlProvider locale='en' messages={messages}>
       <App />
     </IntlProvider>
   </Provider>,
