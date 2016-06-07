@@ -14,15 +14,15 @@ require('styles//Settings.scss');
 
 const messages = defineMessages({
   close: {
-    id: 'settingsClose',
+    id: 'settings.close',
     defaultMessage: 'Close'
   },
   title: {
-    id: 'settingsTitle',
+    id: 'settings.title',
     defaultMessage: 'Settings'
   },
   snackbar: {
-    id: 'settingsSnackbar',
+    id: 'settings.snackbar',
     defaultMessage: 'Please add at least one screen to the rotation list!'
   }
 });
