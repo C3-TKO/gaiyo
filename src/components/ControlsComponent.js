@@ -17,11 +17,11 @@ require('styles//Controls.scss');
 
 const messages = defineMessages({
   title: {
-    id: 'screenlauncherTitle',
+    id: 'screenlauncher.title',
     defaultMessage: 'Go to screen'
   },
   closeButton: {
-    id: 'screenlauncherClose',
+    id: 'screenlauncher.close',
     defaultMessage: 'Close'
   }
 });
