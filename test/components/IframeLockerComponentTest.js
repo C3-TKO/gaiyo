@@ -28,7 +28,7 @@ describe('IframeLockerComponent', () => {
   it('should display a snackbar on touch tap', () => {
     expect(component.state('open')).to.be.false;
     component.find('div').simulate('touchTap');
-    expect(component.state('open')).to.be.ture;
+    expect(component.state('open')).to.be.true;
   });
 
   it.skip('should go to the previous screen after swipe left', () => {
