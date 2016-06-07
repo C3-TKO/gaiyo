@@ -9,7 +9,7 @@ require('styles//ScreenLauncher.scss');
 
 const messages = defineMessages({
   subheader: {
-    id: 'screenlauncherSubHeader',
+    id: 'screenlauncher.subheader',
     defaultMessage: 'Click to select'
   }
 });

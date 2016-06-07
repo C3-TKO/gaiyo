@@ -10,19 +10,19 @@ require('styles//EditSlideForm.scss');
 
 const messages = defineMessages({
   labelUrl: {
-    id: 'editslideformLabelUrl',
+    id: 'editslideform.labels.url',
     defaultMessage: 'Url (required)'
   },
   errorUrl: {
-    id: 'editslideformErrorUrl',
+    id: 'editslideform.validationerrors.url',
     defaultMessage: 'Please enter a valid url'
   },
   labelDuration: {
-    id: 'editslideformLabelDuration',
+    id: 'editslideform.labels.duration',
     defaultMessage: 'Duration in seconds (required)'
   },
   errorDuration: {
-    id: 'editslideformErrorDuration',
+    id: 'editslideform.validationerrors.duration',
     defaultMessage: 'Please enter a valid duration'
   }
 });

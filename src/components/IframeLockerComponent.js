@@ -9,7 +9,7 @@ require('styles//IframeLocker.scss');
 
 const messages = defineMessages({
   snackbar: {
-    id: 'iframelockerSnackbarMessage',
+    id: 'iframelocker.snackbar',
     defaultMessage: 'This app runs in read only mode! You cannot interact with the websites that are shown!'
   }
 });
