@@ -5,7 +5,6 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import { mount } from 'enzyme';
 import RotatorComponent from 'components//RotatorComponent.js';
 
 describe('RotatorComponent', () => {
