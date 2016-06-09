@@ -20,7 +20,7 @@ describe('RotatorComponent', () => {
           }
         ]}
       />
-    );
+      )
   });
 
   it('should have its component name as default className', () => {

@@ -7,7 +7,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import IframeLockerComponent from 'components//IframeLockerComponent.js';
 
-describe('IframeLockerComponent', () => {
+describe.skip('IframeLockerComponent', () => {
   let component;
   const next = sinon.spy();
   const prev = sinon.spy();

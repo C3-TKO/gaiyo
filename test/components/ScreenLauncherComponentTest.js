@@ -9,7 +9,7 @@ import createComponent from 'helpers/shallowRenderHelper';
 
 import ScreenLauncherComponent from 'components//ScreenLauncherComponent.js';
 
-describe('ScreenLauncherComponent', () => {
+describe.skip('ScreenLauncherComponent', () => {
   let component;
 
   beforeEach(() => {

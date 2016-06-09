@@ -9,7 +9,7 @@ import createComponent from 'helpers/shallowRenderHelper';
 
 import SettingsComponent from 'components//SettingsComponent.js';
 
-describe('SettingsComponent', () => {
+describe.skip('SettingsComponent', () => {
   let component;
 
   beforeEach(() => {

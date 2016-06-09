@@ -9,7 +9,7 @@ import createComponent from 'helpers/shallowRenderHelper';
 
 import SlideListEditorComponent from 'components//SlideListEditorComponent.js';
 
-describe('SlideListEditorComponent', () => {
+describe.skip('SlideListEditorComponent', () => {
   let component;
 
   beforeEach(() => {
