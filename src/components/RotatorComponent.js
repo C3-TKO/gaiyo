@@ -122,3 +122,4 @@ RotatorComponent.propTypes = {
 };
 
 export default RotatorComponent;
+//export default injectIntl(RotatorComponent);

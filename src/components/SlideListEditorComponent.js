@@ -16,37 +16,37 @@ import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
 
 const messages = defineMessages({
   title: {
-    id: 'editslideformTitle',
+    id: 'editslideform.title',
     defaultMessage: 'Edit slide'
   },
   subheader: {
-    id: 'editslideformSubHeader',
+    id: 'editslideform.subheader',
     defaultMessage: 'Screen rotation list'
   },
   buttonupdate: {
-    id: 'editslideformButtonUpdate',
+    id: 'editslideform.buttons.update',
     defaultMessage: 'Update'
   },
   secondarytext: {
-    id: 'editslideformSecondaryText',
+    id: 'editslideform.secondarytext',
     defaultMessage: `{duration, plural,
       one {{duration} second}
       other {{duration} seconds}}`
   },
   buttoncancel: {
-    id: 'editslideformButtonCancel',
+    id: 'editslideform.buttons.cancel',
     defaultMessage: 'Cancel'
   },
   buttondelete: {
-    id: 'editslideformButtonDelete',
+    id: 'editslideform.buttons.delete',
     defaultMessage: 'Delete'
   },
   buttonedit: {
-    id: 'editslideformButtonEdit',
+    id: 'editslideform.buttons.edit',
     defaultMessage: 'Edit'
   },
   buttonmore: {
-    id: 'editslideformButtonMore',
+    id: 'editslideform.buttons.more',
     defaultMessage: 'more'
   }
 });
