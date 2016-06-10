@@ -75,7 +75,7 @@
   },
   "dependencies": {
     "babel-plugin-transform-es2015-arrow-functions": "^6.5.2",
-    "core-js": "^2.0.0",
+    "core-js": "^2.4.0",
     "formsy-material-ui": "^0.4.3",
     "material-ui": "^0.15.0",
     "normalize.css": "^4.0.0",
