@@ -10,6 +10,8 @@ import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
+import FileDownload from 'material-ui/svg-icons/file/file-download';
+import FileUpload from 'material-ui/svg-icons/file/file-upload';
 import Dialog from 'material-ui/Dialog';
 import EditSlideForm from './EditSlideFormComponent';
 import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
@@ -153,12 +155,31 @@ class SlideListEditorComponent extends React.Component {
 
     return (
       <div className='slidelisteditor-component'>
-        <div id='addSlideFAB'>
-          <FloatingActionButton
-            mini={true}
-            onTouchTap={this.handleOpen}>
-            <ContentAdd />
-          </FloatingActionButton>
+        <div id='slidelisteditor-fab-bar'>
+          <div id='downloadSlidesFAB'>
+            <FloatingActionButton
+              secondary={true}
+              mini={true}
+              ovnTouchTap={this.handleOpen}>
+              <FileDownload />
+            </FloatingActionButton>
+          </div>
+
+          <div id='uploadSlidesFAB'>
+            <FloatingActionButton
+              secondary={true}
+              mini={true}
+              ovnTouchTap={this.handleOpen}>
+              <FileUpload />
+            </FloatingActionButton>
+          </div>
+
+          <div id='addSlideFAB'>
+            <FloatingActionButton
+              ovnTouchTap={this.handleOpen}>
+              <ContentAdd />
+            </FloatingActionButton>
+          </div>
         </div>
 
         <List>
