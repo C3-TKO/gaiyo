@@ -160,7 +160,7 @@ class SlideListEditorComponent extends React.Component {
             <FloatingActionButton
               secondary={true}
               mini={true}
-              ovnTouchTap={this.handleOpen}>
+            >
               <FileDownload />
             </FloatingActionButton>
           </div>
@@ -169,14 +169,15 @@ class SlideListEditorComponent extends React.Component {
             <FloatingActionButton
               secondary={true}
               mini={true}
-              ovnTouchTap={this.handleOpen}>
+            >
               <FileUpload />
             </FloatingActionButton>
           </div>
 
           <div className='fab'>
             <FloatingActionButton
-              ovnTouchTap={this.handleOpen}>
+              onTouchTap={this.handleOpen}
+            >
               <ContentAdd />
             </FloatingActionButton>
           </div>
