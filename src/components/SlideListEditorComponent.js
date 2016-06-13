@@ -156,7 +156,7 @@ class SlideListEditorComponent extends React.Component {
     return (
       <div className='slidelisteditor-component'>
         <div id='slidelisteditor-fab-bar'>
-          <div id='downloadSlidesFAB'>
+          <div className='fab'>
             <FloatingActionButton
               secondary={true}
               mini={true}
@@ -165,7 +165,7 @@ class SlideListEditorComponent extends React.Component {
             </FloatingActionButton>
           </div>
 
-          <div id='uploadSlidesFAB'>
+          <div className='fab'>
             <FloatingActionButton
               secondary={true}
               mini={true}
@@ -174,7 +174,7 @@ class SlideListEditorComponent extends React.Component {
             </FloatingActionButton>
           </div>
 
-          <div id='addSlideFAB'>
+          <div className='fab'>
             <FloatingActionButton
               ovnTouchTap={this.handleOpen}>
               <ContentAdd />
