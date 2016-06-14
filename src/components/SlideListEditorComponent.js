@@ -10,6 +10,7 @@ import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ExportSlidesComponent from './ExportSlidesComponent'
+import ImportSlidesComponent from './ImportSlidesComponent'
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import FileDownload from 'material-ui/svg-icons/file/file-download';
 import FileUpload from 'material-ui/svg-icons/file/file-upload';
@@ -160,15 +161,7 @@ class SlideListEditorComponent extends React.Component {
           <ExportSlidesComponent
             slides={this.props.slides}
           />
-
-          <div className='fab'>
-            <FloatingActionButton
-              secondary={true}
-              mini={true}
-            >
-              <FileUpload />
-            </FloatingActionButton>
-          </div>
+          <ImportSlidesComponent />
 
           <div className='fab'>
             <FloatingActionButton
