@@ -6,6 +6,7 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import FileDownload from 'material-ui/svg-icons/file/file-download';
 import Dialog from 'material-ui/Dialog';
 import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
+import CopyToClipboard from 'react-copy-to-clipboard';
 
 require('styles//ExportSlides.scss');
 
@@ -45,18 +46,20 @@ class ExportSlidesComponent extends React.Component {
   }
 
   copy2ClipBoard = () => {
-    alert('COPY');
+    this.closeDialog();
   }
 
   render() {
     const {formatMessage} = this.props.intl;
 
     const actions = [
-      <FlatButton
-        label={formatMessage(messages.buttoncopycb)}
-        primary={true}
-        onTouchTap={this.copy2ClipBoard}
-      />,
+      <CopyToClipboard text={JSON.stringify(this.props.slides)}>
+        <FlatButton
+          label={formatMessage(messages.buttoncopycb)}
+          primary={true}
+          onTouchTap={this.copy2ClipBoard}
+        />
+      </CopyToClipboard>,
       <FlatButton
         label={formatMessage(messages.buttonclose)}
         primary={false}
