@@ -42,7 +42,8 @@ class ImportSlidesComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false
+      open: false,
+      importDisabled: true
     };
   }
 
@@ -73,12 +74,23 @@ class ImportSlidesComponent extends React.Component {
     });
   }
 
+  enableImportButton = () => {
+    console.log('enable');
+    this.setState({importDisabled: false})
+  }
+
+  disableImportButton = () => {
+    console.log('disable');
+    this.setState({importDisabled: true})
+  }
+
   render() {
     const {formatMessage} = this.props.intl;
 
     const actions = [
       <FlatButton
         label={formatMessage(messages.buttonimport)}
+        disabled={this.state.importDisabled}
         primary={true}
         onTouchTap={this.import}
       />,
@@ -88,6 +100,18 @@ class ImportSlidesComponent extends React.Component {
         onTouchTap={this.closeDialog}
       />
     ];
+
+    // @see: https://github.com/christianalfoni/formsy-react/issues/298#issuecomment-199208145
+    Formsy.addValidationRule('isJSON', function(values, value, array) {
+      console.log('validating');
+      try {
+        JSON.parse(value);
+      } catch (e) {
+        return false;
+      }
+      return true;
+    });
+
     return (
       <div className='fab importslides-component'>
         <FloatingActionButton
@@ -105,24 +129,16 @@ class ImportSlidesComponent extends React.Component {
           onRequestClose={this.closeDialog}
         >
           <Formsy.Form
-            onValid={this.enableButton}
-            onInvalid={this.disableButton}
-            onValidSubmit={this.handleSave}
+            onValid={this.enableImportButton}
+            onInvalid={this.disableImportButton}
+            onValidSubmit={this.import}
           >
             <FormsyText
               name='inputJSON'
               ref='inputJSON'
-              validations={{isJSON: function (values, value) {
-                  try {
-                      JSON.parse(value);
-                  } catch (e) {
-                      return false;
-                  }
-                  return true;
-                }
-              }}
-              validationError={formatMessage(messages.errorbackupjson)}
+              validations='isJSON'
               required
+              validationError={formatMessage(messages.errorbackupjson)}
               hintText={formatMessage(messages.hint)}
               floatingLabelText={formatMessage(messages.label)}
               multiLine={true}
