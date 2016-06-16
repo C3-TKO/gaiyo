@@ -5,7 +5,7 @@ import FlatButton from 'material-ui/FlatButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import FileDownload from 'material-ui/svg-icons/file/file-download';
 import Dialog from 'material-ui/Dialog';
-import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import CopyToClipboard from 'react-copy-to-clipboard';
 
 require('styles//ExportSlides.scss');

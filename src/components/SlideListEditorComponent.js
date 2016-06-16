@@ -12,8 +12,6 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ExportSlidesComponent from './ExportSlidesComponent'
 import ImportSlidesComponent from './ImportSlidesComponent'
 import ContentAdd from 'material-ui/svg-icons/content/add';
-import FileDownload from 'material-ui/svg-icons/file/file-download';
-import FileUpload from 'material-ui/svg-icons/file/file-upload';
 import Dialog from 'material-ui/Dialog';
 import EditSlideForm from './EditSlideFormComponent';
 import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';

@@ -6,7 +6,7 @@ import FlatButton from 'material-ui/FlatButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import FileUpload from 'material-ui/svg-icons/file/file-upload';
 import Dialog from 'material-ui/Dialog';
-import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 
 require('styles//ImportSlides.scss');
 
