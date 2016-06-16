@@ -2,6 +2,8 @@
 
 import React from 'react';
 import TextField from 'material-ui/TextField';
+import Formsy from 'formsy-react';
+import {FormsyText} from 'formsy-material-ui/lib';
 import FlatButton from 'material-ui/FlatButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import FileUpload from 'material-ui/svg-icons/file/file-upload';
@@ -30,6 +32,10 @@ const messages = defineMessages({
   buttonimport: {
     id: 'importslides.buttons.import',
     defaultMessage: 'Import'
+  },
+  errorbackupjson: {
+    id: 'importslides.form.validationerrors.duration',
+    defaultMessage: 'Please enter valid JSON'
   }
 });
 
@@ -99,13 +105,31 @@ class ImportSlidesComponent extends React.Component {
           open={this.state.open}
           onRequestClose={this.closeDialog}
         >
-          <TextField
-            ref='inputJSON'
-            hintText={formatMessage(messages.hint)}
-            floatingLabelText={formatMessage(messages.label)}
-            multiLine={true}
-            fullWidth={true}
-          />
+          <Formsy.Form
+            onValid={this.enableButton}
+            onInvalid={this.disableButton}
+            onValidSubmit={this.handleSave}
+          >
+            <FormsyText
+              name='inputJSON'
+              ref='inputJSON'
+              validations={{isJSON: function (values, value) {
+                  try {
+                      JSON.parse(value);
+                  } catch (e) {
+                      return false;
+                  }
+                  return true;
+                }
+              }}
+              validationError={formatMessage(messages.errorbackupjson)}
+              required
+              hintText={formatMessage(messages.hint)}
+              floatingLabelText={formatMessage(messages.label)}
+              multiLine={true}
+              fullWidth={true}
+            />
+          </Formsy.Form>
         </Dialog>
       </div>
     );
