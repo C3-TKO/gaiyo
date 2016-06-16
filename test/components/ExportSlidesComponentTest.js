@@ -9,7 +9,7 @@ import createComponent from 'helpers/shallowRenderHelper';
 
 import ExportSlidesComponent from 'components//ExportSlidesComponent.js';
 
-describe('ExportSlidesComponent', () => {
+describe.skip('ExportSlidesComponent', () => {
   let component;
 
   beforeEach(() => {

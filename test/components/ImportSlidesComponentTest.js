@@ -9,7 +9,7 @@ import createComponent from 'helpers/shallowRenderHelper';
 
 import ImportSlidesComponent from 'components//ImportSlidesComponent.js';
 
-describe('ImportSlidesComponent', () => {
+describe.skip('ImportSlidesComponent', () => {
   let component;
 
   beforeEach(() => {
