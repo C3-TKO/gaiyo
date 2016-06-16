@@ -16,11 +16,11 @@ const messages = defineMessages({
     defaultMessage: 'Import slides'
   },
   hint: {
-    id: 'importslides.hint',
+    id: 'importslides.form.hints.backupjson',
     defaultMessage: 'Copy a previously exported screen rotation list into this field'
   },
   label: {
-    id: 'importslides.label',
+    id: 'importslides.form.labels.backupjson',
     defaultMessage: 'Screen rotation list JSON'
   },
   buttonclose: {

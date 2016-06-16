@@ -23,5 +23,10 @@ export default {
   'iframelocker.snackbar': 'This app runs in read only mode! You cannot interact with the websites that are shown!',
   'exportslides.title': 'Export slides',
   'exportslides.buttons.close': 'Close',
-  'exportslides.buttons.copycb': 'Copy to clipboard'
+  'exportslides.buttons.copycb': 'Copy to clipboard',
+  'importslides.title': 'Import slides',
+  'importslides.form.hints.backupjson': 'Copy a previously exported screen rotation list into this field',
+  'importslides.form.labels.backupjson': 'Screen rotation list JSON',
+  'importslides.buttons.close': 'Close',
+  'importslides.buttons.import': 'Import'
 };
