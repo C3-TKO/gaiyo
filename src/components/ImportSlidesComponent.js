@@ -51,6 +51,14 @@ class ImportSlidesComponent extends React.Component {
 
   import = () => {
     this.dropSlides();
+    const inputJSON = JSON.parse(this.refs.inputJSON.getValue());
+    inputJSON.map(slide => {
+      const newSlide = {
+        'url': slide.url,
+        'duration': slide.duration
+      };
+      this.props.createSlide(newSlide);
+    });
     this.closeDialog();
   }
 
@@ -92,6 +100,7 @@ class ImportSlidesComponent extends React.Component {
           onRequestClose={this.closeDialog}
         >
           <TextField
+            ref='inputJSON'
             hintText={formatMessage(messages.hint)}
             floatingLabelText={formatMessage(messages.label)}
             multiLine={true}
@@ -107,7 +116,7 @@ ImportSlidesComponent.displayName = 'ImportSlidesComponent';
 ImportSlidesComponent.propTypes = {
   slides: React.PropTypes.array.isRequired,
   deleteSlide: React.PropTypes.func.isRequired,
-  addSlide: React.PropTypes.func.isRequired
+  createSlide: React.PropTypes.func.isRequired
 };
 
 export default injectIntl(ImportSlidesComponent);
