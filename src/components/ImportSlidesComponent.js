@@ -75,12 +75,10 @@ class ImportSlidesComponent extends React.Component {
   }
 
   enableImportButton = () => {
-    console.log('enable');
     this.setState({importDisabled: false})
   }
 
   disableImportButton = () => {
-    console.log('disable');
     this.setState({importDisabled: true})
   }
 
@@ -102,8 +100,7 @@ class ImportSlidesComponent extends React.Component {
     ];
 
     // @see: https://github.com/christianalfoni/formsy-react/issues/298#issuecomment-199208145
-    Formsy.addValidationRule('isJSON', function(values, value, array) {
-      console.log('validating');
+    Formsy.addValidationRule('isJSON', function(values, value) {
       try {
         JSON.parse(value);
       } catch (e) {
