@@ -9,6 +9,8 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ExportSlidesComponent from './ExportSlidesComponent'
+import ImportSlidesComponent from './ImportSlidesComponent'
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import Dialog from 'material-ui/Dialog';
 import EditSlideForm from './EditSlideFormComponent';
@@ -153,12 +155,23 @@ class SlideListEditorComponent extends React.Component {
 
     return (
       <div className='slidelisteditor-component'>
-        <div id='addSlideFAB'>
-          <FloatingActionButton
-            mini={true}
-            onTouchTap={this.handleOpen}>
-            <ContentAdd />
-          </FloatingActionButton>
+        <div id='slidelisteditor-fab-bar'>
+          <ExportSlidesComponent
+            slides={this.props.slides}
+          />
+          <ImportSlidesComponent
+            slides={this.props.slides}
+            deleteSlide={this.props.onDelete}
+            createSlide={this.props.onAdd}
+          />
+
+          <div className='fab'>
+            <FloatingActionButton
+              onTouchTap={this.handleOpen}
+            >
+              <ContentAdd />
+            </FloatingActionButton>
+          </div>
         </div>
 
         <List>

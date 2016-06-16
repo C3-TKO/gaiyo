@@ -1,8 +1,16 @@
 .slidelisteditor-component {
 }
 
-#addSlideFAB {
+#slidelisteditor-fab-bar {
   position: absolute;
-  right: 32px;
-  top: 84px;
+  top: 48px;
+  right: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+#slidelisteditor-fab-bar .fab {
+  float: left;
+  margin-left: 10px;
 }
