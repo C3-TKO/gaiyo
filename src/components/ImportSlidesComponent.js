@@ -50,7 +50,14 @@ class ImportSlidesComponent extends React.Component {
   }
 
   import = () => {
+    this.dropSlides();
     this.closeDialog();
+  }
+
+  dropSlides() {
+    this.props.slides.map(slide => {
+      this.props.deleteSlide(slide._id);
+    });
   }
 
   render() {
@@ -97,5 +104,10 @@ class ImportSlidesComponent extends React.Component {
 }
 
 ImportSlidesComponent.displayName = 'ImportSlidesComponent';
+ImportSlidesComponent.propTypes = {
+  slides: React.PropTypes.array.isRequired,
+  deleteSlide: React.PropTypes.func.isRequired,
+  addSlide: React.PropTypes.func.isRequired
+};
 
 export default injectIntl(ImportSlidesComponent);

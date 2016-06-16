@@ -161,7 +161,11 @@ class SlideListEditorComponent extends React.Component {
           <ExportSlidesComponent
             slides={this.props.slides}
           />
-          <ImportSlidesComponent />
+          <ImportSlidesComponent
+            slides={this.props.slides}
+            deleteSlide={this.props.onDelete}
+            createSlide={this.props.onAdd}
+          />
 
           <div className='fab'>
             <FloatingActionButton
