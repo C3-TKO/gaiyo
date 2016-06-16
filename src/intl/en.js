@@ -27,6 +27,7 @@ export default {
   'importslides.title': 'Import slides',
   'importslides.form.hints.backupjson': 'Copy a previously exported screen rotation list into this field',
   'importslides.form.labels.backupjson': 'Screen rotation list JSON',
+  'importslides.form.validationerrors.duration': 'Please enter valid JSON',
   'importslides.buttons.close': 'Close',
   'importslides.buttons.import': 'Import'
 };
