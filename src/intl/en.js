@@ -20,5 +20,8 @@ export default {
   'editslideform.buttons.delete': 'Delete',
   'editslideform.buttons.edit': 'Edit',
   'editslideform.tooltips.more': 'more',
-  'iframelocker.snackbar': 'This app runs in read only mode! You cannot interact with the websites that are shown!'
+  'iframelocker.snackbar': 'This app runs in read only mode! You cannot interact with the websites that are shown!',
+  'exportslides.title': 'Export slides',
+  'exportslides.buttons.close': 'Close',
+  'exportslides.buttons.copycb': 'Copy to clipboard'
 };

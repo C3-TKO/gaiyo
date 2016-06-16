@@ -15,10 +15,6 @@ const messages = defineMessages({
     id: 'exportslides.title',
     defaultMessage: 'Export slides'
   },
-  secondaryText: {
-    id: 'exportslides.title',
-    defaultMessage: 'Copy the JSON representation of the screen rotation list'
-  },
   buttonclose: {
     id: 'exportslides.buttons.close',
     defaultMessage: 'Close'
