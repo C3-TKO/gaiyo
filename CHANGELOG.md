@@ -1,5 +1,64 @@
 # Change Log
 
+## [v0.4.0](https://github.com/C3-TKO/junkan/tree/v0.4.0) (2016-06-17)
+[Full Changelog](https://github.com/C3-TKO/junkan/compare/v0.3.0...v0.4.0)
+
+**Implemented enhancements:**
+
+- Automatically update the dist app package in gh-pages [\#56](https://github.com/C3-TKO/junkan/issues/56)
+- Import / Export of screen list [\#57](https://github.com/C3-TKO/junkan/issues/57)
+
+**Fixed bugs:**
+
+- Safari needs Intl.js polyfill [\#82](https://github.com/C3-TKO/junkan/issues/82)
+
+**Merged pull requests:**
+
+- Import export slides [\#86](https://github.com/C3-TKO/junkan/pull/86) ([C3-TKO](https://github.com/C3-TKO))
+- Adds a Intl and en locale polyfill for safari [\#85](https://github.com/C3-TKO/junkan/pull/85) ([C3-TKO](https://github.com/C3-TKO))
+- Adds a npm script for updating the gh-pages dist [\#81](https://github.com/C3-TKO/junkan/pull/81) ([C3-TKO](https://github.com/C3-TKO))
+
+## [v0.3.0](https://github.com/C3-TKO/junkan/tree/v0.3.0) (2016-06-10)
+[Full Changelog](https://github.com/C3-TKO/junkan/compare/v0.2.1-beta...v0.3.0)
+
+**Implemented enhancements:**
+
+- Serve the app from gh-pages [\#55](https://github.com/C3-TKO/junkan/issues/55)
+- Fix the basic unit tests [\#61](https://github.com/C3-TKO/junkan/issues/61)
+- Screen Launcher [\#53](https://github.com/C3-TKO/junkan/issues/53)
+- Add possibility to add screen to rotation list on Enter key pressed [\#50](https://github.com/C3-TKO/junkan/issues/50)
+- Form validation [\#46](https://github.com/C3-TKO/junkan/issues/46)
+- I18n [\#45](https://github.com/C3-TKO/junkan/issues/45)
+- Use seconds instead of milliseconds for the duration [\#29](https://github.com/C3-TKO/junkan/issues/29)
+- Touch gestures for mobile devices [\#24](https://github.com/C3-TKO/junkan/issues/24)
+
+**Fixed bugs:**
+
+- Double entries with same url [\#59](https://github.com/C3-TKO/junkan/issues/59)
+- Fix deletion of currently used screen [\#54](https://github.com/C3-TKO/junkan/issues/54)
+
+**Merged pull requests:**
+
+- I18n [\#80](https://github.com/C3-TKO/junkan/pull/80) ([C3-TKO](https://github.com/C3-TKO))
+- Bugfix deletion of current slide [\#77](https://github.com/C3-TKO/junkan/pull/77) ([C3-TKO](https://github.com/C3-TKO))
+- Controls by swipe [\#65](https://github.com/C3-TKO/junkan/pull/65) ([C3-TKO](https://github.com/C3-TKO))
+- Form validation [\#64](https://github.com/C3-TKO/junkan/pull/64) ([C3-TKO](https://github.com/C3-TKO))
+- Coveralls integration [\#63](https://github.com/C3-TKO/junkan/pull/63) ([C3-TKO](https://github.com/C3-TKO))
+- Fix unit tests [\#62](https://github.com/C3-TKO/junkan/pull/62) ([C3-TKO](https://github.com/C3-TKO))
+- Screen launcher [\#60](https://github.com/C3-TKO/junkan/pull/60) ([C3-TKO](https://github.com/C3-TKO))
+- Hide list item button type [\#58](https://github.com/C3-TKO/junkan/pull/58) ([C3-TKO](https://github.com/C3-TKO))
+
+## [v0.2.1-beta](https://github.com/C3-TKO/junkan/tree/v0.2.1-beta) (2016-05-14)
+[Full Changelog](https://github.com/C3-TKO/junkan/compare/v0.2.0-beta...v0.2.1-beta)
+
+**Implemented enhancements:**
+
+- Upgrade to react 15.0.0 [\#32](https://github.com/C3-TKO/junkan/issues/32)
+
+**Merged pull requests:**
+
+- Update npm dependencies [\#52](https://github.com/C3-TKO/junkan/pull/52) ([C3-TKO](https://github.com/C3-TKO))
+
 ## [v0.2.0-beta](https://github.com/C3-TKO/junkan/tree/v0.2.0-beta) (2016-05-12)
 [Full Changelog](https://github.com/C3-TKO/junkan/compare/v0.1.1beta...v0.2.0-beta)
 
