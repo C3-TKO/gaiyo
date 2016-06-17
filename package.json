@@ -8,7 +8,7 @@
     "clean": "rimraf dist/*",
     "copy": "copyfiles -f ./src/index.html ./src/favicon.ico ./dist",
     "dist": "npm run copy & webpack --env=dist",
-    "ghup": "git checkout gh-pages && git checkout master -- dist && git commit -a -m 'Updates the dist' && git push origin gh-pages && git checkout master",
+    "ghup": "npm run dist && git commit -a -m 'Updates the dist' && git checkout gh-pages && git checkout master -- dist && git commit -a -m 'Updates the dist' && git push origin gh-pages && git checkout master",
     "lint": "eslint ./src",
     "posttest": "npm run lint",
     "release:major": "npm version major && npm publish && git push --follow-tags",
