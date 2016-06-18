@@ -9,6 +9,7 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
+import SyncComponent from './SyncComponent'
 import ExportSlidesComponent from './ExportSlidesComponent'
 import ImportSlidesComponent from './ImportSlidesComponent'
 import ContentAdd from 'material-ui/svg-icons/content/add';
@@ -156,6 +157,7 @@ class SlideListEditorComponent extends React.Component {
     return (
       <div className='slidelisteditor-component'>
         <div id='slidelisteditor-fab-bar'>
+          <SyncComponent />
           <ExportSlidesComponent
             slides={this.props.slides}
           />
