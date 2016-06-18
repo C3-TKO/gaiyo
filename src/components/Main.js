@@ -27,6 +27,7 @@ class AppComponent extends React.Component {
           <SettingsComponent
             slides={this.props.slides}
             settings={this.props.settings}
+            actionEditSettings={this.props.actions.editSettings}
             actionAddSlide={this.props.actions.addSlide}
             actionEditSlide={this.props.actions.editSlide}
             actionDeleteSlide={this.props.actions.deleteSlide}

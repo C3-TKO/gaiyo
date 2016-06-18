@@ -161,7 +161,8 @@ class SyncComponent extends React.Component {
 SyncComponent.displayName = 'SyncComponent';
 
 SyncComponent.defaultProps = {
-  settings: React.PropTypes.object.isRequired
+  settings: React.PropTypes.object.isRequired,
+  actionEditSettings: React.PropTypes.func.isRequired,
 };
 
 export default injectIntl(SyncComponent);
