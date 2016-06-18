@@ -106,10 +106,11 @@ class SyncComponent extends React.Component {
               fullWidth={true}
             />
             <br />
+            /* @TODO: https://github.com/callemall/material-ui/issues/4008 */
             <SelectField value={1} onChange={this.handleChange} floatingLabelText='Sync type'>
-              <MenuItem value={1} style={{'-webkit-appearance': 'none'}} primaryText='Read Only' />
-              <MenuItem value={2} style={{'-webkit-appearance': 'none'}} primaryText='Write Only' />
-              <MenuItem value={3} style={{'-webkit-appearance': 'none'}} primaryText='Read and Write' />
+              <MenuItem value={1} style={{'WebkitAppearance': 'none'}} primaryText='Read Only' />
+              <MenuItem value={2} style={{'WebkitAppearance': 'none'}} primaryText='Write Only' />
+              <MenuItem value={3} style={{'WebkitAppearance': 'none'}} primaryText='Read and Write' />
             </SelectField>
             <br />
             <br />
