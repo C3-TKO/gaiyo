@@ -12,7 +12,9 @@ class AppComponent extends React.Component {
   renderIfSlidesAreDefined() {
     if (this.props.slides.length > 0) {
       return (
-        <RotatorComponent slides={this.props.slides} />
+        <RotatorComponent
+          slides={this.props.slides}
+        />
       )
     }
   }
@@ -24,6 +26,7 @@ class AppComponent extends React.Component {
           {this.renderIfSlidesAreDefined()}
           <SettingsComponent
             slides={this.props.slides}
+            settings={this.props.settings}
             actionAddSlide={this.props.actions.addSlide}
             actionEditSlide={this.props.actions.editSlide}
             actionDeleteSlide={this.props.actions.deleteSlide}

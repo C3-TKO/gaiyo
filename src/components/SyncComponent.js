@@ -57,7 +57,8 @@ class SyncComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false
+      open: false,
+      settings: this.props.settings
     }
   }
 
@@ -68,6 +69,14 @@ class SyncComponent extends React.Component {
   closeDialog = () => {
     this.setState({open: false})
   }
+
+  changeSyncMode = (event, index, value) => {
+    let nextSettings = this.state.settings;
+    nextSettings.syncMode = value;
+
+    this.setState({settings: nextSettings});
+  }
+
 
   render() {
     const {formatMessage} = this.props.intl;
@@ -120,10 +129,11 @@ class SyncComponent extends React.Component {
               hintText='http://mypouchdb.com:5984/remote-slides'
               floatingLabelText={formatMessage(messages.labeldburl)}
               fullWidth={true}
+              value={this.state.settings.remoteDbUrl}
             />
             <br />
 
-            <SelectField value={1} onChange={this.handleChange} floatingLabelText={formatMessage(messages.labelsyncmode)}>
+            <SelectField value={this.state.settings.syncMode} onChange={this.changeSyncMode} floatingLabelText={formatMessage(messages.labelsyncmode)}>
               <MenuItem
                 value={1}
                 /* @TODO: https://github.com/callemall/material-ui/issues/4008 */
@@ -137,7 +147,7 @@ class SyncComponent extends React.Component {
             <div style={styles.block}>
               <Toggle
                 label={formatMessage(messages.labelactive)}
-                defaultToggled={true}
+                defaultToggled={this.state.settings.enabled}
                 style={styles.toggle}
               />
             </div>
@@ -149,5 +159,9 @@ class SyncComponent extends React.Component {
 }
 
 SyncComponent.displayName = 'SyncComponent';
+
+SyncComponent.defaultProps = {
+  settings: React.PropTypes.object.isRequired
+};
 
 export default injectIntl(SyncComponent);

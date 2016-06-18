@@ -14,8 +14,8 @@ import Main from '../components/Main';
 /* Populated by react-webpack-redux:reducer */
 class App extends Component {
   render() {
-    const {actions, slides} = this.props;
-    return <Main actions={actions} slides={slides}/>;
+    const {actions, slides, settings} = this.props;
+    return <Main actions={actions} slides={slides} settings={settings}/>;
   }
 }
 /* Populated by react-webpack-redux:reducer
@@ -25,12 +25,14 @@ class App extends Component {
  */
 App.propTypes = {
   actions: PropTypes.object.isRequired,
-  slides: PropTypes.array.isRequired
+  slides: PropTypes.array.isRequired,
+  settings: PropTypes.object.isRequired
 };
 function mapStateToProps(state) {
   /* Populated by react-webpack-redux:reducer */
   const props = {
-    slides: state.slides
+    slides: state.slides,
+    settings: state.settings
   };
   return props;
 }
@@ -39,7 +41,8 @@ function mapDispatchToProps(dispatch) {
   const actions = {
     addSlide: require('../actions/addSlide.js'),
     deleteSlide: require('../actions/deleteSlide.js'),
-    editSlide: require('../actions/editSlide.js')
+    editSlide: require('../actions/editSlide.js'),
+    editSettings: require('../actions/editSettings.js')
   };
   const actionMap = { actions: bindActionCreators(actions, dispatch) };
   return actionMap;
