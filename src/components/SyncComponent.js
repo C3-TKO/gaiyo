@@ -27,13 +27,29 @@ const messages = defineMessages({
     id: 'sync.form.labels.dburl',
     defaultMessage: 'Url of the remote database (pouch db compatible)'
   },
-  hintdburl: {
-    id: 'sync.form.hints.dburl',
-    defaultMessage: 'http://mypouchdb.com:5984/remote-slides'
-  },
   errordburl: {
     id: 'sync.form.validationerrors.dburl',
     defaultMessage: 'Please enter a valid url!'
+  },
+  labelsyncmode: {
+    id: 'sync.form.labels.snycmode',
+    defaultMessage: 'Sync mode'
+  },
+  syncmodeoptionread: {
+    id: 'sync.form.options.read',
+    defaultMessage: 'read'
+  },
+  syncmodeoptionwrite: {
+    id: 'sync.form.options.write',
+    defaultMessage: 'write'
+  },
+  syncmodeoptionreadwrite: {
+    id: 'sync.form.options.readwrite',
+    defaultMessage: 'read & write'
+  },
+  labelactive: {
+    id: 'sync.form.labels.enable',
+    defaultMessage: 'Enable sync'
   }
 });
 
@@ -42,16 +58,16 @@ class SyncComponent extends React.Component {
     super(props);
     this.state = {
       open: false
-    };
-  };
+    }
+  }
 
   openDialog = () => {
     this.setState({open: true})
-  };
+  }
 
   closeDialog = () => {
     this.setState({open: false})
-  };
+  }
 
   render() {
     const {formatMessage} = this.props.intl;
@@ -66,11 +82,11 @@ class SyncComponent extends React.Component {
 
     const styles = {
       block: {
-        maxWidth: 250,
+        maxWidth: 250
       },
       toggle: {
-        marginBottom: 16,
-      },
+        marginBottom: 16
+      }
     };
 
     return (
@@ -101,22 +117,26 @@ class SyncComponent extends React.Component {
               validations='isUrl'
               required
               validationError={formatMessage(messages.errordburl)}
-              hintText={formatMessage(messages.hintdburl)}
+              hintText='http://mypouchdb.com:5984/remote-slides'
               floatingLabelText={formatMessage(messages.labeldburl)}
               fullWidth={true}
             />
             <br />
-            /* @TODO: https://github.com/callemall/material-ui/issues/4008 */
-            <SelectField value={1} onChange={this.handleChange} floatingLabelText='Sync type'>
-              <MenuItem value={1} style={{'WebkitAppearance': 'none'}} primaryText='Read Only' />
-              <MenuItem value={2} style={{'WebkitAppearance': 'none'}} primaryText='Write Only' />
-              <MenuItem value={3} style={{'WebkitAppearance': 'none'}} primaryText='Read and Write' />
+
+            <SelectField value={1} onChange={this.handleChange} floatingLabelText={formatMessage(messages.labelsyncmode)}>
+              <MenuItem
+                value={1}
+                /* @TODO: https://github.com/callemall/material-ui/issues/4008 */
+                style={{'WebkitAppearance': 'none'}}
+                primaryText={formatMessage(messages.syncmodeoptionread)} />
+              <MenuItem value={2} style={{'WebkitAppearance': 'none'}} primaryText={formatMessage(messages.syncmodeoptionwrite)} />
+              <MenuItem value={3} style={{'WebkitAppearance': 'none'}} primaryText={formatMessage(messages.syncmodeoptionreadwrite)} />
             </SelectField>
             <br />
             <br />
             <div style={styles.block}>
               <Toggle
-                label='Activate sync'
+                label={formatMessage(messages.labelactive)}
                 defaultToggled={true}
                 style={styles.toggle}
               />

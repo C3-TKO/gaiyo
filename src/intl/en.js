@@ -29,5 +29,14 @@ export default {
   'importslides.form.labels.backupjson': 'Screen rotation list JSON',
   'importslides.form.validationerrors.duration': 'Please enter valid JSON',
   'importslides.buttons.close': 'Close',
-  'importslides.buttons.import': 'Import'
+  'importslides.buttons.import': 'Import',
+  'sync.title': 'Remote database sync settings',
+  'sync.buttons.close': 'Close',
+  'sync.form.labels.dburl': 'Url of the remote database (pouch db compatible)',
+  'sync.form.validationerrors.dburl': 'Please enter a valid url!',
+  'sync.form.labels.snycmode': 'Sync mode',
+  'sync.form.options.read': 'read',
+  'sync.form.options.write': 'write',
+  'sync.form.options.readwrite': 'read & write',
+  'sync.form.labels.enable': 'Enable sync'
 };
