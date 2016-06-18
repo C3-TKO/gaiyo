@@ -31,6 +31,7 @@ export default {
   'importslides.buttons.close': 'Close',
   'importslides.buttons.import': 'Import',
   'sync.title': 'Remote database sync settings',
+  'sync.buttons.update': 'Update',
   'sync.buttons.close': 'Close',
   'sync.form.labels.dburl': 'Url of the remote database (pouch db compatible)',
   'sync.form.validationerrors.dburl': 'Please enter a valid url!',

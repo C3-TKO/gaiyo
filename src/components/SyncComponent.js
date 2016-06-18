@@ -19,6 +19,10 @@ const messages = defineMessages({
     id: 'sync.title',
     defaultMessage: 'Remote database sync settings'
   },
+  buttonupdate: {
+    id: 'sync.buttons.update',
+    defaultMessage: 'Update'
+  },
   buttonclose: {
     id: 'sync.buttons.close',
     defaultMessage: 'Close'
@@ -77,14 +81,23 @@ class SyncComponent extends React.Component {
     this.setState({settings: nextSettings});
   }
 
+  saveSettings = () => {
+    this.props.actionEditSettings(this.state.settings);
+  }
+
 
   render() {
     const {formatMessage} = this.props.intl;
 
     const actions = [
       <FlatButton
-        label={formatMessage(messages.buttonclose)}
+        label={formatMessage(messages.buttonupdate)}
         primary={false}
+        onTouchTap={this.saveSettings}
+      />,
+      <FlatButton
+        label={formatMessage(messages.buttonclose)}
+        primary={true}
         onTouchTap={this.closeDialog}
       />
     ];
@@ -100,7 +113,7 @@ class SyncComponent extends React.Component {
 
     return (
 
-      <div className='fab  sync-component'>
+      <div className='fab sync-component'>
         <FloatingActionButton
           secondary={true}
           mini={true}
