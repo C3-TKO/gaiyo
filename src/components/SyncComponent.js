@@ -81,8 +81,16 @@ class SyncComponent extends React.Component {
     this.setState({settings: nextSettings});
   }
 
+  changeRemoteDbUrl = (event) => {
+    let nextSettings = this.state.settings;
+    nextSettings.remoteDbUrl = event.target.value;
+
+    this.setState({settings: nextSettings});
+  }
+
   saveSettings = () => {
-    this.props.actionEditSettings(this.state.settings);
+    console.log(this.state.settings);
+    //this.props.actionEditSettings(this.state.settings);
   }
 
 
@@ -143,6 +151,7 @@ class SyncComponent extends React.Component {
               floatingLabelText={formatMessage(messages.labeldburl)}
               fullWidth={true}
               value={this.state.settings.remoteDbUrl}
+              onInput={this.changeRemoteDbUrl}
             />
             <br />
 
