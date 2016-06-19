@@ -88,6 +88,13 @@ class SyncComponent extends React.Component {
     this.setState({settings: nextSettings});
   }
 
+  changeEnabledStatus = (event, value) => {
+    let nextSettings = this.state.settings;
+    nextSettings.enabled = value;
+
+    this.setState({settings: nextSettings});
+  }
+
   saveSettings = () => {
     console.log(this.state.settings);
     //this.props.actionEditSettings(this.state.settings);
@@ -169,8 +176,9 @@ class SyncComponent extends React.Component {
             <div style={styles.block}>
               <Toggle
                 label={formatMessage(messages.labelactive)}
-                defaultToggled={this.state.settings.enabled}
                 style={styles.toggle}
+                onToggle={this.changeEnabledStatus}
+                toggle={this.state.settings.enabled}
               />
             </div>
           </Formsy.Form>
