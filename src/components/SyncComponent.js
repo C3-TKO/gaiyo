@@ -177,7 +177,7 @@ class SyncComponent extends React.Component {
                 label={formatMessage(messages.labelactive)}
                 style={styles.toggle}
                 onToggle={this.changeEnabledStatus}
-                toggle={this.state.settings.enabled}
+                toggled={this.state.settings.enabled}
               />
             </div>
           </Formsy.Form>
