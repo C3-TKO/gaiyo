@@ -1,6 +1,8 @@
 const { createStore, applyMiddleware, compose} = require('redux');
 const reducers = require('../reducers');
 
+import {persistStore, autoRehydrate} from 'redux-persist'
+import localForage from 'localForage'
 import PouchMiddleware from 'pouch-redux-middleware'
 import PouchDB from 'pouchdb';
 
@@ -38,10 +40,18 @@ module.exports = function(initialState) {
 
   const finalCreateStore = compose(
     applyMiddleware(pouchMiddleware),
+    autoRehydrate(),
     window.devToolsExtension ? window.devToolsExtension() : f => f
   )(createStore);
 
   const store = finalCreateStore(reducers, initialState);
+
+  const persistStoreConfig = {
+    whitelist: ['settings'],
+    storage: localForage
+  }
+  persistStore(store, persistStoreConfig);
+
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers

@@ -78,6 +78,7 @@
     "babel-plugin-transform-es2015-arrow-functions": "^6.5.2",
     "core-js": "^2.4.0",
     "formsy-material-ui": "^0.4.3",
+    "localforage": "^1.4.2",
     "material-ui": "^0.15.0",
     "normalize.css": "^4.0.0",
     "pouch-redux-middleware": "^0.2.0",
@@ -90,6 +91,7 @@
     "react-redux": "^4.4.1",
     "react-swipeable": "^3.4.0",
     "react-tap-event-plugin": "^1.0.0",
-    "redux": "^3.3.1"
+    "redux": "^3.3.1",
+    "redux-persist": "^3.2.2"
   }
 }
