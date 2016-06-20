@@ -96,8 +96,7 @@ class SyncComponent extends React.Component {
   }
 
   saveSettings = () => {
-    console.log(this.state.settings);
-    //this.props.actionEditSettings(this.state.settings);
+    this.props.actionEditSettings(this.state.settings);
   }
 
 
@@ -192,7 +191,7 @@ SyncComponent.displayName = 'SyncComponent';
 
 SyncComponent.defaultProps = {
   settings: React.PropTypes.object.isRequired,
-  actionEditSettings: React.PropTypes.func.isRequired,
+  actionEditSettings: React.PropTypes.func.isRequired
 };
 
 export default injectIntl(SyncComponent);

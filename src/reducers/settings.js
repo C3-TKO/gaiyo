@@ -1,8 +1,3 @@
-/* Define your initial state here.
- *
- * If you change the type from object to something else, do not forget to update
- * src/container/App.js accordingly.
- */
 const initialState = {
   remoteDbUrl: undefined,
   syncMode: 1,
@@ -16,7 +11,7 @@ module.exports = function(state = initialState, action) {
   switch(action.type) {
     case 'EDIT_SETTINGS': {
       return action.settings;
-    } break;
+    }
     default: {
       /* Return original state if no actions were consumed. */
       return state;
