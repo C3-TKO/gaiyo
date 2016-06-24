@@ -24,7 +24,6 @@ module.exports = function(state = initialState, action) {
           slide
       )
     case 'INSERT_SLIDE':
-      console.log('TEST');
       return [
         ...state,
         action.slide
