@@ -5,8 +5,6 @@ const initialState = {
 };
 
 module.exports = function(state = initialState, action) {
-  console.log(state, action.settings);
-
   switch(action.type) {
     case 'EDIT_SETTINGS': {
       return  action.settings;
