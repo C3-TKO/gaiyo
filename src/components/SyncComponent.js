@@ -61,8 +61,7 @@ class SyncComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false,
-      settings: this.props.settings
+      open: false
     }
   }
 
@@ -156,28 +155,41 @@ class SyncComponent extends React.Component {
               hintText='http://mypouchdb.com:5984/remote-slides'
               floatingLabelText={formatMessage(messages.labeldburl)}
               fullWidth={true}
-              value={this.state.settings.remoteDbUrl}
+              value={this.props.settings.remoteDbUrl}
               onInput={this.changeRemoteDbUrl}
             />
             <br />
 
-            <SelectField value={this.state.settings.syncMode} onChange={this.changeSyncMode} floatingLabelText={formatMessage(messages.labelsyncmode)}>
+            <SelectField
+              ref='syncMode'
+              value={this.props.settings.syncMode}
+              floatingLabelText={formatMessage(messages.labelsyncmode)}
+              onChange={() => {}}
+            >
               <MenuItem
                 value={1}
                 /* @TODO: https://github.com/callemall/material-ui/issues/4008 */
                 style={{'WebkitAppearance': 'none'}}
                 primaryText={formatMessage(messages.syncmodeoptionread)} />
-              <MenuItem value={2} style={{'WebkitAppearance': 'none'}} primaryText={formatMessage(messages.syncmodeoptionwrite)} />
-              <MenuItem value={3} style={{'WebkitAppearance': 'none'}} primaryText={formatMessage(messages.syncmodeoptionreadwrite)} />
+              <MenuItem
+                value={2}
+                /* @TODO: https://github.com/callemall/material-ui/issues/4008 */
+                style={{'WebkitAppearance': 'none'}}
+                primaryText={formatMessage(messages.syncmodeoptionwrite)} />
+              <MenuItem
+                value={3}
+                /* @TODO: https://github.com/callemall/material-ui/issues/4008 */
+                style={{'WebkitAppearance': 'none'}}
+                primaryText={formatMessage(messages.syncmodeoptionreadwrite)} />
             </SelectField>
             <br />
             <br />
             <div style={styles.block}>
               <Toggle
+                ref='enabled'
                 label={formatMessage(messages.labelactive)}
                 style={styles.toggle}
-                onToggle={this.changeEnabledStatus}
-                toggled={this.state.settings.enabled}
+                toggled={this.props.settings.enabled}
               />
             </div>
           </Formsy.Form>
