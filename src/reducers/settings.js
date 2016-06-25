@@ -5,12 +5,11 @@ const initialState = {
 };
 
 module.exports = function(state = initialState, action) {
-  /* Keep the reducer clean - do not mutate the original state. */
-  let nextState = Object.assign({}, state);
+  console.log(state, action.settings);
 
   switch(action.type) {
     case 'EDIT_SETTINGS': {
-      return nextState.settings = action.settings;
+      return  action.settings;
     }
     default: {
       /* Return original state if no actions were consumed. */

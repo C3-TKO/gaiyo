@@ -6,10 +6,8 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import NotificationSync from 'material-ui/svg-icons/notification/sync';
 import Dialog from 'material-ui/Dialog';
 import Formsy from 'formsy-react';
-import { FormsyText } from 'formsy-material-ui/lib';
-import SelectField from 'material-ui/SelectField';
+import { FormsyText, FormsySelect, FormsyToggle } from 'formsy-material-ui/lib';
 import MenuItem from 'material-ui/MenuItem';
-import Toggle from 'material-ui/Toggle';
 import { defineMessages, injectIntl } from 'react-intl';
 
 require('styles//Sync.scss');
@@ -73,31 +71,15 @@ class SyncComponent extends React.Component {
     this.setState({open: false})
   }
 
-  changeSyncMode = (event, index, value) => {
-    let nextSettings = this.state.settings;
-    nextSettings.syncMode = value;
-
-    this.setState({settings: nextSettings});
-  }
-
-  changeRemoteDbUrl = (event) => {
-    let nextSettings = this.state.settings;
-    nextSettings.remoteDbUrl = event.target.value;
-
-    this.setState({settings: nextSettings});
-  }
-
-  changeEnabledStatus = (event, value) => {
-    let nextSettings = this.state.settings;
-    nextSettings.enabled = value;
-
-    this.setState({settings: nextSettings});
-  }
-
   saveSettings = () => {
-    this.props.actionEditSettings(this.state.settings);
-  }
+    const nextSettings = {
+      remoteDbUrl: this.refs.remoteDb.getValue(),
+      syncMode: this.refs.syncMode.getValue(),
+      enabled: !!this.refs.enabled.getValue()
+    };
 
+    this.props.actionEditSettings(nextSettings);
+  }
 
   render() {
     const {formatMessage} = this.props.intl;
@@ -125,7 +107,6 @@ class SyncComponent extends React.Component {
     };
 
     return (
-
       <div className='fab sync-component'>
         <FloatingActionButton
           secondary={true}
@@ -160,7 +141,8 @@ class SyncComponent extends React.Component {
             />
             <br />
 
-            <SelectField
+            <FormsySelect
+              name='syncMode'
               ref='syncMode'
               value={this.props.settings.syncMode}
               floatingLabelText={formatMessage(messages.labelsyncmode)}
@@ -181,11 +163,12 @@ class SyncComponent extends React.Component {
                 /* @TODO: https://github.com/callemall/material-ui/issues/4008 */
                 style={{'WebkitAppearance': 'none'}}
                 primaryText={formatMessage(messages.syncmodeoptionreadwrite)} />
-            </SelectField>
+            </FormsySelect>
             <br />
             <br />
             <div style={styles.block}>
-              <Toggle
+              <FormsyToggle
+                name='enabled'
                 ref='enabled'
                 label={formatMessage(messages.labelactive)}
                 style={styles.toggle}
