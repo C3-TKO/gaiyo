@@ -131,4 +131,4 @@ EditSlideFormComponent.defaultProps = {
   currentSlide: undefined
 };
 
-export default injectIntl(EditSlideFormComponent);
+export default injectIntl(EditSlideFormComponent, {withRef: true});
