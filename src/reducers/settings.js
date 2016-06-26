@@ -7,7 +7,7 @@ const initialState = {
 module.exports = function(state = initialState, action) {
   switch(action.type) {
     case 'EDIT_SETTINGS': {
-      return  action.settings;
+      return action.settings;
     }
     default: {
       /* Return original state if no actions were consumed. */

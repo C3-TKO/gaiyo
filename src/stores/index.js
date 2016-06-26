@@ -13,21 +13,6 @@ module.exports = function(initialState) {
 
   const db = new PouchDB('slides');
 
-  const remoteDb = new PouchDB('http://localhost:5984/myremotedb');
-  
-  db.sync(remoteDb, {
-    live: true,
-    retry: true
-  }).on('change', function (change) {
-    console.log('yo, something changed!');
-  }).on('paused', function (info) {
-    console.log('replication was paused, usually because of a lost connection');
-  }).on('active', function (info) {
-    console.log('replication was resumed');
-  }).on('error', function (err) {
-    console.log('totally unhandled error (shouldn\'t happen)');
-  });
-
   const pouchMiddleware = PouchMiddleware({
     path: '/slides',
     db,
@@ -50,8 +35,23 @@ module.exports = function(initialState) {
     whitelist: ['settings'],
     storage: localForage
   }
-  persistStore(store, persistStoreConfig);
+  persistStore(store, persistStoreConfig,() => {
+    const remoteDbSettings = store.getState().settings;
+    const remoteDb = new PouchDB(remoteDbSettings.remoteDbUrl);
 
+    db.sync(remoteDb, {
+      live: true,
+      retry: true
+    }).on('change', function (change) {
+      console.log('yo, something changed!');
+    }).on('paused', function (info) {
+      console.log('replication was paused, usually because of a lost connection');
+    }).on('active', function (info) {
+      console.log('replication was resumed');
+    }).on('error', function (err) {
+      console.log('totally unhandled error (shouldn\'t happen)');
+    });
+  });
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
