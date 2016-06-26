@@ -87,7 +87,7 @@ class SlideListEditorComponent extends React.Component {
   }
 
   handleSave = () => {
-    this.refs.editSlideForm.handleSave();
+    this.refs.editSlideForm.getWrappedInstance().handleSave();
     this.handleClose();
   }
 
@@ -222,4 +222,3 @@ SlideListEditorComponent.propTypes = {
 };
 
 export default injectIntl(SlideListEditorComponent);
-
