@@ -10,7 +10,6 @@ const initialState = {
 module.exports = function(state = initialState, action) {
   switch(action.type) {
     case 'EDIT_SETTINGS': {
-      console.log(state, action.settings);
       let nextState = action.settings;
       if(
         action.settings.remoteDbUrl === state.remoteDbUrl &&
@@ -23,7 +22,6 @@ module.exports = function(state = initialState, action) {
         const changeDate = new Date();
         Object.assign(nextState, {lastChanged: changeDate.getTime()});
       }
-      console.log(nextState);
 
       return nextState;
     }
