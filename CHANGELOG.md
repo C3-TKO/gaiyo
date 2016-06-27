@@ -1,5 +1,12 @@
 # Change Log
 
+## [v0.4.1](https://github.com/C3-TKO/junkan/tree/v0.4.1) (2016-06-27)
+[Full Changelog](https://github.com/C3-TKO/junkan/compare/v0.4.0...v0.4.1)
+
+**Merged pull requests:**
+
+- Incroporates the wrapped component mechanisms for refs [\#88](https://github.com/C3-TKO/junkan/pull/88) ([C3-TKO](https://github.com/C3-TKO))
+
 ## [v0.4.0](https://github.com/C3-TKO/junkan/tree/v0.4.0) (2016-06-17)
 [Full Changelog](https://github.com/C3-TKO/junkan/compare/v0.3.0...v0.4.0)
 
