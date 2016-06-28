@@ -181,7 +181,9 @@ class SlideListEditorComponent extends React.Component {
 
         <List>
           <Subheader>
-            <FormattedMessage {...messages.subheader} />
+            <FormattedMessage
+              {...messages.subheader}
+            />
           </Subheader>
 
           {this.props.slides.map(slide =>

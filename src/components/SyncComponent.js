@@ -8,7 +8,7 @@ import Dialog from 'material-ui/Dialog';
 import Formsy from 'formsy-react';
 import { FormsyText, FormsySelect, FormsyToggle } from 'formsy-material-ui/lib';
 import MenuItem from 'material-ui/MenuItem';
-import { defineMessages, injectIntl } from 'react-intl';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 require('styles//Sync.scss');
 
@@ -17,6 +17,14 @@ const messages = defineMessages({
     id: 'sync.title',
     defaultMessage: 'Remote database sync settings'
   },
+  reboothinttitle: {
+    id: 'sync.title.reboothint',
+    defaultMessage: 'Reboot needed!'
+  },
+  reboothint: {
+    id: 'sync.message.reboothint',
+    defaultMessage: 'Sync settings have been changed and thus junkan needs to reboot in order to have the changes taking place'
+  },
   buttonupdate: {
     id: 'sync.buttons.update',
     defaultMessage: 'Update'
@@ -24,6 +32,10 @@ const messages = defineMessages({
   buttonclose: {
     id: 'sync.buttons.close',
     defaultMessage: 'Close'
+  },
+  buttonreboot: {
+    id: 'sync.buttons.reboot',
+    defaultMessage: 'Reboot'
   },
   labeldburl: {
     id: 'sync.form.labels.dburl',
@@ -59,16 +71,37 @@ class SyncComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false
+      openForm: false,
+      openRebootHint: false
     }
   }
 
-  openDialog = () => {
-    this.setState({open: true})
+  componentWillReceiveProps(nextProps) {
+    if (this.props.settings.lastChanged !== nextProps.settings.lastChanged) {
+      // Sync settings have been changed and thus junkan needs to reboot in order to have the changes taking place
+      this.rebootWithNewDbSyncSettings();
+    }
   }
 
-  closeDialog = () => {
-    this.setState({open: false})
+  rebootWithNewDbSyncSettings = () => {
+    this.setState({openForm: false});
+    this.setState({openRebootHint: true})
+  }
+
+  openDialogForm = () => {
+    this.setState({openForm: true})
+  }
+
+  closeDialogForm = () => {
+    this.setState({openForm: false})
+  }
+
+  openDialogRebootHint = () => {
+    this.setState({openRebootHint: true})
+  }
+
+  closeDialogRebootHint = () => {
+    this.setState({openRebootHint: false})
   }
 
   saveSettings = () => {
@@ -84,7 +117,7 @@ class SyncComponent extends React.Component {
   render() {
     const {formatMessage} = this.props.intl;
 
-    const actions = [
+    const dialogFormActions = [
       <FlatButton
         label={formatMessage(messages.buttonupdate)}
         primary={false}
@@ -94,6 +127,14 @@ class SyncComponent extends React.Component {
         label={formatMessage(messages.buttonclose)}
         primary={true}
         onTouchTap={this.closeDialog}
+      />
+    ];
+
+    const dialogRebootHintActions = [
+      <FlatButton
+        label={formatMessage(messages.buttonreboot)}
+        primary={true}
+        onTouchTap={() => {location.reload();}}
       />
     ];
 
@@ -111,16 +152,27 @@ class SyncComponent extends React.Component {
         <FloatingActionButton
           secondary={true}
           mini={true}
-          onTouchTap={this.openDialog}
+          onTouchTap={this.openDialogForm}
         >
           <NotificationSync />
         </FloatingActionButton>
 
         <Dialog
+          title={formatMessage(messages.reboothinttitle)}
+          modal={true}
+          actions={dialogRebootHintActions}
+          open={this.state.openRebootHint}
+        >
+          <FormattedMessage
+            {...messages.reboothint}
+          />
+        </Dialog>
+
+        <Dialog
           title={formatMessage(messages.title)}
-          actions={actions}
-          open={this.state.open}
-          onRequestClose={this.closeDialog}
+          actions={dialogFormActions}
+          open={this.state.openForm}
+          onRequestClose={this.closeDialogForm}
         >
           <Formsy.Form
             onValid={this.enableImportButton}
