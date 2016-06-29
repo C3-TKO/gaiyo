@@ -10,13 +10,13 @@ module.exports = function(state = initialState, action) {
   switch(action.type) {
     case 'ADD_SLIDE':
       return [
+        ...state,
         {
           _id: id(),
           url: action.slide.url,
           duration: action.slide.duration
-        },
-        ...state
-      ]
+        }
+      ];
     case 'UPDATE_SLIDE':
       return state.map(slide =>
         slide._id === action.slide._id ?
@@ -25,8 +25,8 @@ module.exports = function(state = initialState, action) {
       )
     case 'INSERT_SLIDE':
       return [
-        action.slide,
-        ...state
+        ...state,
+        action.slide
       ]
     case 'DELETE_SLIDE':
       return state.filter(slide =>

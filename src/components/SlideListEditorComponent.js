@@ -9,6 +9,7 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
+import SyncComponent from './SyncComponent'
 import ExportSlidesComponent from './ExportSlidesComponent'
 import ImportSlidesComponent from './ImportSlidesComponent'
 import ContentAdd from 'material-ui/svg-icons/content/add';
@@ -120,14 +121,14 @@ class SlideListEditorComponent extends React.Component {
       <IconMenu iconButtonElement={iconButtonElement}>
         <MenuItem
           /* @TODO: Have a look at https://github.com/callemall/material-ui/issues/4008 */
-          style={{'-webkit-appearance': 'none'}}
+          style={{'WebkitAppearance': 'none'}}
           onTouchTap={() => {this.handleEdit(slide)}}
         >
           Edit
         </MenuItem>
         <MenuItem
           /* @TODO: Have a look at https://github.com/callemall/material-ui/issues/4008 */
-          style={{'-webkit-appearance': 'none'}}
+          style={{'WebkitAppearance': 'none'}}
           onTouchTap={() => {this.props.onDelete(slide._id)}}
         >
           Delete
@@ -156,6 +157,10 @@ class SlideListEditorComponent extends React.Component {
     return (
       <div className='slidelisteditor-component'>
         <div id='slidelisteditor-fab-bar'>
+          <SyncComponent
+            settings={this.props.settings}
+            actionEditSettings={this.props.actionEditSettings}
+          />
           <ExportSlidesComponent
             slides={this.props.slides}
           />
@@ -176,13 +181,15 @@ class SlideListEditorComponent extends React.Component {
 
         <List>
           <Subheader>
-            <FormattedMessage {...messages.subheader} />
+            <FormattedMessage
+              {...messages.subheader}
+            />
           </Subheader>
 
           {this.props.slides.map(slide =>
             <ListItem
               /* @TODO: Have a look at https://github.com/callemall/material-ui/issues/4008 */
-              style={{'-webkit-appearance': 'none'}}
+              style={{'WebkitAppearance': 'none'}}
               value={slide._id}
               key={'slide-list-item-' + slide._id}
               primaryText={slide.url}
@@ -216,6 +223,8 @@ class SlideListEditorComponent extends React.Component {
 SlideListEditorComponent.displayName = 'SlideListEditorComponent';
 SlideListEditorComponent.propTypes = {
   slides: React.PropTypes.array.isRequired,
+  settings: React.PropTypes.object.isRequired,
+  actionEditSettings: React.PropTypes.func.isRequired,
   onDelete: React.PropTypes.func.isRequired,
   onEdit: React.PropTypes.func.isRequired,
   onAdd: React.PropTypes.func.isRequired
