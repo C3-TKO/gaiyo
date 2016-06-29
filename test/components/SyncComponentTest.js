@@ -9,7 +9,7 @@ import createComponent from 'helpers/shallowRenderHelper';
 
 import SyncComponent from 'components//SyncComponent.js';
 
-describe('SyncComponent', () => {
+describe.skip('SyncComponent', () => {
   let component;
 
   beforeEach(() => {
