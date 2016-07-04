@@ -27,10 +27,8 @@ class ReloaderComponent extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
     if(nextProps.pointer === this.props.indexOfLastSlide && this.props.pointer !== this.props.indexOfLastSlide) {
       let newFullCycleCounter = ++this.state.fullCycleCounter;
-      console.log(newFullCycleCounter, this.state.fullCycleCounter);
       if(newFullCycleCounter === this.props.numberOfFullCyclesUntilReload) {
         this.triggerReloadSnackbar()
       }
