@@ -74,6 +74,13 @@ class SyncComponent extends React.Component {
       openForm: false,
       openRebootHint: false
     }
+
+    const remoteDbUrl = this.getURLParameter('remoteDbUrl');
+    const syncMode = parseInt(this.getURLParameter('syncMode'));
+    let enabled = false;
+    if (typeof remoteDbUrl !== 'undefined' && typeof syncMode !== 'undefined') {
+      enabled = true;
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -81,6 +88,10 @@ class SyncComponent extends React.Component {
       // Sync settings have been changed and thus junkan needs to reboot in order to have the changes taking place
       this.rebootWithNewDbSyncSettings();
     }
+  }
+
+  getURLParameter(name) {
+    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || undefined;
   }
 
   rebootWithNewDbSyncSettings = () => {
