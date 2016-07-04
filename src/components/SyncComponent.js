@@ -236,7 +236,7 @@ class SyncComponent extends React.Component {
 
 SyncComponent.displayName = 'SyncComponent';
 
-SyncComponent.defaultProps = {
+SyncComponent.propTypes = {
   settings: React.PropTypes.object.isRequired,
   actionEditSettings: React.PropTypes.func.isRequired
 };

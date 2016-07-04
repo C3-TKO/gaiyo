@@ -42,5 +42,6 @@ export default {
   'sync.form.options.read': 'read',
   'sync.form.options.write': 'write',
   'sync.form.options.readwrite': 'read & write',
-  'sync.form.labels.enable': 'Enable sync'
+  'sync.form.labels.enable': 'Enable sync',
+  'reloader.snackbar': 'Restarting junkan when this screen ends'
 };
