@@ -72,7 +72,7 @@ ReloaderComponent.propTypes = {
 
 ReloaderComponent.defaultProps = {
   snackbarDuration: 6000,
-  numberOfFullCyclesUntilReload: 2
+  numberOfFullCyclesUntilReload: 20
 };
 
 export default injectIntl(ReloaderComponent);
