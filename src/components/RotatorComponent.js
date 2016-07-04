@@ -5,6 +5,7 @@ import IframeComponent from './IframeComponent';
 import IframeLockerComponent from './IframeLockerComponent';
 import ControlsComponent from './ControlsComponent'
 import StopWatchComponent from './StopWatchComponent';
+import ReloaderComponent from './ReloaderComponent';
 
 require('styles//Rotator.scss');
 
@@ -110,6 +111,11 @@ class RotatorComponent extends React.Component {
           isPlaying={this.state.isPlaying}
           timeout={this.state.timeout}
           duration={this.props.slides[this.state.pointer].duration}
+        />
+        <ReloaderComponent
+          pointer={this.state.pointer}
+          durationLastScreen={this.props.slides[this.props.slides.length - 1].duration}
+          indexOfLastSlide={this.props.slides.length - 1}
         />
       </div>
     );
