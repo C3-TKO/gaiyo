@@ -9,6 +9,10 @@ import PouchDB from 'pouchdb';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
+function getURLParameter(name) {
+  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || undefined;
+}
+
 module.exports = function(initialState) {
 
   const db = new PouchDB('slides');
@@ -36,7 +40,20 @@ module.exports = function(initialState) {
     storage: localForage
   }
   persistStore(store, persistStoreConfig,() => {
-    const remoteDbSettings = store.getState().settings;
+    const remoteDbSettingsFromStore = store.getState().settings;
+
+    const remoteDbSettingsFromUrl = {
+      remoteDbUrl: getURLParameter('remoteDbUrl'),
+      syncMode: parseInt(getURLParameter('syncMode')),
+      enabled: true
+    }
+
+    let remoteDbSettings = remoteDbSettingsFromStore;
+    if (typeof remoteDbSettingsFromUrl.remoteDbUrl !== 'undefined' &&
+        typeof remoteDbSettingsFromUrl.syncMode !== 'undefined' ) {
+      remoteDbSettings = remoteDbSettingsFromUrl;
+    }
+
     const remoteDb = new PouchDB(remoteDbSettings.remoteDbUrl);
 
     if (remoteDbSettings.enabled) {
