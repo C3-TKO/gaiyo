@@ -1,3 +1,5 @@
+const date = new Date();
+
 const initialState = {
   remoteDbUrl: undefined,
   syncMode: 1,

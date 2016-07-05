@@ -8,6 +8,7 @@ import Dialog from 'material-ui/Dialog';
 import Formsy from 'formsy-react';
 import { FormsyText, FormsySelect, FormsyToggle } from 'formsy-material-ui/lib';
 import MenuItem from 'material-ui/MenuItem';
+import Snackbar from 'material-ui/Snackbar';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 require('styles//Sync.scss');
@@ -17,13 +18,9 @@ const messages = defineMessages({
     id: 'sync.title',
     defaultMessage: 'Remote database sync settings'
   },
-  reboothinttitle: {
-    id: 'sync.title.reboothint',
-    defaultMessage: 'Reboot needed!'
-  },
   reboothint: {
     id: 'sync.message.reboothint',
-    defaultMessage: 'Sync settings have been changed and thus junkan needs to reboot in order to have the changes taking place'
+    defaultMessage: 'Sync settings have been changed and thus junkan needs to reboot now!'
   },
   buttonupdate: {
     id: 'sync.buttons.update',
@@ -32,10 +29,6 @@ const messages = defineMessages({
   buttonclose: {
     id: 'sync.buttons.close',
     defaultMessage: 'Close'
-  },
-  buttonreboot: {
-    id: 'sync.buttons.reboot',
-    defaultMessage: 'Reboot'
   },
   labeldburl: {
     id: 'sync.form.labels.dburl',
@@ -111,10 +104,6 @@ class SyncComponent extends React.Component {
     this.setState({openRebootHint: true})
   }
 
-  closeDialogRebootHint = () => {
-    this.setState({openRebootHint: false})
-  }
-
   saveSettings = () => {
     const nextSettings = {
       remoteDbUrl: this.refs.remoteDb.getValue(),
@@ -123,6 +112,10 @@ class SyncComponent extends React.Component {
     };
 
     this.props.actionEditSettings(nextSettings);
+  }
+
+  reboot = () => {
+    location.reload();
   }
 
   render() {
@@ -138,14 +131,6 @@ class SyncComponent extends React.Component {
         label={formatMessage(messages.buttonclose)}
         primary={true}
         onTouchTap={this.closeDialog}
-      />
-    ];
-
-    const dialogRebootHintActions = [
-      <FlatButton
-        label={formatMessage(messages.buttonreboot)}
-        primary={true}
-        onTouchTap={() => {location.reload();}}
       />
     ];
 
@@ -168,16 +153,12 @@ class SyncComponent extends React.Component {
           <NotificationSync />
         </FloatingActionButton>
 
-        <Dialog
-          title={formatMessage(messages.reboothinttitle)}
-          modal={true}
-          actions={dialogRebootHintActions}
+        <Snackbar
           open={this.state.openRebootHint}
-        >
-          <FormattedMessage
-            {...messages.reboothint}
-          />
-        </Dialog>
+          message={formatMessage(messages.reboothint)}
+          autoHideDuration={this.props.snackbarDuration}
+          onRequestClose={this.reboot}
+        />
 
         <Dialog
           title={formatMessage(messages.title)}
@@ -250,6 +231,10 @@ SyncComponent.displayName = 'SyncComponent';
 SyncComponent.propTypes = {
   settings: React.PropTypes.object.isRequired,
   actionEditSettings: React.PropTypes.func.isRequired
+};
+
+SyncComponent.defaultProps = {
+  snackbarDuration: 5000
 };
 
 export default injectIntl(SyncComponent);
