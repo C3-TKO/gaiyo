@@ -9,7 +9,7 @@ import Formsy from 'formsy-react';
 import { FormsyText, FormsySelect, FormsyToggle } from 'formsy-material-ui/lib';
 import MenuItem from 'material-ui/MenuItem';
 import Snackbar from 'material-ui/Snackbar';
-import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 
 require('styles//Sync.scss');
 
