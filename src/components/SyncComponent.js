@@ -130,7 +130,7 @@ class SyncComponent extends React.Component {
       <FlatButton
         label={formatMessage(messages.buttonclose)}
         primary={true}
-        onTouchTap={this.closeDialog}
+        onTouchTap={this.closeDialogForm}
       />
     ];
 
