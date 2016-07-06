@@ -7,7 +7,6 @@ require('styles//StopWatch.scss');
 class StopWatchComponent extends React.Component {
 
   componentWillReceiveProps(nextProps) {
-    //console.log(nextProps, this.props)
     if(nextProps.timeout !== this.props.timeout) {
       this.reset();
       if(nextProps.isPlaying) {
