@@ -1,5 +1,21 @@
 # Change Log
 
+## [0.5.0](https://github.com/C3-TKO/junkan/tree/0.5.0) (2016-07-07)
+[Full Changelog](https://github.com/C3-TKO/junkan/compare/v0.4.1...0.5.0)
+
+**Implemented enhancements:**
+
+- Read couchdb sync from request parameter [\#84](https://github.com/C3-TKO/junkan/issues/84)
+- Trigger page reload after x full circles [\#83](https://github.com/C3-TKO/junkan/issues/83)
+- Manage remote junkan instances [\#79](https://github.com/C3-TKO/junkan/issues/79)
+- Connect to remote couchdb [\#78](https://github.com/C3-TKO/junkan/issues/78)
+- Sync with remote couchdb [\#90](https://github.com/C3-TKO/junkan/pull/90) ([C3-TKO](https://github.com/C3-TKO))
+
+**Merged pull requests:**
+
+- Read db sync params from url [\#92](https://github.com/C3-TKO/junkan/pull/92) ([C3-TKO](https://github.com/C3-TKO))
+- Reload after x cycles [\#91](https://github.com/C3-TKO/junkan/pull/91) ([C3-TKO](https://github.com/C3-TKO))
+
 ## [v0.4.1](https://github.com/C3-TKO/junkan/tree/v0.4.1) (2016-06-27)
 [Full Changelog](https://github.com/C3-TKO/junkan/compare/v0.4.0...v0.4.1)
 
