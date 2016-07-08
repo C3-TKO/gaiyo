@@ -6,6 +6,7 @@ import IframeLockerComponent from './IframeLockerComponent';
 import ControlsComponent from './ControlsComponent'
 import StopWatchComponent from './StopWatchComponent';
 import ReloaderComponent from './ReloaderComponent';
+import SettingsComponent from './SettingsComponent';
 
 require('styles//Rotator.scss');
 
@@ -86,6 +87,22 @@ class RotatorComponent extends React.Component {
     }
   }
 
+  renderIfSlidesAreDefined() {
+    if (this.props.slides.length > 0) {
+      return (
+        <ControlsComponent
+          slides={this.props.slides}
+          isPlaying={this.state.isPlaying}
+          play={this.play}
+          stop={this.stop}
+          next={this.next}
+          prev={this.prev}
+          goto={this.goto}
+        />
+      )
+    }
+  }
+
   render() {
     return (
       <div
@@ -98,15 +115,18 @@ class RotatorComponent extends React.Component {
           next={this.next}
           prev={this.prev}
         />
-        <ControlsComponent
+
+        {this.renderIfSlidesAreDefined()}
+
+        <SettingsComponent
           slides={this.props.slides}
-          isPlaying={this.state.isPlaying}
-          play={this.play}
-          stop={this.stop}
-          next={this.next}
-          prev={this.prev}
-          goto={this.goto}
+          settings={this.props.settings}
+          actionEditSettings={this.props.actions.editSettings}
+          actionAddSlide={this.props.actions.addSlide}
+          actionEditSlide={this.props.actions.editSlide}
+          actionDeleteSlide={this.props.actions.deleteSlide}
         />
+
         <StopWatchComponent
           isPlaying={this.state.isPlaying}
           timeout={this.state.timeout}
@@ -124,7 +144,9 @@ class RotatorComponent extends React.Component {
 
 RotatorComponent.displayName = 'RotatorComponent';
 RotatorComponent.propTypes = {
-  slides: React.PropTypes.array.isRequired
+  slides: React.PropTypes.array.isRequired,
+  actions: React.PropTypes.object.isRequired,
+  settings: React.PropTypes.object.isRequired
 };
 
 export default RotatorComponent;
