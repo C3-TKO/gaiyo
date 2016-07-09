@@ -91,31 +91,42 @@ class ControlsComponent extends React.Component {
         <KeyBinding onKey={ (e) => { this.handleControlsByKeyboard(e) } } />
 
         <div className="controls-button-container">
-          <FloatingActionButton mini={true} onTouchTap={this.handleOpen} >
+          <FloatingActionButton
+            mini={true}
+            secondary={true}
+            onTouchTap={this.handleOpen} >
             <ContentLowPriority />
           </FloatingActionButton>
         </div>
 
         <div className="controls-button-container">
-          <FloatingActionButton mini={true} onTouchTap={() => this.props.prev()} >
+          <FloatingActionButton
+            mini={true}
+            onTouchTap={() => this.props.prev()} >
             <AvSkipPrevious />
           </FloatingActionButton>
         </div>
 
-        <div className="controls-button-container" style={this.props.isPlaying ? {display: 'block'} : {display: 'none'}}>
-          <FloatingActionButton onTouchTap={() => this.props.stop()}>
+        <div className="controls-button-container"
+          style={this.props.isPlaying ? {display: 'block'} : {display: 'none'}}>
+          <FloatingActionButton
+            onTouchTap={() => this.props.stop()}>
             <AvPause />
           </FloatingActionButton>
         </div>
 
-        <div className="controls-button-container" style={this.props.isPlaying ? {display: 'none'} : {display: 'block'}}>
-          <FloatingActionButton onTouchTap={() => this.props.play()}>
+        <div className="controls-button-container"
+          style={this.props.isPlaying ? {display: 'none'} : {display: 'block'}}>
+          <FloatingActionButton
+            onTouchTap={() => this.props.play()}>
             <AvPlayArrow />
           </FloatingActionButton>
         </div>
 
         <div className="controls-button-container">
-          <FloatingActionButton mini={true} onTouchTap={() => this.props.next()}>
+          <FloatingActionButton
+            mini={true}
+            onTouchTap={() => this.props.next()}>
             <AvSkipNext />
           </FloatingActionButton>
         </div>
