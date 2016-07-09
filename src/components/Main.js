@@ -20,7 +20,7 @@ class AppComponent extends React.Component {
   render() {
     return (
 
-      <div>
+      <div className="index">
           {this.renderIfSlidesAreDefined()}
           <SettingsComponent
             slides={this.props.slides}

@@ -13,7 +13,7 @@ const store = configureStore();
 render(
   <Provider store={store}>
     <IntlProvider locale='en' messages={messages}>
-      <MuiThemeProvider muiTheme={getMuiTheme()} className="index">
+      <MuiThemeProvider muiTheme={getMuiTheme()}>
         <App />
       </MuiThemeProvider>
     </IntlProvider>
