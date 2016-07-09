@@ -4,7 +4,7 @@ import React from 'react';
 import IframeComponent from './IframeComponent';
 import IframeLockerComponent from './IframeLockerComponent';
 import ControlsComponent from './ControlsComponent'
-import StopWatchComponent from './StopWatchComponent';
+import ProgressBarComponent from './ProgressBarComponent';
 import ReloaderComponent from './ReloaderComponent';
 
 require('styles//Rotator.scss');
@@ -107,7 +107,7 @@ class RotatorComponent extends React.Component {
           prev={this.prev}
           goto={this.goto}
         />
-        <StopWatchComponent
+        <ProgressBarComponent
           isPlaying={this.state.isPlaying}
           timeout={this.state.timeout}
           duration={this.props.slides[this.state.pointer].duration}

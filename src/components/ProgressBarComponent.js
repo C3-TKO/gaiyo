@@ -2,9 +2,9 @@
 
 import React from 'react';
 
-require('styles//StopWatch.scss');
+require('styles//ProgessBar.scss');
 
-class StopWatchComponent extends React.Component {
+class ProgessBarComponent extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if(nextProps.timeout !== this.props.timeout) {
@@ -38,21 +38,24 @@ class StopWatchComponent extends React.Component {
     };
 
     return (
-      <div ref="progressBar" className="stopwatch-component" style={style}/>
+      <div ref="progressBar"
+        className="porgressbar-component"
+        style={style}
+      />
     );
   }
 }
 
-StopWatchComponent.displayName = 'StopWatchComponent';
+ProgessBarComponent.displayName = 'ProgressBarComponent';
 
-StopWatchComponent.propTypes = {
+ProgessBarComponent.propTypes = {
   isPlaying: React.PropTypes.bool.isRequired,
   timeout: React.PropTypes.number,
   duration: React.PropTypes.any
 };
 
-StopWatchComponent.contextTypes = {
+ProgessBarComponent.contextTypes = {
   muiTheme: React.PropTypes.object.isRequired
 };
 
-export default StopWatchComponent;
+export default ProgessBarComponent;

@@ -7,13 +7,13 @@
 // import TestUtils from 'react-addons-test-utils';
 import createComponent from 'helpers/shallowRenderHelper';
 
-import StopWatchComponent from 'components//StopWatchComponent.js';
+import ProgressBarComponent from 'components//ProgressBarComponent.js';
 
-describe('StopWatchComponent', () => {
+describe('ProgressBarComponent', () => {
   let component;
 
   beforeEach(() => {
-    component = createComponent(StopWatchComponent, Object.assign({},
+    component = createComponent(ProgressBarComponent, Object.assign({},
       {
         isPlaying: true
       })
@@ -21,6 +21,6 @@ describe('StopWatchComponent', () => {
   });
 
   it('should have its component name as default className', () => {
-    expect(component.props.className).to.equal('stopwatch-component');
+    expect(component.props.className).to.equal('progressbar-component');
   });
 });
