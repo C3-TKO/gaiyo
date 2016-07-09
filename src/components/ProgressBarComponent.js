@@ -39,7 +39,7 @@ class ProgessBarComponent extends React.Component {
 
     return (
       <div ref="progressBar"
-        className="porgressbar-component"
+        className="progressbar-component"
         style={style}
       />
     );
