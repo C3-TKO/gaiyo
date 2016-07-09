@@ -29,11 +29,12 @@ class StopWatchComponent extends React.Component {
 
   render() {
     const style = {
-      'background': 'red',
+      'background': this.context.muiTheme.palette.accent1Color,
       'WebkitTransition': 'width ' + (this.props.duration / 1000) +  's',
       'transition': 'width ' + (this.props.duration / 1000) + 's',
       'width': '100%',
-      'height': '4px'
+      'height': '4px',
+      'position': 'absolute'
     };
 
     return (
@@ -48,6 +49,10 @@ StopWatchComponent.propTypes = {
   isPlaying: React.PropTypes.bool.isRequired,
   timeout: React.PropTypes.number,
   duration: React.PropTypes.any
+};
+
+StopWatchComponent.contextTypes = {
+  muiTheme: React.PropTypes.object.isRequired
 };
 
 export default StopWatchComponent;
