@@ -6,21 +6,28 @@
 // Uncomment the following lines to use the react test utilities
 // import TestUtils from 'react-addons-test-utils';
 import createComponent from 'helpers/shallowRenderHelper';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import React from 'react';
+import { shallow } from 'enzyme';
 
 import ProgressBarComponent from 'components//ProgressBarComponent.js';
 
-describe('ProgressBarComponent', () => {
+describe.only('ProgressBarComponent', () => {
+  const muiTheme = getMuiTheme();
+
   let component;
 
   beforeEach(() => {
-    component = createComponent(ProgressBarComponent, Object.assign({},
-      {
-        isPlaying: true
-      })
+
+    component = shallow(
+      <ProgressBarComponent
+        isPlaying={true}
+      />,
+      {context: {muiTheme}}
     )
   });
 
   it('should have its component name as default className', () => {
-    expect(component.props.className).to.equal('progressbar-component');
+    expect(component.prop('className')).to.equal('progressbar-component');
   });
 });
