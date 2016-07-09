@@ -4,6 +4,8 @@ require('styles/App.css');
 import React from 'react';
 import RotatorComponent from './RotatorComponent';
 import SettingsComponent from './SettingsComponent';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class AppComponent extends React.Component {
 
@@ -19,8 +21,8 @@ class AppComponent extends React.Component {
 
   render() {
     return (
-
-      <div className="index">
+      <MuiThemeProvider muiTheme={getMuiTheme()} className="index">
+      <div>
           {this.renderIfSlidesAreDefined()}
           <SettingsComponent
             slides={this.props.slides}
@@ -31,7 +33,7 @@ class AppComponent extends React.Component {
             actionDeleteSlide={this.props.actions.deleteSlide}
           />
       </div>
-
+      </MuiThemeProvider>
     );
   }
 }
