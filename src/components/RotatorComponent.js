@@ -4,7 +4,7 @@ import React from 'react';
 import IframeComponent from './IframeComponent';
 import IframeLockerComponent from './IframeLockerComponent';
 import ControlsComponent from './ControlsComponent'
-import StopWatchComponent from './StopWatchComponent';
+import ProgressBarComponent from './ProgressBarComponent';
 import ReloaderComponent from './ReloaderComponent';
 import SettingsComponent from './SettingsComponent';
 
@@ -126,8 +126,7 @@ class RotatorComponent extends React.Component {
           actionEditSlide={this.props.actions.editSlide}
           actionDeleteSlide={this.props.actions.deleteSlide}
         />
-
-        <StopWatchComponent
+        <ProgressBarComponent
           isPlaying={this.state.isPlaying}
           timeout={this.state.timeout}
           duration={this.props.slides[this.state.pointer].duration}
