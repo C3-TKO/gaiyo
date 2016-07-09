@@ -12,7 +12,7 @@ import { shallow } from 'enzyme';
 
 import ProgressBarComponent from 'components//ProgressBarComponent.js';
 
-describe.only('ProgressBarComponent', () => {
+describe('ProgressBarComponent', () => {
   const muiTheme = getMuiTheme();
 
   let component;
