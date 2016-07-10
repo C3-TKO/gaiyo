@@ -90,15 +90,27 @@ class RotatorComponent extends React.Component {
   renderIfSlidesAreDefined() {
     if (this.props.slides.length > 0) {
       return (
-        <ControlsComponent
-          slides={this.props.slides}
-          isPlaying={this.state.isPlaying}
-          play={this.play}
-          stop={this.stop}
-          next={this.next}
-          prev={this.prev}
-          goto={this.goto}
-        />
+        <div>
+          <IframeComponent
+            url={this.props.slides[this.state.pointer].url}
+          />
+
+          <ControlsComponent
+            slides={this.props.slides}
+            isPlaying={this.state.isPlaying}
+            play={this.play}
+            stop={this.stop}
+            next={this.next}
+            prev={this.prev}
+            goto={this.goto}
+          />
+
+          <ProgressBarComponent
+            isPlaying={this.state.isPlaying}
+            timeout={this.state.timeout}
+            duration={this.props.slides[this.state.pointer].duration}
+          />
+        </div>
       )
     }
   }
@@ -108,14 +120,6 @@ class RotatorComponent extends React.Component {
       <div
         className="rotator-component"
       >
-        <IframeComponent
-          url={this.props.slides[this.state.pointer].url}
-        />
-        <IframeLockerComponent
-          next={this.next}
-          prev={this.prev}
-        />
-
         {this.renderIfSlidesAreDefined()}
 
         <SettingsComponent
@@ -126,16 +130,12 @@ class RotatorComponent extends React.Component {
           actionEditSlide={this.props.actions.editSlide}
           actionDeleteSlide={this.props.actions.deleteSlide}
         />
-        <ProgressBarComponent
-          isPlaying={this.state.isPlaying}
-          timeout={this.state.timeout}
-          duration={this.props.slides[this.state.pointer].duration}
+
+        <IframeLockerComponent
+          next={this.next}
+          prev={this.prev}
         />
-        <ReloaderComponent
-          pointer={this.state.pointer}
-          durationLastScreen={this.props.slides[this.props.slides.length - 1].duration}
-          indexOfLastSlide={this.props.slides.length - 1}
-        />
+
       </div>
     );
   }
