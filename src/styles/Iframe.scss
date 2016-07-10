@@ -5,3 +5,30 @@
   position: absolute;
   border: none;
 }
+
+.fade-in {
+  animation: fadein 2s linear forwards;
+}
+
+.fade-out {
+  animation: fadeout 2s linear forwards;
+}
+
+@keyframes fadein {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeout {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+// @keyframes fadein {
+//   0% { left: 100%; }
+//   100% { left: 0; }
+// }
+//
+// @keyframes fadeout {
+//   0% { left: 0; }
+//   100% { left: -100%; }
+// }
