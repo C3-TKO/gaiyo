@@ -6,7 +6,6 @@ import IframeLockerComponent from './IframeLockerComponent';
 import ControlsComponent from './ControlsComponent'
 import ProgressBarComponent from './ProgressBarComponent';
 import ReloaderComponent from './ReloaderComponent';
-import SettingsComponent from './SettingsComponent';
 
 require('styles//Rotator.scss');
 
@@ -95,16 +94,6 @@ class RotatorComponent extends React.Component {
             url={this.props.slides[this.state.pointer].url}
           />
 
-          <ControlsComponent
-            slides={this.props.slides}
-            isPlaying={this.state.isPlaying}
-            play={this.play}
-            stop={this.stop}
-            next={this.next}
-            prev={this.prev}
-            goto={this.goto}
-          />
-
           <ProgressBarComponent
             isPlaying={this.state.isPlaying}
             timeout={this.state.timeout}
@@ -122,8 +111,20 @@ class RotatorComponent extends React.Component {
       >
         {this.renderIfSlidesAreDefined()}
 
-        <SettingsComponent
+        <IframeLockerComponent
+          next={this.next}
+          prev={this.prev}
+        />
+
+        <ControlsComponent
           slides={this.props.slides}
+          isPlaying={this.state.isPlaying}
+          play={this.play}
+          stop={this.stop}
+          next={this.next}
+          prev={this.prev}
+          goto={this.goto}
+
           settings={this.props.settings}
           actionEditSettings={this.props.actions.editSettings}
           actionAddSlide={this.props.actions.addSlide}
@@ -131,9 +132,12 @@ class RotatorComponent extends React.Component {
           actionDeleteSlide={this.props.actions.deleteSlide}
         />
 
-        <IframeLockerComponent
-          next={this.next}
-          prev={this.prev}
+        <ReloaderComponent
+          pointer={this.state.pointer}
+          //durationLastScreen={this.props.slides[this.props.slides.length - 1].duration}
+          durationLastScreen={5000}
+          //indexOfLastSlide={this.props.slides.length - 1}
+          indexOfLastSlide={0}
         />
 
       </div>

@@ -11,6 +11,7 @@ import KeyBinding from 'react-keybinding-component';
 import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
 import ScreenLauncher from './ScreenLauncherComponent';
+import SettingsComponent from './SettingsComponent';
 import { defineMessages, injectIntl } from 'react-intl';
 
 require('styles//Controls.scss');
@@ -36,7 +37,7 @@ class ControlsComponent extends React.Component {
   }
 
   componentDidMount() {
-    this.props.play();
+    //this.props.play();
   }
 
   handleOpen = () => {
@@ -86,11 +87,11 @@ class ControlsComponent extends React.Component {
     ];
 
     return (
-      <div className="controls-component">
+      <div className='controls-component'>
 
         <KeyBinding onKey={ (e) => { this.handleControlsByKeyboard(e) } } />
 
-        <div className="controls-button-container">
+        <div className='main-menu-fab-container'>
           <FloatingActionButton
             mini={true}
             secondary={true}
@@ -99,7 +100,7 @@ class ControlsComponent extends React.Component {
           </FloatingActionButton>
         </div>
 
-        <div className="controls-button-container">
+        <div className='main-menu-fab-container'>
           <FloatingActionButton
             mini={true}
             onTouchTap={() => this.props.prev()} >
@@ -107,7 +108,7 @@ class ControlsComponent extends React.Component {
           </FloatingActionButton>
         </div>
 
-        <div className="controls-button-container"
+        <div className='main-menu-fab-container'
           style={this.props.isPlaying ? {display: 'block'} : {display: 'none'}}>
           <FloatingActionButton
             onTouchTap={() => this.props.stop()}>
@@ -115,7 +116,7 @@ class ControlsComponent extends React.Component {
           </FloatingActionButton>
         </div>
 
-        <div className="controls-button-container"
+        <div className='main-menu-fab-container'
           style={this.props.isPlaying ? {display: 'none'} : {display: 'block'}}>
           <FloatingActionButton
             onTouchTap={() => this.props.play()}>
@@ -123,12 +124,23 @@ class ControlsComponent extends React.Component {
           </FloatingActionButton>
         </div>
 
-        <div className="controls-button-container">
+        <div className='main-menu-fab-container'>
           <FloatingActionButton
             mini={true}
             onTouchTap={() => this.props.next()}>
             <AvSkipNext />
           </FloatingActionButton>
+        </div>
+
+        <div className='main-menu-fab-container'>
+          <SettingsComponent
+            slides={this.props.slides}
+            settings={this.props.settings}
+            actionEditSettings={this.props.actionEditSettings}
+            actionAddSlide={this.props.actionAddSlide}
+            actionEditSlide={this.props.actionEditSlide}
+            actionDeleteSlide={this.props.actionDeleteSlide}
+          />
         </div>
 
         <Dialog
