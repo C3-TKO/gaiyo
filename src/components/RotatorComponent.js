@@ -21,6 +21,7 @@ class RotatorComponent extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    // Checking for out of boundary pointer after deletion of slides
     if(this.state.pointer >= (nextProps.slides.length - 1)) {
       this.setState({
         pointer: 0
