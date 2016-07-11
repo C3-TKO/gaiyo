@@ -93,6 +93,7 @@ class MenuComponent extends React.Component {
 
         <div className='main-menu-fab-container'>
           <FloatingActionButton
+            disabled={this.props.slides.length === 0}
             mini={true}
             secondary={true}
             onTouchTap={this.handleOpen} >
@@ -102,6 +103,7 @@ class MenuComponent extends React.Component {
 
         <div className='main-menu-fab-container'>
           <FloatingActionButton
+            disabled={this.props.slides.length === 0}
             mini={true}
             onTouchTap={() => this.props.prev()} >
             <AvSkipPrevious />
@@ -111,6 +113,7 @@ class MenuComponent extends React.Component {
         <div className='main-menu-fab-container'
           style={this.props.isPlaying ? {display: 'block'} : {display: 'none'}}>
           <FloatingActionButton
+            disabled={this.props.slides.length === 0}
             onTouchTap={() => this.props.stop()}>
             <AvPause />
           </FloatingActionButton>
@@ -119,6 +122,7 @@ class MenuComponent extends React.Component {
         <div className='main-menu-fab-container'
           style={this.props.isPlaying ? {display: 'none'} : {display: 'block'}}>
           <FloatingActionButton
+            disabled={this.props.slides.length === 0}
             onTouchTap={() => this.props.play()}>
             <AvPlayArrow />
           </FloatingActionButton>
@@ -126,6 +130,7 @@ class MenuComponent extends React.Component {
 
         <div className='main-menu-fab-container'>
           <FloatingActionButton
+            disabled={this.props.slides.length === 0}
             mini={true}
             onTouchTap={() => this.props.next()}>
             <AvSkipNext />
