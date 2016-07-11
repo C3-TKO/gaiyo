@@ -99,6 +99,17 @@ class RotatorComponent extends React.Component {
             timeout={this.state.timeout}
             duration={this.props.slides[this.state.pointer].duration}
           />
+
+          <IframeLockerComponent
+            next={this.next}
+            prev={this.prev}
+          />
+
+          <ReloaderComponent
+            pointer={this.state.pointer}
+            durationLastScreen={this.props.slides[this.props.slides.length - 1].duration}
+            indexOfLastSlide={this.props.slides.length - 1}
+          />
         </div>
       )
     }
@@ -110,11 +121,6 @@ class RotatorComponent extends React.Component {
         className="rotator-component"
       >
         {this.renderIfSlidesAreDefined()}
-
-        <IframeLockerComponent
-          next={this.next}
-          prev={this.prev}
-        />
 
         <MenuComponent
           slides={this.props.slides}
@@ -132,14 +138,6 @@ class RotatorComponent extends React.Component {
           actionDeleteSlide={this.props.actions.deleteSlide}
         />
 
-        <ReloaderComponent
-          pointer={this.state.pointer}
-          //durationLastScreen={this.props.slides[this.props.slides.length - 1].duration}
-          durationLastScreen={5000}
-          //indexOfLastSlide={this.props.slides.length - 1}
-          indexOfLastSlide={0}
-        />
-
       </div>
     );
   }
@@ -153,4 +151,3 @@ RotatorComponent.propTypes = {
 };
 
 export default RotatorComponent;
-//export default injectIntl(RotatorComponent);
