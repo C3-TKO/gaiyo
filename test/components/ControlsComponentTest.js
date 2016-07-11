@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { mount } from 'enzyme';
-import ControlsComponent from 'components//ControlsComponent.js';
+import MenuComponent from 'components//MenuComponent.js';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import { IntlProvider, intlShape } from 'react-intl';
@@ -98,6 +98,6 @@ describe.skip('ControlsComponent', () => {
 
   it('should have its component name as default className', () => {
     console.log(component.prop('className'));
-    expect(component.prop('className')).to.equal('controls-component');
+    expect(component.prop('className')).to.equal('menu-component');
   });
 });

@@ -14,7 +14,7 @@ import ScreenLauncher from './ScreenLauncherComponent';
 import SettingsComponent from './SettingsComponent';
 import { defineMessages, injectIntl } from 'react-intl';
 
-require('styles//Controls.scss');
+require('styles//Menu.scss');
 
 const messages = defineMessages({
   title: {
@@ -27,7 +27,7 @@ const messages = defineMessages({
   }
 });
 
-class ControlsComponent extends React.Component {
+class MenuComponent extends React.Component {
 
   constructor(props) {
     super(props);
@@ -87,7 +87,7 @@ class ControlsComponent extends React.Component {
     ];
 
     return (
-      <div className='controls-component'>
+      <div className='menu-component'>
 
         <KeyBinding onKey={ (e) => { this.handleControlsByKeyboard(e) } } />
 
@@ -163,8 +163,8 @@ class ControlsComponent extends React.Component {
   }
 }
 
-ControlsComponent.displayName = 'ControlsComponent';
-ControlsComponent.propTypes = {
+MenuComponent.displayName = 'MenuComponent';
+MenuComponent.propTypes = {
   slides: React.PropTypes.array.isRequired,
   isPlaying: React.PropTypes.bool.isRequired,
   play: React.PropTypes.func.isRequired,
@@ -174,4 +174,4 @@ ControlsComponent.propTypes = {
   goto: React.PropTypes.func.isRequired
 };
 
-export default injectIntl(ControlsComponent);
+export default injectIntl(MenuComponent);

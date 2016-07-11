@@ -3,7 +3,7 @@
 import React from 'react';
 import IframeComponent from './IframeComponent';
 import IframeLockerComponent from './IframeLockerComponent';
-import ControlsComponent from './ControlsComponent'
+import MenuComponent from './MenuComponent'
 import ProgressBarComponent from './ProgressBarComponent';
 import ReloaderComponent from './ReloaderComponent';
 
@@ -116,7 +116,7 @@ class RotatorComponent extends React.Component {
           prev={this.prev}
         />
 
-        <ControlsComponent
+        <MenuComponent
           slides={this.props.slides}
           isPlaying={this.state.isPlaying}
           play={this.play}
