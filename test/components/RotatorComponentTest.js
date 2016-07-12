@@ -13,6 +13,8 @@ describe('RotatorComponent', () => {
   beforeEach(() => {
     component = shallow(
       <RotatorComponent
+        actions={{}}
+        settings={{}}
         slides={[
           {
             url: 'http://www.example.com',

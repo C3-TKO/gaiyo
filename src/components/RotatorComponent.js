@@ -126,7 +126,7 @@ class RotatorComponent extends React.Component {
   render() {
     return (
       <div
-        className="rotator-component"
+        className='rotator-component'
       >
         {this.renderIfSlidesAreDefined()}
 

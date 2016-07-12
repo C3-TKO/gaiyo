@@ -8,7 +8,7 @@ class AppComponent extends React.Component {
   render() {
     const {actions, slides, settings} = this.props;
     return (
-      <div>
+      <div className='index'>
         <RotatorComponent
           actions={actions}
           slides={slides}
