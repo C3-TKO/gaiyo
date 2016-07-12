@@ -11,9 +11,10 @@ import KeyBinding from 'react-keybinding-component';
 import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
 import ScreenLauncher from './ScreenLauncherComponent';
+import SettingsComponent from './SettingsComponent';
 import { defineMessages, injectIntl } from 'react-intl';
 
-require('styles//Controls.scss');
+require('styles//Menu.scss');
 
 const messages = defineMessages({
   title: {
@@ -26,17 +27,13 @@ const messages = defineMessages({
   }
 });
 
-class ControlsComponent extends React.Component {
+class MenuComponent extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
       screenLauncherModalOpen: false
     };
-  }
-
-  componentDidMount() {
-    this.props.play();
   }
 
   handleOpen = () => {
@@ -86,38 +83,65 @@ class ControlsComponent extends React.Component {
     ];
 
     return (
-      <div className="controls-component">
+      <div className='menu-component'>
 
         <KeyBinding onKey={ (e) => { this.handleControlsByKeyboard(e) } } />
 
-        <div className="controls-button-container">
-          <FloatingActionButton mini={true} onTouchTap={this.handleOpen} >
+        <div className='main-menu-fab-container'>
+          <FloatingActionButton
+            disabled={this.props.slides.length === 0}
+            mini={true}
+            secondary={true}
+            onTouchTap={this.handleOpen} >
             <ContentLowPriority />
           </FloatingActionButton>
         </div>
 
-        <div className="controls-button-container">
-          <FloatingActionButton mini={true} onTouchTap={() => this.props.prev()} >
+        <div className='main-menu-fab-container'>
+          <FloatingActionButton
+            disabled={this.props.slides.length === 0}
+            mini={true}
+            onTouchTap={() => this.props.prev()} >
             <AvSkipPrevious />
           </FloatingActionButton>
         </div>
 
-        <div className="controls-button-container" style={this.props.isPlaying ? {display: 'block'} : {display: 'none'}}>
-          <FloatingActionButton onTouchTap={() => this.props.stop()}>
+        <div className='main-menu-fab-container'
+          style={this.props.isPlaying ? {display: 'block'} : {display: 'none'}}>
+          <FloatingActionButton
+            disabled={this.props.slides.length === 0}
+            onTouchTap={() => this.props.stop()}>
             <AvPause />
           </FloatingActionButton>
         </div>
 
-        <div className="controls-button-container" style={this.props.isPlaying ? {display: 'none'} : {display: 'block'}}>
-          <FloatingActionButton onTouchTap={() => this.props.play()}>
+        <div className='main-menu-fab-container'
+          style={this.props.isPlaying ? {display: 'none'} : {display: 'block'}}>
+          <FloatingActionButton
+            disabled={this.props.slides.length === 0}
+            onTouchTap={() => this.props.play()}>
             <AvPlayArrow />
           </FloatingActionButton>
         </div>
 
-        <div className="controls-button-container">
-          <FloatingActionButton mini={true} onTouchTap={() => this.props.next()}>
+        <div className='main-menu-fab-container'>
+          <FloatingActionButton
+            disabled={this.props.slides.length === 0}
+            mini={true}
+            onTouchTap={() => this.props.next()}>
             <AvSkipNext />
           </FloatingActionButton>
+        </div>
+
+        <div className='main-menu-fab-container'>
+          <SettingsComponent
+            slides={this.props.slides}
+            settings={this.props.settings}
+            actionEditSettings={this.props.actionEditSettings}
+            actionAddSlide={this.props.actionAddSlide}
+            actionEditSlide={this.props.actionEditSlide}
+            actionDeleteSlide={this.props.actionDeleteSlide}
+          />
         </div>
 
         <Dialog
@@ -140,8 +164,8 @@ class ControlsComponent extends React.Component {
   }
 }
 
-ControlsComponent.displayName = 'ControlsComponent';
-ControlsComponent.propTypes = {
+MenuComponent.displayName = 'MenuComponent';
+MenuComponent.propTypes = {
   slides: React.PropTypes.array.isRequired,
   isPlaying: React.PropTypes.bool.isRequired,
   play: React.PropTypes.func.isRequired,
@@ -151,4 +175,4 @@ ControlsComponent.propTypes = {
   goto: React.PropTypes.func.isRequired
 };
 
-export default injectIntl(ControlsComponent);
+export default injectIntl(MenuComponent);

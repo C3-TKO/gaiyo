@@ -3,7 +3,7 @@
 import React from 'react';
 import IframeComponent from './IframeComponent';
 import IframeLockerComponent from './IframeLockerComponent';
-import ControlsComponent from './ControlsComponent'
+import MenuComponent from './MenuComponent'
 import ProgressBarComponent from './ProgressBarComponent';
 import ReloaderComponent from './ReloaderComponent';
 
@@ -21,10 +21,18 @@ class RotatorComponent extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    // Checking for out of boundary pointer after deletion of slides
     if(this.state.pointer >= (nextProps.slides.length - 1)) {
       this.setState({
         pointer: 0
       });
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    // Kickstarting the application after the first slide has been added
+    if(this.props.slides.length > 0 && prevProps.slides.length === 0) {
+      this.play();
     }
   }
 
@@ -86,19 +94,43 @@ class RotatorComponent extends React.Component {
     }
   }
 
+  renderIfSlidesAreDefined() {
+    if (this.props.slides.length > 0) {
+      return (
+        <div>
+          <IframeComponent
+            url={this.props.slides[this.state.pointer].url}
+          />
+
+          <ProgressBarComponent
+            isPlaying={this.state.isPlaying}
+            timeout={this.state.timeout}
+            duration={this.props.slides[this.state.pointer].duration}
+          />
+
+          <IframeLockerComponent
+            next={this.next}
+            prev={this.prev}
+          />
+
+          <ReloaderComponent
+            pointer={this.state.pointer}
+            durationLastScreen={this.props.slides[this.props.slides.length - 1].duration}
+            indexOfLastSlide={this.props.slides.length - 1}
+          />
+        </div>
+      )
+    }
+  }
+
   render() {
     return (
       <div
-        className="rotator-component"
+        className='rotator-component'
       >
-        <IframeComponent
-          url={this.props.slides[this.state.pointer].url}
-        />
-        <IframeLockerComponent
-          next={this.next}
-          prev={this.prev}
-        />
-        <ControlsComponent
+        {this.renderIfSlidesAreDefined()}
+
+        <MenuComponent
           slides={this.props.slides}
           isPlaying={this.state.isPlaying}
           play={this.play}
@@ -106,17 +138,14 @@ class RotatorComponent extends React.Component {
           next={this.next}
           prev={this.prev}
           goto={this.goto}
+
+          settings={this.props.settings}
+          actionEditSettings={this.props.actions.editSettings}
+          actionAddSlide={this.props.actions.addSlide}
+          actionEditSlide={this.props.actions.editSlide}
+          actionDeleteSlide={this.props.actions.deleteSlide}
         />
-        <ProgressBarComponent
-          isPlaying={this.state.isPlaying}
-          timeout={this.state.timeout}
-          duration={this.props.slides[this.state.pointer].duration}
-        />
-        <ReloaderComponent
-          pointer={this.state.pointer}
-          durationLastScreen={this.props.slides[this.props.slides.length - 1].duration}
-          indexOfLastSlide={this.props.slides.length - 1}
-        />
+
       </div>
     );
   }
@@ -124,8 +153,9 @@ class RotatorComponent extends React.Component {
 
 RotatorComponent.displayName = 'RotatorComponent';
 RotatorComponent.propTypes = {
-  slides: React.PropTypes.array.isRequired
+  slides: React.PropTypes.array.isRequired,
+  actions: React.PropTypes.object.isRequired,
+  settings: React.PropTypes.object.isRequired
 };
 
 export default RotatorComponent;
-//export default injectIntl(RotatorComponent);
