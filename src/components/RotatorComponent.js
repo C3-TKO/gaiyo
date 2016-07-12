@@ -29,6 +29,13 @@ class RotatorComponent extends React.Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    // Kickstarting the application after the first slide has been added
+    if(this.props.slides.length > 0 && prevProps.slides.length === 0) {
+      this.play();
+    }
+  }
+
   play = () => {
     clearTimeout(this.state.timeout);
     const timeout = setTimeout(() => this.next(), this.props.slides[this.state.pointer].duration);

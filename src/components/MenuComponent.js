@@ -36,10 +36,6 @@ class MenuComponent extends React.Component {
     };
   }
 
-  componentDidMount() {
-    //this.props.play();
-  }
-
   handleOpen = () => {
     this.setState({
       screenLauncherModalOpen: true
