@@ -24,7 +24,7 @@ function nodeWithIntlProp(node) {
 }
 
 
-describe.skip('ControlsComponent', () => {
+describe.skip('MenuComponent', () => {
   let component;
 
   /*
