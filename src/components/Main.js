@@ -125,7 +125,7 @@ class AppComponent extends React.Component {
     const {actions, slides, settings} = this.props;
     return (
       <div
-        className='rotator-component'
+        className='index'
       >
         {this.renderIfSlidesAreDefined()}
 
