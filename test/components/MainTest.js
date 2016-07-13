@@ -26,7 +26,8 @@ describe('MainComponent', () => {
           addSlide: () => {},
           editSlide: () => {},
           deleteSlide: () => {}
-        }
+        },
+        settings: {}
       })
     );
   });

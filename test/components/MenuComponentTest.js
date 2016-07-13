@@ -4,81 +4,17 @@
 'use strict';
 
 import React from 'react';
-import { mount } from 'enzyme';
-import MenuComponent from 'components//MenuComponent.js';
+import { shallow } from 'enzyme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MenuComponent from 'components//MenuComponent.js';
 
-import { IntlProvider, intlShape } from 'react-intl';
-
-const messages = {};
-
-// Create the IntlProvider to retrieve context for wrapping around.
-const intlProvider = new IntlProvider({ locale: 'en', messages }, {});
-const { intl } = intlProvider.getChildContext();
-
-/**
- * When using React-Intl `injectIntl` on components, props.intl is required.
- */
-function nodeWithIntlProp(node) {
-  return React.cloneElement(node, { intl });
-}
-
-
-describe.skip('MenuComponent', () => {
+describe('MenuComponent', () => {
+  const muiTheme = getMuiTheme();
   let component;
 
-  /*
-  beforeEach(() => {
-    component = createComponent(ControlsComponent, Object.assign({},
-      {
-        slides: [
-          {
-            url: 'http://www.example.com',
-            duration: 5000
-          }
-        ],
-        isPlaying: true,
-
-        play: () => {},
-        stop: () => {},
-        next: () => {},
-        prev: () => {},
-        goto: () => {}
-      })
-    )
-  });
-
-  it('should have its component name as default className', () => {
-    expect(component.props.className).to.equal('controls-component');
-  });
-  */
-
-  /*
   beforeEach(() => {
     component = shallow(
-      nodeWithIntlProp(
-        <ControlsComponent
-          slides={[
-            {
-              url: 'http://www.example.com',
-              duration: 5000
-            }
-          ]}
-          play={() => {}}
-          stop={() => {}}
-          next={() => {}}
-          prev={() => {}}
-          goto={() => {}}
-          isPlaying={true}
-        />
-      ), { context: { intl } })
-  });
-  */
-  const muiTheme = getMuiTheme();
-
-  beforeEach(() => {
-    component = mount(
-      <ControlsComponent
+      <MenuComponent
         slides={[
           {
             url: 'http://www.example.com',
@@ -91,13 +27,11 @@ describe.skip('MenuComponent', () => {
         prev={() => {}}
         goto={() => {}}
         isPlaying={true}
-      />, { context: { intl, muiTheme } }
+      />, { context: { muiTheme } }
     )
   });
 
-
   it('should have its component name as default className', () => {
-    console.log(component.prop('className'));
     expect(component.prop('className')).to.equal('menu-component');
   });
 });
