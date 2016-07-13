@@ -47,7 +47,7 @@ class ScreenLauncherComponent extends React.Component {
     })
   }
 
-  handleGoto = (id) => {
+  goto = (id) => {
     this.props.goto(id);
     this.close();
   }
@@ -94,7 +94,7 @@ class ScreenLauncherComponent extends React.Component {
                 value={slide._id}
                 key={'screen-launcher-item-' + slide._id}
                 primaryText={slide.url}
-                onTouchTap={() => this.handleGoto(slide._id)}
+                onTouchTap={() => this.goto(slide._id)}
               />
             )}
           </List>
