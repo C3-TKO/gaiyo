@@ -3,18 +3,13 @@
 /*eslint no-console: 0*/
 'use strict';
 
-// Uncomment the following lines to use the react test utilities
-// import TestUtils from 'react-addons-test-utils';
-import createComponent from 'helpers/shallowRenderHelper';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import React from 'react';
 import { shallow } from 'enzyme';
-
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import ProgressBarComponent from 'components//ProgressBarComponent.js';
 
 describe('ProgressBarComponent', () => {
   const muiTheme = getMuiTheme();
-
   let component;
 
   beforeEach(() => {
