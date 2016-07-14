@@ -55,9 +55,9 @@ class ImportSlidesComponent extends React.Component {
     this.setState({open: false})
   }
 
-  import = () => {
+  import = (data) => {
     this.dropSlides();
-    const inputJSON = JSON.parse(this.refs.inputJSON.getValue());
+    const inputJSON = JSON.parse(data.inputJSON);
     inputJSON.map(slide => {
       const newSlide = {
         'url': slide.url,
@@ -85,20 +85,6 @@ class ImportSlidesComponent extends React.Component {
   render() {
     const {formatMessage} = this.props.intl;
 
-    const actions = [
-      <FlatButton
-        label={formatMessage(messages.buttonimport)}
-        disabled={this.state.importDisabled}
-        primary={true}
-        onTouchTap={this.import}
-      />,
-      <FlatButton
-        label={formatMessage(messages.buttonclose)}
-        primary={false}
-        onTouchTap={this.closeDialog}
-      />
-    ];
-
     // @see: https://github.com/christianalfoni/formsy-react/issues/298#issuecomment-199208145
     Formsy.addValidationRule('isJSON', function(values, value) {
       try {
@@ -121,7 +107,6 @@ class ImportSlidesComponent extends React.Component {
 
         <Dialog
           title={formatMessage(messages.title)}
-          actions={actions}
           open={this.state.open}
           onRequestClose={this.closeDialog}
         >
@@ -132,7 +117,6 @@ class ImportSlidesComponent extends React.Component {
           >
             <FormsyText
               name='inputJSON'
-              ref='inputJSON'
               validations='isJSON'
               required
               validationError={formatMessage(messages.errorbackupjson)}
@@ -141,6 +125,23 @@ class ImportSlidesComponent extends React.Component {
               multiLine={true}
               fullWidth={true}
             />
+
+            <div className='form-actions-container'>
+              <FlatButton
+                label={formatMessage(messages.buttonclose)}
+                secondary={true}
+                type='cancel'
+                onTouchTap={this.close}
+              />
+
+              <FlatButton
+                label={formatMessage(messages.buttonimport)}
+                disabled={this.state.importDisabled}
+                primary={true}
+                type='submit'
+              />
+            </div>
+
           </Formsy.Form>
         </Dialog>
       </div>
