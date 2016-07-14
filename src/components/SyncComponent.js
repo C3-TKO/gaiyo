@@ -65,7 +65,8 @@ class SyncComponent extends React.Component {
     super(props);
     this.state = {
       openForm: false,
-      openRebootHint: false
+      openRebootHint: false,
+      submitButtonDisabled: false
     }
   }
 
@@ -91,6 +92,14 @@ class SyncComponent extends React.Component {
 
   openDialogRebootHint = () => {
     this.setState({openRebootHint: true})
+  }
+
+  enableSubmitButton = () => {
+    this.setState({submitButtonDisabled: false});
+  }
+
+  disableSubmitButton = () => {
+    this.setState({submitButtonDisabled: true});
   }
 
   saveSettings = (data) => {
@@ -142,8 +151,8 @@ class SyncComponent extends React.Component {
           onRequestClose={this.closeDialogForm}
         >
           <Formsy.Form
-            onValid={this.enableImportButton}
-            onInvalid={this.disableImportButton}
+            onValid={this.enableSubmitButton}
+            onInvalid={this.disableSubmitButton}
             onValidSubmit={this.saveSettings}
           >
             <FormsyText
@@ -202,6 +211,7 @@ class SyncComponent extends React.Component {
                 label={formatMessage(messages.buttonupdate)}
                 primary={true}
                 type='submit'
+                disabled={this.state.submitButtonDisabled}
               />
             </div>
           </Formsy.Form>
