@@ -88,7 +88,7 @@ class SlideListEditorComponent extends React.Component {
   }
 
   handleSave = () => {
-    this.refs.editSlideForm.getWrappedInstance().handleSave();
+    this.editSlideFormRef.getWrappedInstance().handleSave();
     this.handleClose();
   }
 
@@ -206,7 +206,7 @@ class SlideListEditorComponent extends React.Component {
           onRequestClose={this.handleClose}
         >
           <EditSlideForm
-            ref='editSlideForm'
+            ref={(c) => this.editSlideFormRef = c}
             onAdd={this.props.onAdd}
             onEdit={this.props.onEdit}
             slide={this.state.slideBeingEdited}
