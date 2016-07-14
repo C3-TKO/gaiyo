@@ -49,18 +49,18 @@ class ExportSlidesComponent extends React.Component {
     const {formatMessage} = this.props.intl;
 
     const actions = [
+      <FlatButton
+        label={formatMessage(messages.buttonclose)}
+        secondary={true}
+        onTouchTap={this.closeDialog}
+      />,
       <CopyToClipboard text={JSON.stringify(this.props.slides)}>
         <FlatButton
           label={formatMessage(messages.buttoncopycb)}
           primary={true}
           onTouchTap={this.copy2ClipBoard}
         />
-      </CopyToClipboard>,
-      <FlatButton
-        label={formatMessage(messages.buttonclose)}
-        primary={false}
-        onTouchTap={this.closeDialog}
-      />
+      </CopyToClipboard>
     ];
 
     return (
