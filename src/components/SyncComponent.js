@@ -110,19 +110,6 @@ class SyncComponent extends React.Component {
   render() {
     const {formatMessage} = this.props.intl;
 
-    const dialogFormActions = [
-      <FlatButton
-        label={formatMessage(messages.buttonupdate)}
-        primary={false}
-        onTouchTap={this.saveSettings}
-      />,
-      <FlatButton
-        label={formatMessage(messages.buttonclose)}
-        primary={true}
-        onTouchTap={this.closeDialogForm}
-      />
-    ];
-
     const styles = {
       block: {
         maxWidth: 250
@@ -151,7 +138,6 @@ class SyncComponent extends React.Component {
 
         <Dialog
           title={formatMessage(messages.title)}
-          actions={dialogFormActions}
           open={this.state.openForm}
           onRequestClose={this.closeDialogForm}
         >
@@ -206,6 +192,18 @@ class SyncComponent extends React.Component {
                 label={formatMessage(messages.labelactive)}
                 style={styles.toggle}
                 defaultToggled={this.props.settings.enabled}
+              />
+            </div>
+            <div className='form-actions-container'>
+              <FlatButton
+                label={formatMessage(messages.buttonclose)}
+                secondary={true}
+                onTouchTap={this.closeDialogForm}
+              />
+              <FlatButton
+                label={formatMessage(messages.buttonupdate)}
+                primary={true}
+                onTouchTap={this.saveSettings}
               />
             </div>
           </Formsy.Form>
