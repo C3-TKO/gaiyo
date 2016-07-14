@@ -7,14 +7,13 @@ import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
-import FlatButton from 'material-ui/FlatButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import SyncComponent from './SyncComponent'
 import ExportSlidesComponent from './ExportSlidesComponent'
 import ImportSlidesComponent from './ImportSlidesComponent'
 import ContentAdd from 'material-ui/svg-icons/content/add';
-import Dialog from 'material-ui/Dialog';
 import EditSlideForm from './EditSlideFormComponent';
+import Dialog from 'material-ui/Dialog';
 import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
 
 const messages = defineMessages({
@@ -26,19 +25,11 @@ const messages = defineMessages({
     id: 'editslideform.subheader',
     defaultMessage: 'Screen rotation list'
   },
-  buttonupdate: {
-    id: 'editslideform.buttons.update',
-    defaultMessage: 'Update'
-  },
   secondarytext: {
     id: 'editslideform.secondarytext',
     defaultMessage: `{duration, plural,
       one {{duration} second}
       other {{duration} seconds}}`
-  },
-  buttoncancel: {
-    id: 'editslideform.buttons.cancel',
-    defaultMessage: 'Cancel'
   },
   buttondelete: {
     id: 'editslideform.buttons.delete',
@@ -87,23 +78,6 @@ class SlideListEditorComponent extends React.Component {
     })
   }
 
-  handleSave = () => {
-    this.editSlideFormRef.getWrappedInstance().handleSave();
-    this.handleClose();
-  }
-
-  disableEditButton = () => {
-    this.setState({
-      isEditButtonDisabled: true
-    })
-  }
-
-  enableEditButton = () => {
-    this.setState({
-      isEditButtonDisabled: false
-    })
-  }
-
   renderRightIconMenu(slide) {
     const {formatMessage} = this.props.intl;
 
@@ -124,14 +98,18 @@ class SlideListEditorComponent extends React.Component {
           style={{'WebkitAppearance': 'none'}}
           onTouchTap={() => {this.handleEdit(slide)}}
         >
-          Edit
+          <FormattedMessage
+            {...messages.buttonedit}
+          />
         </MenuItem>
         <MenuItem
           /* @TODO: Have a look at https://github.com/callemall/material-ui/issues/4008 */
           style={{'WebkitAppearance': 'none'}}
           onTouchTap={() => {this.props.onDelete(slide._id)}}
         >
-          Delete
+          <FormattedMessage
+            {...messages.buttondelete}
+          />
         </MenuItem>
       </IconMenu>
     )
@@ -191,28 +169,11 @@ class SlideListEditorComponent extends React.Component {
           onRequestClose={this.handleClose}
         >
           <EditSlideForm
-            ref={(c) => this.editSlideFormRef = c}
             onAdd={this.props.onAdd}
             onEdit={this.props.onEdit}
             slide={this.state.slideBeingEdited}
-            disableEditButton={this.disableEditButton}
-            enableEditButton={this.enableEditButton}
-            handleCloseDialog={this.handleClose}
+            handleClose={this.handleClose}
           />
-
-          <div className='form-actions-container'>
-            <FlatButton
-              label={formatMessage(messages.buttoncancel)}
-              secondary={true}
-              onTouchTap={this.handleClose}
-            />
-            <FlatButton
-              label={formatMessage(messages.buttonupdate)}
-              primary={true}
-              onTouchTap={this.handleSave}
-              disabled={this.state.isEditButtonDisabled}
-            />
-          </div>
         </Dialog>
       </div>
     );
