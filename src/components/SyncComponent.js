@@ -93,11 +93,11 @@ class SyncComponent extends React.Component {
     this.setState({openRebootHint: true})
   }
 
-  saveSettings = () => {
+  saveSettings = (data) => {
     const nextSettings = {
-      remoteDbUrl: this.refs.remoteDb.getValue(),
-      syncMode: this.refs.syncMode.getValue(),
-      enabled: !!this.refs.enabled.getValue()
+      remoteDbUrl: data.remoteDb,
+      syncMode: data.syncMode,
+      enabled: data.enabled
     };
 
     this.props.actionEditSettings(nextSettings);
@@ -144,11 +144,10 @@ class SyncComponent extends React.Component {
           <Formsy.Form
             onValid={this.enableImportButton}
             onInvalid={this.disableImportButton}
-            onValidSubmit={this.import}
+            onValidSubmit={this.saveSettings}
           >
             <FormsyText
-              name='remote-db'
-              ref='remoteDb'
+              name='remoteDb'
               validations='isUrl'
               required
               validationError={formatMessage(messages.errordburl)}
@@ -162,7 +161,6 @@ class SyncComponent extends React.Component {
 
             <FormsySelect
               name='syncMode'
-              ref='syncMode'
               value={this.props.settings.syncMode}
               floatingLabelText={formatMessage(messages.labelsyncmode)}
               onChange={() => {}}
@@ -188,7 +186,6 @@ class SyncComponent extends React.Component {
             <div style={styles.block}>
               <FormsyToggle
                 name='enabled'
-                ref='enabled'
                 label={formatMessage(messages.labelactive)}
                 style={styles.toggle}
                 defaultToggled={this.props.settings.enabled}
@@ -198,12 +195,13 @@ class SyncComponent extends React.Component {
               <FlatButton
                 label={formatMessage(messages.buttonclose)}
                 secondary={true}
+                type='cancel'
                 onTouchTap={this.closeDialogForm}
               />
               <FlatButton
                 label={formatMessage(messages.buttonupdate)}
                 primary={true}
-                onTouchTap={this.saveSettings}
+                type='submit'
               />
             </div>
           </Formsy.Form>
