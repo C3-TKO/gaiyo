@@ -3,12 +3,24 @@
 import React from 'react';
 import Formsy from 'formsy-react';
 import {FormsyText} from 'formsy-material-ui/lib';
-import KeyBinding from 'react-keybinding-component';
+import FlatButton from 'material-ui/FlatButton';
 import { defineMessages, injectIntl } from 'react-intl';
 
 require('styles//EditSlideForm.scss');
 
 const messages = defineMessages({
+  buttonupdate: {
+    id: 'editslideform.buttons.update',
+    defaultMessage: 'Update'
+  },
+  buttoncancel: {
+    id: 'editslideform.buttons.cancel',
+    defaultMessage: 'Cancel'
+  },
+  buttonedit: {
+    id: 'editslideform.buttons.edit',
+    defaultMessage: 'Edit'
+  },
   labelUrl: {
     id: 'editslideform.labels.url',
     defaultMessage: 'Url (required)'
@@ -32,14 +44,14 @@ class EditSlideFormComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      formInputsValid: false
+      isEditButtonDisabled: true
     };
   }
 
-  handleSave = () => {
+  handleSubmit = (data) => {
     const slide = {
-      'url': this.refs.url.getValue(),
-      'duration': this.refs.duration.getValue() * 1000 // (transforming seconds to milliseconds)
+      'url': data.url,
+      'duration': data.duration * 1000 // (transforming seconds to milliseconds)
     };
 
     if (typeof(this.props.slide) != 'undefined') {
@@ -49,49 +61,35 @@ class EditSlideFormComponent extends React.Component {
       this.props.onAdd(slide);
     }
 
-    this.props.handleCloseDialog();
-  }
-
-  handleControlsByKeyboard = (e) => {
-    switch(e.keyCode) {
-      case 13: // Enter key
-        if(this.state.formInputsValid) {
-          this.handleSave();
-        }
-        return 0;
-    }
+    this.props.handleClose();
   }
 
   enableButton = () => {
     this.setState({
-      formInputsValid: true
+      isEditButtonDisabled: false
     })
-    this.props.enableEditButton();
   }
 
   disableButton = () => {
     this.setState({
-      formInputsValid: false
+      isEditButtonDisabled: true
     })
-    this.props.disableEditButton();
   }
 
   render() {
     const {formatMessage} = this.props.intl;
 
     return (
-      <div className='editslideform-component'>
 
-        <KeyBinding onKey={ (e) => { this.handleControlsByKeyboard(e) } } />
+      <div className='editslideform-component'>
 
         <Formsy.Form
           onValid={this.enableButton}
           onInvalid={this.disableButton}
-          onValidSubmit={this.handleSave}
+          onValidSubmit={this.handleSubmit}
         >
           <FormsyText
             name='url'
-            ref='url'
             validations='isUrl'
             validationError={formatMessage(messages.errorUrl)}
             required
@@ -103,7 +101,6 @@ class EditSlideFormComponent extends React.Component {
 
           <FormsyText
             name='duration'
-            ref='duration'
             validations='isNumeric'
             validationError={formatMessage(messages.errorDuration)}
             required
@@ -111,8 +108,24 @@ class EditSlideFormComponent extends React.Component {
             floatingLabelText={formatMessage(messages.labelDuration)}
             defaultValue={typeof(this.props.slide) != 'undefined' ? this.props.slide.duration / 1000 : ''}
           />
+
+          <div className='form-actions-container'>
+            <FlatButton
+              label={formatMessage(messages.buttoncancel)}
+              secondary={true}
+              type='cancel'
+              onTouchTap={this.props.handleClose}
+            />
+            <FlatButton
+              label={formatMessage(messages.buttonupdate)}
+              primary={true}
+              type='submit'
+              disabled={this.state.isEditButtonDisabled}
+            />
+          </div>
         </Formsy.Form>
       </div>
+
     );
   }
 }
@@ -122,13 +135,7 @@ EditSlideFormComponent.propTypes = {
   onAdd: React.PropTypes.func.isRequired,
   onEdit: React.PropTypes.func.isRequired,
   slide: React.PropTypes.any,
-  disableEditButton: React.PropTypes.func.isRequired,
-  enableEditButton: React.PropTypes.func.isRequired,
-  handleCloseDialog: React.PropTypes.func.isRequired
+  handleClose: React.PropTypes.func.isRequired
 };
 
-EditSlideFormComponent.defaultProps = {
-  currentSlide: undefined
-};
-
-export default injectIntl(EditSlideFormComponent, {withRef: true});
+export default injectIntl(EditSlideFormComponent);

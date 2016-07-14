@@ -10,3 +10,7 @@ body {
   margin: 5px;
   float: left;
 }
+
+.form-actions-container {
+  text-align: right;
+}

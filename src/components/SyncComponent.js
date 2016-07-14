@@ -104,9 +104,9 @@ class SyncComponent extends React.Component {
 
   saveSettings = (data) => {
     const nextSettings = {
-      remoteDbUrl: this.refs.remoteDb.getValue(),
-      syncMode: this.refs.syncMode.getValue(),
-      enabled: !!this.refs.enabled.getValue()
+      remoteDbUrl: data.remoteDb,
+      syncMode: data.syncMode,
+      enabled: data.enabled
     };
 
     this.props.actionEditSettings(nextSettings);
@@ -118,19 +118,6 @@ class SyncComponent extends React.Component {
 
   render() {
     const {formatMessage} = this.props.intl;
-
-    const dialogFormActions = [
-      <FlatButton
-        label={formatMessage(messages.buttonupdate)}
-        primary={false}
-        onTouchTap={this.saveSettings}
-      />,
-      <FlatButton
-        label={formatMessage(messages.buttonclose)}
-        primary={true}
-        onTouchTap={this.closeDialogForm}
-      />
-    ];
 
     const styles = {
       block: {
@@ -160,7 +147,6 @@ class SyncComponent extends React.Component {
 
         <Dialog
           title={formatMessage(messages.title)}
-          actions={dialogFormActions}
           open={this.state.openForm}
           onRequestClose={this.closeDialogForm}
         >
@@ -170,8 +156,7 @@ class SyncComponent extends React.Component {
             onValidSubmit={this.saveSettings}
           >
             <FormsyText
-              name='remote-db'
-              ref='remoteDb'
+              name='remoteDb'
               validations='isUrl'
               required
               validationError={formatMessage(messages.errordburl)}
@@ -185,7 +170,6 @@ class SyncComponent extends React.Component {
 
             <FormsySelect
               name='syncMode'
-              ref='syncMode'
               value={this.props.settings.syncMode}
               floatingLabelText={formatMessage(messages.labelsyncmode)}
               onChange={() => {}}
@@ -211,7 +195,6 @@ class SyncComponent extends React.Component {
             <div style={styles.block}>
               <FormsyToggle
                 name='enabled'
-                ref='enabled'
                 label={formatMessage(messages.labelactive)}
                 style={styles.toggle}
                 defaultToggled={this.props.settings.enabled}
