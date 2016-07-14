@@ -140,20 +140,6 @@ class SlideListEditorComponent extends React.Component {
   render() {
     const {formatMessage} = this.props.intl;
 
-    const actions = [
-      <FlatButton
-        label={formatMessage(messages.buttoncancel)}
-        primary={false}
-        onTouchTap={this.handleClose}
-      />,
-      <FlatButton
-        label={formatMessage(messages.buttonupdate)}
-        primary={true}
-        onTouchTap={this.handleSave}
-        disabled={this.state.isEditButtonDisabled}
-      />
-    ];
-
     return (
       <div className='slidelisteditor-component'>
         <div id='slidelisteditor-fab-bar'>
@@ -201,7 +187,6 @@ class SlideListEditorComponent extends React.Component {
 
         <Dialog
           title={formatMessage(messages.title)}
-          actions={actions}
           open={this.state.open}
           onRequestClose={this.handleClose}
         >
@@ -214,6 +199,20 @@ class SlideListEditorComponent extends React.Component {
             enableEditButton={this.enableEditButton}
             handleCloseDialog={this.handleClose}
           />
+
+          <div className='form-actions-container'>
+            <FlatButton
+              label={formatMessage(messages.buttoncancel)}
+              secondary={true}
+              onTouchTap={this.handleClose}
+            />
+            <FlatButton
+              label={formatMessage(messages.buttonupdate)}
+              primary={true}
+              onTouchTap={this.handleSave}
+              disabled={this.state.isEditButtonDisabled}
+            />
+          </div>
         </Dialog>
       </div>
     );
