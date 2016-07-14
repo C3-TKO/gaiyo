@@ -16,15 +16,15 @@ class ProgessBarComponent extends React.Component {
   }
 
   reset() {
-    this.refs.progressBar.style.WebkitTransition = 'none';
-    this.refs.progressBar.style.transition = 'none';
-    this.refs.progressBar.style.width = '0';
+    this.progressBarRef.style.WebkitTransition = 'none';
+    this.progressBarRef.style.transition = 'none';
+    this.progressBarRef.style.width = '0';
   }
 
   setNewTimer() {
-    this.refs.progressBar.style.WebkitTransition = 'width ' + (this.props.duration / 1000) +  's';
-    this.refs.progressBar.style.transition = 'width ' + (this.props.duration / 1000) +  's';
-    this.refs.progressBar.style.width = '100%';
+    this.progressBarRef.style.WebkitTransition = 'width ' + (this.props.duration / 1000) +  's';
+    this.progressBarRef.style.transition = 'width ' + (this.props.duration / 1000) +  's';
+    this.progressBarRef.style.width = '100%';
   }
 
   render() {
@@ -38,8 +38,9 @@ class ProgessBarComponent extends React.Component {
     };
 
     return (
-      <div ref="progressBar"
-        className="progressbar-component"
+      <div
+        ref={(c) => this.progressBarRef = c}
+        className='progressbar-component'
         style={style}
       />
     );
