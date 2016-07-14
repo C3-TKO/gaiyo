@@ -65,7 +65,8 @@ class SyncComponent extends React.Component {
     super(props);
     this.state = {
       openForm: false,
-      openRebootHint: false
+      openRebootHint: false,
+      submitButtonDisabled: false
     }
   }
 
@@ -93,7 +94,15 @@ class SyncComponent extends React.Component {
     this.setState({openRebootHint: true})
   }
 
-  saveSettings = () => {
+  enableSubmitButton = () => {
+    this.setState({submitButtonDisabled: false});
+  }
+
+  disableSubmitButton = () => {
+    this.setState({submitButtonDisabled: true});
+  }
+
+  saveSettings = (data) => {
     const nextSettings = {
       remoteDbUrl: this.refs.remoteDb.getValue(),
       syncMode: this.refs.syncMode.getValue(),
@@ -156,9 +165,9 @@ class SyncComponent extends React.Component {
           onRequestClose={this.closeDialogForm}
         >
           <Formsy.Form
-            onValid={this.enableImportButton}
-            onInvalid={this.disableImportButton}
-            onValidSubmit={this.import}
+            onValid={this.enableSubmitButton}
+            onInvalid={this.disableSubmitButton}
+            onValidSubmit={this.saveSettings}
           >
             <FormsyText
               name='remote-db'
@@ -206,6 +215,20 @@ class SyncComponent extends React.Component {
                 label={formatMessage(messages.labelactive)}
                 style={styles.toggle}
                 defaultToggled={this.props.settings.enabled}
+              />
+            </div>
+            <div className='form-actions-container'>
+              <FlatButton
+                label={formatMessage(messages.buttonclose)}
+                secondary={true}
+                type='cancel'
+                onTouchTap={this.closeDialogForm}
+              />
+              <FlatButton
+                label={formatMessage(messages.buttonupdate)}
+                primary={true}
+                type='submit'
+                disabled={this.state.submitButtonDisabled}
               />
             </div>
           </Formsy.Form>
