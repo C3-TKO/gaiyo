@@ -55,10 +55,6 @@ class SettingsComponent extends React.Component {
     clearTimeout(this.state.timeout);
   }
 
-  onDelete = (id) => {
-    this.props.actionDeleteSlide(id);
-  }
-
   openDialog = () => {
     this.setState({
       dialogOpen: true
@@ -119,7 +115,6 @@ class SettingsComponent extends React.Component {
         >
           <SlideListEditor
             slides={this.props.slides}
-            onDelete={this.onDelete}
           />
         </Dialog>
 
@@ -137,8 +132,7 @@ class SettingsComponent extends React.Component {
 SettingsComponent.displayName = 'SettingsComponent';
 
 SettingsComponent.propTypes = {
-  slides: React.PropTypes.array.isRequired,
-  actionDeleteSlide: React.PropTypes.func.isRequired
+  slides: React.PropTypes.array.isRequired
 };
 
 export default injectIntl(SettingsComponent);

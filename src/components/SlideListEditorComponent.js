@@ -107,7 +107,7 @@ class SlideListEditorComponent extends React.Component {
         <MenuItem
           /* @TODO: Have a look at https://github.com/callemall/material-ui/issues/4008 */
           style={{'WebkitAppearance': 'none'}}
-          onTouchTap={() => {this.props.onDelete(slide._id)}}
+          onTouchTap={() => {this.props.dispatch(deleteSlide(slide._id))}}
         >
           <FormattedMessage
             {...messages.buttondelete}
@@ -174,8 +174,7 @@ class SlideListEditorComponent extends React.Component {
 
 SlideListEditorComponent.displayName = 'SlideListEditorComponent';
 SlideListEditorComponent.propTypes = {
-  slides: React.PropTypes.array.isRequired,
-  onDelete: React.PropTypes.func.isRequired
+  slides: React.PropTypes.array.isRequired
 };
 
-export default injectIntl(SlideListEditorComponent);
+export default injectIntl(connect()(SlideListEditorComponent));
