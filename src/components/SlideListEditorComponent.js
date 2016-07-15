@@ -121,10 +121,7 @@ class SlideListEditorComponent extends React.Component {
     return (
       <div className='slidelisteditor-component'>
         <div id='slidelisteditor-fab-bar'>
-          <SyncComponent
-            settings={this.props.settings}
-            actionEditSettings={this.props.actionEditSettings}
-          />
+          <SyncComponent />
           <ExportSlidesComponent
             slides={this.props.slides}
           />
@@ -184,7 +181,6 @@ SlideListEditorComponent.displayName = 'SlideListEditorComponent';
 SlideListEditorComponent.propTypes = {
   slides: React.PropTypes.array.isRequired,
   settings: React.PropTypes.object.isRequired,
-  actionEditSettings: React.PropTypes.func.isRequired,
   onDelete: React.PropTypes.func.isRequired,
   onEdit: React.PropTypes.func.isRequired,
   onAdd: React.PropTypes.func.isRequired
