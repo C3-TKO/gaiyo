@@ -15,6 +15,8 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 import EditSlideForm from './EditSlideFormComponent';
 import Dialog from 'material-ui/Dialog';
 import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
+import deleteSlide from '../actions/deleteSlide';
+import { connect } from 'react-redux';
 
 const messages = defineMessages({
   title: {
@@ -173,7 +175,6 @@ class SlideListEditorComponent extends React.Component {
 SlideListEditorComponent.displayName = 'SlideListEditorComponent';
 SlideListEditorComponent.propTypes = {
   slides: React.PropTypes.array.isRequired,
-  settings: React.PropTypes.object.isRequired,
   onDelete: React.PropTypes.func.isRequired
 };
 

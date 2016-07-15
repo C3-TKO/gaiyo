@@ -119,7 +119,6 @@ class SettingsComponent extends React.Component {
         >
           <SlideListEditor
             slides={this.props.slides}
-            settings={this.props.settings}
             onDelete={this.onDelete}
           />
         </Dialog>
@@ -139,7 +138,6 @@ SettingsComponent.displayName = 'SettingsComponent';
 
 SettingsComponent.propTypes = {
   slides: React.PropTypes.array.isRequired,
-  settings: React.PropTypes.object.isRequired,
   actionDeleteSlide: React.PropTypes.func.isRequired
 };
 

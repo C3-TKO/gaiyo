@@ -137,8 +137,6 @@ class AppComponent extends React.Component {
           next={this.next}
           prev={this.prev}
           goto={this.goto}
-
-          settings={settings}
           actionDeleteSlide={actions.deleteSlide}
         />
 
