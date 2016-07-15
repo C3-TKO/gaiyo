@@ -19,8 +19,6 @@ describe.skip('EditSlideFormComponent', () => {
           url: 'http://www.example.com',
           duration: 5000
         },
-        onEdit: () => {},
-        onAdd: () => {},
         disableEditButton: () => {},
         enableEditButton: () => {},
         handleCloseDialog: () => {}

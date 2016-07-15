@@ -10,6 +10,8 @@ import { FormsyText, FormsySelect, FormsyToggle } from 'formsy-material-ui/lib';
 import MenuItem from 'material-ui/MenuItem';
 import Snackbar from 'material-ui/Snackbar';
 import { defineMessages, injectIntl } from 'react-intl';
+import { connect } from 'react-redux';
+import editSettings from '../actions/editSettings';
 
 require('styles//Sync.scss');
 
@@ -109,7 +111,7 @@ class SyncComponent extends React.Component {
       enabled: data.enabled
     };
 
-    this.props.actionEditSettings(nextSettings);
+    this.props.dispatch(editSettings(nextSettings));
   }
 
   reboot = () => {
@@ -222,14 +224,14 @@ class SyncComponent extends React.Component {
 }
 
 SyncComponent.displayName = 'SyncComponent';
-
-SyncComponent.propTypes = {
-  settings: React.PropTypes.object.isRequired,
-  actionEditSettings: React.PropTypes.func.isRequired
-};
-
 SyncComponent.defaultProps = {
   snackbarDuration: 5000
 };
 
-export default injectIntl(SyncComponent);
+function mapStateToProps(state) {
+  return {
+    settings: state.settings
+  };
+}
+
+export default injectIntl(connect(mapStateToProps)(SyncComponent));

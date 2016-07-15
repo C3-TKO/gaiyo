@@ -55,18 +55,6 @@ class SettingsComponent extends React.Component {
     clearTimeout(this.state.timeout);
   }
 
-  onAdd = (slide) => {
-    this.props.actionAddSlide(slide);
-  }
-
-  onEdit = (id, slide) => {
-    this.props.actionEditSlide(id, slide);
-  }
-
-  onDelete = (id) => {
-    this.props.actionDeleteSlide(id);
-  }
-
   openDialog = () => {
     this.setState({
       dialogOpen: true
@@ -127,11 +115,7 @@ class SettingsComponent extends React.Component {
         >
           <SlideListEditor
             slides={this.props.slides}
-            settings={this.props.settings}
-            actionEditSettings={this.props.actionEditSettings}
-            onDelete={this.onDelete}
-            onEdit={this.onEdit}
-            onAdd={this.onAdd}/>
+          />
         </Dialog>
 
         <Snackbar
@@ -148,12 +132,7 @@ class SettingsComponent extends React.Component {
 SettingsComponent.displayName = 'SettingsComponent';
 
 SettingsComponent.propTypes = {
-  slides: React.PropTypes.array.isRequired,
-  settings: React.PropTypes.object.isRequired,
-  actionEditSettings: React.PropTypes.func.isRequired,
-  actionAddSlide: React.PropTypes.func.isRequired,
-  actionDeleteSlide: React.PropTypes.func.isRequired,
-  actionEditSlide: React.PropTypes.func.isRequired
+  slides: React.PropTypes.array.isRequired
 };
 
 export default injectIntl(SettingsComponent);

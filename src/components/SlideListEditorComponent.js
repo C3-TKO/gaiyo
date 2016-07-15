@@ -15,6 +15,8 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 import EditSlideForm from './EditSlideFormComponent';
 import Dialog from 'material-ui/Dialog';
 import { defineMessages, injectIntl, FormattedMessage } from 'react-intl';
+import deleteSlide from '../actions/deleteSlide';
+import { connect } from 'react-redux';
 
 const messages = defineMessages({
   title: {
@@ -105,7 +107,7 @@ class SlideListEditorComponent extends React.Component {
         <MenuItem
           /* @TODO: Have a look at https://github.com/callemall/material-ui/issues/4008 */
           style={{'WebkitAppearance': 'none'}}
-          onTouchTap={() => {this.props.onDelete(slide._id)}}
+          onTouchTap={() => {this.props.dispatch(deleteSlide(slide._id))}}
         >
           <FormattedMessage
             {...messages.buttondelete}
@@ -121,19 +123,11 @@ class SlideListEditorComponent extends React.Component {
     return (
       <div className='slidelisteditor-component'>
         <div id='slidelisteditor-fab-bar'>
-          <SyncComponent
-            settings={this.props.settings}
-            actionEditSettings={this.props.actionEditSettings}
-          />
+          <SyncComponent />
           <ExportSlidesComponent
             slides={this.props.slides}
           />
-          <ImportSlidesComponent
-            slides={this.props.slides}
-            deleteSlide={this.props.onDelete}
-            createSlide={this.props.onAdd}
-          />
-
+          <ImportSlidesComponent />
           <div className='fab'>
             <FloatingActionButton
               onTouchTap={this.handleOpen}
@@ -169,8 +163,6 @@ class SlideListEditorComponent extends React.Component {
           onRequestClose={this.handleClose}
         >
           <EditSlideForm
-            onAdd={this.props.onAdd}
-            onEdit={this.props.onEdit}
             slide={this.state.slideBeingEdited}
             handleClose={this.handleClose}
           />
@@ -182,12 +174,7 @@ class SlideListEditorComponent extends React.Component {
 
 SlideListEditorComponent.displayName = 'SlideListEditorComponent';
 SlideListEditorComponent.propTypes = {
-  slides: React.PropTypes.array.isRequired,
-  settings: React.PropTypes.object.isRequired,
-  actionEditSettings: React.PropTypes.func.isRequired,
-  onDelete: React.PropTypes.func.isRequired,
-  onEdit: React.PropTypes.func.isRequired,
-  onAdd: React.PropTypes.func.isRequired
+  slides: React.PropTypes.array.isRequired
 };
 
-export default injectIntl(SlideListEditorComponent);
+export default injectIntl(connect()(SlideListEditorComponent));

@@ -87,11 +87,6 @@ class MenuComponent extends React.Component {
         <div className='main-menu-fab-container'>
           <SettingsComponent
             slides={this.props.slides}
-            settings={this.props.settings}
-            actionEditSettings={this.props.actionEditSettings}
-            actionAddSlide={this.props.actionAddSlide}
-            actionEditSlide={this.props.actionEditSlide}
-            actionDeleteSlide={this.props.actionDeleteSlide}
           />
         </div>
 

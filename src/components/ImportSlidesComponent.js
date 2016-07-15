@@ -8,6 +8,9 @@ import Dialog from 'material-ui/Dialog';
 import Formsy from 'formsy-react';
 import { FormsyText } from 'formsy-material-ui/lib';
 import { defineMessages, injectIntl } from 'react-intl';
+import addSlide from '../actions/addSlide';
+import deleteSlide from '../actions/deleteSlide';
+import { connect } from 'react-redux';
 
 require('styles//ImportSlides.scss');
 
@@ -63,14 +66,15 @@ class ImportSlidesComponent extends React.Component {
         'url': slide.url,
         'duration': slide.duration
       };
-      this.props.createSlide(newSlide);
+
+      this.props.dispatch(addSlide(newSlide));
     });
     this.closeDialog();
   }
 
   dropSlides() {
     this.props.slides.map(slide => {
-      this.props.deleteSlide(slide._id);
+      this.props.dispatch(deleteSlide(slide._id));
     });
   }
 
@@ -150,10 +154,11 @@ class ImportSlidesComponent extends React.Component {
 }
 
 ImportSlidesComponent.displayName = 'ImportSlidesComponent';
-ImportSlidesComponent.propTypes = {
-  slides: React.PropTypes.array.isRequired,
-  deleteSlide: React.PropTypes.func.isRequired,
-  createSlide: React.PropTypes.func.isRequired
-};
 
-export default injectIntl(ImportSlidesComponent);
+function mapStateToProps(state) {
+  return {
+    slides: state.slides
+  };
+}
+
+export default injectIntl(connect(mapStateToProps)(ImportSlidesComponent));

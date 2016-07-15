@@ -5,6 +5,9 @@ import Formsy from 'formsy-react';
 import {FormsyText} from 'formsy-material-ui/lib';
 import FlatButton from 'material-ui/FlatButton';
 import { defineMessages, injectIntl } from 'react-intl';
+import addSlide from '../actions/addSlide';
+import editSlide from '../actions/editSlide';
+import { connect } from 'react-redux';
 
 require('styles//EditSlideForm.scss');
 
@@ -55,10 +58,10 @@ class EditSlideFormComponent extends React.Component {
     };
 
     if (typeof(this.props.slide) != 'undefined') {
-      this.props.onEdit(this.props.slide._id, slide);
+      this.props.dispatch(editSlide(this.props.slide._id, slide));
     }
     else {
-      this.props.onAdd(slide);
+      this.props.dispatch(addSlide(slide));
     }
 
     this.props.handleClose();
@@ -132,10 +135,8 @@ class EditSlideFormComponent extends React.Component {
 
 EditSlideFormComponent.displayName = 'EditSlideFormComponent';
 EditSlideFormComponent.propTypes = {
-  onAdd: React.PropTypes.func.isRequired,
-  onEdit: React.PropTypes.func.isRequired,
   slide: React.PropTypes.any,
   handleClose: React.PropTypes.func.isRequired
 };
 
-export default injectIntl(EditSlideFormComponent);
+export default injectIntl(connect()(EditSlideFormComponent));
