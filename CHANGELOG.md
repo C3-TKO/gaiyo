@@ -1,5 +1,40 @@
 # Change Log
 
+## [0.5.1](https://github.com/C3-TKO/junkan/tree/0.5.1) (2016-07-15)
+[Full Changelog](https://github.com/C3-TKO/junkan/compare/v0.5.0...0.5.1)
+
+**Implemented enhancements:**
+
+- Align form buttons [\#111](https://github.com/C3-TKO/junkan/issues/111)
+- Switch from ref string to ref callback attributes [\#108](https://github.com/C3-TKO/junkan/issues/108)
+- Use a mui theme color for the progessbar [\#101](https://github.com/C3-TKO/junkan/issues/101)
+- RotatorComponent [\#68](https://github.com/C3-TKO/junkan/issues/68)
+
+**Fixed bugs:**
+
+- Fix the submit button in sync settings [\#113](https://github.com/C3-TKO/junkan/issues/113)
+
+**Closed issues:**
+
+- Refactor the slide list editing components and their dependencies [\#112](https://github.com/C3-TKO/junkan/issues/112)
+- Refac Screen Launcher [\#104](https://github.com/C3-TKO/junkan/issues/104)
+- Switch to dispatching actions from store context [\#100](https://github.com/C3-TKO/junkan/issues/100)
+- Remove Rotator component [\#95](https://github.com/C3-TKO/junkan/issues/95)
+- Move all providers to index.js [\#94](https://github.com/C3-TKO/junkan/issues/94)
+- Align Settings FAB with the controls [\#93](https://github.com/C3-TKO/junkan/issues/93)
+
+**Merged pull requests:**
+
+- Use store connect to get access to the dispatcher [\#117](https://github.com/C3-TKO/junkan/pull/117) ([C3-TKO](https://github.com/C3-TKO))
+- Aligns the form actions [\#116](https://github.com/C3-TKO/junkan/pull/116) ([C3-TKO](https://github.com/C3-TKO))
+- Replace string refs with callback refs [\#115](https://github.com/C3-TKO/junkan/pull/115) ([C3-TKO](https://github.com/C3-TKO))
+- Closes \#113 [\#114](https://github.com/C3-TKO/junkan/pull/114) ([C3-TKO](https://github.com/C3-TKO))
+- Refactoring of the screen launcher component [\#109](https://github.com/C3-TKO/junkan/pull/109) ([C3-TKO](https://github.com/C3-TKO))
+- Get rid of rotator component [\#106](https://github.com/C3-TKO/junkan/pull/106) ([C3-TKO](https://github.com/C3-TKO))
+- Align settings button [\#105](https://github.com/C3-TKO/junkan/pull/105) ([C3-TKO](https://github.com/C3-TKO))
+- Progess bar styling [\#102](https://github.com/C3-TKO/junkan/pull/102) ([C3-TKO](https://github.com/C3-TKO))
+- Moves the muitheme provider to index.js [\#99](https://github.com/C3-TKO/junkan/pull/99) ([C3-TKO](https://github.com/C3-TKO))
+
 ## [0.5.0](https://github.com/C3-TKO/junkan/tree/0.5.0) (2016-07-07)
 [Full Changelog](https://github.com/C3-TKO/junkan/compare/v0.4.1...0.5.0)
 
