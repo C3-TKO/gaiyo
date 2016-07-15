@@ -40,16 +40,5 @@ describe('IframeComponent', () => {
     it('should have two iframes', () => {
       expect(component.props.children.length).to.equal(2)
     });
-
-    it('should have first iframe with fade-out class', () => {
-      const iframe = component.props.children[0]
-      expect(iframe.props.className).to.equal('iframe-component fade-out')
-    });
-
-    it('should have second iframe with fade-in class', () => {
-      const iframe = component.props.children[1]
-      expect(iframe.props.className).to.equal('iframe-component fade-in')
-    });
   });
-
 });

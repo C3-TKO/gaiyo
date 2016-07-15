@@ -91,6 +91,13 @@ class AppComponent extends React.Component {
     }
   }
 
+  setPointer(pointer) {
+    this.setState({
+      prevPointer: this.state.pointer,
+      pointer: pointer
+    })
+  }
+
   renderIfSlidesAreDefined() {
     if (this.props.slides.length > 0) {
       return (
