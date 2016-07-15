@@ -161,8 +161,6 @@ class SlideListEditorComponent extends React.Component {
           onRequestClose={this.handleClose}
         >
           <EditSlideForm
-            onAdd={this.props.onAdd}
-            onEdit={this.props.onEdit}
             slide={this.state.slideBeingEdited}
             handleClose={this.handleClose}
           />
@@ -176,9 +174,7 @@ SlideListEditorComponent.displayName = 'SlideListEditorComponent';
 SlideListEditorComponent.propTypes = {
   slides: React.PropTypes.array.isRequired,
   settings: React.PropTypes.object.isRequired,
-  onDelete: React.PropTypes.func.isRequired,
-  onEdit: React.PropTypes.func.isRequired,
-  onAdd: React.PropTypes.func.isRequired
+  onDelete: React.PropTypes.func.isRequired
 };
 
 export default injectIntl(SlideListEditorComponent);

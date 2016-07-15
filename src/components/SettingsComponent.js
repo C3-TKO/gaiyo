@@ -55,14 +55,6 @@ class SettingsComponent extends React.Component {
     clearTimeout(this.state.timeout);
   }
 
-  onAdd = (slide) => {
-    this.props.actionAddSlide(slide);
-  }
-
-  onEdit = (id, slide) => {
-    this.props.actionEditSlide(id, slide);
-  }
-
   onDelete = (id) => {
     this.props.actionDeleteSlide(id);
   }
@@ -129,8 +121,6 @@ class SettingsComponent extends React.Component {
             slides={this.props.slides}
             settings={this.props.settings}
             onDelete={this.onDelete}
-            onEdit={this.onEdit}
-            onAdd={this.onAdd}
           />
         </Dialog>
 
@@ -150,9 +140,7 @@ SettingsComponent.displayName = 'SettingsComponent';
 SettingsComponent.propTypes = {
   slides: React.PropTypes.array.isRequired,
   settings: React.PropTypes.object.isRequired,
-  actionAddSlide: React.PropTypes.func.isRequired,
-  actionDeleteSlide: React.PropTypes.func.isRequired,
-  actionEditSlide: React.PropTypes.func.isRequired
+  actionDeleteSlide: React.PropTypes.func.isRequired
 };
 
 export default injectIntl(SettingsComponent);

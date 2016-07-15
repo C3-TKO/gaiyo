@@ -88,8 +88,6 @@ class MenuComponent extends React.Component {
           <SettingsComponent
             slides={this.props.slides}
             settings={this.props.settings}
-            actionAddSlide={this.props.actionAddSlide}
-            actionEditSlide={this.props.actionEditSlide}
             actionDeleteSlide={this.props.actionDeleteSlide}
           />
         </div>

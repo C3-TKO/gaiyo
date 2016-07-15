@@ -139,8 +139,6 @@ class AppComponent extends React.Component {
           goto={this.goto}
 
           settings={settings}
-          actionAddSlide={actions.addSlide}
-          actionEditSlide={actions.editSlide}
           actionDeleteSlide={actions.deleteSlide}
         />
 
