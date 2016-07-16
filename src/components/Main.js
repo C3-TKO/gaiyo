@@ -12,6 +12,7 @@ class AppComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      prevPointer: 0,
       pointer: 0,
       isPlaying: false,
       timeout: undefined
@@ -21,9 +22,7 @@ class AppComponent extends React.Component {
   componentWillReceiveProps(nextProps) {
     // Checking for out of boundary pointer after deletion of slides
     if(this.state.pointer >= (nextProps.slides.length - 1)) {
-      this.setState({
-        pointer: 0
-      });
+      this.setPointer(0)
     }
   }
 
@@ -41,7 +40,7 @@ class AppComponent extends React.Component {
     this.setState({
       isPlaying: true,
       timeout: timeout
-    });
+    })
   }
 
   stop = () => {
@@ -55,9 +54,9 @@ class AppComponent extends React.Component {
   next = () => {
     let nextPointer = this.state.pointer
     if(++nextPointer >= this.props.slides.length) {
-      nextPointer =  0;
+      nextPointer =  0
     }
-    this.setState({pointer: nextPointer})
+    this.setPointer(nextPointer)
 
     if (this.state.isPlaying) {
       this.play();
@@ -69,7 +68,7 @@ class AppComponent extends React.Component {
     if(--nextPointer < 0) {
       nextPointer = this.props.slides.length - 1;
     }
-    this.setState({pointer: nextPointer})
+    this.setPointer(nextPointer)
 
     if (this.state.isPlaying) {
       this.play();
@@ -77,7 +76,7 @@ class AppComponent extends React.Component {
   }
 
   goto = (slideId) => {
-    this.setState({pointer: this.getPointerForSlideId(slideId)})
+    this.setPointer(this.getPointerForSlideId(slideId))
 
     if (this.state.isPlaying) {
       this.play();
@@ -92,12 +91,20 @@ class AppComponent extends React.Component {
     }
   }
 
+  setPointer(pointer) {
+    this.setState({
+      prevPointer: this.state.pointer,
+      pointer: pointer
+    })
+  }
+
   renderIfSlidesAreDefined() {
     if (this.props.slides.length > 0) {
       return (
         <div>
           <IframeComponent
-            url={this.props.slides[this.state.pointer].url}
+            urlOut={this.props.slides[this.state.prevPointer].url}
+            urlIn={this.props.slides[this.state.pointer].url}
           />
 
           <ProgressBarComponent

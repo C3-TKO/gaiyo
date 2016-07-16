@@ -2,7 +2,7 @@ const { createStore, applyMiddleware, compose} = require('redux');
 const reducers = require('../reducers');
 
 import {persistStore, autoRehydrate} from 'redux-persist'
-import localForage from 'localForage'
+import localForage from 'localforage'
 import PouchMiddleware from 'pouch-redux-middleware'
 import PouchDB from 'pouchdb';
 
