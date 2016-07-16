@@ -37,4 +37,4 @@ This projects uses [SemVer](http://semver.org/)
 - [ ] I have added tests to cover my changes.
 - [ ] All new and existing tests passed.
 
-Regarding tests and coding styles - just relax this project has an automated tests setup. However if you want to run tests locally, than you can use ```npm run test``` from the command line.
+Regarding tests and coding styles - just relax this project has an automated tests setup. However if you want to run tests locally, than you can use ```npm run test``` from the command line. Pull requests won't be accepted if the automated travis build process failed. Should overall test coverage sink significantly the pull request won't be accepted as well as long as you do not provide more tests ;-)
