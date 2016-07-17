@@ -38,7 +38,10 @@ class MenuComponent extends React.Component {
 
   render() {
     return (
-      <div className='menu-component'>
+      <div
+        className='menu-component'
+        style={{animation: 'menu-swift-drop .375s forwards', transitionTimingFunction: 'cubic-bezier(.4, 0, .2, 1)' }}
+      >
 
         <KeyBinding onKey={ (e) => { this.handleControlsByKeyboard(e) } } />
 
