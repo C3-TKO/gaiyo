@@ -5,6 +5,9 @@ import Snackbar from 'material-ui/Snackbar';
 import Swipeable from 'react-swipeable';
 import { defineMessages, injectIntl } from 'react-intl';
 
+const debounce = require('lodash.debounce');
+const throttle = require('lodash.throttle');
+
 require('styles//IframeLocker.scss');
 
 const messages = defineMessages({
@@ -21,6 +24,19 @@ class IframeLockerComponent extends React.Component {
     this.state = {
       open: false
     }
+  }
+
+  componentWillMount() {
+    this.throttle = throttle(this.throttle, 500);
+    this.debounce = debounce(this.debounce, 500);
+  }
+
+  throttle() {
+    console.log('T');
+  }
+
+  debounce() {
+    console.log('D');
   }
 
   handleTouchTap = () => {
@@ -44,13 +60,14 @@ class IframeLockerComponent extends React.Component {
       onSwipedLeft={this.props.prev}
       preventDefaultTouchmoveEvent={true}
       onTouchTap={this.handleTouchTap}
-     >
-        <Snackbar
-          open={this.state.open}
-          message={formatMessage(messages.snackbar)}
-          autoHideDuration={6000}
-          onRequestClose={this.handleRequestClose}
-        />
+      onMouseMove={() => {this.throttle(); this.debounce(); console.log('M')}}
+    >
+      <Snackbar
+        open={this.state.open}
+        message={formatMessage(messages.snackbar)}
+        autoHideDuration={6000}
+        onRequestClose={this.handleRequestClose}
+      />
     </Swipeable>
     );
   }
