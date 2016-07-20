@@ -22,21 +22,39 @@ class IframeLockerComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false
+      open: false,
+      menuVisible: false
     }
   }
 
   componentWillMount() {
-    this.throttle = throttle(this.throttle, 500);
-    this.debounce = debounce(this.debounce, 500);
+    this.showMenu = throttle(this.showMenu, 500);
+    this.hideMenu = debounce(this.hideMenu, 500);
   }
 
-  throttle() {
+  showMenu() {
     console.log('T');
+    this.setState({
+      menuVisible: true
+    })
   }
 
-  debounce() {
+  hideMenu() {
     console.log('D');
+    this.setState({
+      menuVisible: false
+    })
+  }
+
+  handleMenuVisibility = () => {
+    if(this.state.menuVisible) {
+      this.hideMenu();
+    }
+    else {
+      this.showMenu();
+    }
+
+    console.log('M');
   }
 
   handleTouchTap = () => {
@@ -60,8 +78,13 @@ class IframeLockerComponent extends React.Component {
       onSwipedLeft={this.props.prev}
       preventDefaultTouchmoveEvent={true}
       onTouchTap={this.handleTouchTap}
-      onMouseMove={() => {this.throttle(); this.debounce(); console.log('M')}}
+      onMouseMove={this.handleMenuVisibility}
     >
+      <Snackbar
+        open={true}
+        message={this.state.menuVisible.toString()}
+      />
+
       <Snackbar
         open={this.state.open}
         message={formatMessage(messages.snackbar)}
