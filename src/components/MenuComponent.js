@@ -9,6 +9,7 @@ import AvSkipNext from 'material-ui/svg-icons/av/skip-next';
 import KeyBinding from 'react-keybinding-component';
 import ScreenLauncherComponent from './ScreenLauncherComponent';
 import SettingsComponent from './SettingsComponent';
+import IframeLockerComponent from './IframeLockerComponent';
 
 require('styles//Menu.scss');
 
@@ -38,60 +39,68 @@ class MenuComponent extends React.Component {
 
   render() {
     return (
-      <div
-        className='menu-component'
-        style={{animation: 'menu-swift-drop .375s forwards', transitionTimingFunction: 'cubic-bezier(.4, 0, .2, 1)' }}
-      >
+      <div>
+        <div
+          className='menu-component'
+          style={{animation: 'menu-swift-drop .375s forwards', transitionTimingFunction: 'cubic-bezier(.4, 0, .2, 1)' }}
+        >
 
-        <KeyBinding onKey={ (e) => { this.handleControlsByKeyboard(e) } } />
+          <KeyBinding onKey={ (e) => { this.handleControlsByKeyboard(e) } } />
 
-        <ScreenLauncherComponent
-          ref={(c) => this.screenLauncherRef = c}
-          slides={this.props.slides}
-          goto={this.props.goto}
-        />
-
-        <div className='main-menu-fab-container'>
-          <FloatingActionButton
-            disabled={this.props.slides.length === 0}
-            mini={true}
-            onTouchTap={() => this.props.prev()} >
-            <AvSkipPrevious />
-          </FloatingActionButton>
-        </div>
-
-        <div className='main-menu-fab-container'
-          style={this.props.isPlaying ? {display: 'block'} : {display: 'none'}}>
-          <FloatingActionButton
-            disabled={this.props.slides.length === 0}
-            onTouchTap={() => this.props.stop()}>
-            <AvPause />
-          </FloatingActionButton>
-        </div>
-
-        <div className='main-menu-fab-container'
-          style={this.props.isPlaying ? {display: 'none'} : {display: 'block'}}>
-          <FloatingActionButton
-            disabled={this.props.slides.length === 0}
-            onTouchTap={() => this.props.play()}>
-            <AvPlayArrow />
-          </FloatingActionButton>
-        </div>
-
-        <div className='main-menu-fab-container'>
-          <FloatingActionButton
-            disabled={this.props.slides.length === 0}
-            mini={true}
-            onTouchTap={() => this.props.next()}>
-            <AvSkipNext />
-          </FloatingActionButton>
-        </div>
-
-        <div className='main-menu-fab-container'>
-          <SettingsComponent
+          <ScreenLauncherComponent
+            ref={(c) => this.screenLauncherRef = c}
             slides={this.props.slides}
+            goto={this.props.goto}
           />
+
+          <div className='main-menu-fab-container'>
+            <FloatingActionButton
+              disabled={this.props.slides.length === 0}
+              mini={true}
+              onTouchTap={() => this.props.prev()} >
+              <AvSkipPrevious />
+            </FloatingActionButton>
+          </div>
+
+          <div className='main-menu-fab-container'
+            style={this.props.isPlaying ? {display: 'block'} : {display: 'none'}}>
+            <FloatingActionButton
+              disabled={this.props.slides.length === 0}
+              onTouchTap={() => this.props.stop()}>
+              <AvPause />
+            </FloatingActionButton>
+          </div>
+
+          <div className='main-menu-fab-container'
+            style={this.props.isPlaying ? {display: 'none'} : {display: 'block'}}>
+            <FloatingActionButton
+              disabled={this.props.slides.length === 0}
+              onTouchTap={() => this.props.play()}>
+              <AvPlayArrow />
+            </FloatingActionButton>
+          </div>
+
+          <div className='main-menu-fab-container'>
+            <FloatingActionButton
+              disabled={this.props.slides.length === 0}
+              mini={true}
+              onTouchTap={() => this.props.next()}>
+              <AvSkipNext />
+            </FloatingActionButton>
+          </div>
+
+          <div className='main-menu-fab-container'>
+            <SettingsComponent
+              slides={this.props.slides}
+            />
+          </div>
+
         </div>
+
+        <IframeLockerComponent
+          next={this.props.next}
+          prev={this.props.prev}
+        />
 
       </div>
     );
