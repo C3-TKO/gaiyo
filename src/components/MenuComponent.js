@@ -39,9 +39,12 @@ class MenuComponent extends React.Component {
 
   render() {
     return (
-      <div>
+      <div
+        className='menu-component'
+      >
+        
         <div
-          className='menu-component'
+          className='menu-flyout'
           style={{animation: 'menu-swift-drop .375s forwards', transitionTimingFunction: 'cubic-bezier(.4, 0, .2, 1)' }}
         >
 
