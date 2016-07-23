@@ -9,11 +9,48 @@ import AvSkipNext from 'material-ui/svg-icons/av/skip-next';
 import KeyBinding from 'react-keybinding-component';
 import ScreenLauncherComponent from './ScreenLauncherComponent';
 import SettingsComponent from './SettingsComponent';
+import Snackbar from 'material-ui/Snackbar';
 import IframeLockerComponent from './IframeLockerComponent';
+
+const debounce = require('lodash.debounce');
+const throttle = require('lodash.throttle');
 
 require('styles//Menu.scss');
 
 class MenuComponent extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      menuVisible: false
+    }
+  }
+
+  componentWillMount() {
+    this.showMenu = throttle(this.showMenu, 500);
+    this.hideMenu = debounce(this.hideMenu, 500);
+  }
+
+  showMenu() {
+    this.setState({
+      menuVisible: true
+    })
+  }
+
+  hideMenu() {
+    this.setState({
+      menuVisible: false
+    })
+  }
+
+  handleMenuVisibility = () => {
+    if(this.state.menuVisible) {
+      this.hideMenu();
+    }
+    else {
+      this.showMenu();
+    }
+  }
 
   handleControlsByKeyboard = (e) => {
     switch(e.keyCode) {
@@ -42,7 +79,7 @@ class MenuComponent extends React.Component {
       <div
         className='menu-component'
       >
-        
+
         <div
           className='menu-flyout'
           style={{animation: 'menu-swift-drop .375s forwards', transitionTimingFunction: 'cubic-bezier(.4, 0, .2, 1)' }}
@@ -100,9 +137,15 @@ class MenuComponent extends React.Component {
 
         </div>
 
+        <Snackbar
+          open={true}
+          message={this.state.menuVisible.toString()}
+        />
+
         <IframeLockerComponent
           next={this.props.next}
           prev={this.props.prev}
+          handleMenuVisibility={this.handleMenuVisibility()}
         />
 
       </div>
