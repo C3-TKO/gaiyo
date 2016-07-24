@@ -83,6 +83,7 @@ class MenuComponent extends React.Component {
         <div
           className='menu-flyout'
           style={{animation: 'menu-swift-drop .375s forwards', transitionTimingFunction: 'cubic-bezier(.4, 0, .2, 1)' }}
+          onMouseMove={this.handleMenuVisibility}
         >
 
           <KeyBinding onKey={ (e) => { this.handleControlsByKeyboard(e) } } />
