@@ -31,13 +31,13 @@ class MenuComponent extends React.Component {
     this.hideMenu = debounce(this.hideMenu, 500);
   }
 
-  showMenu() {
+  showMenu = () => {
     this.setState({
       menuVisible: true
     })
   }
 
-  hideMenu() {
+  hideMenu= () => {
     this.setState({
       menuVisible: false
     })
@@ -145,7 +145,7 @@ class MenuComponent extends React.Component {
         <IframeLockerComponent
           next={this.props.next}
           prev={this.props.prev}
-          handleMenuVisibility={this.handleMenuVisibility()}
+          handleMenuVisibility={this.handleMenuVisibility}
         />
 
       </div>
