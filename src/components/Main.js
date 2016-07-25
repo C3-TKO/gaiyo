@@ -123,7 +123,7 @@ class AppComponent extends React.Component {
   }
 
   render() {
-    const {actions, slides, settings} = this.props;
+    const {actions, slides} = this.props;
     return (
       <div
         className='index'
