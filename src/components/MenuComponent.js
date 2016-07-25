@@ -27,20 +27,22 @@ class MenuComponent extends React.Component {
   }
 
   componentWillMount() {
-    this.showMenu = throttle(this.showMenu, 500);
-    this.hideMenu = debounce(this.hideMenu, 500);
+    this.showMenu = throttle(this.showMenu, this.props.throttleDuration);
+    this.hideMenu = debounce(this.hideMenu, this.props.debounceDuration);
   }
 
   showMenu = () => {
     this.setState({
       menuVisible: true
     })
+    this.mainMenuRef.style = {animation: 'menu-swift-drop .375s forwards', transitionTimingFunction: 'cubic-bezier(.4, 0, .2, 1)'}
   }
 
-  hideMenu= () => {
+  hideMenu = () => {
     this.setState({
       menuVisible: false
     })
+    this.mainMenuRef.style = {animation: 'menu-swift-lift .375s forwards', transitionTimingFunction: 'cubic-bezier(.4, 0, .2, 1)'}
   }
 
   handleMenuVisibility = () => {
@@ -82,6 +84,7 @@ class MenuComponent extends React.Component {
 
         <div
           className='menu-flyout'
+          ref={(c) => this.mainMenuRef = c}
           style={{animation: 'menu-swift-drop .375s forwards', transitionTimingFunction: 'cubic-bezier(.4, 0, .2, 1)' }}
           onMouseMove={this.handleMenuVisibility}
         >
@@ -163,6 +166,11 @@ MenuComponent.propTypes = {
   next: React.PropTypes.func.isRequired,
   prev: React.PropTypes.func.isRequired,
   goto: React.PropTypes.func.isRequired
+};
+
+MenuComponent.defaultProps = {
+  debounceDuration: 750,
+  throttleDuration: 750
 };
 
 export default MenuComponent;
