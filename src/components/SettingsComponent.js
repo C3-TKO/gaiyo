@@ -101,7 +101,10 @@ class SettingsComponent extends React.Component {
         <FloatingActionButton
           secondary={true}
           mini={true}
-          onTouchTap={this.openDialog}>
+          onTouchTap={this.openDialog}
+          onMouseEnter={this.props.onMouseEnter}
+          onMouseLeave={this.props.onMouseLeave}
+        >
           <ActionSettings />
         </FloatingActionButton>
 
@@ -132,7 +135,9 @@ class SettingsComponent extends React.Component {
 SettingsComponent.displayName = 'SettingsComponent';
 
 SettingsComponent.propTypes = {
-  slides: React.PropTypes.array.isRequired
+  slides: React.PropTypes.array.isRequired,
+  onMouseEnter: React.PropTypes.func.isRequired,
+  onMouseLeave: React.PropTypes.func.isRequired
 };
 
 export default injectIntl(SettingsComponent);

@@ -22,6 +22,7 @@ class MenuComponent extends React.Component {
     super(props);
     this.state = {
       menuVisible: false,
+      menuVisibilitySticky: false,
       menuVisibleClass: 'menu-flyout-inactive'
     }
   }
@@ -31,28 +32,46 @@ class MenuComponent extends React.Component {
     this.hideMenu = debounce(this.hideMenu, this.props.debounceDuration);
   }
 
+  showMenuSticky = () => {
+    this.setState({
+      menuVisible: true,
+      menuVisibilitySticky: true,
+      menuVisibleClass: 'menu-flyout-active'
+    })
+    this.showMenu();
+  }
+
+  removeMenuSticky = () => {
+    this.setState({
+      menuVisibilitySticky: false
+    })
+    this.handleMenuVisibility;
+  }
+
   showMenu = () => {
     this.setState({
       menuVisible: true,
       menuVisibleClass: 'menu-flyout-active'
     })
-
   }
 
   hideMenu = () => {
-    this.setState({
-      menuVisible: false,
-      menuVisibleClass: 'menu-flyout-inactive'
-    })
-    //this.mainMenuRef.style = {animation: 'menu-swift-lift .375s forwards', transitionTimingFunction: 'cubic-bezier(.4, 0, .2, 1)'}
+    if (!this.state.menuVisibilitySticky) {
+      this.setState({
+        menuVisible: false,
+        menuVisibleClass: 'menu-flyout-inactive'
+      })
+    }
   }
 
   handleMenuVisibility = () => {
-    if(this.state.menuVisible) {
-      this.hideMenu();
-    }
-    else {
-      this.showMenu();
+    if(!this.state.menuVisibilitySticky) {
+      if(this.state.menuVisible) {
+        this.hideMenu();
+      }
+      else {
+        this.showMenu();
+      }
     }
   }
 
@@ -96,13 +115,18 @@ class MenuComponent extends React.Component {
             ref={(c) => this.screenLauncherRef = c}
             slides={this.props.slides}
             goto={this.props.goto}
+            onMouseEnter={this.showMenuSticky}
+            onMouseLeave={this.removeMenuSticky}
           />
 
           <div className='main-menu-fab-container'>
             <FloatingActionButton
               disabled={this.props.slides.length === 0}
               mini={true}
-              onTouchTap={() => this.props.prev()} >
+              onTouchTap={() => this.props.prev()}
+              onMouseEnter={this.showMenuSticky}
+              onMouseLeave={this.removeMenuSticky}
+            >
               <AvSkipPrevious />
             </FloatingActionButton>
           </div>
@@ -111,7 +135,10 @@ class MenuComponent extends React.Component {
             style={this.props.isPlaying ? {display: 'block'} : {display: 'none'}}>
             <FloatingActionButton
               disabled={this.props.slides.length === 0}
-              onTouchTap={() => this.props.stop()}>
+              onTouchTap={() => this.props.stop()}
+              onMouseEnter={this.showMenuSticky}
+              onMouseLeave={this.removeMenuSticky}
+            >
               <AvPause />
             </FloatingActionButton>
           </div>
@@ -120,7 +147,10 @@ class MenuComponent extends React.Component {
             style={this.props.isPlaying ? {display: 'none'} : {display: 'block'}}>
             <FloatingActionButton
               disabled={this.props.slides.length === 0}
-              onTouchTap={() => this.props.play()}>
+              onTouchTap={() => this.props.play()}
+              onMouseEnter={this.showMenuSticky}
+              onMouseLeave={this.removeMenuSticky}
+            >
               <AvPlayArrow />
             </FloatingActionButton>
           </div>
@@ -129,7 +159,10 @@ class MenuComponent extends React.Component {
             <FloatingActionButton
               disabled={this.props.slides.length === 0}
               mini={true}
-              onTouchTap={() => this.props.next()}>
+              onTouchTap={() => this.props.next()}
+              onMouseEnter={this.showMenuSticky}
+              onMouseLeave={this.removeMenuSticky}
+            >
               <AvSkipNext />
             </FloatingActionButton>
           </div>
@@ -137,6 +170,8 @@ class MenuComponent extends React.Component {
           <div className='main-menu-fab-container'>
             <SettingsComponent
               slides={this.props.slides}
+              onMouseEnter={this.showMenuSticky}
+              onMouseLeave={this.removeMenuSticky}
             />
           </div>
 
