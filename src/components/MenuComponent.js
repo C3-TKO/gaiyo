@@ -22,7 +22,8 @@ class MenuComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      menuVisible: false
+      menuVisible: false,
+      menuVisibleClass: 'menu-flyout-inactive'
     }
   }
 
@@ -33,16 +34,18 @@ class MenuComponent extends React.Component {
 
   showMenu = () => {
     this.setState({
-      menuVisible: true
+      menuVisible: true,
+      menuVisibleClass: 'menu-flyout-active'
     })
-    this.mainMenuRef.style = {animation: 'menu-swift-drop .375s forwards', transitionTimingFunction: 'cubic-bezier(.4, 0, .2, 1)'}
+
   }
 
   hideMenu = () => {
     this.setState({
-      menuVisible: false
+      menuVisible: false,
+      menuVisibleClass: 'menu-flyout-inactive'
     })
-    this.mainMenuRef.style = {animation: 'menu-swift-lift .375s forwards', transitionTimingFunction: 'cubic-bezier(.4, 0, .2, 1)'}
+    //this.mainMenuRef.style = {animation: 'menu-swift-lift .375s forwards', transitionTimingFunction: 'cubic-bezier(.4, 0, .2, 1)'}
   }
 
   handleMenuVisibility = () => {
@@ -83,9 +86,8 @@ class MenuComponent extends React.Component {
       >
 
         <div
-          className='menu-flyout'
+          className={'menu-flyout ' + this.state.menuVisibleClass}
           ref={(c) => this.mainMenuRef = c}
-          style={{animation: 'menu-swift-drop .375s forwards', transitionTimingFunction: 'cubic-bezier(.4, 0, .2, 1)' }}
           onMouseMove={this.handleMenuVisibility}
         >
 

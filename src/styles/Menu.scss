@@ -1,22 +1,21 @@
 .menu-flyout {
   margin: 0;
-  top: 10px;
-  top: -70px;
   width: 100%;
   position: absolute;
-  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 4;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  transition-duration: .375s;
+  transition-property: top;
 }
 
-@keyframes menu-swift-drop {
-  0% { top: -70px }
-  100% { top: 10px; }
+.menu-flyout-active {
+  top: 15px;
 }
 
-@keyframes menu-swift-lift {
-  0% { top: 10px; }
-  100% { top: -70px; }
+.menu-flyout-inactive {
+  top: -70px;
 }
+
