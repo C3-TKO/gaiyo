@@ -9,7 +9,6 @@ import AvSkipNext from 'material-ui/svg-icons/av/skip-next';
 import KeyBinding from 'react-keybinding-component';
 import ScreenLauncherComponent from './ScreenLauncherComponent';
 import SettingsComponent from './SettingsComponent';
-import Snackbar from 'material-ui/Snackbar';
 import IframeLockerComponent from './IframeLockerComponent';
 
 const debounce = require('lodash.debounce');
@@ -142,11 +141,6 @@ class MenuComponent extends React.Component {
           </div>
 
         </div>
-
-        <Snackbar
-          open={true}
-          message={this.state.menuVisible.toString()}
-        />
 
         <IframeLockerComponent
           next={this.props.next}
