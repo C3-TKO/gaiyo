@@ -21,15 +21,24 @@ class MenuComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      menuVisible: false,
-      menuVisibilitySticky: false,
-      menuVisibleClass: 'menu-flyout-inactive'
+      menuVisible: true,
+      menuVisibilitySticky: true,
+      menuVisibleClass: 'menu-flyout-active'
     }
   }
 
   componentWillMount() {
     this.showMenu = throttle(this.showMenu, this.props.throttleDuration);
     this.hideMenu = debounce(this.hideMenu, this.props.debounceDuration);
+
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // Wait for the pouchdb middleware to load the state from local storage
+    if(nextProps.slides.length > 0) {
+      this.removeMenuSticky();
+      this.handleMenuVisibility();
+    }
   }
 
   showMenuSticky = () => {
