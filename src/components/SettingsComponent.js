@@ -43,16 +43,21 @@ class SettingsComponent extends React.Component {
 
     if(this.props.slides.length === 0) {
       const timeout = setTimeout(
-        () => this.setState({
-          dialogOpen: true,
-          timeout: undefined
-        }), timeToWaitForDBRead );
+        () => {
+          this.setState({
+            dialogOpen: true,
+            timeout: undefined
+          })
+        }
+        , timeToWaitForDBRead );
       this.setState({timeout: timeout})
     }
   }
 
-  componentWillReceiveProps() {
-    clearTimeout(this.state.timeout);
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.slides.length > 0) {
+      clearTimeout(this.state.timeout);
+    }
   }
 
   openDialog = () => {
