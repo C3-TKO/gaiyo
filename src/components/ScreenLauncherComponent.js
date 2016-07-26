@@ -39,6 +39,7 @@ class ScreenLauncherComponent extends React.Component {
     this.setState({
       open: true
     })
+    this.props.onMouseLeave();
   }
 
   close = () => {

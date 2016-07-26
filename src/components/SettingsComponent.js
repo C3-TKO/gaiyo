@@ -59,6 +59,7 @@ class SettingsComponent extends React.Component {
     this.setState({
       dialogOpen: true
     })
+    this.props.onMouseLeave();
   }
 
   closeDialog = () => {
