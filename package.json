@@ -79,6 +79,8 @@
     "core-js": "^2.4.0",
     "formsy-material-ui": "^0.4.3",
     "localforage": "^1.4.2",
+    "lodash.debounce": "^4.0.6",
+    "lodash.throttle": "^4.0.1",
     "material-ui": "^0.15.0",
     "normalize.css": "^4.0.0",
     "pouch-redux-middleware": "^0.2.0",

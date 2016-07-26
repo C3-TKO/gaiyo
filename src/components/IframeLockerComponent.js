@@ -44,13 +44,15 @@ class IframeLockerComponent extends React.Component {
       onSwipedLeft={this.props.prev}
       preventDefaultTouchmoveEvent={true}
       onTouchTap={this.handleTouchTap}
-     >
-        <Snackbar
-          open={this.state.open}
-          message={formatMessage(messages.snackbar)}
-          autoHideDuration={6000}
-          onRequestClose={this.handleRequestClose}
-        />
+      onMouseMove={this.props.handleMenuVisibility}
+    >
+
+      <Snackbar
+        open={this.state.open}
+        message={formatMessage(messages.snackbar)}
+        autoHideDuration={6000}
+        onRequestClose={this.handleRequestClose}
+      />
     </Swipeable>
     );
   }
@@ -59,7 +61,8 @@ class IframeLockerComponent extends React.Component {
 IframeLockerComponent.displayName = 'IframeLockerComponent';
 IframeLockerComponent.propTypes = {
   next: React.PropTypes.func.isRequired,
-  prev: React.PropTypes.func.isRequired
+  prev: React.PropTypes.func.isRequired,
+  handleMenuVisibility: React.PropTypes.func.isRequired
 };
 
 export default injectIntl(IframeLockerComponent);
