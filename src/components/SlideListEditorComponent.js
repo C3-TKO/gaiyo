@@ -4,9 +4,8 @@ import React from 'react';
 import Subheader from 'material-ui/Subheader'
 import {List, ListItem} from 'material-ui/List';
 import IconButton from 'material-ui/IconButton';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-import IconMenu from 'material-ui/IconMenu';
-import MenuItem from 'material-ui/MenuItem';
+import DeleteIcon from 'material-ui/svg-icons/action/delete';
+import EditIcon from 'material-ui/svg-icons/editor/mode-edit';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import SyncComponent from './SyncComponent'
 import ExportSlidesComponent from './ExportSlidesComponent'
@@ -80,43 +79,6 @@ class SlideListEditorComponent extends React.Component {
     })
   }
 
-  renderRightIconMenu(slide) {
-    const {formatMessage} = this.props.intl;
-
-    const iconButtonElement = (
-      <IconButton
-        touch={true}
-        tooltip={formatMessage(messages.buttonmore)}
-        tooltipPosition='bottom-left'
-      >
-        <MoreVertIcon/>
-      </IconButton>
-    );
-
-    return (
-      <IconMenu iconButtonElement={iconButtonElement}>
-        <MenuItem
-          /* @TODO: Have a look at https://github.com/callemall/material-ui/issues/4008 */
-          style={{'WebkitAppearance': 'none'}}
-          onTouchTap={() => {this.handleEdit(slide)}}
-        >
-          <FormattedMessage
-            {...messages.buttonedit}
-          />
-        </MenuItem>
-        <MenuItem
-          /* @TODO: Have a look at https://github.com/callemall/material-ui/issues/4008 */
-          style={{'WebkitAppearance': 'none'}}
-          onTouchTap={() => {this.props.dispatch(deleteSlide(slide._id))}}
-        >
-          <FormattedMessage
-            {...messages.buttondelete}
-          />
-        </MenuItem>
-      </IconMenu>
-    )
-  }
-
   render() {
     const {formatMessage} = this.props.intl;
 
@@ -152,8 +114,14 @@ class SlideListEditorComponent extends React.Component {
               key={'slide-list-item-' + slide._id}
               primaryText={slide.url}
               secondaryText={formatMessage(messages.secondarytext, {duration: (slide.duration / 1000)})}
-              rightIconButton={this.renderRightIconMenu(slide)}
-            />
+            >
+              <DeleteIcon
+                onTouchTap={() => {this.props.dispatch(deleteSlide(slide._id))}}
+              />
+              <EditIcon
+                onTouchTap={() => {this.handleEdit(slide)}}
+              />
+            </ListItem>
           )}
         </List>
 
