@@ -14,3 +14,18 @@
   float: left;
   margin-left: 10px;
 }
+
+.slidelisteditor-slide:hover .slidelisteditor-slide-menu {
+  display: block;
+}
+
+.slidelisteditor-slide-menu {
+  display: none;
+  position: absolute;
+  right: 10px;
+  top: 12px;
+}
+
+.slidelisteditor-slide-menu-action:hover{
+  color: black !important;
+}
