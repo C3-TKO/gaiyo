@@ -108,6 +108,7 @@ class SlideListEditorComponent extends React.Component {
 
           {this.props.slides.map(slide =>
             <ListItem
+              className="slidelisteditor-slide"
               /* @TODO: Have a look at https://github.com/callemall/material-ui/issues/4008 */
               style={{'WebkitAppearance': 'none'}}
               value={slide._id}
