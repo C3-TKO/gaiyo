@@ -108,7 +108,7 @@ class SlideListEditorComponent extends React.Component {
 
           {this.props.slides.map(slide =>
             <ListItem
-              className="slidelisteditor-slide"
+              className='slidelisteditor-slide'
               /* @TODO: Have a look at https://github.com/callemall/material-ui/issues/4008 */
               style={{'WebkitAppearance': 'none'}}
               value={slide._id}
@@ -116,17 +116,22 @@ class SlideListEditorComponent extends React.Component {
               primaryText={slide.url}
               secondaryText={formatMessage(messages.secondarytext, {duration: (slide.duration / 1000)})}
             >
-              <div className="slidelisteditor-slide-menu">
-                <DeleteIcon
-                  style={{color: this.context.muiTheme.palette.secondaryTextColor}}
-                  className="slidelisteditor-slide-menu-action"
+              <div className='slidelisteditor-slide-menu'>
+                <IconButton
+                  className='slidelisteditor-slide-menu-action'
+                  tooltip={formatMessage(messages.buttondelete)}
                   onTouchTap={() => {this.props.dispatch(deleteSlide(slide._id))}}
-                />
-                <EditIcon
-                  style={{color: this.context.muiTheme.palette.secondaryTextColor}}
-                  className="slidelisteditor-slide-menu-action"
+                >
+                  <DeleteIcon/>
+                </IconButton>
+
+                <IconButton
+                  className='slidelisteditor-slide-menu-action'
+                  tooltip={formatMessage(messages.buttonedit)}
                   onTouchTap={() => {this.handleEdit(slide)}}
-                />
+                >
+                  <EditIcon/>
+                </IconButton>
               </div>
             </ListItem>
           )}
@@ -150,9 +155,6 @@ class SlideListEditorComponent extends React.Component {
 SlideListEditorComponent.displayName = 'SlideListEditorComponent';
 SlideListEditorComponent.propTypes = {
   slides: React.PropTypes.array.isRequired
-};
-SlideListEditorComponent.contextTypes = {
-  muiTheme: React.PropTypes.object.isRequired
 };
 
 export default injectIntl(connect()(SlideListEditorComponent));
