@@ -117,10 +117,12 @@ class SlideListEditorComponent extends React.Component {
             >
               <div className="slidelisteditor-slide-menu">
                 <DeleteIcon
+                  style={{color: this.context.muiTheme.palette.secondaryTextColor}}
                   className="slidelisteditor-slide-menu-action"
                   onTouchTap={() => {this.props.dispatch(deleteSlide(slide._id))}}
                 />
                 <EditIcon
+                  style={{color: this.context.muiTheme.palette.secondaryTextColor}}
                   className="slidelisteditor-slide-menu-action"
                   onTouchTap={() => {this.handleEdit(slide)}}
                 />
@@ -147,6 +149,9 @@ class SlideListEditorComponent extends React.Component {
 SlideListEditorComponent.displayName = 'SlideListEditorComponent';
 SlideListEditorComponent.propTypes = {
   slides: React.PropTypes.array.isRequired
+};
+SlideListEditorComponent.contextTypes = {
+  muiTheme: React.PropTypes.object.isRequired
 };
 
 export default injectIntl(connect()(SlideListEditorComponent));
