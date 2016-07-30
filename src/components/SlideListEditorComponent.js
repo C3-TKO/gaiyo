@@ -115,12 +115,16 @@ class SlideListEditorComponent extends React.Component {
               primaryText={slide.url}
               secondaryText={formatMessage(messages.secondarytext, {duration: (slide.duration / 1000)})}
             >
-              <DeleteIcon
-                onTouchTap={() => {this.props.dispatch(deleteSlide(slide._id))}}
-              />
-              <EditIcon
-                onTouchTap={() => {this.handleEdit(slide)}}
-              />
+              <div className="slidelisteditor-slide-menu">
+                <DeleteIcon
+                  className="slidelisteditor-slide-menu-action"
+                  onTouchTap={() => {this.props.dispatch(deleteSlide(slide._id))}}
+                />
+                <EditIcon
+                  className="slidelisteditor-slide-menu-action"
+                  onTouchTap={() => {this.handleEdit(slide)}}
+                />
+              </div>
             </ListItem>
           )}
         </List>
