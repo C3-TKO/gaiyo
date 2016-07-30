@@ -3,7 +3,6 @@ require('styles/App.css');
 
 import React from 'react';
 import IframeComponent from './IframeComponent';
-import IframeLockerComponent from './IframeLockerComponent';
 import MenuComponent from './MenuComponent'
 import ProgressBarComponent from './ProgressBarComponent';
 import ReloaderComponent from './ReloaderComponent';
@@ -113,11 +112,6 @@ class AppComponent extends React.Component {
             duration={this.props.slides[this.state.pointer].duration}
           />
 
-          <IframeLockerComponent
-            next={this.next}
-            prev={this.prev}
-          />
-
           <ReloaderComponent
             pointer={this.state.pointer}
             durationLastScreen={this.props.slides[this.props.slides.length - 1].duration}
@@ -129,7 +123,7 @@ class AppComponent extends React.Component {
   }
 
   render() {
-    const {actions, slides, settings} = this.props;
+    const {actions, slides} = this.props;
     return (
       <div
         className='index'

@@ -62,7 +62,9 @@ module.exports = function(initialState) {
           db.replicate.from(remoteDb, {
             live: true,
             retry: true
-          }).on('change', function (change) {
+          })
+          /*
+            .on('change', function (change) {
             console.log('yo, something changed!');
           }).on('paused', function (info) {
             console.log('replication was paused, usually because of a lost connection');
@@ -70,13 +72,17 @@ module.exports = function(initialState) {
             console.log('replication was resumed');
           }).on('error', function (err) {
             console.log('totally unhandled error (shouldn\'t happen)');
-          });
+          })
+          */
+          ;
           break;
         case 2:
           db.replicate.to(remoteDb, {
             live: true,
             retry: true
-          }).on('change', function (change) {
+          })
+          /*
+            .on('change', function (change) {
             console.log('yo, something changed!');
           }).on('paused', function (info) {
             console.log('replication was paused, usually because of a lost connection');
@@ -84,13 +90,17 @@ module.exports = function(initialState) {
             console.log('replication was resumed');
           }).on('error', function (err) {
             console.log('totally unhandled error (shouldn\'t happen)');
-          });
+          })
+          */
+          ;
           break;
         case 3:
           db.sync(remoteDb, {
             live: true,
             retry: true
-          }).on('change', function (change) {
+          })
+          /*
+          .on('change', function (change) {
             console.log('yo, something changed!');
           }).on('paused', function (info) {
             console.log('replication was paused, usually because of a lost connection');
@@ -98,7 +108,9 @@ module.exports = function(initialState) {
             console.log('replication was resumed');
           }).on('error', function (err) {
             console.log('totally unhandled error (shouldn\'t happen)');
-          });
+          })
+          */
+          ;
           break;
       }
     }

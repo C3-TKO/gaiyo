@@ -43,22 +43,28 @@ class SettingsComponent extends React.Component {
 
     if(this.props.slides.length === 0) {
       const timeout = setTimeout(
-        () => this.setState({
-          dialogOpen: true,
-          timeout: undefined
-        }), timeToWaitForDBRead );
+        () => {
+          this.setState({
+            dialogOpen: true,
+            timeout: undefined
+          })
+        }
+        , timeToWaitForDBRead );
       this.setState({timeout: timeout})
     }
   }
 
-  componentWillReceiveProps() {
-    clearTimeout(this.state.timeout);
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.slides.length > 0) {
+      clearTimeout(this.state.timeout);
+    }
   }
 
   openDialog = () => {
     this.setState({
       dialogOpen: true
     })
+    this.props.onMouseLeave();
   }
 
   closeDialog = () => {
@@ -101,7 +107,10 @@ class SettingsComponent extends React.Component {
         <FloatingActionButton
           secondary={true}
           mini={true}
-          onTouchTap={this.openDialog}>
+          onTouchTap={this.openDialog}
+          onMouseEnter={this.props.onMouseEnter}
+          onMouseLeave={this.props.onMouseLeave}
+        >
           <ActionSettings />
         </FloatingActionButton>
 
@@ -132,7 +141,9 @@ class SettingsComponent extends React.Component {
 SettingsComponent.displayName = 'SettingsComponent';
 
 SettingsComponent.propTypes = {
-  slides: React.PropTypes.array.isRequired
+  slides: React.PropTypes.array.isRequired,
+  onMouseEnter: React.PropTypes.func.isRequired,
+  onMouseLeave: React.PropTypes.func.isRequired
 };
 
 export default injectIntl(SettingsComponent);

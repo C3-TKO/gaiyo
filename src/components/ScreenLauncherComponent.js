@@ -39,6 +39,7 @@ class ScreenLauncherComponent extends React.Component {
     this.setState({
       open: true
     })
+    this.props.onMouseLeave();
   }
 
   close = () => {
@@ -71,7 +72,10 @@ class ScreenLauncherComponent extends React.Component {
             disabled={this.props.slides.length === 0}
             mini={true}
             secondary={true}
-            onTouchTap={this.open} >
+            onTouchTap={this.open}
+            onMouseEnter={this.props.onMouseEnter}
+            onMouseLeave={this.props.onMouseLeave}
+          >
             <ContentLowPriority />
           </FloatingActionButton>
         </div>
@@ -108,7 +112,9 @@ ScreenLauncherComponent.displayName = 'ScreenLauncherComponent';
 
 ScreenLauncherComponent.propTypes = {
   slides: React.PropTypes.array.isRequired,
-  goto: React.PropTypes.func.isRequired
+  goto: React.PropTypes.func.isRequired,
+  onMouseEnter: React.PropTypes.func.isRequired,
+  onMouseLeave: React.PropTypes.func.isRequired
 };
 
 export default injectIntl(ScreenLauncherComponent, {withRef: true});
