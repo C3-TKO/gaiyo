@@ -13,16 +13,6 @@ class IframeComponent extends React.Component {
     }
   }
 
-  onload = () => {
-    // This method will only be invoked if the iframe trigger the onLoad event
-    const iframe = document.getElementsByClassName('iframe-component')[0];
-    try {
-      const checkAaccess = (iframe.contentWindow || iframe.contentDocument).location.href;
-    } catch (error) {
-      // This indicates that the iframe could have been loaded but not accessed due to sandbox restrictions.
-    }
-  }
-
   render() {
     if (this.props.urlOut === this.props.urlIn) {
       return (
@@ -48,7 +38,6 @@ class IframeComponent extends React.Component {
             style={this.getStyle('in')}
             className="iframe-component"
             src={this.props.urlIn}
-            onLoad={this.onload()}
           />
         </div>
       );
