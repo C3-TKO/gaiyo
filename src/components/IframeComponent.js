@@ -16,27 +16,24 @@ class IframeComponent extends React.Component {
   render() {
     if (this.props.urlOut === this.props.urlIn) {
       return (
-        <div>
+        <div className='iframe-component'>
           <iframe
             key={this.props.urlIn}
-            className="iframe-component"
             src={this.props.urlIn}
           />
         </div>
       );
     } else {
       return (
-        <div>
+        <div className='iframe-component'>
           <iframe
             key={this.props.urlOut}
             style={this.getStyle('out')}
-            className="iframe-component"
             src={this.props.urlOut}
           />
           <iframe
             key={this.props.urlIn}
             style={this.getStyle('in')}
-            className="iframe-component"
             src={this.props.urlIn}
           />
         </div>
