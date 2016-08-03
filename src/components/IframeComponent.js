@@ -52,8 +52,8 @@ IframeComponent.propTypes = {
 };
 
 IframeComponent.defaultProps = {
-  transitionType: 'crossfade',
-  transitionDuration: 2
+  transitionType: 'move',
+  transitionDuration:.375
 }
 
 export default IframeComponent;
