@@ -22,8 +22,8 @@ describe('IframeComponent', () => {
       )
     });
 
-    it('should have single iframe', () => {
-      expect(component.props.children.props.className).to.equal('iframe-component')
+    it('should have a single iframe', () => {
+      expect(component.props.children.type).to.equal('iframe')
     });
   });
 
@@ -38,7 +38,7 @@ describe('IframeComponent', () => {
     });
 
     it('should have two iframes', () => {
-      expect(component.props.children.length).to.equal(2)
+      expect(component.props.children.props.children.length).to.equal(2)
     });
   });
 });
