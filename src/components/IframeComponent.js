@@ -13,35 +13,38 @@ class IframeComponent extends React.Component {
     }
   }
 
-  render() {
+  renderIframes() {
     if (this.props.urlOut === this.props.urlIn) {
       return (
-        <div>
-          <iframe
-            key={this.props.urlIn}
-            className="iframe-component"
-            src={this.props.urlIn}
-          />
-        </div>
-      );
+        <iframe
+          key={this.props.urlIn}
+          src={this.props.urlIn}
+        />
+      )
     } else {
       return (
         <div>
           <iframe
             key={this.props.urlOut}
             style={this.getStyle('out')}
-            className="iframe-component"
             src={this.props.urlOut}
           />
           <iframe
             key={this.props.urlIn}
             style={this.getStyle('in')}
-            className="iframe-component"
             src={this.props.urlIn}
           />
         </div>
-      );
+      )
     }
+  }
+
+  render() {
+    return (
+      <div className='iframe-component'>
+        {this.renderIframes()}
+      </div>
+    )
   }
 }
 
@@ -55,8 +58,8 @@ IframeComponent.propTypes = {
 };
 
 IframeComponent.defaultProps = {
-  transitionType: 'crossfade',
-  transitionDuration: 2
+  transitionType: 'move',
+  transitionDuration:.375
 }
 
 export default IframeComponent;
