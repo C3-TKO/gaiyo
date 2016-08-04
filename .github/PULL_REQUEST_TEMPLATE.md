@@ -21,7 +21,7 @@
 
 ## Types of changes
 <!--- What types of changes does your code introduce? Put an `x` in all the boxes that apply: -->
-This projects uses [SemVer](http://semver.org/)
+<!-- This projects uses SemVer http://semver.org -->
 
 - [ ] Bug fix (non-breaking change which fixes an issue)
 - [ ] New feature (non-breaking change which adds functionality)
@@ -30,11 +30,9 @@ This projects uses [SemVer](http://semver.org/)
 ## Checklist:
 <!--- Go over all the following points, and put an `x` in all the boxes that apply. -->
 <!--- If you're unsure about any of these, don't hesitate to ask. We're here to help! -->
-- [ ] My code follows the code style of this project.
 - [ ] My change requires a change to the documentation.
 - [ ] I have updated the documentation accordingly.
 - [ ] I have read the **CONTRIBUTING** document.
 - [ ] I have added tests to cover my changes.
-- [ ] All new and existing tests passed.
 
-Regarding tests and coding styles - just relax this project has an automated tests setup. However if you want to run tests locally, than you can use ```npm run test``` from the command line. Pull requests won't be accepted if the automated travis build process failed. Should overall test coverage sink significantly the pull request won't be accepted as well as long as you do not provide more tests ;-)
+<!-- Regarding tests and coding styles - just relax this project has an automated tests setup. However if you want to run tests locally, than you can use ```npm run test``` from the command line. Pull requests won't be accepted if the automated travis build process failed. Should overall test coverage sink significantly the pull request won't be accepted as well as long as you do not provide more tests ;-) -->
