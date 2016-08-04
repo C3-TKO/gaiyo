@@ -1,7 +1,28 @@
 # Change Log
 
+## [0.5.2](https://github.com/C3-TKO/junkan/tree/0.5.2) (2016-08-04)
+
+[Full Changelog](https://github.com/C3-TKO/junkan/compare/0.5.1...HEAD)
+
+**Implemented enhancements:**
+
+- Help people contribute to this project [\#119](https://github.com/C3-TKO/junkan/issues/119)
+- Remove APPLICATION CONTENT during startup [\#118](https://github.com/C3-TKO/junkan/issues/118)
+- Streamline the screen rotation list menu [\#98](https://github.com/C3-TKO/junkan/issues/98)
+- Show App Menu only on demand [\#96](https://github.com/C3-TKO/junkan/issues/96)
+- Animated transitions [\#87](https://github.com/C3-TKO/junkan/issues/87)
+- add fade in/out transitions for iframe [\#103](https://github.com/C3-TKO/junkan/pull/103) ([tobiwild](https://github.com/tobiwild))
+
+**Merged pull requests:**
+
+- Iframe transitions [\#126](https://github.com/C3-TKO/junkan/pull/126) ([C3-TKO](https://github.com/C3-TKO))
+- Catch iframe errors [\#125](https://github.com/C3-TKO/junkan/pull/125) ([C3-TKO](https://github.com/C3-TKO))
+- Streamline screen rotation list editor [\#124](https://github.com/C3-TKO/junkan/pull/124) ([C3-TKO](https://github.com/C3-TKO))
+- Add menu animation and on demand display [\#122](https://github.com/C3-TKO/junkan/pull/122) ([C3-TKO](https://github.com/C3-TKO))
+- Empower contributions [\#120](https://github.com/C3-TKO/junkan/pull/120) ([C3-TKO](https://github.com/C3-TKO))
+
 ## [0.5.1](https://github.com/C3-TKO/junkan/tree/0.5.1) (2016-07-15)
-[Full Changelog](https://github.com/C3-TKO/junkan/compare/v0.5.0...0.5.1)
+[Full Changelog](https://github.com/C3-TKO/junkan/compare/0.5.0...0.5.1)
 
 **Implemented enhancements:**
 
