@@ -166,7 +166,6 @@ class SyncComponent extends React.Component {
               floatingLabelText={formatMessage(messages.labeldburl)}
               fullWidth={true}
               value={this.props.settings.remoteDbUrl}
-              onInput={this.changeRemoteDbUrl}
             />
             <br />
 
@@ -174,7 +173,6 @@ class SyncComponent extends React.Component {
               name='syncMode'
               value={this.props.settings.syncMode}
               floatingLabelText={formatMessage(messages.labelsyncmode)}
-              onChange={() => {}}
             >
               <MenuItem
                 value={1}
