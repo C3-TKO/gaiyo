@@ -168,7 +168,6 @@ class SyncComponent extends React.Component {
             <FormsyText
               name='remoteDb'
               validations='isUrl'
-              required
               validationError={formatMessage(messages.errordburl)}
               hintText='http://mypouchdb.com:5984/remote-slides'
               floatingLabelText={formatMessage(messages.labeldburl)}
