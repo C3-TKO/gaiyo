@@ -34,7 +34,15 @@ const messages = defineMessages({
   },
   labeldburl: {
     id: 'sync.form.labels.dburl',
-    defaultMessage: 'Url of the remote database (pouch db compatible)'
+    defaultMessage: 'Url of a pouch db compatible remote database'
+  },
+  labeldbuser: {
+    id: 'sync.form.labels.dbuser',
+    defaultMessage: 'Remote database user'
+  },
+  labeldbpassword: {
+    id: 'sync.form.labels.dbpassword',
+    defaultMessage: 'Remote database password'
   },
   errordburl: {
     id: 'sync.form.validationerrors.dburl',
@@ -166,6 +174,21 @@ class SyncComponent extends React.Component {
               floatingLabelText={formatMessage(messages.labeldburl)}
               fullWidth={true}
               value={this.props.settings.remoteDbUrl}
+            />
+            <br />
+            <FormsyText
+              name='remoteDbUser'
+              hintText='couch-user'
+              floatingLabelText={formatMessage(messages.labeldbuser)}
+              value='fill me'
+            />
+            <br />
+            <FormsyText
+              type='password'
+              name='remoteDbPassword'
+              hintText='couch-password'
+              floatingLabelText={formatMessage(messages.labeldbpassword)}
+              value='fill me'
             />
             <br />
 
