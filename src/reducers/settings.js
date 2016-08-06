@@ -2,6 +2,8 @@ const date = new Date();
 
 const initialState = {
   remoteDbUrl: undefined,
+  remoteDbUser: undefined,
+  remoteDbPassword: undefined,
   syncMode: 1,
   enabled: false,
   lastChanged: date.getTime()
@@ -13,6 +15,8 @@ module.exports = function(state = initialState, action) {
       let nextState = action.settings;
       if(
         action.settings.remoteDbUrl === state.remoteDbUrl &&
+        action.settings.remoteDbUser === state.remoteDbUser &&
+        action.settings.remoteDbPassword === state.remoteDbPassword &&
         action.settings.syncMode === state.syncMode &&
         action.settings.enabled === state.enabled
       ) {

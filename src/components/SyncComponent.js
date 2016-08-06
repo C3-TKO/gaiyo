@@ -115,6 +115,8 @@ class SyncComponent extends React.Component {
   saveSettings = (data) => {
     const nextSettings = {
       remoteDbUrl: data.remoteDb,
+      remoteDbUser: data.remoteDbUser,
+      remoteDbPassword: data.remoteDbPassword,
       syncMode: data.syncMode,
       enabled: data.enabled
     };
@@ -179,7 +181,7 @@ class SyncComponent extends React.Component {
               name='remoteDbUser'
               hintText='couch-user'
               floatingLabelText={formatMessage(messages.labeldbuser)}
-              value='fill me'
+              value={this.props.settings.remoteDbUser}
             />
             <br />
             <FormsyText
@@ -187,10 +189,9 @@ class SyncComponent extends React.Component {
               name='remoteDbPassword'
               hintText='couch-password'
               floatingLabelText={formatMessage(messages.labeldbpassword)}
-              value='fill me'
+              value={this.props.settings.remoteDbPassword}
             />
             <br />
-
             <FormsySelect
               name='syncMode'
               value={this.props.settings.syncMode}
