@@ -77,7 +77,7 @@
   "dependencies": {
     "babel-plugin-transform-es2015-arrow-functions": "^6.5.2",
     "core-js": "^2.4.0",
-    "formsy-material-ui": "^0.4.3",
+    "formsy-material-ui": "^0.5.0",
     "localforage": "^1.4.2",
     "lodash.debounce": "^4.0.6",
     "lodash.throttle": "^4.0.1",
