@@ -1,13 +1,12 @@
-const date = new Date();
-
 const initialState = {
   remoteDbUrl: undefined,
   remoteDbUser: undefined,
   remoteDbPassword: undefined,
   syncMode: 1,
   enabled: false,
-  lastChanged: date.getTime()
+  lastChanged: undefined
 };
+
 
 module.exports = function(state = initialState, action) {
   switch(action.type) {
