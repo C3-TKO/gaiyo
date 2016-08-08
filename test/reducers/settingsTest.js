@@ -1,6 +1,6 @@
 var reducer = require('../../src/reducers/settings');
 
-describe.only('settings reducer', () => {
+describe('settings reducer', () => {
   it('should return the initial state', () => {
     expect(
       reducer(undefined, {})
