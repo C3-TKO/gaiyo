@@ -11,7 +11,15 @@ describe.only('settings reducer', () => {
         remoteDbPassword: undefined,
         syncMode: 1,
         enabled: false,
-        lastChanged: undefined
+        settingsHash: JSON.stringify(
+          {
+            remoteDbUrl: undefined,
+            remoteDbUser: undefined,
+            remoteDbPassword: undefined,
+            syncMode: 1,
+            enabled: false
+          }
+        )
       }
     )
   })
@@ -23,5 +31,79 @@ describe.only('settings reducer', () => {
 
     done();
   });
-  
+
+  it('should handle EDIT_SETTINGS when there is no change', () => {
+    expect(
+      reducer({
+          remoteDbUrl: undefined,
+          remoteDbUser: undefined,
+          remoteDbPassword: undefined,
+          syncMode: 1,
+          enabled: false,
+          settingsHash: undefined
+        },
+        {
+          type: 'EDIT_SETTINGS',
+          settings: {
+            remoteDbUrl: undefined,
+            remoteDbUser: undefined,
+            remoteDbPassword: undefined,
+            syncMode: 1,
+            enabled: false
+          }
+        }
+      )
+    ).to.deep.equal(
+      {
+        remoteDbUrl: undefined,
+        remoteDbUser: undefined,
+        remoteDbPassword: undefined,
+        syncMode: 1,
+        enabled: false,
+        settingsHash: undefined
+      }
+    )
+  })
+
+  it('should handle EDIT_SETTINGS when there is a change', () => {
+    expect(
+      reducer({
+          remoteDbUrl: undefined,
+          remoteDbUser: undefined,
+          remoteDbPassword: undefined,
+          syncMode: 1,
+          enabled: false,
+          settingsHash: undefined
+        },
+        {
+          type: 'EDIT_SETTINGS',
+          settings: {
+            remoteDbUrl: 'http://example.com',
+            remoteDbUser: 'test-user',
+            remoteDbPassword: 'test-pwd',
+            syncMode: 3,
+            enabled: true
+          }
+        }
+      )
+    ).to.deep.equal(
+      {
+        remoteDbUrl: 'http://example.com',
+        remoteDbUser: 'test-user',
+        remoteDbPassword: 'test-pwd',
+        syncMode: 3,
+        enabled: true,
+        settingsHash: JSON.stringify(
+          {
+            remoteDbUrl: 'http://example.com',
+            remoteDbUser: 'test-user',
+            remoteDbPassword: 'test-pwd',
+            syncMode: 3,
+            enabled: true
+          }
+        )
+      }
+    )
+  })
+
 });

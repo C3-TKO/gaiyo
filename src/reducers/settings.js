@@ -1,17 +1,18 @@
-const initialState = {
+let initialState = {
   remoteDbUrl: undefined,
   remoteDbUser: undefined,
   remoteDbPassword: undefined,
   syncMode: 1,
-  enabled: false,
-  lastChanged: undefined
+  enabled: false
 };
 
+Object.assign(initialState, {settingsHash: JSON.stringify(initialState)})
 
 module.exports = function(state = initialState, action) {
   switch(action.type) {
     case 'EDIT_SETTINGS': {
       let nextState = action.settings;
+      // Checks if settings have been changed in order to trigger a reboot
       if(
         action.settings.remoteDbUrl === state.remoteDbUrl &&
         action.settings.remoteDbUser === state.remoteDbUser &&
@@ -19,11 +20,11 @@ module.exports = function(state = initialState, action) {
         action.settings.syncMode === state.syncMode &&
         action.settings.enabled === state.enabled
       ) {
-        Object.assign(nextState, {lastChanged: state.lastChanged});
+        Object.assign(nextState, {settingsHash: state.settingsHash});
       }
       else {
-        const changeDate = new Date();
-        Object.assign(nextState, {lastChanged: changeDate.getTime()});
+        // This property will be used to determine if a reboot after the settings state has been changed
+        Object.assign(nextState, {settingsHash: JSON.stringify(nextState)});
       }
 
       return nextState;
