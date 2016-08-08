@@ -81,7 +81,7 @@ class SyncComponent extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.settings.lastChanged !== nextProps.settings.lastChanged) {
+    if (this.props.settings.settingsHash !== nextProps.settings.settingsHash) {
       // Sync settings have been changed and thus junkan needs to reboot in order to have the changes taking place
       this.rebootWithNewDbSyncSettings();
     }
