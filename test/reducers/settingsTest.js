@@ -1,27 +1,27 @@
 var reducer = require('../../src/reducers/settings');
 
+const initialStateSpecification = {
+  remoteDbUrl: undefined,
+  remoteDbUser: undefined,
+  remoteDbPassword: undefined,
+  syncMode: 1,
+  enabled: false,
+  settingsHash: JSON.stringify(
+    {
+      remoteDbUrl: undefined,
+      remoteDbUser: undefined,
+      remoteDbPassword: undefined,
+      syncMode: 1,
+      enabled: false
+    }
+  )
+}
+
 describe('settings reducer', () => {
   it('should return the initial state', () => {
     expect(
       reducer(undefined, {})
-    ).to.deep.equal(
-      {
-        remoteDbUrl: undefined,
-        remoteDbUser: undefined,
-        remoteDbPassword: undefined,
-        syncMode: 1,
-        enabled: false,
-        settingsHash: JSON.stringify(
-          {
-            remoteDbUrl: undefined,
-            remoteDbUser: undefined,
-            remoteDbPassword: undefined,
-            syncMode: 1,
-            enabled: false
-          }
-        )
-      }
-    )
+    ).to.deep.equal(initialStateSpecification)
   })
 
   it('should not change the passed state', (done) => {
@@ -34,14 +34,7 @@ describe('settings reducer', () => {
 
   it('should handle EDIT_SETTINGS when there is no change', () => {
     expect(
-      reducer({
-          remoteDbUrl: undefined,
-          remoteDbUser: undefined,
-          remoteDbPassword: undefined,
-          syncMode: 1,
-          enabled: false,
-          settingsHash: undefined
-        },
+      reducer(initialStateSpecification,
         {
           type: 'EDIT_SETTINGS',
           settings: {
@@ -53,28 +46,12 @@ describe('settings reducer', () => {
           }
         }
       )
-    ).to.deep.equal(
-      {
-        remoteDbUrl: undefined,
-        remoteDbUser: undefined,
-        remoteDbPassword: undefined,
-        syncMode: 1,
-        enabled: false,
-        settingsHash: undefined
-      }
-    )
+    ).to.deep.equal(initialStateSpecification)
   })
 
   it('should handle EDIT_SETTINGS when there is a change', () => {
     expect(
-      reducer({
-          remoteDbUrl: undefined,
-          remoteDbUser: undefined,
-          remoteDbPassword: undefined,
-          syncMode: 1,
-          enabled: false,
-          settingsHash: undefined
-        },
+      reducer(initialStateSpecification,
         {
           type: 'EDIT_SETTINGS',
           settings: {
