@@ -1,12 +1,12 @@
-let initialState = {
+const initialStateRaw = {
   remoteDbUrl: undefined,
   remoteDbUser: undefined,
   remoteDbPassword: undefined,
   syncMode: 1,
   enabled: false
-};
+}
 
-Object.assign(initialState, {settingsHash: JSON.stringify(initialState)})
+const initialState = Object.assign(initialStateRaw, {settingsHash: JSON.stringify(initialStateRaw)})
 
 module.exports = function(state = initialState, action) {
   switch(action.type) {

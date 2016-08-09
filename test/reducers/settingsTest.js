@@ -1,21 +1,14 @@
 var reducer = require('../../src/reducers/settings');
 
-const initialStateSpecification = {
+const initialStateRaw = {
   remoteDbUrl: undefined,
   remoteDbUser: undefined,
   remoteDbPassword: undefined,
   syncMode: 1,
-  enabled: false,
-  settingsHash: JSON.stringify(
-    {
-      remoteDbUrl: undefined,
-      remoteDbUser: undefined,
-      remoteDbPassword: undefined,
-      syncMode: 1,
-      enabled: false
-    }
-  )
+  enabled: false
 }
+
+const initialStateSpecification = Object.assign(initialStateRaw, {settingsHash: JSON.stringify(initialStateRaw)})
 
 describe('settings reducer', () => {
   it('should return the initial state', () => {
