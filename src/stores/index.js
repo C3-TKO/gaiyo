@@ -44,11 +44,17 @@ module.exports = function(initialState) {
 
     const remoteDbSettingsFromUrl = {
       remoteDbUrl: getURLParameter('remoteDbUrl'),
+      remoteDbUser: parseInt(getURLParameter('remoteDbUser')),
+      remoteDbPassowrd: parseInt(getURLParameter('remoteDbPassword')),
       syncMode: parseInt(getURLParameter('syncMode')),
       enabled: true
     }
 
     let remoteDbSettings = remoteDbSettingsFromStore;
+
+    // Checking if there are url parameters in order to override the remote database settings from the store
+    // Note: Only url and syncMode need to be set, as user and password are optional and only be used with remote
+    // databases with restricted access
     if (typeof remoteDbSettingsFromUrl.remoteDbUrl !== 'undefined' &&
         typeof remoteDbSettingsFromUrl.syncMode !== 'undefined' ) {
       remoteDbSettings = remoteDbSettingsFromUrl;
