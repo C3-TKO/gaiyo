@@ -1,3 +1,3 @@
-module.exports = function(state) {
-  return { type: 'UPDATE_SYNC_STATE', state };
+module.exports = function(code) {
+  return { type: 'UPDATE_SYNC_STATE', code };
 };

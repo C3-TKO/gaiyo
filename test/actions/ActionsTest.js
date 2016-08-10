@@ -2,6 +2,7 @@ import addSlideAction from 'actions//addSlide.js'
 import deleteSlideAction from 'actions//deleteSlide.js'
 import editSlideAction from 'actions//editSlide.js'
 import editSettingsAction from 'actions//editSettings.js'
+import updateSyncStateAction from 'actions//updateSyncState.js'
 
 describe('Actions', () => {
   it('should create an action to add a slide', () => {
@@ -54,5 +55,14 @@ describe('Actions', () => {
       settings: settings
     }
     expect(editSettingsAction(settings)).to.deep.equal(expectedAction)
+  })
+
+  it('should create an action to update the state of the sync with a remote db', () => {
+    const code = 'somecode';
+    const expectedAction = {
+      type: 'UPDATE_SYNC_STATE',
+      code: code
+    }
+    expect(updateSyncStateAction(code)).to.deep.equal(expectedAction)
   })
 })
