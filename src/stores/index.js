@@ -62,33 +62,32 @@ module.exports = function(initialState) {
       remoteDbSettings = remoteDbSettingsFromUrl;
     }
 
-    const remoteDb = new PouchDB(remoteDbSettings.remoteDbUrl, {skipSetup: true});
-    // Clearing a previously created session
-    remoteDb.logout();
-
-    //var db = new PouchDB('http://localhost:5984/mydb', {skipSetup: true});
-    // Trying to authenticate against the remote database if necessary
-    if (typeof remoteDbSettings.remoteDbUser !== 'undefined' &&
-        typeof remoteDbSettings.remoteDbPassword !== 'undefined' ) {
-      remoteDb.login(remoteDbSettings.remoteDbUser, remoteDbSettings.remoteDbPassword, function (err, response) {
-        if (err) {
-          if (err.name === 'unauthorized') {
-            // name or password incorrect
-          } else {
-            // cosmic rays, a meteor, etc.
-          }
-        }
-      });
-    }
-
     if (remoteDbSettings.enabled) {
+      const remoteDb = new PouchDB(remoteDbSettings.remoteDbUrl, {skipSetup: true});
+      // Clearing a previously created session
+      remoteDb.logout();
+
+      //var db = new PouchDB('http://localhost:5984/mydb', {skipSetup: true});
+      // Trying to authenticate against the remote database if necessary
+      if (typeof remoteDbSettings.remoteDbUser !== 'undefined' &&
+        typeof remoteDbSettings.remoteDbPassword !== 'undefined' ) {
+        remoteDb.login(remoteDbSettings.remoteDbUser, remoteDbSettings.remoteDbPassword, function (err, response) {
+          if (err) {
+            if (err.name === 'unauthorized') {
+              // name or password incorrect
+            } else {
+              // cosmic rays, a meteor, etc.
+            }
+          }
+        });
+      }
+
       switch (remoteDbSettings.syncMode) {
         case 1:
           db.replicate.from(remoteDb, {
             live: true,
             retry: true
           })
-          /*
             .on('change', function (change) {
             console.log('yo, something changed!');
           }).on('paused', function (info) {
@@ -97,16 +96,13 @@ module.exports = function(initialState) {
             console.log('replication was resumed');
           }).on('error', function (err) {
             console.log('totally unhandled error (shouldn\'t happen)');
-          })
-          */
-          ;
+          });
           break;
         case 2:
           db.replicate.to(remoteDb, {
             live: true,
             retry: true
           })
-          /*
             .on('change', function (change) {
             console.log('yo, something changed!');
           }).on('paused', function (info) {
@@ -115,16 +111,13 @@ module.exports = function(initialState) {
             console.log('replication was resumed');
           }).on('error', function (err) {
             console.log('totally unhandled error (shouldn\'t happen)');
-          })
-          */
-          ;
+          });
           break;
         case 3:
           db.sync(remoteDb, {
             live: true,
             retry: true
           })
-          /*
           .on('change', function (change) {
             console.log('yo, something changed!');
           }).on('paused', function (info) {
@@ -133,9 +126,7 @@ module.exports = function(initialState) {
             console.log('replication was resumed');
           }).on('error', function (err) {
             console.log('totally unhandled error (shouldn\'t happen)');
-          })
-          */
-          ;
+          });
           break;
       }
     }
