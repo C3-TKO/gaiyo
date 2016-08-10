@@ -34,7 +34,15 @@ const messages = defineMessages({
   },
   labeldburl: {
     id: 'sync.form.labels.dburl',
-    defaultMessage: 'Url of the remote database (pouch db compatible)'
+    defaultMessage: 'Url of a pouch db compatible remote database'
+  },
+  labeldbuser: {
+    id: 'sync.form.labels.dbuser',
+    defaultMessage: 'Remote database user'
+  },
+  labeldbpassword: {
+    id: 'sync.form.labels.dbpassword',
+    defaultMessage: 'Remote database password'
   },
   errordburl: {
     id: 'sync.form.validationerrors.dburl',
@@ -73,7 +81,7 @@ class SyncComponent extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.settings.lastChanged !== nextProps.settings.lastChanged) {
+    if (this.props.settings.settingsHash !== nextProps.settings.settingsHash) {
       // Sync settings have been changed and thus junkan needs to reboot in order to have the changes taking place
       this.rebootWithNewDbSyncSettings();
     }
@@ -107,6 +115,8 @@ class SyncComponent extends React.Component {
   saveSettings = (data) => {
     const nextSettings = {
       remoteDbUrl: data.remoteDb,
+      remoteDbUser: data.remoteDbUser,
+      remoteDbPassword: data.remoteDbPassword,
       syncMode: data.syncMode,
       enabled: data.enabled
     };
@@ -160,21 +170,32 @@ class SyncComponent extends React.Component {
             <FormsyText
               name='remoteDb'
               validations='isUrl'
-              required
               validationError={formatMessage(messages.errordburl)}
               hintText='http://mypouchdb.com:5984/remote-slides'
               floatingLabelText={formatMessage(messages.labeldburl)}
               fullWidth={true}
               value={this.props.settings.remoteDbUrl}
-              onInput={this.changeRemoteDbUrl}
             />
             <br />
-
+            <FormsyText
+              name='remoteDbUser'
+              hintText='couch-user'
+              floatingLabelText={formatMessage(messages.labeldbuser)}
+              value={this.props.settings.remoteDbUser}
+            />
+            <br />
+            <FormsyText
+              type='password'
+              name='remoteDbPassword'
+              hintText='couch-password'
+              floatingLabelText={formatMessage(messages.labeldbpassword)}
+              value={this.props.settings.remoteDbPassword}
+            />
+            <br />
             <FormsySelect
               name='syncMode'
               value={this.props.settings.syncMode}
               floatingLabelText={formatMessage(messages.labelsyncmode)}
-              onChange={() => {}}
             >
               <MenuItem
                 value={1}
