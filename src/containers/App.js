@@ -14,8 +14,14 @@ import Main from '../components/Main';
 /* Populated by react-webpack-redux:reducer */
 class App extends Component {
   render() {
-    const {actions, slides, settings} = this.props;
-    return <Main actions={actions} slides={slides} settings={settings}/>;
+    const {actions, slides, settings, syncState} = this.props;
+    return (
+      <Main
+        actions={actions}
+        slides={slides}
+        settings={settings}
+        syncState={syncState}/>
+    );
   }
 }
 /* Populated by react-webpack-redux:reducer
@@ -26,13 +32,15 @@ class App extends Component {
 App.propTypes = {
   actions: PropTypes.object.isRequired,
   slides: PropTypes.array.isRequired,
-  settings: PropTypes.object.isRequired
+  settings: PropTypes.object.isRequired,
+  syncState: PropTypes.object.isRequired
 };
 function mapStateToProps(state) {
   /* Populated by react-webpack-redux:reducer */
   const props = {
     slides: state.slides,
-    settings: state.settings
+    settings: state.settings,
+    syncState: state.syncState
   };
   return props;
 }
@@ -42,7 +50,8 @@ function mapDispatchToProps(dispatch) {
     addSlide: require('../actions/addSlide.js'),
     deleteSlide: require('../actions/deleteSlide.js'),
     editSlide: require('../actions/editSlide.js'),
-    editSettings: require('../actions/editSettings.js')
+    editSettings: require('../actions/editSettings.js'),
+    updateSyncState: require('../actions/updateSyncState.js')
   };
   const actionMap = { actions: bindActionCreators(actions, dispatch) };
   return actionMap;
