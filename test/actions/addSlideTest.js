@@ -1,6 +1,6 @@
 import addSlideAction from 'actions//addSlide.js'
 
-describe.only('add slide action', () => {
+describe('add slide action', () => {
   it('should create an action to add a slide', () => {
     const slide = {
       url: 'http://www.example.com',
