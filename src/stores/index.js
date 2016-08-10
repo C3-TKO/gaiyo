@@ -5,6 +5,8 @@ import {persistStore, autoRehydrate} from 'redux-persist'
 import localForage from 'localforage'
 import PouchMiddleware from 'pouch-redux-middleware'
 import PouchDB from 'pouchdb';
+import PouchDBAuthentication from 'pouchdb-authentication';
+PouchDB.plugin(PouchDBAuthentication);
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
@@ -60,7 +62,24 @@ module.exports = function(initialState) {
       remoteDbSettings = remoteDbSettingsFromUrl;
     }
 
-    const remoteDb = new PouchDB(remoteDbSettings.remoteDbUrl);
+    const remoteDb = new PouchDB(remoteDbSettings.remoteDbUrl, {skipSetup: true});
+    // Clearing a previously created session
+    remoteDb.logout();
+
+    //var db = new PouchDB('http://localhost:5984/mydb', {skipSetup: true});
+    // Trying to authenticate against the remote database if necessary
+    if (typeof remoteDbSettings.remoteDbUser !== 'undefined' &&
+        typeof remoteDbSettings.remoteDbPassword !== 'undefined' ) {
+      remoteDb.login(remoteDbSettings.remoteDbUser, remoteDbSettings.remoteDbPassword, function (err, response) {
+        if (err) {
+          if (err.name === 'unauthorized') {
+            // name or password incorrect
+          } else {
+            // cosmic rays, a meteor, etc.
+          }
+        }
+      });
+    }
 
     if (remoteDbSettings.enabled) {
       switch (remoteDbSettings.syncMode) {
