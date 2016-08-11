@@ -1,7 +1,7 @@
 import * as SyncStates from '../constants/SyncStates.js'
 
 const initialState = {
-  status: SyncStates.NOT_CONNECTED,
+  status: SyncStates.NOT_CONNECTED
 };
 
 module.exports = function(state = initialState, action) {
@@ -11,7 +11,6 @@ module.exports = function(state = initialState, action) {
     case 'UPDATE_SYNC_STATE': {
       nextState.status = action.status;
       return nextState;
-      break;
     }
     default: {
       /* Return original state if no actions were consumed. */
