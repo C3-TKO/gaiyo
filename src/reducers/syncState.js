@@ -1,25 +1,19 @@
-/* Define your initial state here.
- *
- * If you change the type from object to something else, do not forget to update
- * src/container/App.js accordingly.
- */
-const codeNotConnected = 0;
+// Using a proprietary HTTP status code for the not connected state
+const codeNotConnected = 900;
 
 const initialState = {
   code: codeNotConnected
 };
 
 module.exports = function(state = initialState, action) {
-  /* Keep the reducer clean - do not mutate the original state. */
-  //let nextState = Object.assign({}, state);
+  let nextState = Object.assign({}, state);
 
   switch(action.type) {
-    /*
-    case 'YOUR_ACTION': {
-      // Modify next state depending on the action and return it
+    case 'UPDATE_SYNC_STATE': {
+      nextState.code = action.code;
       return nextState;
-    } break;
-    */
+      break;
+    }
     default: {
       /* Return original state if no actions were consumed. */
       return state;

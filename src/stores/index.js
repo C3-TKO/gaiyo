@@ -7,6 +7,7 @@ import PouchMiddleware from 'pouch-redux-middleware'
 import PouchDB from 'pouchdb';
 import PouchDBAuthentication from 'pouchdb-authentication';
 PouchDB.plugin(PouchDBAuthentication);
+import updateSyncStateAction from '../actions/updateSyncState.js'
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
@@ -118,13 +119,17 @@ module.exports = function(initialState) {
             live: true,
             retry: true
           })
-          .on('change', function (change) {
+          .on('change', function () {
+            store.dispatch(updateSyncStateAction('CHANGE'));
             console.log('yo, something changed!');
-          }).on('paused', function (info) {
+          }).on('paused', function () {
+            store.dispatch(updateSyncStateAction('PAUSED'));
             console.log('replication was paused, usually because of a lost connection');
-          }).on('active', function (info) {
+          }).on('active', function () {
+            store.dispatch(updateSyncStateAction('ACTIVE'));
             console.log('replication was resumed');
-          }).on('error', function (err) {
+          }).on('error', function () {
+            store.dispatch(updateSyncStateAction('ERROR'));
             console.log('totally unhandled error (shouldn\'t happen)');
           });
           break;
