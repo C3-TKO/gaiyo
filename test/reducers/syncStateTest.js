@@ -5,7 +5,7 @@ describe('syncState', () => {
   it('should return the initial state', () => {
     expect(
       reducer(undefined, {})
-    ).to.deep.equal({code: 0})
+    ).to.deep.equal({code: 900})
   })
 
   it('should not change the passed state', (done) => {
