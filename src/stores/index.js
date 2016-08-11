@@ -65,13 +65,15 @@ module.exports = function(initialState) {
 
     if (remoteDbSettings.enabled) {
       const remoteDb = new PouchDB(remoteDbSettings.remoteDbUrl, {skipSetup: true});
-      // Clearing a previously created session
-      remoteDb.logout();
 
       //var db = new PouchDB('http://localhost:5984/mydb', {skipSetup: true});
       // Trying to authenticate against the remote database if necessary
       if (typeof remoteDbSettings.remoteDbUser !== 'undefined' &&
         typeof remoteDbSettings.remoteDbPassword !== 'undefined' ) {
+
+        // Clearing a previously created session
+        remoteDb.logout();
+
         remoteDb.login(remoteDbSettings.remoteDbUser, remoteDbSettings.remoteDbPassword, function (err, response) {
           if (err) {
             if (err.name === 'unauthorized') {
