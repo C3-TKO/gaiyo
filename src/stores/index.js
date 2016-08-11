@@ -76,10 +76,12 @@ module.exports = function(initialState) {
 
         remoteDb.login(remoteDbSettings.remoteDbUser, remoteDbSettings.remoteDbPassword, function (err, response) {
           if (err) {
-            if (err.name === 'unauthorized') {
-              // name or password incorrect
+            if (err.status === 400 || err.status === 401) {
+              // 400: Name or password are missing
+              // 401: Name or password are incorrect
+              store.dispatch(updateSyncStateAction('LOGIN_FAILED'))
             } else {
-              // cosmic rays, a meteor, etc.
+              store.dispatch(updateSyncStateAction('UNKNOWN_ERROR'))
             }
           }
         });
@@ -91,14 +93,14 @@ module.exports = function(initialState) {
             live: true,
             retry: true
           })
-            .on('change', function (change) {
-            console.log('yo, something changed!');
-          }).on('paused', function (info) {
-            console.log('replication was paused, usually because of a lost connection');
-          }).on('active', function (info) {
-            console.log('replication was resumed');
-          }).on('error', function (err) {
-            console.log('totally unhandled error (shouldn\'t happen)');
+          .on('change', function () {
+            store.dispatch(updateSyncStateAction('CHANGE'));
+          }).on('paused', function () {
+            store.dispatch(updateSyncStateAction('PAUSED'));
+          }).on('active', function () {
+            store.dispatch(updateSyncStateAction('ACTIVE'));
+          }).on('error', function () {
+            store.dispatch(updateSyncStateAction('UNKNOWN_ERROR'));
           });
           break;
         case 2:
@@ -106,14 +108,14 @@ module.exports = function(initialState) {
             live: true,
             retry: true
           })
-            .on('change', function (change) {
-            console.log('yo, something changed!');
-          }).on('paused', function (info) {
-            console.log('replication was paused, usually because of a lost connection');
-          }).on('active', function (info) {
-            console.log('replication was resumed');
-          }).on('error', function (err) {
-            console.log('totally unhandled error (shouldn\'t happen)');
+          .on('change', function () {
+            store.dispatch(updateSyncStateAction('CHANGE'));
+          }).on('paused', function () {
+            store.dispatch(updateSyncStateAction('PAUSED'));
+          }).on('active', function () {
+            store.dispatch(updateSyncStateAction('ACTIVE'));
+          }).on('error', function () {
+            store.dispatch(updateSyncStateAction('UNKNOWN_ERROR'));
           });
           break;
         case 3:
@@ -123,16 +125,12 @@ module.exports = function(initialState) {
           })
           .on('change', function () {
             store.dispatch(updateSyncStateAction('CHANGE'));
-            console.log('yo, something changed!');
           }).on('paused', function () {
             store.dispatch(updateSyncStateAction('PAUSED'));
-            console.log('replication was paused, usually because of a lost connection');
           }).on('active', function () {
             store.dispatch(updateSyncStateAction('ACTIVE'));
-            console.log('replication was resumed');
           }).on('error', function () {
-            store.dispatch(updateSyncStateAction('ERROR'));
-            console.log('totally unhandled error (shouldn\'t happen)');
+            store.dispatch(updateSyncStateAction('UNKNOWN_ERROR'));
           });
           break;
       }

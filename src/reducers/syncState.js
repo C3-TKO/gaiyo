@@ -1,8 +1,8 @@
 // Using a proprietary HTTP status code for the not connected state
-const codeNotConnected = 900;
+const statusNotConnected = 'NOT_CONNECTED';
 
 const initialState = {
-  code: codeNotConnected
+  status: statusNotConnected,
 };
 
 module.exports = function(state = initialState, action) {
@@ -10,7 +10,7 @@ module.exports = function(state = initialState, action) {
 
   switch(action.type) {
     case 'UPDATE_SYNC_STATE': {
-      nextState.code = action.code;
+      nextState.status = action.status;
       return nextState;
       break;
     }
