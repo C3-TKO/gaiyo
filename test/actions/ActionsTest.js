@@ -58,11 +58,11 @@ describe('Actions', () => {
   })
 
   it('should create an action to update the state of the sync with a remote db', () => {
-    const code = 'somecode';
+    const status = 'somestatus';
     const expectedAction = {
       type: 'UPDATE_SYNC_STATE',
-      code: code
+      status: status
     }
-    expect(updateSyncStateAction(code)).to.deep.equal(expectedAction)
+    expect(updateSyncStateAction(status)).to.deep.equal(expectedAction)
   })
 })
