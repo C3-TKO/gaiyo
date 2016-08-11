@@ -7,6 +7,7 @@ import PouchMiddleware from 'pouch-redux-middleware'
 import PouchDB from 'pouchdb';
 import PouchDBAuthentication from 'pouchdb-authentication';
 PouchDB.plugin(PouchDBAuthentication);
+import updateSyncStateAction from '../actions/updateSyncState.js'
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
@@ -62,80 +63,75 @@ module.exports = function(initialState) {
       remoteDbSettings = remoteDbSettingsFromUrl;
     }
 
-    const remoteDb = new PouchDB(remoteDbSettings.remoteDbUrl, {skipSetup: true});
-    // Clearing a previously created session
-    remoteDb.logout();
-
-    //var db = new PouchDB('http://localhost:5984/mydb', {skipSetup: true});
-    // Trying to authenticate against the remote database if necessary
-    if (typeof remoteDbSettings.remoteDbUser !== 'undefined' &&
-        typeof remoteDbSettings.remoteDbPassword !== 'undefined' ) {
-      remoteDb.login(remoteDbSettings.remoteDbUser, remoteDbSettings.remoteDbPassword, function (err, response) {
-        if (err) {
-          if (err.name === 'unauthorized') {
-            // name or password incorrect
-          } else {
-            // cosmic rays, a meteor, etc.
-          }
-        }
-      });
-    }
-
     if (remoteDbSettings.enabled) {
+      const remoteDb = new PouchDB(remoteDbSettings.remoteDbUrl, {skipSetup: true});
+
+      //var db = new PouchDB('http://localhost:5984/mydb', {skipSetup: true});
+      // Trying to authenticate against the remote database if necessary
+      if (typeof remoteDbSettings.remoteDbUser !== 'undefined' &&
+        typeof remoteDbSettings.remoteDbPassword !== 'undefined' ) {
+
+        // Clearing a previously created session
+        remoteDb.logout();
+
+        remoteDb.login(remoteDbSettings.remoteDbUser, remoteDbSettings.remoteDbPassword, function (err, response) {
+          if (err) {
+            if (err.status === 400 || err.status === 401) {
+              // 400: Name or password are missing
+              // 401: Name or password are incorrect
+              store.dispatch(updateSyncStateAction('LOGIN_FAILED'))
+            } else {
+              store.dispatch(updateSyncStateAction('UNKNOWN_ERROR'))
+            }
+          }
+        });
+      }
+
       switch (remoteDbSettings.syncMode) {
         case 1:
           db.replicate.from(remoteDb, {
             live: true,
             retry: true
           })
-          /*
-            .on('change', function (change) {
-            console.log('yo, something changed!');
-          }).on('paused', function (info) {
-            console.log('replication was paused, usually because of a lost connection');
-          }).on('active', function (info) {
-            console.log('replication was resumed');
-          }).on('error', function (err) {
-            console.log('totally unhandled error (shouldn\'t happen)');
-          })
-          */
-          ;
+          .on('change', function () {
+            store.dispatch(updateSyncStateAction('CHANGE'));
+          }).on('paused', function () {
+            store.dispatch(updateSyncStateAction('PAUSED'));
+          }).on('active', function () {
+            store.dispatch(updateSyncStateAction('ACTIVE'));
+          }).on('error', function () {
+            store.dispatch(updateSyncStateAction('UNKNOWN_ERROR'));
+          });
           break;
         case 2:
           db.replicate.to(remoteDb, {
             live: true,
             retry: true
           })
-          /*
-            .on('change', function (change) {
-            console.log('yo, something changed!');
-          }).on('paused', function (info) {
-            console.log('replication was paused, usually because of a lost connection');
-          }).on('active', function (info) {
-            console.log('replication was resumed');
-          }).on('error', function (err) {
-            console.log('totally unhandled error (shouldn\'t happen)');
-          })
-          */
-          ;
+          .on('change', function () {
+            store.dispatch(updateSyncStateAction('CHANGE'));
+          }).on('paused', function () {
+            store.dispatch(updateSyncStateAction('PAUSED'));
+          }).on('active', function () {
+            store.dispatch(updateSyncStateAction('ACTIVE'));
+          }).on('error', function () {
+            store.dispatch(updateSyncStateAction('UNKNOWN_ERROR'));
+          });
           break;
         case 3:
           db.sync(remoteDb, {
             live: true,
             retry: true
           })
-          /*
-          .on('change', function (change) {
-            console.log('yo, something changed!');
-          }).on('paused', function (info) {
-            console.log('replication was paused, usually because of a lost connection');
-          }).on('active', function (info) {
-            console.log('replication was resumed');
-          }).on('error', function (err) {
-            console.log('totally unhandled error (shouldn\'t happen)');
-          })
-          */
-          ;
+          .on('change', function () {
+            store.dispatch(updateSyncStateAction('CHANGE'));
+          }).on('paused', function () {
+            store.dispatch(updateSyncStateAction('PAUSED'));
+          }).on('active', function () {
+            store.dispatch(updateSyncStateAction('ACTIVE'));
+          }).on('error', function () {
+            store.dispatch(updateSyncStateAction('UNKNOWN_ERROR'));
+          });
           break;
       }
     }

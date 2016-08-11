@@ -4,6 +4,8 @@ import React from 'react';
 import FlatButton from 'material-ui/FlatButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import NotificationSync from 'material-ui/svg-icons/notification/sync';
+import NotificationSyncDisabled from 'material-ui/svg-icons/notification/sync-disabled';
+import NotificationSyncProblem from 'material-ui/svg-icons/notification/sync-problem';
 import Dialog from 'material-ui/Dialog';
 import Formsy from 'formsy-react';
 import { FormsyText, FormsySelect, FormsyToggle } from 'formsy-material-ui/lib';
@@ -12,6 +14,7 @@ import Snackbar from 'material-ui/Snackbar';
 import { defineMessages, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import editSettings from '../actions/editSettings';
+import * as SyncStates from '../constants/SyncStates.js'
 
 require('styles//Sync.scss');
 
@@ -128,6 +131,18 @@ class SyncComponent extends React.Component {
     location.reload();
   }
 
+  renderSVGForSyncState() {
+    if (this.props.syncState.status === SyncStates.NOT_CONNECTED) {
+      return <NotificationSyncDisabled />
+    }
+    if (this.props.syncState.status === SyncStates.UNKNOWN_ERROR ||
+        this.props.syncState.status === SyncStates.LOGIN_FAILED ) {
+      return <NotificationSyncProblem />
+    }
+
+    return <NotificationSync />
+  }
+
   render() {
     const {formatMessage} = this.props.intl;
 
@@ -147,7 +162,7 @@ class SyncComponent extends React.Component {
           mini={true}
           onTouchTap={this.openDialogForm}
         >
-          <NotificationSync />
+          {this.renderSVGForSyncState()}
         </FloatingActionButton>
 
         <Snackbar
@@ -251,7 +266,8 @@ SyncComponent.defaultProps = {
 
 function mapStateToProps(state) {
   return {
-    settings: state.settings
+    settings: state.settings,
+    syncState: state.syncState
   };
 }
 
