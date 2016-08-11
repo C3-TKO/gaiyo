@@ -1,8 +1,7 @@
-// Using a proprietary HTTP status code for the not connected state
-const statusNotConnected = 'NOT_CONNECTED';
+import * as SyncStates from '../constants/SyncStates.js'
 
 const initialState = {
-  status: statusNotConnected,
+  status: SyncStates.NOT_CONNECTED,
 };
 
 module.exports = function(state = initialState, action) {
