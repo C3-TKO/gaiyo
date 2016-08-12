@@ -1,6 +1,7 @@
 var reducer = require('../../src/reducers/slides');
 import addSlideAction from '../../src/actions/addSlide.js';
 import editSlideAction from '../../src/actions/editSlide.js';
+import deleteSlideAction from '../../src/actions/deleteSlide.js';
 
 describe.only('slides', () => {
 
@@ -46,5 +47,18 @@ describe.only('slides', () => {
     expect(reducerStateAfterHandlingAddSlide.length).to.equal(1);
     expect(reducerStateAfterHandlingAddSlide[0].url).to.equal('http://smash.cologne');
     expect(reducerStateAfterHandlingAddSlide[0].duration).to.equal(7500);
+  })
+
+  it('should handle the DELETE_SLIDE action', () => {
+    const reducerStateAfterHandlingAddSlide = reducer(
+      [
+        {
+          _id: '1234567',
+          url: 'http://www.exmaple.com',
+          duration: 5000
+        }
+      ], deleteSlideAction('1234567')
+    )
+    expect(reducerStateAfterHandlingAddSlide.length).to.equal(0);
   })
 });
