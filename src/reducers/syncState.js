@@ -1,4 +1,5 @@
 import * as SyncStates from '../constants/SyncStates.js'
+import { UPDATE_SYNC_STATE } from '../constants/ActionTypes'
 
 const initialState = {
   status: SyncStates.NOT_CONNECTED
@@ -8,7 +9,7 @@ module.exports = function(state = initialState, action) {
   let nextState = Object.assign({}, state);
 
   switch(action.type) {
-    case 'UPDATE_SYNC_STATE': {
+    case UPDATE_SYNC_STATE: {
       nextState.status = action.status;
       return nextState;
     }
