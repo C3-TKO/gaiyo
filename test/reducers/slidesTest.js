@@ -19,8 +19,8 @@ describe.only('slides', () => {
     done();
   });
 
-  describe('should handle actions', () => {
-    it('ADD_SLIDE', () => {
+  describe('action handling', () => {
+    it('should handle ADD_SLIDE', () => {
       const reducerStateAfterHandlingAddSlide = reducer(undefined, addSlideAction({
         url: 'http://www.example.com',
         duration: 5000
@@ -30,7 +30,7 @@ describe.only('slides', () => {
       expect(reducerStateAfterHandlingAddSlide[0].duration).to.equal(5000);
     })
 
-    it('EDIT_SLIDE', () => {
+    it('should handle EDIT_SLIDE', () => {
       const reducerStateAfterHandlingAddSlide = reducer(
         [
           {
@@ -50,7 +50,7 @@ describe.only('slides', () => {
       expect(reducerStateAfterHandlingAddSlide[0].duration).to.equal(7500);
     })
 
-    it('DELETE_SLIDE', () => {
+    it('should handle DELETE_SLIDE', () => {
       const reducerStateAfterHandlingAddSlide = reducer(
         [
           {
