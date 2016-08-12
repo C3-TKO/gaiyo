@@ -19,46 +19,48 @@ describe.only('slides', () => {
     done();
   });
 
-  it('should handle the ADD_SLIDE action', () => {
-    const reducerStateAfterHandlingAddSlide = reducer(undefined, addSlideAction({
-      url: 'http://www.example.com',
-      duration: 5000
-    }))
-    expect(reducerStateAfterHandlingAddSlide.length).to.equal(1);
-    expect(reducerStateAfterHandlingAddSlide[0].url).to.equal('http://www.example.com');
-    expect(reducerStateAfterHandlingAddSlide[0].duration).to.equal(5000);
-  })
+  describe('should handle actions', () => {
+    it('ADD_SLIDE', () => {
+      const reducerStateAfterHandlingAddSlide = reducer(undefined, addSlideAction({
+        url: 'http://www.example.com',
+        duration: 5000
+      }))
+      expect(reducerStateAfterHandlingAddSlide.length).to.equal(1);
+      expect(reducerStateAfterHandlingAddSlide[0].url).to.equal('http://www.example.com');
+      expect(reducerStateAfterHandlingAddSlide[0].duration).to.equal(5000);
+    })
 
-  it('should handle the EDIT_SLIDE action', () => {
-    const reducerStateAfterHandlingAddSlide = reducer(
-      [
-        {
-          _id: '1234567',
-          url: 'http://www.exmaple.com',
-          duration: 5000
-        }
-      ], editSlideAction('1234567',
-        {
-          url: 'http://smash.cologne',
-          duration: 7500
-        }
+    it('EDIT_SLIDE', () => {
+      const reducerStateAfterHandlingAddSlide = reducer(
+        [
+          {
+            _id: '1234567',
+            url: 'http://www.exmaple.com',
+            duration: 5000
+          }
+        ], editSlideAction('1234567',
+          {
+            url: 'http://smash.cologne',
+            duration: 7500
+          }
+        )
       )
-    )
-    expect(reducerStateAfterHandlingAddSlide.length).to.equal(1);
-    expect(reducerStateAfterHandlingAddSlide[0].url).to.equal('http://smash.cologne');
-    expect(reducerStateAfterHandlingAddSlide[0].duration).to.equal(7500);
-  })
+      expect(reducerStateAfterHandlingAddSlide.length).to.equal(1);
+      expect(reducerStateAfterHandlingAddSlide[0].url).to.equal('http://smash.cologne');
+      expect(reducerStateAfterHandlingAddSlide[0].duration).to.equal(7500);
+    })
 
-  it('should handle the DELETE_SLIDE action', () => {
-    const reducerStateAfterHandlingAddSlide = reducer(
-      [
-        {
-          _id: '1234567',
-          url: 'http://www.exmaple.com',
-          duration: 5000
-        }
-      ], deleteSlideAction('1234567')
-    )
-    expect(reducerStateAfterHandlingAddSlide.length).to.equal(0);
+    it('DELETE_SLIDE', () => {
+      const reducerStateAfterHandlingAddSlide = reducer(
+        [
+          {
+            _id: '1234567',
+            url: 'http://www.exmaple.com',
+            duration: 5000
+          }
+        ], deleteSlideAction('1234567')
+      )
+      expect(reducerStateAfterHandlingAddSlide.length).to.equal(0);
+    })
   })
 });
