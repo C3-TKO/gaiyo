@@ -4,7 +4,7 @@ import editSlideAction from '../../src/actions/editSlide.js';
 import deleteSlideAction from '../../src/actions/deleteSlide.js';
 import * as ActionTypes from '../../src/constants/ActionTypes'
 
-describe.only('slides', () => {
+describe('slides', () => {
 
   it('should return the initial state', () => {
     expect(
@@ -83,6 +83,31 @@ describe.only('slides', () => {
           _id: '1234567',
           url: 'http://www.exmaple.com',
           duration: 5000
+        }
+      ]);
+    })
+
+    it('should handle UPDATE_SLIDE', () => {
+      const reducerStateAfterHandlingAddSlide = reducer(
+        [{
+          _id: '1234567',
+          url: 'http://www.exmaple.com',
+          duration: 5000
+        }],
+        {
+          type: ActionTypes.UPDATE_SLIDE,
+          slide: {
+            _id: '1234567',
+            url: 'http://smash.cologne',
+            duration: 7500
+          }
+        }
+      )
+      expect(reducerStateAfterHandlingAddSlide).to.deep.equal([
+        {
+          _id: '1234567',
+          url: 'http://smash.cologne',
+          duration: 7500
         }
       ]);
     })
