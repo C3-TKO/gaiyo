@@ -1,14 +1,11 @@
-/* Define your initial state here.
- *
- * If you change the type from object to something else, do not forget to update
- * src/container/App.js accordingly.
- */
+import { ADD_SLIDE, EDIT_SLIDE, DELETE_SLIDE, INSERT_SLIDE, UPDATE_SLIDE } from '../constants/ActionTypes'
+
 const initialState = [];
 
 module.exports = function(state = initialState, action) {
   /* Keep the reducer clean - do not mutate the original state. */
   switch(action.type) {
-    case 'ADD_SLIDE':
+    case ADD_SLIDE:
       return [
         ...state,
         {
@@ -17,22 +14,22 @@ module.exports = function(state = initialState, action) {
           duration: action.slide.duration
         }
       ];
-    case 'UPDATE_SLIDE':
+    case UPDATE_SLIDE:
       return state.map(slide =>
         slide._id === action.slide._id ?
           action.slide :
           slide
       )
-    case 'INSERT_SLIDE':
+    case INSERT_SLIDE:
       return [
         ...state,
         action.slide
       ]
-    case 'DELETE_SLIDE':
+    case DELETE_SLIDE:
       return state.filter(slide =>
         slide._id !== action.id
       )
-    case 'EDIT_SLIDE':
+    case EDIT_SLIDE:
       return state.map(slide =>
         slide._id === action.id
           ? Object.assign({}, slide, {

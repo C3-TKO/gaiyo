@@ -9,6 +9,7 @@ import PouchDBAuthentication from 'pouchdb-authentication';
 PouchDB.plugin(PouchDBAuthentication);
 import updateSyncStateAction from '../actions/updateSyncState.js'
 import * as SyncStates from '../constants/SyncStates.js'
+import { DELETE_SLIDE, INSERT_SLIDE, UPDATE_SLIDE } from '../constants/ActionTypes'
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
@@ -25,9 +26,9 @@ module.exports = function(initialState) {
     path: '/slides',
     db,
     actions: {
-      remove: doc => store.dispatch({type: 'DELETE_SLIDE', id: doc._id}),
-      insert: doc => store.dispatch({type: 'INSERT_SLIDE', slide: doc}),
-      update: doc => store.dispatch({type: 'UPDATE_SLIDE', slide: doc})
+      remove: doc => store.dispatch({type: DELETE_SLIDE, id: doc._id}),
+      insert: doc => store.dispatch({type: INSERT_SLIDE, slide: doc}),
+      update: doc => store.dispatch({type: UPDATE_SLIDE, slide: doc})
     }
   })
 
