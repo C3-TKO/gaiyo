@@ -1,8 +1,31 @@
 # Change Log
 
-## [0.5.2](https://github.com/C3-TKO/junkan/tree/0.5.2) (2016-08-04)
+## [0.6.0](https://github.com/C3-TKO/junkan/tree/0.6.0) (2016-08-12)
 
-[Full Changelog](https://github.com/C3-TKO/junkan/compare/0.5.1...HEAD)
+[Full Changelog](https://github.com/C3-TKO/junkan/compare/0.5.2...0.6.0)
+
+**Implemented enhancements:**
+
+- Show status of couchdb connection [\#127](https://github.com/C3-TKO/junkan/issues/127)
+- Add an authentication to remote couch db [\#121](https://github.com/C3-TKO/junkan/issues/121)
+
+**Closed issues:**
+
+- Use sync constants during store definition [\#136](https://github.com/C3-TKO/junkan/issues/136)
+- Use constants for action types [\#133](https://github.com/C3-TKO/junkan/issues/133)
+- Unit Tests for all Actions [\#130](https://github.com/C3-TKO/junkan/issues/130)
+- settings reducer [\#107](https://github.com/C3-TKO/junkan/issues/107)
+
+**Merged pull requests:**
+
+- Refactors the code in favor of using the sync constants instead of st… [\#137](https://github.com/C3-TKO/junkan/pull/137) ([C3-TKO](https://github.com/C3-TKO))
+- Action types constants [\#135](https://github.com/C3-TKO/junkan/pull/135) ([C3-TKO](https://github.com/C3-TKO))
+- Show remote db sync status [\#134](https://github.com/C3-TKO/junkan/pull/134) ([C3-TKO](https://github.com/C3-TKO))
+- Action unit tests coverage 100 [\#131](https://github.com/C3-TKO/junkan/pull/131) ([C3-TKO](https://github.com/C3-TKO))
+- Remote DB Authentication [\#128](https://github.com/C3-TKO/junkan/pull/128) ([C3-TKO](https://github.com/C3-TKO))
+
+## [0.5.2](https://github.com/C3-TKO/junkan/tree/0.5.2) (2016-08-04)
+[Full Changelog](https://github.com/C3-TKO/junkan/compare/0.5.1...0.5.2)
 
 **Implemented enhancements:**
 
