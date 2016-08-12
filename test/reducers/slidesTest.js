@@ -2,6 +2,7 @@ var reducer = require('../../src/reducers/slides');
 import addSlideAction from '../../src/actions/addSlide.js';
 import editSlideAction from '../../src/actions/editSlide.js';
 import deleteSlideAction from '../../src/actions/deleteSlide.js';
+import * as ActionTypes from '../../src/constants/ActionTypes'
 
 describe.only('slides', () => {
 
@@ -69,7 +70,7 @@ describe.only('slides', () => {
       const reducerStateAfterHandlingAddSlide = reducer(
         [],
         {
-          type: 'INSERT_SLIDE',
+          type: ActionTypes.INSERT_SLIDE,
           slide: {
             _id: '1234567',
             url: 'http://www.exmaple.com',
