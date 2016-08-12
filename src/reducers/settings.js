@@ -1,3 +1,5 @@
+import { EDIT_SETTINGS } from '../constants/ActionTypes'
+
 const initialStateRaw = {
   remoteDbUrl: undefined,
   remoteDbUser: undefined,
@@ -10,7 +12,7 @@ const initialState = Object.assign(initialStateRaw, {settingsHash: JSON.stringif
 
 module.exports = function(state = initialState, action) {
   switch(action.type) {
-    case 'EDIT_SETTINGS': {
+    case EDIT_SETTINGS: {
       let nextState = action.settings;
       // Checks if settings have been changed in order to trigger a reboot
       if(
