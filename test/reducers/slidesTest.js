@@ -63,4 +63,27 @@ describe.only('slides', () => {
       expect(reducerStateAfterHandlingAddSlide.length).to.equal(0);
     })
   })
+
+  describe('pouch db middleware action handling', () => {
+    it('should handle INSERT_SLIDE', () => {
+      const reducerStateAfterHandlingAddSlide = reducer(
+        [],
+        {
+          type: 'INSERT_SLIDE',
+          slide: {
+            _id: '1234567',
+            url: 'http://www.exmaple.com',
+            duration: 5000
+          }
+        }
+      )
+      expect(reducerStateAfterHandlingAddSlide).to.deep.equal([
+        {
+          _id: '1234567',
+          url: 'http://www.exmaple.com',
+          duration: 5000
+        }
+      ]);
+    })
+  })
 });
