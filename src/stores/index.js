@@ -8,6 +8,7 @@ import PouchDB from 'pouchdb';
 import PouchDBAuthentication from 'pouchdb-authentication';
 PouchDB.plugin(PouchDBAuthentication);
 import updateSyncStateAction from '../actions/updateSyncState.js'
+import * as SyncStates from '../constants/SyncStates.js'
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
@@ -79,9 +80,9 @@ module.exports = function(initialState) {
             if (err.status === 400 || err.status === 401) {
               // 400: Name or password are missing
               // 401: Name or password are incorrect
-              store.dispatch(updateSyncStateAction('LOGIN_FAILED'))
+              store.dispatch(updateSyncStateAction(SyncStates.LOGIN_FAILED))
             } else {
-              store.dispatch(updateSyncStateAction('UNKNOWN_ERROR'))
+              store.dispatch(updateSyncStateAction(SyncStates.UNKNOWN_ERROR))
             }
           }
         });
@@ -94,13 +95,13 @@ module.exports = function(initialState) {
             retry: true
           })
           .on('change', function () {
-            store.dispatch(updateSyncStateAction('CHANGE'));
+            store.dispatch(updateSyncStateAction(SyncStates.CHANGE));
           }).on('paused', function () {
-            store.dispatch(updateSyncStateAction('PAUSED'));
+            store.dispatch(updateSyncStateAction(SyncStates.PAUSED));
           }).on('active', function () {
-            store.dispatch(updateSyncStateAction('ACTIVE'));
+            store.dispatch(updateSyncStateAction(SyncStates.ACTIVE));
           }).on('error', function () {
-            store.dispatch(updateSyncStateAction('UNKNOWN_ERROR'));
+            store.dispatch(updateSyncStateAction(SyncStates.UNKNOWN_ERROR));
           });
           break;
         case 2:
@@ -109,13 +110,13 @@ module.exports = function(initialState) {
             retry: true
           })
           .on('change', function () {
-            store.dispatch(updateSyncStateAction('CHANGE'));
+            store.dispatch(updateSyncStateAction(SyncStates.CHANGE));
           }).on('paused', function () {
-            store.dispatch(updateSyncStateAction('PAUSED'));
+            store.dispatch(updateSyncStateAction(SyncStates.PAUSED));
           }).on('active', function () {
-            store.dispatch(updateSyncStateAction('ACTIVE'));
+            store.dispatch(updateSyncStateAction(SyncStates.ACTIVE));
           }).on('error', function () {
-            store.dispatch(updateSyncStateAction('UNKNOWN_ERROR'));
+            store.dispatch(updateSyncStateAction(SyncStates.UNKNOWN_ERROR));
           });
           break;
         case 3:
@@ -124,13 +125,13 @@ module.exports = function(initialState) {
             retry: true
           })
           .on('change', function () {
-            store.dispatch(updateSyncStateAction('CHANGE'));
+            store.dispatch(updateSyncStateAction(SyncStates.CHANGE));
           }).on('paused', function () {
-            store.dispatch(updateSyncStateAction('PAUSED'));
+            store.dispatch(updateSyncStateAction(SyncStates.PAUSED));
           }).on('active', function () {
-            store.dispatch(updateSyncStateAction('ACTIVE'));
+            store.dispatch(updateSyncStateAction(SyncStates.ACTIVE));
           }).on('error', function () {
-            store.dispatch(updateSyncStateAction('UNKNOWN_ERROR'));
+            store.dispatch(updateSyncStateAction(SyncStates.UNKNOWN_ERROR));
           });
           break;
       }
