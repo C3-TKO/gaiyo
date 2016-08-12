@@ -17,29 +17,31 @@ describe('syncState', () => {
     done();
   });
 
-  it('should handle EDIT_SETTINGS when there is no change', () => {
-    expect(
-      reducer({status: SyncStates.NOT_CONNECTED},
-        {
-          type: 'UPDATE_SYNC_STATE',
-          status: SyncStates.NOT_CONNECTED
-        }
-      )
-    ).to.deep.equal({status: SyncStates.NOT_CONNECTED})
-  })
+  describe('action handling', () => {
+    it('should handle EDIT_SETTINGS when there is no change', () => {
+      expect(
+        reducer({status: SyncStates.NOT_CONNECTED},
+          {
+            type: 'UPDATE_SYNC_STATE',
+            status: SyncStates.NOT_CONNECTED
+          }
+        )
+      ).to.deep.equal({status: SyncStates.NOT_CONNECTED})
+    })
 
-  it('should handle EDIT_SETTINGS when there is a change', () => {
-    expect(
-      reducer({status: SyncStates.NOT_CONNECTED},
+    it('should handle EDIT_SETTINGS when there is a change', () => {
+      expect(
+        reducer({status: SyncStates.NOT_CONNECTED},
+          {
+            type: 'UPDATE_SYNC_STATE',
+            status: SyncStates.ACTIVE
+          }
+        )
+      ).to.deep.equal(
         {
-          type: 'UPDATE_SYNC_STATE',
           status: SyncStates.ACTIVE
         }
       )
-    ).to.deep.equal(
-      {
-        status: SyncStates.ACTIVE
-      }
-    )
+    })
   })
 });
