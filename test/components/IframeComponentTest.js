@@ -3,10 +3,8 @@
 /*eslint no-console: 0*/
 'use strict';
 
-// Uncomment the following lines to use the react test utilities
-// import TestUtils from 'react-addons-test-utils';
-import createComponent from 'helpers/shallowRenderHelper';
-
+import React from 'react';
+import { shallow } from 'enzyme';
 import IframeComponent from 'components//IframeComponent.js';
 
 describe('IframeComponent', () => {
@@ -14,31 +12,31 @@ describe('IframeComponent', () => {
 
   describe('with urlOut equals urlIn', () => {
     beforeEach(() => {
-      component = createComponent(IframeComponent, Object.assign({},
-        {
-          urlOut: 'http://www.example.com',
-          urlIn: 'http://www.example.com'
-        })
+      component = shallow(
+        <IframeComponent
+          urlOut='http://www.example.com'
+          urlIn='http://www.example.com'
+        />
       )
     });
 
     it('should have a single iframe', () => {
-      expect(component.props.children.type).to.equal('iframe')
+      expect(component.prop('children').type).to.equal('iframe')
     });
   });
 
   describe('with urlOut not equals urlIn', () => {
     beforeEach(() => {
-      component = createComponent(IframeComponent, Object.assign({},
-        {
-          urlOut: 'http://www.example.com',
-          urlIn: 'http://www.example2.com'
-        })
+      component = shallow(
+        <IframeComponent
+          urlOut='http://www.example.com'
+          urlIn='http://www.example2.com'
+        />
       )
     });
 
     it('should have two iframes', () => {
-      expect(component.props.children.props.children.length).to.equal(2)
+      expect(component.prop('children').props.children.length).to.equal(2)
     });
   });
 });
