@@ -3,20 +3,25 @@
 /*eslint no-console: 0*/
 'use strict';
 
-// Uncomment the following lines to use the react test utilities
-// import TestUtils from 'react-addons-test-utils';
-import createComponent from 'helpers/shallowRenderHelper';
+import React from 'react';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import { mountWithIntl, shallowWithIntl } from 'helpers/intl-enzyme-test-helper.js';
 
 import ExportSlidesComponent from 'components//ExportSlidesComponent.js';
 
-describe.skip('ExportSlidesComponent', () => {
-  let component;
+describe('ExportSlidesComponent', () => {
+
+  let wrapper;
 
   beforeEach(() => {
-    component = createComponent(ExportSlidesComponent);
+    wrapper = mountWithIntl(
+      <ExportSlidesComponent
+        slides={[]}
+      />
+    );
   });
 
-  it('should have its component name as default className', () => {
-    expect(component.props.className).to.equal('exportslides-component');
+  it('should have its component name as default className for the containing div', () => {
+    expect(wrapper.find('div.exportslides-component')).to.have.length(1);
   });
 });
