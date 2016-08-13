@@ -38,7 +38,7 @@ export function shallowWithIntl(node) {
 
 export function mountWithIntl(node) {
   return mount(nodeWithIntlProp(node), {
-    context: { intl },
-    childContextTypes: { intl: intlShape }
+    context: { intl, muiTheme },
+    childContextTypes: { intl: intlShape, muiTheme: React.PropTypes.object }
   });
 }
