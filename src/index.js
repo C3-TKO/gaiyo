@@ -7,6 +7,8 @@ import App from './containers/App';
 import messages from './intl/en';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
 
 const store = configureStore();
 
