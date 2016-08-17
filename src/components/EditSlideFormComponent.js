@@ -139,4 +139,10 @@ EditSlideFormComponent.propTypes = {
   handleClose: React.PropTypes.func.isRequired
 };
 
-export default injectIntl(connect()(EditSlideFormComponent));
+function mapStateToProps(state) {
+  return {
+    slides: state.slides
+  };
+}
+
+export default injectIntl(connect(mapStateToProps)(EditSlideFormComponent));
