@@ -9,7 +9,7 @@ import { mountWithIntl, shallowWithIntl } from 'helpers/intl-enzyme-test-helper.
 
 import SettingsComponent from 'components//SettingsComponent.js';
 
-describe('ExportSlidesComponent', () => {
+describe('SettingsComponent', () => {
 
   let wrapper;
 
