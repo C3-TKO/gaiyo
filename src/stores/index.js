@@ -11,9 +11,6 @@ import updateSyncStateAction from '../actions/updateSyncState.js'
 import * as SyncStates from '../constants/SyncStates.js'
 import { DELETE_SLIDE, INSERT_SLIDE, UPDATE_SLIDE } from '../constants/ActionTypes'
 
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
-
 function getURLParameter(name) {
   return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || undefined;
 }

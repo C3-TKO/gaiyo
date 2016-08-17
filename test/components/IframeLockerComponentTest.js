@@ -4,28 +4,30 @@
 'use strict';
 
 import React from 'react';
-import { shallow } from 'enzyme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import { mountWithIntl, shallowWithIntl } from 'helpers/intl-enzyme-test-helper.js';
+
 import IframeLockerComponent from 'components//IframeLockerComponent.js';
 
-describe.skip('IframeLockerComponent', () => {
-  let component;
-  const next = sinon.spy();
-  const prev = sinon.spy();
+describe('IframeLockerComponent', () => {
+
+  let wrapper;
 
   beforeEach(() => {
-    component = shallow(
+    wrapper = mountWithIntl(
       <IframeLockerComponent
-        next={next}
-        prev={prev}
+        next={() => {}}
+        prev={() => {}}
+        handleMenuVisibility={() => {}}
       />
     );
   });
 
-  it('should have its component name as default className', () => {
-    expect(component.prop('className')).to.equal('iframelocker-component');
+  it('should have its component name as default className for the containing div', () => {
+    expect(wrapper.find('div.iframelocker-component')).to.have.length(1);
   });
 
-  it('should display a snackbar on touch tap', () => {
+  it.skip('should display a snackbar on touch tap', () => {
     expect(component.state('open')).to.be.false;
     component.find('div').simulate('touchTap');
     expect(component.state('open')).to.be.true;
@@ -36,6 +38,14 @@ describe.skip('IframeLockerComponent', () => {
   });
 
   it.skip('should go to the next screen after swipe right', () => {
+    expect(next).calledOnce;
+  });
+
+  it.skip('should go to the previous screen after arrow key left pressed', () => {
+    expect(prev).calledOnce;
+  });
+
+  it.skip('should go to the previous screen after arrow key right pressed', () => {
     expect(next).calledOnce;
   });
 });

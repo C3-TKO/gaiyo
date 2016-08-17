@@ -1,4 +1,5 @@
 var reducer = require('../../src/reducers/syncState');
+import * as ActionTypes from '../../src/constants/ActionTypes.js'
 import * as SyncStates from '../../src/constants/SyncStates.js'
 
 describe('syncState', () => {
@@ -22,7 +23,7 @@ describe('syncState', () => {
       expect(
         reducer({status: SyncStates.NOT_CONNECTED},
           {
-            type: 'UPDATE_SYNC_STATE',
+            type: ActionTypes.UPDATE_SYNC_STATE,
             status: SyncStates.NOT_CONNECTED
           }
         )
@@ -33,7 +34,7 @@ describe('syncState', () => {
       expect(
         reducer({status: SyncStates.NOT_CONNECTED},
           {
-            type: 'UPDATE_SYNC_STATE',
+            type: ActionTypes.UPDATE_SYNC_STATE,
             status: SyncStates.ACTIVE
           }
         )

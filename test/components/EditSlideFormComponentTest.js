@@ -3,30 +3,32 @@
 /*eslint no-console: 0*/
 'use strict';
 
-// Uncomment the following lines to use the react test utilities
-// import TestUtils from 'react-addons-test-utils';
-import createComponent from 'helpers/shallowRenderHelper';
-
+import React from 'react';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import { mountWithIntl, shallowWithIntl } from 'helpers/intl-enzyme-test-helper.js';
+import configureStore from 'redux-mock-store';
+import { Provider } from 'react-redux';
 import EditSlideFormComponent from 'components//EditSlideFormComponent.js';
 
-describe.skip('EditSlideFormComponent', () => {
-  let component;
-
-  beforeEach(() => {
-    component = createComponent(EditSlideFormComponent, Object.assign({},
-      {
-        slide: {
-          url: 'http://www.example.com',
-          duration: 5000
-        },
-        disableEditButton: () => {},
-        enableEditButton: () => {},
-        handleCloseDialog: () => {}
-      })
-    )
+describe('EditSlideFormComponent', () => {
+  let wrapper;
+  const mockStore = configureStore();
+  const store = mockStore({
+    slides: []
   });
 
-  it('should have its component name as default className', () => {
-    expect(component.props.className).to.equal('editslideform-component');
+  beforeEach(() => {
+    wrapper = mountWithIntl(
+      <Provider store={store}>
+        <EditSlideFormComponent
+          slide={undefined}
+          handleClose={() => {}}
+        />
+      </Provider>
+    );
+  });
+
+  it('should have its component name as default className for the containing div', () => {
+    expect(wrapper.find('div.editslideform-component')).to.have.length(1);
   });
 });

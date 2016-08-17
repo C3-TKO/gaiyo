@@ -155,10 +155,4 @@ class ImportSlidesComponent extends React.Component {
 
 ImportSlidesComponent.displayName = 'ImportSlidesComponent';
 
-function mapStateToProps(state) {
-  return {
-    slides: state.slides
-  };
-}
-
-export default injectIntl(connect(mapStateToProps)(ImportSlidesComponent));
+export default injectIntl(connect()(ImportSlidesComponent));

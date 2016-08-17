@@ -3,32 +3,27 @@
 /*eslint no-console: 0*/
 'use strict';
 
-// Uncomment the following lines to use the react test utilities
-// import TestUtils from 'react-addons-test-utils';
-import createComponent from 'helpers/shallowRenderHelper';
+import React from 'react';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import { mountWithIntl, shallowWithIntl } from 'helpers/intl-enzyme-test-helper.js';
 
 import SettingsComponent from 'components//SettingsComponent.js';
 
-describe.skip('SettingsComponent', () => {
-  let component;
+describe('SettingsComponent', () => {
+
+  let wrapper;
 
   beforeEach(() => {
-    component = createComponent(SettingsComponent, Object.assign({},
-      {
-        slides: [
-          {
-            url: 'http://www.example.com',
-            duration: 5000
-          }
-        ],
-        actionAddSlide: () => {},
-        actionDeleteSlide: () => {},
-        actionEditSlide: () => {}
-      })
-    )
+    wrapper = mountWithIntl(
+      <SettingsComponent
+        slides={[]}
+        onMouseEnter={() => {}}
+        onMouseLeave={() => {}}
+      />
+    );
   });
 
-  it('should have its component name as default className', () => {
-    expect(component.props.className).to.equal('settings-component');
+  it('should have its component name as default className for the containing div', () => {
+    expect(wrapper.find('div.settings-component')).to.have.length(1);
   });
 });
