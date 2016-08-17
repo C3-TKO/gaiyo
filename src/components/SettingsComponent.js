@@ -122,9 +122,7 @@ class SettingsComponent extends React.Component {
           onRequestClose={this.closeDialog}
           autoScrollBodyContent={true}
         >
-          <SlideListEditor
-            slides={this.props.slides}
-          />
+          <SlideListEditor />
         </Dialog>
 
         <Snackbar

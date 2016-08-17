@@ -153,8 +153,11 @@ class SlideListEditorComponent extends React.Component {
 }
 
 SlideListEditorComponent.displayName = 'SlideListEditorComponent';
-SlideListEditorComponent.propTypes = {
-  slides: React.PropTypes.array.isRequired
-};
 
-export default injectIntl(connect()(SlideListEditorComponent));
+function mapStateToProps(state) {
+  return {
+    slides: state.slides
+  };
+}
+
+export default injectIntl(connect(mapStateToProps)(SlideListEditorComponent));
