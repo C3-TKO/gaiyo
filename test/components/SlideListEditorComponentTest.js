@@ -3,32 +3,40 @@
 /*eslint no-console: 0*/
 'use strict';
 
-// Uncomment the following lines to use the react test utilities
-// import TestUtils from 'react-addons-test-utils';
-import createComponent from 'helpers/shallowRenderHelper';
-
+import React from 'react';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import { mountWithIntl, shallowWithIntl } from 'helpers/intl-enzyme-test-helper.js';
+import configureStore from 'redux-mock-store';
+import { Provider } from 'react-redux';
+import * as SyncStates from '../../src/constants/SyncStates.js'
 import SlideListEditorComponent from 'components//SlideListEditorComponent.js';
 
-describe.skip('SlideListEditorComponent', () => {
-  let component;
-
-  beforeEach(() => {
-    component = createComponent(SlideListEditorComponent, Object.assign({},
-      {
-        slides: [
-          {
-            url: 'http://www.example.com',
-            duration: 5000
-          }
-        ],
-        onDelete: () => {},
-        onEdit: () => {},
-        onAdd: () => {}
-      })
-    )
+describe('SlideListEditorComponent', () => {
+  let wrapper;
+  const mockStore = configureStore();
+  const store = mockStore({
+    slides: [],
+    settings: {
+      remoteDbUrl: undefined,
+      remoteDbUser: undefined,
+      remoteDbPassword: undefined,
+      syncMode: 1,
+      enabled: false
+    },
+    syncState: {
+      status: SyncStates.NOT_CONNECTED
+    }
   });
 
-  it('should have its component name as default className', () => {
-    expect(component.props.className).to.equal('slidelisteditor-component');
+  beforeEach(() => {
+    wrapper = mountWithIntl(
+      <Provider store={store}>
+        <SlideListEditorComponent />
+      </Provider>
+    );
+  });
+
+  it('should have its component name as default className for the containing div', () => {
+    expect(wrapper.find('div.slidelisteditor-component')).to.have.length(1);
   });
 });
