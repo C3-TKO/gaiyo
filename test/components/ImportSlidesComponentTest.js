@@ -20,12 +20,7 @@ describe('ImportSlidesComponent', () => {
   beforeEach(() => {
     wrapper = mountWithIntl(
       <Provider store={store}>
-        <ImportSlidesComponent
-          slides={[]}
-          goto={() => {}}
-          onMouseEnter={() => {}}
-          onMouseLeave={() => {}}
-        />
+        <ImportSlidesComponent />
       </Provider>
     );
   });
