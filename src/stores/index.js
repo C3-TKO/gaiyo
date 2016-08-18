@@ -95,7 +95,7 @@ module.exports = function(initialState) {
           .on('change', function () {
             store.dispatch(updateSyncStateAction(SyncStates.CHANGE));
           }).on('paused', function () {
-            store.dispatch(updateSyncStateAction(SyncStates.PAUSED));
+            //store.dispatch(updateSyncStateAction(SyncStates.PAUSED));
           }).on('active', function () {
             store.dispatch(updateSyncStateAction(SyncStates.ACTIVE));
           }).on('error', function () {
@@ -110,7 +110,7 @@ module.exports = function(initialState) {
           .on('change', function () {
             store.dispatch(updateSyncStateAction(SyncStates.CHANGE));
           }).on('paused', function () {
-            store.dispatch(updateSyncStateAction(SyncStates.PAUSED));
+            //store.dispatch(updateSyncStateAction(SyncStates.PAUSED));
           }).on('active', function () {
             store.dispatch(updateSyncStateAction(SyncStates.ACTIVE));
           }).on('error', function () {
@@ -125,7 +125,7 @@ module.exports = function(initialState) {
           .on('change', function () {
             store.dispatch(updateSyncStateAction(SyncStates.CHANGE));
           }).on('paused', function () {
-            store.dispatch(updateSyncStateAction(SyncStates.PAUSED));
+            //store.dispatch(updateSyncStateAction(SyncStates.PAUSED));
           }).on('active', function () {
             store.dispatch(updateSyncStateAction(SyncStates.ACTIVE));
           }).on('error', function () {
