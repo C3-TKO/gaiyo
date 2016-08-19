@@ -50,11 +50,11 @@ class ImportSlidesComponent extends React.Component {
     };
   }
 
-  openDialog = () => {
+  open = () => {
     this.setState({open: true})
   }
 
-  closeDialog = () => {
+  close = () => {
     this.setState({open: false})
   }
 
@@ -104,7 +104,7 @@ class ImportSlidesComponent extends React.Component {
         <FloatingActionButton
           secondary={true}
           mini={true}
-          onTouchTap={this.openDialog}
+          onTouchTap={this.open}
         >
           <FileUpload />
         </FloatingActionButton>
@@ -112,7 +112,7 @@ class ImportSlidesComponent extends React.Component {
         <Dialog
           title={formatMessage(messages.title)}
           open={this.state.open}
-          onRequestClose={this.closeDialog}
+          onRequestClose={this.close}
         >
           <Formsy.Form
             onValid={this.enableImportButton}
