@@ -80,7 +80,7 @@
     "babel-preset-stage-0": "^6.22.0",
     "core-js": "^2.4.0",
     "formsy-material-ui": "^0.5.5",
-    "localforage": "^1.4.2",
+    "localforage": "^1.5.0",
     "lodash.debounce": "^4.0.6",
     "lodash.throttle": "^4.0.1",
     "material-ui": "^0.16.0",
