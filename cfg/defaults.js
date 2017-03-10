@@ -23,6 +23,7 @@ function getDefaultModules() {
         loader: 'eslint-loader'
       }
     ],
+    noParse: [new RegExp('/localforage/dist/localforage.js')],
     loaders: [
       {
         test: /\.css$/,
