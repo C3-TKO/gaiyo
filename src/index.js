@@ -12,10 +12,18 @@ injectTapEventPlugin();
 
 const store = configureStore();
 
+const MuiTheme = getMuiTheme({
+  palette: {
+    primary1Color: '#005e34',
+    accent1Color: '#ffa800',
+    textColor: '#005e34'
+  }
+});
+
 render(
   <Provider store={store}>
     <IntlProvider locale='en' messages={messages}>
-      <MuiThemeProvider muiTheme={getMuiTheme()}>
+      <MuiThemeProvider muiTheme={MuiTheme}>
         <App />
       </MuiThemeProvider>
     </IntlProvider>
