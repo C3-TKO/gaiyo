@@ -1,7 +1,0 @@
-{
-  "generator-react-webpack": {
-    "appName": "gaiyo",
-    "style": "scss",
-    "postcss": false
-  }
-}

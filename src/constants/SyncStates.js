@@ -1,6 +1,0 @@
-export const NOT_CONNECTED = 'NOT_CONNECTED'
-export const CHANGED = 'CHANGED'
-export const PAUSED = 'PAUSED'
-export const ACTIVE = 'ACTIVE'
-export const LOGIN_FAILED = 'LOGIN_FAILED'
-export const UNKNOWN_ERROR = 'UNKNOWN_ERROR'
