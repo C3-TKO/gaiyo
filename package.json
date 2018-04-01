@@ -9,12 +9,14 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "ghup": "npm run dist && git commit -a -m 'Updates the dist' && git checkout gh-pages && git checkout master -- dist && git commit -a -m 'Updates the dist' && git push origin gh-pages && git checkout master",
+    "ghup": "npm run dist && git commit -a -m 'Updates the dist' && git checkout gh-pages && git checkout master -- dist && git commit -a -m 'Updates the dist' && git push origin gh-pages && git checkout master"
   },
   "repository": "https://github.com/C3-TKO/junkan",
   "keywords": [],
   "author": "Thomas Kolar",
   "dependencies": {
+    "material-ui": "^1.0.0-beta.40",
+    "material-ui-icons": "^1.0.0-beta.36",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
     "react-scripts": "1.1.1"
